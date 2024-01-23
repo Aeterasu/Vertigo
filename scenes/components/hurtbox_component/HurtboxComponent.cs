@@ -20,8 +20,6 @@ namespace Vertigo
 
         private void OnAreaEntered(Area2D area)
         {
-            GD.Print("MEOW");
-
             if (area is Projectile)
             {
                 OnProjectileCollide?.Invoke(area as Projectile);

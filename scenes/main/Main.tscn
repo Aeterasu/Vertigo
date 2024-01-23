@@ -8,4 +8,4 @@ script = ExtResource( 1 )
 _gameScene = ExtResource( 2 )
 
 [node name="FXLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 4

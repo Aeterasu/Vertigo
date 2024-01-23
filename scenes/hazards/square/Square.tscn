@@ -17,6 +17,7 @@ script = ExtResource( 2 )
 Affiliation = 0
 _speed = 72.0
 _rotationSpeed = 196.0
+_bounce = true
 
 [node name="Sprite" type="Sprite" parent="."]
 unique_name_in_owner = true

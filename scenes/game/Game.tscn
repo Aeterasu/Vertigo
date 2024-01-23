@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://scenes/fx/ScreenShakeCamera2D.cs" type="Script" id=6]
 [ext_resource path="res://scenes/hazards/HazardSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/hazards/SpawnPoint.cs" type="Script" id=8]
+[ext_resource path="res://scenes/smooth_path/SmoothPath.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/jump_rope/JumpRopeSmoothPath.cs" type="Script" id=10]
+[ext_resource path="res://assets/textures/placeholder/sprite_ui_mockup.png" type="Texture" id=11]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -62,9 +65,28 @@ z_index = 16
 unique_name_in_owner = true
 GravityMode = 1
 
+[node name="JumpRopeSmoothPath" parent="GameLayer/JumpRopeTop" instance=ExtResource( 9 )]
+curve = null
+script = ExtResource( 10 )
+_positionY = 64.0
+_xOffset = 16.0
+_yOffset = 12.0
+_animationInDuration = 0.3
+_animationOutDuraion = 0.6
+
 [node name="JumpRopeBottom" parent="GameLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( 0, 206 )
+
+[node name="JumpRopeSmoothPath" parent="GameLayer/JumpRopeBottom" instance=ExtResource( 9 )]
+position = Vector2( 0, -206 )
+curve = null
+script = ExtResource( 10 )
+_positionY = 206.0
+_xOffset = 16.0
+_yOffset = 12.0
+_animationInDuration = 0.3
+_animationOutDuraion = 0.6
 
 [node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer"]
 unique_name_in_owner = true
@@ -74,3 +96,8 @@ current = true
 script = ExtResource( 6 )
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="UILayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )

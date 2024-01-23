@@ -159,6 +159,8 @@ namespace Vertigo
                 {
                     GravityMode = jumpRope.GravityMode;
                     _velocityY *= _springCoeff;
+
+                    jumpRope.AnimateSmoothPath(Position.x, -(float)jumpRope.GravityMode);
                 }
             }
 

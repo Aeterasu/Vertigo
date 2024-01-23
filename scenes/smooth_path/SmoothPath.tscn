@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/smooth_path/SmoothPath.cs" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -19, 63, 0, 0, 0, 0, 144, 63, 0, 0, 0, 0, 339, 64, 0, 0, 0, 0, 514, 64 )
+}
+
+[node name="SmoothPath" type="Path2D"]
+self_modulate = Color( 1, 1, 1, 1 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )

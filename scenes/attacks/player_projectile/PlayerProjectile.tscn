@@ -1,14 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/attacks/Projectile.cs" type="Script" id=1]
+[ext_resource path="res://scenes/attacks/player_projectile/PlayerProjectile.cs" type="Script" id=1]
 [ext_resource path="res://assets/textures/attacks/sprite_player_projectile_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/attacks/sprite_player_projectile_2.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Muzzle"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.99998
-height = 14.0
+height = 16.0
 
 [node name="PlayerProjectile" type="Area2D"]
-z_index = 8
+z_index = 18
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )
@@ -16,7 +45,13 @@ Affiliation = 1
 _speed = 316.0
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+unique_name_in_owner = true
+playback_speed = 1.5
+anims/Muzzle = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )

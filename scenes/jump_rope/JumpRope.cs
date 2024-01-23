@@ -7,9 +7,18 @@ namespace Vertigo
     {
         [Export] public GravityMode GravityMode { get; private set; }
 
+        private JumpRopeSmoothPath _smoothPath;
+
         public override void _Ready()
         {
             base._Ready();
+
+            _smoothPath = GetNode<JumpRopeSmoothPath>("JumpRopeSmoothPath");
+        }
+
+        public void AnimateSmoothPath(float positionX, float direction)
+        {
+            _smoothPath.Animate(positionX, direction);
         }
     }
 }
