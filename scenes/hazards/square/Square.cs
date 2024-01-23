@@ -8,7 +8,9 @@ namespace Vertigo
         [Export] private float _speed = 16f;
         [Export] private float _rotationSpeed = 32f;
 
-        private float _direction = 1f;
+        [Export(PropertyHint.Range, "-1, 1, 1")] private float _direction = 1f;
+
+        [Export] private bool _bounce = false; // squares will bounce from each other
 
         private Sprite _sprite;
 
@@ -34,6 +36,8 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+            
+            Connect("area_entered", this, "OnAreaEntered");
 
             _sprite = GetNode<Sprite>("%Sprite");
         }
@@ -45,6 +49,14 @@ namespace Vertigo
             _sprite.RotationDegrees += _rotationSpeed * delta;
 
             Position += Vector2.Right * _speed * Direction * delta;
+        }
+
+        private void OnAreaEntered(Area2D area)
+        {
+            if (area is Hazard && _bounce)
+            {
+                Direction *= -1f;
+            }
         }
     }
 }

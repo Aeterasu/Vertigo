@@ -7,10 +7,11 @@
 radius = 16.0
 
 [node name="Square" type="Area2D"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource( 2 )
-_speed = 64.0
-_rotationSpeed = 128.0
+Affiliation = 0
+_speed = 72.0
+_rotationSpeed = 196.0
 
 [node name="Sprite" type="Sprite" parent="."]
 unique_name_in_owner = true

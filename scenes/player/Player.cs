@@ -85,12 +85,12 @@ namespace Vertigo
 
         private void HandleInput()
         {
+            _velocityX = 0f;
+
             if (_state == PlayerState.DEAD)
             {
                 return;
             }
-
-            _velocityX = 0f;
 
             if (Input.IsActionPressed("move_left"))
             {
@@ -114,6 +114,11 @@ namespace Vertigo
 
         private void HandleMovement(float delta)
         {
+            if (_state == PlayerState.DEAD)
+            {
+                return;
+            }
+
             if (_verticalStallTimer <= 0)
             {
                 _velocityY += _gravity * (int)GravityMode * delta;
@@ -150,6 +155,11 @@ namespace Vertigo
                     GravityMode = jumpRope.GravityMode;
                     _velocityY *= _springCoeff;
                 }
+            }
+
+            if (area is Hazard)
+            {
+                _state = PlayerState.DEAD;
             }
         }
 
