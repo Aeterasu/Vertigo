@@ -1,16 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/Game.cs" type="Script" id=4]
+[ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=5]
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 320, 71 )
+[node name="GameLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
-[node name="JumpRopeTop" parent="." instance=ExtResource( 2 )]
+[node name="Backdrop" type="Sprite" parent="GameLayer"]
+modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 480, 270 )
+
+[node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
+position = Vector2( 240, 90 )
+
+[node name="JumpRopeTop" parent="GameLayer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 GravityMode = 1
 
-[node name="JumpRopeBottom" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 312 )
-GravityMode = 9223372036854775807
+[node name="JumpRopeBottom" parent="GameLayer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 0, 206 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]

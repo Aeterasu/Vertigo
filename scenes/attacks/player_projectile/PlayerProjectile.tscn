@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/attacks/Projectile.cs" type="Script" id=1]
+[ext_resource path="res://assets/textures/attacks/sprite_player_projectile_1.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.99998
+height = 14.0
+
+[node name="PlayerProjectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+Affiliation = 1
+_speed = 290.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+rotation = 1.5708
+shape = SubResource( 1 )

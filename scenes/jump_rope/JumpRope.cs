@@ -5,7 +5,7 @@ namespace Vertigo
 {
     public class JumpRope : Area2D
     {
-        [Export] public GravityMode GravityMode { get; private set; } = GravityMode.UPWARDS;
+        [Export] public GravityMode GravityMode { get; private set; }
 
         public override void _Ready()
         {

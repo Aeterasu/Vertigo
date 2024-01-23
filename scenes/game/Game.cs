@@ -5,9 +5,26 @@ namespace Vertigo
 {
     public class Game : Node2D
     {
+        public float RopeTopPosition { get; private set; }
+        public float RopeBottomPosition { get; private set; }
+        
+        public CanvasLayer GameLayer { get; private set; }
+
+        public static Game Instance { get; private set; }
+
         public override void _Ready()
         {
             base._Ready();
+
+            Instance = this;
+
+            GameLayer = GetNode<CanvasLayer>("%GameLayer");
+
+            var topShape = GetNode<JumpRope>("%JumpRopeTop").GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
+            var bottomShape = GetNode<JumpRope>("%JumpRopeBottom").GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
+
+            RopeTopPosition = GetNode<JumpRope>("%JumpRopeTop").GlobalPosition.y + topShape.Extents.y * 2;
+            RopeBottomPosition = GetNode<JumpRope>("%JumpRopeBottom").GlobalPosition.y;
         }
     }
 }
