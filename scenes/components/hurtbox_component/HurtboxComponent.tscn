@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/components/hurtbox_component/HurtboxComponent.cs" type="Script" id=1]
+
+[node name="HurtboxComponent" type="Area2D"]
+modulate = Color( 0, 0.603922, 0.54902, 1 )
+script = ExtResource( 1 )

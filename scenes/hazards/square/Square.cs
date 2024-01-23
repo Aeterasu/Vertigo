@@ -12,6 +12,9 @@ namespace Vertigo
 
         [Export] private bool _bounce = false; // squares will bounce from each other
 
+        private HealthComponent _healthComponent;
+        private HurtboxComponent _hurtboxComponent;
+
         private Sprite _sprite;
 
         public float Direction
@@ -39,6 +42,12 @@ namespace Vertigo
             
             Connect("area_entered", this, "OnAreaEntered");
 
+            _healthComponent = GetNode<HealthComponent>("%HealthComponent");
+            _healthComponent.OnHealthDepleted += OnHealthDepleted;
+
+            _hurtboxComponent = GetNode<HurtboxComponent>("%HurtboxComponent");
+            _hurtboxComponent.OnProjectileCollide += OnProjectileCollide;
+
             _sprite = GetNode<Sprite>("%Sprite");
         }
 
@@ -57,6 +66,17 @@ namespace Vertigo
             {
                 Direction *= -1f;
             }
+        }
+
+        private void OnHealthDepleted()
+        {
+            this.SafeQueueFree();
+        }
+
+        private void OnProjectileCollide(Projectile projectile)
+        {
+            _healthComponent.DealDamage();
+            projectile.ProcessCollision();
         }
     }
 }

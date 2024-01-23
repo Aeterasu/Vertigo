@@ -37,5 +37,29 @@ namespace Vertigo
                     break;
             }        
         }
+
+        public static void UpdateHurtboxCollisionLayerBits(this Area2D area, Affiliation affiliation)
+        {
+            // 0 - player layer
+            // 2 - enemy layer
+            // 3 - player attacks layer
+            // 4 - enemy attack layer
+
+            switch (affiliation)
+            {
+                case Affiliation.NEUTRAL:
+                    area.SetCollisionLayerBit(0, true);
+                    area.SetCollisionLayerBit(2, true);
+                    break;
+                case Affiliation.PLAYER:
+                    area.SetCollisionLayerBit(0, true);
+                    area.SetCollisionLayerBit(2, false);
+                    break;
+                case Affiliation.ENEMY:
+                    area.SetCollisionLayerBit(0, false);
+                    area.SetCollisionLayerBit(2, true);
+                    break;
+            }        
+        }
     }
 }

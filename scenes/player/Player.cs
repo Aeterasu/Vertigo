@@ -33,6 +33,8 @@ namespace Vertigo
         private float _firingAngleDegrees = 0f;
         private float _directionX = 1f;
 
+        private HealthComponent _healthComponent;
+
         private PlayerState _state = PlayerState.NORMAL;
 
         private Node2D _spritePivot;
@@ -67,6 +69,9 @@ namespace Vertigo
 
             _playerGun = GetNode<PlayerGun>("%PlayerGun");
             _playerGun.OnFired += OnGunFired;
+
+            _healthComponent = GetNode<HealthComponent>("%HealthComponent");
+            _healthComponent.OnHealthDepleted += OnHealthDepleted;
 
             _spritePivot = GetNode<Node2D>("%SpritePivot");
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
@@ -159,7 +164,7 @@ namespace Vertigo
 
             if (area is Hazard)
             {
-                _state = PlayerState.DEAD;
+                _healthComponent.DealDamage();
             }
         }
 
@@ -169,6 +174,11 @@ namespace Vertigo
             _knockbackX += _playerGun.HorizontalKnockback * _directionX;
 
             Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(_playerGun.ScreenShakeStrength);
+        }
+
+        private void OnHealthDepleted()
+        {
+            _state = PlayerState.DEAD;
         }
     }
 }

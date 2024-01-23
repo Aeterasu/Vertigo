@@ -29,5 +29,10 @@ namespace Vertigo
                 this.SafeQueueFree();
             }
         }
+
+        public void ProcessCollision()
+        {
+            this.SafeQueueFree();
+        }
     }
 }
