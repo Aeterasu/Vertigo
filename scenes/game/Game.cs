@@ -21,7 +21,6 @@ namespace Vertigo
             GameLayer = GetNode<CanvasLayer>("%GameLayer");
 
             var topShape = GetNode<JumpRope>("%JumpRopeTop").GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
-            var bottomShape = GetNode<JumpRope>("%JumpRopeBottom").GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
 
             RopeTopPosition = GetNode<JumpRope>("%JumpRopeTop").GlobalPosition.y + topShape.Extents.y * 2;
             RopeBottomPosition = GetNode<JumpRope>("%JumpRopeBottom").GlobalPosition.y;

@@ -30,10 +30,11 @@ namespace Vertigo
 
         private PlayerGun _playerGun;
         private float _firingAngleDegrees = 0f;
-        private float _horizontalFiringMultiplier = 1f;
+        private float _directionX = 1f;
 
         private PlayerState _state = PlayerState.NORMAL;
 
+        private Node2D _spritePivot;
         private AnimationPlayer _animationPlayer;
 
         public GravityMode GravityMode
@@ -66,12 +67,15 @@ namespace Vertigo
             _playerGun = GetNode<PlayerGun>("%PlayerGun");
             _playerGun.OnFired += OnGunFired;
 
+            _spritePivot = GetNode<Node2D>("%SpritePivot");
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            _spritePivot.Scale = _spritePivot.Scale.LinearInterpolate(new Vector2(_directionX, 1f), 10f * delta);
 
             HandleInput();
 
@@ -91,14 +95,14 @@ namespace Vertigo
             {
                 _velocityX = -_horizontalSpeed;
                 _firingAngleDegrees = 180f;
-                _horizontalFiringMultiplier = -1f;
+                _directionX = -1f;
             }
 
             if (Input.IsActionPressed("move_right"))
             {
                 _velocityX = _horizontalSpeed;
                 _firingAngleDegrees = 0f;
-                _horizontalFiringMultiplier = 1f;
+                _directionX = 1f;
             }
 
             if (Input.IsActionJustPressed("action_confirm"))
@@ -151,7 +155,7 @@ namespace Vertigo
         private void OnGunFired()
         {
             _verticalStallTimer = _playerGun.VerticalStall;
-            _knockbackX += _playerGun.HorizontalKnockback * _horizontalFiringMultiplier;
+            _knockbackX += _playerGun.HorizontalKnockback * _directionX;
         }
     }
 }
