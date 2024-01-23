@@ -15,6 +15,7 @@ namespace Vertigo
         [Export] private readonly float _springCoeff = 0.3f;
         [Export] private readonly float _horizontalSpeed = 4f;
         [Export] private readonly float _knockbackFalloff = 8f;
+        [Export] private readonly float _verticalStallFalloff = 12f;
 
         [Export] private readonly float _boundaryLeft = -9f;
         [Export] private readonly float _boundaryRight = 649f;
@@ -105,7 +106,7 @@ namespace Vertigo
                 _directionX = 1f;
             }
 
-            if (Input.IsActionJustPressed("action_confirm"))
+            if (Input.IsActionJustPressed("action_confirm") && _playerGun.IsValid())
             {
                 _playerGun.Fire(_firingAngleDegrees);
             }
@@ -119,7 +120,7 @@ namespace Vertigo
             }
             else
             {
-                _velocityY = Mathf.Lerp(_velocityY, 0f, _knockbackFalloff * delta);
+                _velocityY = Mathf.Lerp(_velocityY, 0f, _verticalStallFalloff * delta);
             }
 
             _knockbackX = Mathf.Lerp(_knockbackX, 0f, _knockbackFalloff * delta);
@@ -156,6 +157,8 @@ namespace Vertigo
         {
             _verticalStallTimer = _playerGun.VerticalStall;
             _knockbackX += _playerGun.HorizontalKnockback * _directionX;
+
+            Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(_playerGun.ScreenShakeStrength);
         }
     }
 }

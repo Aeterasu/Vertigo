@@ -122,6 +122,7 @@ collision_mask = 6
 script = ExtResource( 2 )
 _gravity = 4.0
 _horizontalSpeed = 2.0
+_knockbackFalloff = 4.0
 _boundaryRight = 489.0
 
 [node name="SpritePivot" type="Node2D" parent="."]
@@ -144,7 +145,8 @@ shape = SubResource( 1 )
 [node name="PlayerGun" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 3 )
-VerticalStall = 0.1
-HorizontalKnockback = -2.0
+VerticalStall = 0.18
+HorizontalKnockback = -1.4
+ScreenShakeStrength = 1.25
 _attackScene = ExtResource( 4 )
-_rateOfFire = 0.08
+_rateOfFire = 0.12

@@ -13,7 +13,7 @@ namespace Vertigo
         {
             base._Ready();
 
-            UpdateCollisionMaskBits(Affiliation);
+            this.UpdateAttackCollisionMaskBits(Affiliation);
         }
 
         public override void _PhysicsProcess(float delta)
@@ -27,39 +27,6 @@ namespace Vertigo
             if (Position.x <= 0 || Position.x >= 480 || Position.y <= 0f || Position.y >= 270f)
             {
                 this.SafeQueueFree();
-            }
-        }
-
-        private void UpdateCollisionMaskBits(Affiliation affiliation)
-        {
-            // 0 - player layer
-            // 2 - enemy layer
-            // 3 - player attacks layer
-            // 4 - enemy attack layer
-
-            switch (affiliation)
-            {
-                case Affiliation.NEUTRAL:
-                    SetCollisionMaskBit(0, true);
-                    SetCollisionMaskBit(2, true);
-
-                    SetCollisionLayerBit(3, true);
-                    SetCollisionLayerBit(4, true);
-                    break;
-                case Affiliation.PLAYER:
-                    SetCollisionMaskBit(0, false);
-                    SetCollisionMaskBit(2, true);
-
-                    SetCollisionLayerBit(3, true);
-                    SetCollisionLayerBit(4, false);
-                    break;
-                case Affiliation.ENEMY:
-                    SetCollisionMaskBit(0, true);
-                    SetCollisionMaskBit(2, false);
-
-                    SetCollisionLayerBit(3, false);
-                    SetCollisionLayerBit(4, true);
-                    break;
             }
         }
     }

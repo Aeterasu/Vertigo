@@ -1,15 +1,51 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hazards/square/Square.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/Game.cs" type="Script" id=4]
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=5]
+[ext_resource path="res://scenes/fx/ScreenShakeCamera2D.cs" type="Script" id=6]
+[ext_resource path="res://scenes/hazards/HazardSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hazards/SpawnPoint.cs" type="Script" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+follow_viewport_enable = true
+
+[node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
+_squareScene = ExtResource( 3 )
+_squareSpawnRate = 2.0
+
+[node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( -32, 88 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint2" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( -32, 136 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint3" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( -32, 184 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint4" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( 512, 88 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint5" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( 512, 136 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint6" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( 512, 184 )
+script = ExtResource( 8 )
+Direction = -1.0
 
 [node name="Backdrop" type="Sprite" parent="GameLayer"]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -20,6 +56,7 @@ region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 position = Vector2( 240, 90 )
+z_index = 16
 
 [node name="JumpRopeTop" parent="GameLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -28,5 +65,12 @@ GravityMode = 1
 [node name="JumpRopeBottom" parent="GameLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( 0, 206 )
+
+[node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer"]
+unique_name_in_owner = true
+anchor_mode = 0
+rotating = true
+current = true
+script = ExtResource( 6 )
 
 [node name="UILayer" type="CanvasLayer" parent="."]

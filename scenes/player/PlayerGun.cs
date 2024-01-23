@@ -9,6 +9,7 @@ namespace Vertigo
         [Export] private readonly float _rateOfFire = 0.3f;
         [Export] public float VerticalStall { get; private set; } = -0.8f;
         [Export] public float HorizontalKnockback { get; private set; } = 8f;
+        [Export] public float ScreenShakeStrength { get; private set; } = 2f;
 
         private float _fireCooldown = 0f;
 

@@ -10,6 +10,8 @@ namespace Vertigo
         
         public CanvasLayer GameLayer { get; private set; }
 
+        public ScreenShakeCamera2D ScreenShakeCamera2D { get; private set; }
+
         public static Game Instance { get; private set; }
 
         public override void _Ready()
@@ -19,6 +21,8 @@ namespace Vertigo
             Instance = this;
 
             GameLayer = GetNode<CanvasLayer>("%GameLayer");
+
+            ScreenShakeCamera2D = GetNodeOrNull<ScreenShakeCamera2D>("%ScreenShakeCamera2D");
 
             var topShape = GetNode<JumpRope>("%JumpRopeTop").GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
 
