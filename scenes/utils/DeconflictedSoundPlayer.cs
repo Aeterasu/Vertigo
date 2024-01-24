@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 public static class DeconflictedSoundPlayer
 {
     public static AudioStreamPlayer PlayUnconflictingSound(AudioStream stream, Node owner, float volume = 0f, float pitch = 1.0f)

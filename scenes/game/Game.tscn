@@ -134,13 +134,13 @@ margin_bottom = 259.0
 texture = ExtResource( 18 )
 
 [node name="Label" type="Label" parent="GUILayer/GUI/Timer"]
-margin_left = 410.0
+margin_left = 369.0
 margin_top = 245.0
 margin_right = 450.0
 margin_bottom = 259.0
 text = "00.00"
 align = 2
-valign = 1
+valign = 2
 
 [node name="TextureRect" type="TextureRect" parent="GUILayer"]
 visible = false

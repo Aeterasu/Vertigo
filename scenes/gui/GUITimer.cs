@@ -27,7 +27,34 @@ namespace Vertigo
                 return;
             }
 
-            _label.Text = _timeManager.Stopwatch.Elapsed.ToString("ss':'ff");
+            //_label.Text = _timeManager.Stopwatch.Elapsed.ToString("ss'.'ff");
+            double seconds = _timeManager.Stopwatch.Elapsed.TotalSeconds;
+            double secondsRounded = Math.Round(seconds);
+            double milliseconds = Math.Floor((Math.Round(seconds, 2) - Math.Floor(seconds)) * 100);
+
+            string formattedMilliseconds = milliseconds.ToString();
+
+            if (milliseconds > 99)
+            {
+                formattedMilliseconds = "99";
+            }
+            else if (milliseconds < 10)
+            {
+                formattedMilliseconds = $"0{milliseconds}";
+            }
+
+            string formattedSeconds;
+
+            if (secondsRounded < 10)
+            {
+                formattedSeconds = $"0{secondsRounded}";
+            }
+            else
+            {
+                formattedSeconds = secondsRounded.ToString();
+            }
+
+            _label.Text = $"{formattedSeconds}.{formattedMilliseconds}";
         }
     }
 }
