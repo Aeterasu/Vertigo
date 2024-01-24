@@ -97,8 +97,6 @@ namespace Vertigo
             HandleMovement(delta);
 
             HandleGraze();
-
-            GD.Print(IsGrazing);
         }
 
         private void HandleInput()

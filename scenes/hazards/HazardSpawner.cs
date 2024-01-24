@@ -8,10 +8,14 @@ namespace Vertigo
     {
         [Export] private PackedScene _squareScene;
         [Export] private float _squareSpawnRate = 5f;
+        [Export] private float _squareSpawnRateDifficultyStep = 0.5f;
+        [Export] private float _squareSpawnMinimalRate = 0.5f;
 
         private Timer _squareSpawnTimer = new Timer();
 
         private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
+
+        public int Difficulty { get; private set; } = 1;
 
         public override void _Ready()
         {
@@ -23,6 +27,13 @@ namespace Vertigo
             _squareSpawnTimer.WaitTime = _squareSpawnRate;
             _squareSpawnTimer.Connect("timeout", this, "OnSquareSpawnTimeout");
             _squareSpawnTimer.Start();
+
+            TimeManager _timeManager = GetNodeOrNull<TimeManager>("%TimeManager");
+
+            if (_timeManager.IsValid())
+            {
+                _timeManager.OnDifficultyStepReached += StepDifficulty;
+            }
         }
 
         private List<SpawnPoint> GetSpawnPoints()
@@ -69,6 +80,15 @@ namespace Vertigo
             square.Direction = spawnPoint.Direction;
 
             Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", square);
+        }
+
+        public void StepDifficulty()
+        {
+            Difficulty += 1;
+
+            _squareSpawnRate = Mathf.Clamp(_squareSpawnRate - _squareSpawnRateDifficultyStep, _squareSpawnMinimalRate, 999f);
+            _squareSpawnTimer.WaitTime = _squareSpawnRate;
+            _squareSpawnTimer.Start();
         }
     }
 }

@@ -29,5 +29,10 @@ namespace Vertigo
             RopeTopPosition = GetNode<JumpRope>("%JumpRopeTop").GlobalPosition.y + topShape.Extents.y * 2;
             RopeBottomPosition = GetNode<JumpRope>("%JumpRopeBottom").GlobalPosition.y;
         }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+        }
     }
 }

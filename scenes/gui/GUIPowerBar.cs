@@ -24,7 +24,6 @@ namespace Vertigo
             _playerPowerComponent = _player.GetNodeOrNull<PowerComponent>("%PowerComponent");
 
             _powerChargeBar = GetNode<TextureProgress>("PowerChargeBar");
-
         }
 
         public override void _PhysicsProcess(float delta)
