@@ -7,8 +7,11 @@ namespace Vertigo
     {
         [Export] private float _maxPower = 4f;
         [Export] private float _powerRegen = 1f;
+        [Export] private float _grazeMultiplier = 1.8f;
         [Export] private readonly float _exhaustionRegenMultiplier = 0.6f; // triggers when power <1f
         [Export] private readonly float _nearExhaustionRegenMultiplier = 0.8f; // triggers when power >=1f <=2f
+
+        private float _currentRegen = 0f;
 
         private float _currentPower = 0f;
 
@@ -35,6 +38,15 @@ namespace Vertigo
             }
         }
 
+        public float CurrentRegen
+        {
+            get => _currentRegen;
+            private set
+            {
+                _currentRegen = value;
+            }
+        }
+
         public float CurrentPower
         {
             get => _currentPower;
@@ -43,6 +55,8 @@ namespace Vertigo
                 _currentPower = Mathf.Clamp(value, 0f, MaxPower);
             }
         }
+
+        public bool IsGrazing { get; set; } = false;
 
         public override void _Ready()
         {
@@ -66,14 +80,21 @@ namespace Vertigo
                 regenMultiplier = _nearExhaustionRegenMultiplier;
             }
 
-            CurrentPower += PowerRegen * regenMultiplier * delta;
+            float grazeMultiplier = IsGrazing ? _grazeMultiplier : 1f;
 
-            GD.Print(regenMultiplier);
+            _currentRegen += PowerRegen * regenMultiplier * grazeMultiplier * delta;
+
+            if (_currentRegen >= 1f)
+            {
+                _currentRegen = 0f;
+                CurrentPower += 1f;
+            }
         }
 
         public void ConsumePower(float amount)
         {
             CurrentPower -= amount;
+            _currentRegen = 0f;
         }
     }
 }

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/fx/sprite_trail/SpriteTrailCreator.cs" type="Script" id=1]
+
+[node name="SpriteTrailCreator" type="Node2D"]
+script = ExtResource( 1 )
+_creationRate = 0.06
+_disappearanceSpeed = 3.0
+_initialAlpha = 0.8
+_color = Color( 0.596078, 0.376471, 1, 1 )

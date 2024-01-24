@@ -36,6 +36,8 @@ namespace Vertigo
 
         private HealthComponent _healthComponent;
 
+        private GrazeDetector _grazeDetector;
+
         private PlayerState _state = PlayerState.NORMAL;
 
         private Node2D _spritePivot;
@@ -62,6 +64,8 @@ namespace Vertigo
             }
         }
 
+        public bool IsGrazing { get; private set; }
+
         public override void _Ready()
         {
             base._Ready();
@@ -76,6 +80,8 @@ namespace Vertigo
             _healthComponent = GetNode<HealthComponent>("%HealthComponent");
             _healthComponent.OnHealthDepleted += OnHealthDepleted;
 
+            _grazeDetector = GetNode<GrazeDetector>("%GrazeDetector");
+
             _spritePivot = GetNode<Node2D>("%SpritePivot");
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
         }
@@ -89,6 +95,10 @@ namespace Vertigo
             HandleInput();
 
             HandleMovement(delta);
+
+            HandleGraze();
+
+            GD.Print(IsGrazing);
         }
 
         private void HandleInput()
@@ -184,6 +194,17 @@ namespace Vertigo
         private void OnHealthDepleted()
         {
             _state = PlayerState.DEAD;
+        }
+
+        private void HandleGraze()
+        {
+            if (!_grazeDetector.IsValid())
+            {
+                return;
+            }
+
+            IsGrazing = _grazeDetector.IsGrazing;
+            _powerComponent.IsGrazing = IsGrazing;
         }
     }
 }

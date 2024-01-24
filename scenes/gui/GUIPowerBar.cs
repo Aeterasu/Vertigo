@@ -1,45 +1,48 @@
 using Godot;
 using System;
-using Vertigo;
 
-public class GUIPowerBar : TextureProgress
+namespace Vertigo
 {
-    private Player _player;
-    private PowerComponent _playerPowerComponent;
-
-    private TextureProgress _powerChargeBar;
-
-    public override void _Ready()
+    public class GUIPowerBar : TextureProgress
     {
-        base._Ready();
+        private Player _player;
+        private PowerComponent _playerPowerComponent;
 
-        _player = GetNodeOrNull<Player>("%Player");
+        private TextureProgress _powerChargeBar;
 
-        if (!_player.IsValid())
+        public override void _Ready()
         {
-            return;
+            base._Ready();
+
+            _player = GetNodeOrNull<Player>("%Player");
+
+            if (!_player.IsValid())
+            {
+                return;
+            }
+
+            _playerPowerComponent = _player.GetNodeOrNull<PowerComponent>("%PowerComponent");
+
+            _powerChargeBar = GetNode<TextureProgress>("PowerChargeBar");
+
         }
 
-        _playerPowerComponent = _player.GetNodeOrNull<PowerComponent>("%PowerComponent");
-
-        _powerChargeBar = GetNode<TextureProgress>("PowerChargeBar");
-    }
-
-    public override void _PhysicsProcess(float delta)
-    {
-        base._PhysicsProcess(delta);
-
-        if (!_player.IsValid() || !_playerPowerComponent.IsValid())
+        public override void _PhysicsProcess(float delta)
         {
-            return;
+            base._PhysicsProcess(delta);
+
+            if (!_player.IsValid() || !_playerPowerComponent.IsValid())
+            {
+                return;
+            }
+
+            MinValue = 0f;
+            MaxValue = _playerPowerComponent.MaxPower;
+            Value = Mathf.Floor(_playerPowerComponent.CurrentPower);
+
+            _powerChargeBar.MinValue = MinValue;
+            _powerChargeBar.MaxValue = _playerPowerComponent.MaxPower;
+            _powerChargeBar.Value = _playerPowerComponent.CurrentPower + _playerPowerComponent.CurrentRegen;
         }
-
-        MinValue = 0f;
-        MaxValue = _playerPowerComponent.MaxPower;
-        Value = Mathf.Floor(_playerPowerComponent.CurrentPower);
-
-        _powerChargeBar.MinValue = MinValue;
-        _powerChargeBar.MaxValue = _playerPowerComponent.MaxPower;
-        _powerChargeBar.Value = _playerPowerComponent.CurrentPower;
     }
 }

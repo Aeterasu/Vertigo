@@ -58,6 +58,11 @@ namespace Vertigo
             _sprite.RotationDegrees += _rotationSpeed * delta;
 
             Position += Vector2.Right * _speed * Direction * delta;
+
+            if (Position.x <= -96f || Position.x >= 576f)
+            {
+                this.SafeQueueFree();
+            }
         }
 
         private void OnAreaEntered(Area2D area)
