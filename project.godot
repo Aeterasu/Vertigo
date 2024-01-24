@@ -18,6 +18,7 @@ config/icon="res://assets/textures/icon.png"
 [autoload]
 
 InputDeviceChecker="*res://scenes/utils/input_device_checker/InputDeviceChecker.tscn"
+SfxDeconflicter="*res://scenes/utils/sfx_deconflicter/sfx_deconflicter.gd"
 
 [debug]
 

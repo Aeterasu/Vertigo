@@ -68,6 +68,11 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            if (CurrentPower >= MaxPower)
+            {
+                return;
+            }
             
             float regenMultiplier = 1f;
 

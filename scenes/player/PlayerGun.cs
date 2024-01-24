@@ -11,6 +11,7 @@ namespace Vertigo
         [Export] public float HorizontalKnockback { get; private set; } = 8f;
         [Export] public float ScreenShakeStrength { get; private set; } = 2f;
         [Export] public float PowerConsumption { get; private set; } = 1f;
+        [Export] private readonly AudioStream _shotAudio;
 
         private float _fireCooldown = 0f;
 
@@ -58,6 +59,8 @@ namespace Vertigo
             power.ConsumePower(PowerConsumption);
 
             OnFired?.Invoke();
+
+            DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
         }
     }
 }
