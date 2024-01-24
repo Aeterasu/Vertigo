@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/player/PowerComponent.cs" type="Script" id=1]
+
+[node name="PowerComponent" type="Node"]
+script = ExtResource( 1 )

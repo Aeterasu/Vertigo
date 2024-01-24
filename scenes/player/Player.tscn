@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/textures/player/sprite_player_1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.cs" type="Script" id=2]
 [ext_resource path="res://scenes/player/PlayerGun.cs" type="Script" id=3]
 [ext_resource path="res://scenes/attacks/player_projectile/PlayerProjectile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/health_component/HealthComponent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player/PowerComponent.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=2]
 resource_name = "FlipDown"
@@ -154,3 +155,7 @@ _rateOfFire = 0.12
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
+
+[node name="PowerComponent" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+_nearExhaustionRegenMultiplier = 0.85

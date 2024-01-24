@@ -30,6 +30,7 @@ namespace Vertigo
         private float _knockbackX = 0f;
 
         private PlayerGun _playerGun;
+        private PowerComponent _powerComponent;
         private float _firingAngleDegrees = 0f;
         private float _directionX = 1f;
 
@@ -69,6 +70,8 @@ namespace Vertigo
 
             _playerGun = GetNode<PlayerGun>("%PlayerGun");
             _playerGun.OnFired += OnGunFired;
+
+            _powerComponent = GetNode<PowerComponent>("%PowerComponent");
 
             _healthComponent = GetNode<HealthComponent>("%HealthComponent");
             _healthComponent.OnHealthDepleted += OnHealthDepleted;
@@ -113,7 +116,7 @@ namespace Vertigo
 
             if (Input.IsActionJustPressed("action_confirm") && _playerGun.IsValid())
             {
-                _playerGun.Fire(_firingAngleDegrees);
+                _playerGun.Fire(directionAngleDegrees: _firingAngleDegrees, power: _powerComponent);
             }
         }
 

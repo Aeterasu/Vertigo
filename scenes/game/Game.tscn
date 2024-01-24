@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://scenes/smooth_path/SmoothPath.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/jump_rope/JumpRopeSmoothPath.cs" type="Script" id=10]
 [ext_resource path="res://assets/textures/placeholder/sprite_ui_mockup.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/gui/sprite_gui_power_bar_frame.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/gui/sprite_gui_power_bar.png" type="Texture" id=13]
+[ext_resource path="res://scenes/gui/GUIPowerBar.cs" type="Script" id=14]
+[ext_resource path="res://assets/textures/gui/sprite_gui_power_charge_bar.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/gui/sprite_gui_power_bar_segments.png" type="Texture" id=16]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -58,6 +63,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
+unique_name_in_owner = true
 position = Vector2( 240, 90 )
 z_index = 16
 
@@ -95,9 +101,45 @@ rotating = true
 current = true
 script = ExtResource( 6 )
 
-[node name="UILayer" type="CanvasLayer" parent="."]
+[node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="UILayer"]
+[node name="GUI" type="Control" parent="GUILayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PowerBar" type="TextureProgress" parent="GUILayer/GUI"]
+anchor_left = 2.9
+anchor_top = 0.45
+anchor_right = 9.125
+anchor_bottom = 1.2
+step = 0.0
+value = 100.0
+texture_over = ExtResource( 12 )
+texture_progress = ExtResource( 13 )
+texture_progress_offset = Vector2( 30, 9 )
+script = ExtResource( 14 )
+
+[node name="PowerChargeBar" type="TextureProgress" parent="GUILayer/GUI/PowerBar"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 0.0
+value = 100.0
+texture_progress = ExtResource( 15 )
+texture_progress_offset = Vector2( 30, 9 )
+
+[node name="TextureRect" type="TextureRect" parent="GUILayer/GUI/PowerBar"]
+anchor_left = 0.12
+anchor_top = 0.3
+anchor_right = 0.88
+anchor_bottom = 0.7
+margin_left = 1.12
+margin_right = -0.12001
+texture = ExtResource( 16 )
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="GUILayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 11 )
