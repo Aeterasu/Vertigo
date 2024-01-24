@@ -22,7 +22,7 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            if (!_timeManager.IsValid())
+            /*if (!_timeManager.IsValid())
             {
                 return;
             }
@@ -34,7 +34,7 @@ namespace Vertigo
             if (_segment.IsValid())
             {
                 _segment.RectPosition = new Vector2(24 + 333 * (_timeManager.GetMinTimer / _timeManager.GetMaxTimer), _segment.RectPosition.y);
-            }
+            }*/
         }
     }
 }

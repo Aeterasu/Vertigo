@@ -12,6 +12,8 @@ namespace Vertigo
 
         public ScreenShakeCamera2D ScreenShakeCamera2D { get; private set; }
 
+        public static PackedScene DiamondScene { get; private set; }
+
         public static Game Instance { get; private set; }
 
         public override void _Ready()
@@ -28,6 +30,8 @@ namespace Vertigo
 
             RopeTopPosition = GetNode<JumpRope>("%JumpRopeTop").GlobalPosition.y + topShape.Extents.y * 2;
             RopeBottomPosition = GetNode<JumpRope>("%JumpRopeBottom").GlobalPosition.y;
+
+            DiamondScene = GD.Load<PackedScene>("res://scenes/currency/Diamond.tscn");
         }
 
         public override void _PhysicsProcess(float delta)

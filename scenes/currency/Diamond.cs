@@ -1,0 +1,66 @@
+using Godot;
+using System;
+
+namespace Vertigo
+{
+    public class Diamond : Sprite
+    {
+        [Export] private float _startupDuration = 1f;
+        [Export] private float _speed = 64f;
+        [Export] private float _distanceThreshold = 6f;
+
+        private Vector2 _randomDirection = Vector2.Zero;
+
+        private float _currentSpeed = 0f;
+
+        private Player _player;
+
+        public override void _Ready()
+        {
+            base._Ready();
+
+            foreach (Node node in GetTree().GetNodesInGroup(Player.GROUP_PLAYER))
+            {
+                if (node is Player)
+                {
+                    _player = node as Player;
+                    break;
+                }
+            }
+
+            _randomDirection = new Vector2(
+                (float)GD.RandRange(-1, 1),
+                (float)GD.RandRange(-1, 1)
+            ).Normalized();
+
+            _startupDuration *= (float)GD.RandRange(0.5f, 1.5f);
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold)
+            {
+                this.SafeQueueFree();
+            }
+
+            if (_startupDuration > 0)
+            {
+                _startupDuration -= delta;
+                GlobalPosition += _randomDirection * _speed * 1.1f * delta;
+                _randomDirection = _randomDirection.LinearInterpolate(Vector2.Zero, 3 * delta);
+                return;
+            }
+
+            if (_player == null)
+            {
+                return;
+            }
+
+            _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9 * delta);
+
+            GlobalPosition += GlobalPosition.DirectionTo(_player.GlobalPosition) * _currentSpeed * delta;
+        }
+    }
+}

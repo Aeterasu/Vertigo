@@ -11,6 +11,8 @@ namespace Vertigo
 
     public class Player : Area2D
     {
+        public const string GROUP_PLAYER = "Player";
+
         [Export] private readonly float _gravity = 8f;
         [Export] private readonly float _springCoeff = 0.3f;
         [Export] private readonly float _horizontalSpeed = 4f;
@@ -69,6 +71,8 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+
+            AddToGroup(GROUP_PLAYER);
 
             Connect("area_entered", this, "OnAreaEntered");
 

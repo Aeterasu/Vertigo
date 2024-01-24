@@ -15,6 +15,8 @@ namespace Vertigo
         private HealthComponent _healthComponent;
         private HurtboxComponent _hurtboxComponent;
 
+        private CurrencyGenerator _currencyGenerator;
+
         private Sprite _sprite;
 
         public float Direction
@@ -48,6 +50,8 @@ namespace Vertigo
             _hurtboxComponent = GetNode<HurtboxComponent>("%HurtboxComponent");
             _hurtboxComponent.OnProjectileCollide += OnProjectileCollide;
 
+            _currencyGenerator = GetNode<CurrencyGenerator>("%CurrencyGenerator");
+
             _sprite = GetNode<Sprite>("%Sprite");
         }
 
@@ -75,6 +79,7 @@ namespace Vertigo
 
         private void OnHealthDepleted()
         {
+            _currencyGenerator.Generate();
             this.SafeQueueFree();
         }
 
