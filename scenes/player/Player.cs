@@ -9,6 +9,12 @@ namespace Vertigo
         DEAD,
     }
 
+    public enum PlayerBoundaryType
+    {
+        CLAMP,
+        WRAP_AROUND,
+    }
+
     public class Player : Area2D
     {
         public const string GROUP_PLAYER = "Player";
@@ -19,6 +25,7 @@ namespace Vertigo
         [Export] private readonly float _knockbackFalloff = 8f;
         [Export] private readonly float _verticalStallFalloff = 12f;
 
+        [Export] private readonly PlayerBoundaryType _boundaryType = PlayerBoundaryType.CLAMP;
         [Export] private readonly float _boundaryLeft = -9f;
         [Export] private readonly float _boundaryRight = 649f;
 
@@ -152,13 +159,20 @@ namespace Vertigo
 
             Position += new Vector2(_velocityX, _velocityY) + new Vector2(_knockbackX, 0f);
 
-            if (Position.x < _boundaryLeft)
+            if (_boundaryType == PlayerBoundaryType.WRAP_AROUND)
             {
-                Position = new Vector2(_boundaryRight, Position.y);
+                if (Position.x < _boundaryLeft)
+                {
+                    Position = new Vector2(_boundaryRight, Position.y);
+                }
+                else if (Position.x > _boundaryRight)
+                {
+                    Position = new Vector2(_boundaryLeft, Position.y);
+                }
             }
-            else if (Position.x > _boundaryRight)
+            else if (_boundaryType == PlayerBoundaryType.CLAMP)
             {
-                Position = new Vector2(_boundaryLeft, Position.y);
+                Position = new Vector2(Mathf.Clamp(Position.x, 0, 480), Position.y);
             }
 
             _verticalStallTimer -= delta;
