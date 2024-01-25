@@ -5,6 +5,7 @@ namespace Vertigo
 {
     public class Diamond : Sprite
     {
+        [Export] private float _worth = 1f;
         [Export] private float _startupDuration = 1f;
         [Export] private float _speed = 64f;
         [Export] private float _distanceThreshold = 6f;
@@ -42,6 +43,13 @@ namespace Vertigo
 
             if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold)
             {
+                var experienceComponent = _player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
+
+                if (experienceComponent.IsValid())
+                {
+                    experienceComponent.GrantExp(_worth);
+                }
+
                 this.SafeQueueFree();
             }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -12,11 +12,9 @@
 [ext_resource path="res://scenes/jump_rope/JumpRopeSmoothPath.cs" type="Script" id=10]
 [ext_resource path="res://assets/textures/placeholder/sprite_ui_mockup.png" type="Texture" id=11]
 [ext_resource path="res://scenes/gui/GUIPowerBar.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/gui/GUIExpBar.cs" type="Script" id=13]
+[ext_resource path="res://scenes/gui/GUIExpBar.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/time_manager/TimeManager.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timebar.png" type="Texture" id=16]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timebar_frame.png" type="Texture" id=17]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer.png" type="Texture" id=18]
 [ext_resource path="res://scenes/gui/GUITimer.cs" type="Script" id=19]
 
@@ -124,16 +122,7 @@ anchor_bottom = 1.0
 margin_top = 18.0
 margin_bottom = 48.0
 
-[node name="GUIExpBar" type="TextureProgress" parent="GUILayer/GUI"]
-margin_left = 4.0
-margin_top = 243.0
-margin_right = 478.0
-margin_bottom = 264.0
-step = 0.0
-texture_over = ExtResource( 17 )
-texture_progress = ExtResource( 16 )
-texture_progress_offset = Vector2( 24, 10 )
-script = ExtResource( 13 )
+[node name="GUIExpBar" parent="GUILayer/GUI" instance=ExtResource( 13 )]
 
 [node name="Timer" type="Control" parent="GUILayer/GUI"]
 margin_right = 40.0

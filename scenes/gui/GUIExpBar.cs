@@ -5,32 +5,77 @@ namespace Vertigo
 {
     public class GUIExpBar : TextureProgress
     {
+        [Export] private float _animationSpeed = 4f;
+
+        private ExperienceComponent _experienceComponent;
+
+        private TextureProgress _textureProgress;
+
+        private Label _label;
+
+        private Tween _tween = new Tween();
+
         public override void _Ready()
         {
             base._Ready();
+
+            Player player = GetNodeOrNull<Player>("%Player");
+
+            if (player.IsValid())
+            {
+                _experienceComponent = player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
+            }
+
+            if (_experienceComponent.IsValid())
+            {
+                _experienceComponent.OnExperienceGranted += OnExperienceGranted;
+                _experienceComponent.OnLevelUp += OnLevelUp;
+            }
+
+            _textureProgress = GetNode<TextureProgress>("TextureProgress");
+            _label = GetNode<Label>("Label");
+
+            AddChild(_tween);
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
 
-            /*
-
-            if (!_timeManager.IsValid())
+            if (!_experienceComponent.IsValid())
             {
                 return;
             }
 
-            MinValue = 0f;
-            MaxValue = _timeManager.GetMaxTimer;
-            Value = _timeManager.GetTimer;
-
-            if (_segment.IsValid())
+            if (_label.IsValid())
             {
-                _segment.RectPosition = new Vector2(24 + 333 * (_timeManager.GetMinTimer / _timeManager.GetMaxTimer), _segment.RectPosition.y);
+                _label.Text = $"Lvl. {_experienceComponent.Level}";
             }
 
-            */
+            Value = Mathf.Min((float)(Value + _animationSpeed * delta), (float)_textureProgress.Value);
+        }
+
+        private void OnExperienceGranted(ExperienceComponent exp)
+        {
+            _textureProgress.MinValue = 0f;
+            _textureProgress.MaxValue = exp.TargetExp;
+            _textureProgress.Value = exp.CurrentExp;
+
+            MinValue = 0f;
+            MaxValue = exp.TargetExp;
+        }
+
+        private void OnLevelUp(ExperienceComponent exp)
+        {
+            _tween.RemoveAll();
+
+            _textureProgress.MinValue = 0f;
+            _textureProgress.MaxValue = exp.TargetExp;
+            _textureProgress.Value = exp.CurrentExp;
+
+            MinValue = 0f;
+            MaxValue = exp.TargetExp;
+            Value = exp.CurrentExp;
         }
     }
 }

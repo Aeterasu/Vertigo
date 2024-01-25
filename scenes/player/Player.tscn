@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/fx/sprite_trail/SpriteTrailCreator.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/player/GrazeDetector.cs" type="Script" id=8]
 [ext_resource path="res://assets/audio/sfx_player_shot.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/audio/sfx_player_charge.wav" type="AudioStream" id=10]
+[ext_resource path="res://scenes/player/ExperienceComponent.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=2]
 resource_name = "FlipDown"
@@ -174,7 +174,9 @@ _powerRegen = 1.6
 _grazeMultiplier = 3.0
 _exhaustionRegenMultiplier = 0.5
 _nearExhaustionRegenMultiplier = 0.85
-_chargeSound = ExtResource( 10 )
+
+[node name="ExperienceComponent" parent="." instance=ExtResource( 10 )]
+unique_name_in_owner = true
 
 [node name="GrazeDetector" type="Area2D" parent="."]
 unique_name_in_owner = true
