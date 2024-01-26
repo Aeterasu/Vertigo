@@ -56,6 +56,8 @@ namespace Vertigo
             }
         }
 
+        public float HasteRegenSpeedMultiplier { get; set; } = 1.0f;
+
         public bool IsGrazing { get; set; } = false;
 
         public override void _Ready()
@@ -87,7 +89,7 @@ namespace Vertigo
 
             float grazeMultiplier = IsGrazing ? _grazeMultiplier : 1f;
 
-            _currentRegen += PowerRegen * regenMultiplier * grazeMultiplier * delta;
+            _currentRegen += PowerRegen * regenMultiplier * grazeMultiplier * HasteRegenSpeedMultiplier * delta;
 
             if (_currentRegen >= 1f)
             {

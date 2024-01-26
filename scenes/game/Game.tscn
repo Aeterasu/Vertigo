@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -10,13 +10,15 @@
 [ext_resource path="res://scenes/hazards/SpawnPoint.cs" type="Script" id=8]
 [ext_resource path="res://scenes/smooth_path/SmoothPath.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/jump_rope/JumpRopeSmoothPath.cs" type="Script" id=10]
-[ext_resource path="res://assets/textures/placeholder/sprite_ui_mockup.png" type="Texture" id=11]
+[ext_resource path="res://scenes/upgrades/UpgradeManager.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gui/GUIPowerBar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/gui/GUIExpBar.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/time_manager/TimeManager.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/upgrades/UpgradeManager.cs" type="Script" id=16]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer.png" type="Texture" id=18]
 [ext_resource path="res://scenes/gui/GUITimer.cs" type="Script" id=19]
+[ext_resource path="res://scenes/upgrades/upgrade_haste/Haste.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 14 )
@@ -31,7 +33,7 @@ follow_viewport_enable = true
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
-_difficultyStepThreshold = 15.0
+_difficultyStepThreshold = 12.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
@@ -65,6 +67,11 @@ Direction = -1.0
 position = Vector2( 512, 184 )
 script = ExtResource( 8 )
 Direction = -1.0
+
+[node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
+script = ExtResource( 16 )
+
+[node name="Haste" parent="GameLayer/UpgradeManager" instance=ExtResource( 20 )]
 
 [node name="Backdrop" type="Sprite" parent="GameLayer"]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -159,9 +166,3 @@ margin_top = 241.0
 margin_right = 450.0
 margin_bottom = 242.0
 color = Color( 0.596078, 0.376471, 1, 1 )
-
-[node name="TextureRect" type="TextureRect" parent="GUILayer"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 11 )

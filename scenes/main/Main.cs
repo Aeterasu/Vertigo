@@ -9,6 +9,8 @@ namespace Vertigo
 
         private Game _game;
 
+        public bool IsPaused { get; private set; } = false;
+
         public override void _Ready()
         {
             base._Ready();
@@ -22,15 +24,17 @@ namespace Vertigo
 
             if (Input.IsActionJustPressed("pause"))
             {
-                GetTree().Paused = !GetTree().Paused;
+                IsPaused = !IsPaused;
             }
 
             if (Input.IsActionJustPressed("restart"))
             {
-                GetTree().Paused = false;
+                IsPaused = false;
                 _game.SafeQueueFree();
                 InitGame();
             }
+
+            GetTree().Paused = IsPaused;
         }
 
         private void InitGame()

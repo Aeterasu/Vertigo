@@ -5,7 +5,7 @@ namespace Vertigo
 {
     public class GUIExpBar : TextureProgress
     {
-        [Export] private float _animationSpeed = 4f;
+        [Export] private readonly float _animationSpeed = 4f;
 
         private ExperienceComponent _experienceComponent;
 
@@ -13,7 +13,7 @@ namespace Vertigo
 
         private Label _label;
 
-        private Tween _tween = new Tween();
+        private readonly Tween _tween = new Tween();
 
         public override void _Ready()
         {

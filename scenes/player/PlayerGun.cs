@@ -7,6 +7,7 @@ namespace Vertigo
     {
         [Export] private readonly PackedScene _attackScene;
         [Export] private readonly float _rateOfFire = 0.3f;
+        [Export] private readonly float _spread = 8f;
         [Export] public float VerticalStall { get; private set; } = -0.8f;
         [Export] public float HorizontalKnockback { get; private set; } = 8f;
         [Export] public float ScreenShakeStrength { get; private set; } = 2f;
@@ -16,6 +17,8 @@ namespace Vertigo
         private float _fireCooldown = 0f;
 
         public event Action OnFired;
+
+        public Abundancy Abundancy { get; set; } = null;
 
         public override void _Ready()
         {
@@ -29,7 +32,7 @@ namespace Vertigo
             _fireCooldown = Mathf.Max(_fireCooldown - delta, 0f);
         }
 
-        public void Fire(float directionAngleDegrees, PowerComponent power)
+        public void Fire(float directionAngleDegrees, PowerComponent power, int projectileCount = 1)
         {
             if (_attackScene == null || _fireCooldown > 0f)
             {
@@ -41,6 +44,30 @@ namespace Vertigo
                 return;
             }
 
+            if (Abundancy.IsValid())
+            {
+                if (Abundancy.IsActive)
+                {
+                    projectileCount = Abundancy.AdditionalProjectiles + 1;
+                }
+            }
+
+            for (int i = 0; i < projectileCount; i++)
+            {
+                CreateAttack(directionAngleDegrees + ((i - (projectileCount / 2)) * _spread));
+            }
+
+            _fireCooldown = _rateOfFire;
+
+            power.ConsumePower(PowerConsumption);
+
+            OnFired?.Invoke();
+
+            DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
+        }
+
+        private void CreateAttack(float directionAngleDegrees)
+        {
             var attack = _attackScene.Instance();
 
             if (attack is Node2D)
@@ -53,14 +80,6 @@ namespace Vertigo
             {
                 Game.Instance.GameLayer.AddChild(attack);
             }
-
-            _fireCooldown = _rateOfFire;
-
-            power.ConsumePower(PowerConsumption);
-
-            OnFired?.Invoke();
-
-            DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
         }
     }
 }
