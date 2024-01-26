@@ -3,6 +3,7 @@ using System;
 
 namespace Vertigo
 {
+    // OPULENCY - additional gems drop from enemies
     public class Opulency : Upgrade
     {
         [Export] private readonly int _initialIncrease = 2;

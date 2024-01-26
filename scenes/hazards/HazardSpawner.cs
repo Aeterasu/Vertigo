@@ -17,6 +17,8 @@ namespace Vertigo
 
         public int Difficulty { get; private set; } = 1;
 
+        public event Action<Hazard> OnHazardLeftThePlayArea;
+
         public override void _Ready()
         {
             base._Ready();
@@ -78,6 +80,7 @@ namespace Vertigo
             Square square = scene as Square;
             square.GlobalPosition = spawnPoint.GlobalPosition;
             square.Direction = spawnPoint.Direction;
+            square.OnLeftThePlayArea += HazardLeftThePlayArea;
 
             Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", square);
         }
@@ -89,6 +92,12 @@ namespace Vertigo
             _squareSpawnRate = Mathf.Clamp(_squareSpawnRate - _squareSpawnRateDifficultyStep, _squareSpawnMinimalRate, 999f);
             _squareSpawnTimer.WaitTime = _squareSpawnRate;
             _squareSpawnTimer.Start();
+        }
+
+        private void HazardLeftThePlayArea(Hazard hazard)
+        {
+            hazard.OnLeftThePlayArea -= OnHazardLeftThePlayArea;
+            OnHazardLeftThePlayArea?.Invoke(hazard);
         }
     }
 }

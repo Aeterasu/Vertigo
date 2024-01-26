@@ -61,10 +61,11 @@ namespace Vertigo
 
             _sprite.RotationDegrees += _rotationSpeed * delta;
 
-            Position += Vector2.Right * _speed * Direction * delta;
+            Position += Vector2.Right * _speed * Direction * (1 / Slowdown) * delta;
 
             if (Position.x <= -96f || Position.x >= 576f)
             {
+                OnLeftThePlayArea?.Invoke(this);
                 this.SafeQueueFree();
             }
         }
@@ -87,6 +88,11 @@ namespace Vertigo
         {
             _healthComponent.DealDamage();
             projectile.ProcessCollision();
+
+            if (Dullness.Instance.IsValid())
+            {
+                Slowdown += Dullness.Instance.TotalSlowdown - 1;
+            }
         }
     }
 }

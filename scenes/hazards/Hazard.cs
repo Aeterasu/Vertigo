@@ -7,6 +7,10 @@ namespace Vertigo
     {
         [Export] public Affiliation Affiliation { get; private set; } = Affiliation.ENEMY;
 
+        public float Slowdown { get; set; } = 1.0f;
+
+        public Action<Hazard> OnLeftThePlayArea;
+
         public override void _Ready()
         {
             base._Ready();

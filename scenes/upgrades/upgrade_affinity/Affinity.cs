@@ -3,6 +3,7 @@ using System;
 
 namespace Vertigo
 {
+    // AFFINITY - increases the scale of graze areas.
     public class Affinity : Upgrade
     {
         [Export] private float _initialIncrease = 0.3f;

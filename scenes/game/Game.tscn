@@ -32,13 +32,14 @@ follow_viewport_enable = true
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
-_difficultyStepThreshold = 12.0
+_difficultyStepThreshold = 8.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
 _squareScene = ExtResource( 3 )
 _squareSpawnRate = 3.0
 _squareSpawnRateDifficultyStep = 0.6
+_squareSpawnMinimalRate = 0.05
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner"]
 position = Vector2( -32, 88 )
@@ -68,6 +69,7 @@ script = ExtResource( 8 )
 Direction = -1.0
 
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
+unique_name_in_owner = true
 script = ExtResource( 16 )
 
 [node name="Backdrop" type="Sprite" parent="GameLayer"]

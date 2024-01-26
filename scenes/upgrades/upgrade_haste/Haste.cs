@@ -3,6 +3,7 @@ using System;
 
 namespace Vertigo
 {
+    // HASTE - faster power regeneration.
     public class Haste : Upgrade
     {
         [Export] private readonly float _initalIncrease = 0.2f;
