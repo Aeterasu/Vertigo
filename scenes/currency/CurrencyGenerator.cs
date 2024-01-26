@@ -14,7 +14,12 @@ namespace Vertigo
 
         public void Generate()
         {
-            int totalAmount = _amount + Opulency.AdditionalGems;
+            int totalAmount = _amount;
+
+            if (Opulency.Instance.IsValid())
+            {
+                totalAmount += Opulency.Instance.AdditionalGems;
+            }
 
             for (int i = 0; i < totalAmount; i++)
             {
