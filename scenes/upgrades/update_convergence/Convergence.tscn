@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/upgrades/update_convergence/Convergence.cs" type="Script" id=1]
+
+[node name="Convergence" type="Node"]
+script = ExtResource( 1 )
+_spread = 64.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -16,8 +16,10 @@
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scenes/time_manager/TimeManager.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/upgrades/UpgradeManager.cs" type="Script" id=16]
+[ext_resource path="res://scenes/attacks/player_homing_projectile/PlayerHomingProjectile.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer.png" type="Texture" id=18]
 [ext_resource path="res://scenes/gui/GUITimer.cs" type="Script" id=19]
+[ext_resource path="res://scenes/currency/Diamond.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 14 )
@@ -25,6 +27,8 @@ font_data = ExtResource( 14 )
 [node name="Game" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 4 )
+DiamondScene = ExtResource( 21 )
+ConvergenceProjectileScene = ExtResource( 17 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

@@ -189,7 +189,9 @@ namespace Vertigo
                     GravityMode = jumpRope.GravityMode;
                     _velocityY *= _springCoeff;
 
+                    jumpRope.LastPlayerPosition = GlobalPosition;
                     jumpRope.AnimateSmoothPath(Position.x, -(float)jumpRope.GravityMode);
+                    jumpRope.OnJumpRopeActivated?.Invoke(jumpRope);
                 }
             }
 

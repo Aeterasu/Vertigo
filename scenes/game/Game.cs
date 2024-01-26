@@ -5,14 +5,15 @@ namespace Vertigo
 {
     public class Game : Node2D
     {
+        [Export] public PackedScene DiamondScene { get; private set; }
+        [Export] public PackedScene ConvergenceProjectileScene { get; private set; }
+
         public float RopeTopPosition { get; private set; }
         public float RopeBottomPosition { get; private set; }
         
         public CanvasLayer GameLayer { get; private set; }
 
         public ScreenShakeCamera2D ScreenShakeCamera2D { get; private set; }
-
-        public static PackedScene DiamondScene { get; private set; }
 
         public static Game Instance { get; private set; }
 
@@ -30,8 +31,6 @@ namespace Vertigo
 
             RopeTopPosition = GetNode<JumpRope>("%JumpRopeTop").GlobalPosition.y + topShape.Extents.y * 2;
             RopeBottomPosition = GetNode<JumpRope>("%JumpRopeBottom").GlobalPosition.y;
-
-            DiamondScene = GD.Load<PackedScene>("res://scenes/currency/Diamond.tscn");
         }
 
         public override void _PhysicsProcess(float delta)

@@ -9,6 +9,10 @@ namespace Vertigo
 
         private JumpRopeSmoothPath _smoothPath;
 
+        public Action<JumpRope> OnJumpRopeActivated;
+
+        public Vector2 LastPlayerPosition { get; set; }
+
         public override void _Ready()
         {
             base._Ready();

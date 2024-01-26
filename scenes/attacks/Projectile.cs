@@ -7,7 +7,8 @@ namespace Vertigo
     {
         [Export] public Affiliation Affiliation { get; private set; } = Affiliation.NEUTRAL;
         [Export] private float _speed = 64f;
-        [Export] private float _knockback = 4f;
+
+        public Vector2 Direction { get; private set; } = Vector2.Zero;
 
         public override void _Ready()
         {
@@ -20,11 +21,11 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            Vector2 direction = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation));
+            Direction = new Vector2(Mathf.Cos(Rotation), Mathf.Sin(Rotation));
 
-            Position += direction * _speed * delta;
+            Position += Direction * _speed * delta;
 
-            if (Position.x <= 0 || Position.x >= 480 || Position.y <= 0f || Position.y >= 270f)
+            if (Position.x <= 0 || Position.x >= 480 || Position.y <= -32f || Position.y >= 302f)
             {
                 this.SafeQueueFree();
             }

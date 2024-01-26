@@ -5,6 +5,8 @@ namespace Vertigo
 {
     public class Square : Hazard
     {
+        public const string GROUP_SQUARE = "Square";
+
         [Export] private float _speed = 16f;
         [Export] private float _rotationSpeed = 32f;
 
@@ -41,6 +43,8 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+
+            AddToGroup(GROUP_SQUARE);
             
             Connect("area_entered", this, "OnAreaEntered");
 

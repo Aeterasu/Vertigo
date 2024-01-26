@@ -14,6 +14,11 @@ namespace Vertigo
 
         public void Generate()
         {
+            if (!Game.Instance.IsValid())
+            {
+                return;
+            }
+
             int totalAmount = _amount;
 
             if (Opulency.Instance.IsValid())
@@ -23,7 +28,7 @@ namespace Vertigo
 
             for (int i = 0; i < totalAmount; i++)
             {
-                var diamond = Game.DiamondScene.Instance() as Diamond;
+                var diamond = Game.Instance.DiamondScene.Instance() as Diamond;
                 diamond.GlobalPosition = GlobalPosition + new Vector2((float)GD.RandRange(-8, 8), (float)GD.RandRange(-8, 8));
 
                 if (Game.Instance.IsValid() && Game.Instance.GameLayer.IsValid())
@@ -44,7 +49,7 @@ namespace Vertigo
 
             for (int i = 0; i < amount; i++)
             {
-                var diamond = Game.DiamondScene.Instance() as Diamond;
+                var diamond = Game.Instance.DiamondScene.Instance() as Diamond;
                 diamond.GlobalPosition = GlobalPosition + new Vector2((float)GD.RandRange(-8, 8), (float)GD.RandRange(-8, 8));
 
                 if (Game.Instance.IsValid() && Game.Instance.GameLayer.IsValid())
