@@ -22,11 +22,6 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            if (Input.IsActionJustPressed("pause"))
-            {
-                IsPaused = !IsPaused;
-            }
-
             if (Input.IsActionJustPressed("restart"))
             {
                 IsPaused = false;
@@ -34,7 +29,19 @@ namespace Vertigo
                 InitGame();
             }
 
-            GetTree().Paused = IsPaused;
+            bool isGameStateContinuous = true;
+
+            if (_game.IsValid())
+            {
+                isGameStateContinuous = _game.State == GameState.GAME;
+            }
+
+            if (Input.IsActionJustPressed("pause") && isGameStateContinuous)
+            {
+                IsPaused = !IsPaused;
+            }
+
+            GetTree().Paused = IsPaused || !isGameStateContinuous;
         }
 
         private void InitGame()

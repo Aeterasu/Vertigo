@@ -24,8 +24,6 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
-
-            Stopwatch.Start();
         }
 
         public override void _PhysicsProcess(float delta)
@@ -39,6 +37,16 @@ namespace Vertigo
                 OnDifficultyStepReached?.Invoke();
                 _timer = 0f;
             }
+        }
+
+        public void StartTimer()
+        {
+            Stopwatch.Start();
+        }
+
+        public void StopTimer()
+        {
+            Stopwatch.Stop();
         }
     }
 }
