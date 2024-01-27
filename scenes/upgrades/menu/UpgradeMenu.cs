@@ -1,0 +1,162 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+namespace Vertigo
+{
+    public class UpgradeMenu : Control
+    {
+        [Export(PropertyHint.Range, "1, 8, 1")] private int _upgradeCount = 3;
+        [Export] private float _quitTimer = 1.5f;
+        [Export] private float _quitAnimationDuration = 0.25f;
+
+        private int _currentSelection = 1;
+        private UpgradeButton _currentButton;
+        private bool _selectionActivated = false;
+        
+        private bool _disableInput = false;
+
+        private bool _upgradeConfirmed = false;
+
+        private Tween _tween = new Tween();
+
+        public event Action<UpgradeCard> OnUpgradeSelected;
+        public event Action OnMenuClosed;
+
+        public int CurrentSelection
+        {
+            get => _currentSelection;
+            set
+            {
+                if (value < 0)
+                {
+                    value = _upgradeCount - 1;
+                }
+                else if (value > _upgradeCount - 1)
+                {
+                    value = 0;
+                }
+
+                _currentSelection = value;
+
+                foreach (Node node in GetChildren())
+                {
+                    if (node is UpgradeButton)
+                    {
+                        UpgradeButton button = node as UpgradeButton;
+                        if (button.Id == value)
+                        {
+                            button.IsFocused = true;
+                            _currentButton = button;
+                        }
+                        else
+                        {
+                            button.IsFocused = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public override void _Ready()
+        {
+            base._Ready();
+
+            AddChild(_tween);
+
+            if (UpgradeManager.Instance.IsValid())
+            {
+                RandomizeUpgrades(UpgradeManager.Instance);
+            }
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (_upgradeConfirmed)
+            {
+                _quitTimer -= delta;
+            }
+
+            if (_quitTimer <= 0)
+            {
+                if (_currentButton.IsValid())
+                {
+                    OnUpgradeSelected?.Invoke(_currentButton.UpgradeCard);
+                }
+
+                OnMenuClosed?.Invoke();
+                QueueFree();
+            }
+
+            if (_disableInput)
+            {
+                return;
+            }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT))
+            {
+                CurrentSelection -= 1;
+                _selectionActivated = true;
+            }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT))
+            {
+                CurrentSelection += 1;
+                _selectionActivated = true;
+            }
+            
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _selectionActivated)
+            {
+                _disableInput = true;
+                _upgradeConfirmed = true;
+
+                if (!_currentButton.IsValid())
+                {
+                    return;
+                }
+
+                _currentButton.Confirm();
+
+                foreach (Node node in GetChildren())
+                {
+                    if (node is UpgradeButton)
+                    {
+                        UpgradeButton button = node as UpgradeButton;
+                        if (button != _currentButton)
+                        {
+                            button.Discard();
+                        }
+                    }
+                }
+
+                _tween.InterpolateProperty(this, "modulate", new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), _quitAnimationDuration, Tween.TransitionType.Linear, Tween.EaseType.InOut, _quitTimer - _quitAnimationDuration);
+                _tween.Start();
+            }
+        }
+
+        private void RandomizeUpgrades(UpgradeManager upgradeManager)
+        {
+            List<UpgradeCard> pool = new List<UpgradeCard>(upgradeManager.UpgradePool);
+
+            if (pool.Count == 0)
+            {
+                return;
+            }
+
+            Random random = new Random();
+
+            foreach (Node node in GetChildren())
+            {
+                if (node is UpgradeButton)
+                {
+                    UpgradeButton button = node as UpgradeButton;
+                    int randomUpgradeId = random.Next(pool.Count);
+                    button.UpgradeCard = pool[randomUpgradeId];
+                    pool.RemoveAt(randomUpgradeId);
+                }
+            }
+        }
+    }
+}

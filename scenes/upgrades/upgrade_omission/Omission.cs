@@ -16,10 +16,15 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+            
+            if (!Game.Instance.IsValid())
+            {
+                return;
+            }
 
             TotalGemCount += _initialGems;
 
-            _hazardSpawner = GetNodeOrNull<HazardSpawner>("%HazardSpawner");
+            _hazardSpawner = Game.Instance.GetNodeOrNull<HazardSpawner>("%HazardSpawner");
 
             if (_hazardSpawner.IsValid())
             {

@@ -22,7 +22,7 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            if (Input.IsActionJustPressed("restart"))
+            if (Input.IsActionJustPressed(InputActions.INPUT_RESTART))
             {
                 IsPaused = false;
                 _game.SafeQueueFree();
@@ -36,7 +36,7 @@ namespace Vertigo
                 isGameStateContinuous = _game.State == GameState.GAME;
             }
 
-            if (Input.IsActionJustPressed("pause") && isGameStateContinuous)
+            if (Input.IsActionJustPressed(InputActions.INPUT_PAUSE) && isGameStateContinuous)
             {
                 IsPaused = !IsPaused;
             }

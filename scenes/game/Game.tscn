@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -21,8 +21,17 @@
 [ext_resource path="res://scenes/gui/GUITimer.cs" type="Script" id=19]
 [ext_resource path="res://scenes/countdown/Countdown.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/currency/Diamond.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.tscn" type="PackedScene" id=22]
+[ext_resource path="res://resources/upgrade_cards/Affinity.tres" type="Resource" id=24]
+[ext_resource path="res://resources/upgrade_cards/Abundancy.tres" type="Resource" id=25]
+[ext_resource path="res://resources/upgrade_cards/Dullness.tres" type="Resource" id=26]
+[ext_resource path="res://resources/upgrade_cards/Haste.tres" type="Resource" id=27]
+[ext_resource path="res://resources/upgrade_cards/Convergence.tres" type="Resource" id=28]
+[ext_resource path="res://resources/upgrade_cards/Opulency.tres" type="Resource" id=29]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
+[ext_resource path="res://resources/upgrade_cards/Omission.tres" type="Resource" id=32]
+[ext_resource path="res://resources/upgrade_cards/Passion.tres" type="Resource" id=33]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 14 )
@@ -30,6 +39,7 @@ font_data = ExtResource( 14 )
 [node name="Game" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 4 )
+UpgradeMenuScene = ExtResource( 22 )
 DiamondScene = ExtResource( 21 )
 ConvergenceProjectileScene = ExtResource( 17 )
 
@@ -39,8 +49,8 @@ follow_viewport_enable = true
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
-_rainThreshold = 35.0
-_dizzynessThreshold = 50.0
+_rainThreshold = 40.0
+_dizzynessThreshold = 60.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
@@ -79,6 +89,7 @@ Direction = -1.0
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
 unique_name_in_owner = true
 script = ExtResource( 16 )
+UpgradePool = [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 33 ) ]
 
 [node name="Backdrop" type="Sprite" parent="GameLayer"]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -136,7 +147,7 @@ script = ExtResource( 6 )
 unique_name_in_owner = true
 position = Vector2( 240, -28 )
 emitting = false
-amount = 80
+amount = 56
 texture = ExtResource( 30 )
 emission_shape = 2
 emission_rect_extents = Vector2( 240, 1 )
@@ -146,6 +157,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 512.0
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="GUI" type="Control" parent="GUILayer"]
 unique_name_in_owner = true

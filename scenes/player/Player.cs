@@ -119,21 +119,21 @@ namespace Vertigo
                 return;
             }
 
-            if (Input.IsActionPressed("move_left"))
+            if (Input.IsActionPressed(InputActions.INPUT_ACTION_MOVE_LEFT))
             {
                 _velocityX = -_horizontalSpeed;
                 _firingAngleDegrees = 180f;
                 _directionX = -1f;
             }
 
-            if (Input.IsActionPressed("move_right"))
+            if (Input.IsActionPressed(InputActions.INPUT_ACTION_MOVE_RIGHT))
             {
                 _velocityX = _horizontalSpeed;
                 _firingAngleDegrees = 0f;
                 _directionX = 1f;
             }
 
-            if (Input.IsActionJustPressed("action_confirm") && _playerGun.IsValid())
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _playerGun.IsValid())
             {
                 _playerGun.Fire(directionAngleDegrees: _firingAngleDegrees, power: _powerComponent);
             }

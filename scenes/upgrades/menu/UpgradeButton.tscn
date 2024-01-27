@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/upgrades/menu/UpgradeButton.cs" type="Script" id=1]
+[ext_resource path="res://assets/textures/upgrades/sprite_upgrade_atlas.png" type="Texture" id=2]
+
+[node name="UpgradeButton" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 155.0
+margin_top = 100.0
+margin_right = -283.0
+margin_bottom = -126.0
+script = ExtResource( 1 )
+_confirmAnimationDuration = 0.3
+_confirmAnimationOffset = 24.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+hframes = 6
+vframes = 2
+region_rect = Rect2( 0, 0, 42, 44 )

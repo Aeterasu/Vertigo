@@ -22,7 +22,12 @@ namespace Vertigo
 
         private void AddHealth()
         {
-            _player = GetNodeOrNull<Player>("%Player");
+            if (!Game.Instance.IsValid())
+            {
+                return;
+            }
+
+            _player = Game.Instance.GetNodeOrNull<Player>("%Player");
 
             if (!_player.IsValid())
             {

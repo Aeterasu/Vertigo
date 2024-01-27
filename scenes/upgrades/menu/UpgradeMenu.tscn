@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.cs" type="Script" id=1]
+[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/upgrades/menu/UpgradeButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 4 )
+
+[node name="UpgradeMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+_quitAnimationDuration = 0.15
+
+[node name="UpgradeButton1" parent="." instance=ExtResource( 3 )]
+
+[node name="UpgradeButton2" parent="." instance=ExtResource( 3 )]
+margin_left = 219.0
+margin_right = -219.0
+_id = 1
+
+[node name="UpgradeButton3" parent="." instance=ExtResource( 3 )]
+margin_left = 283.0
+margin_right = -155.0
+_id = 2
+
+[node name="UpgradeNameLabel" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 40.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "UPGRADE_NAME"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="UpgradeDescriptionLabel" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 66.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 2 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+align = 1
+valign = 1
+autowrap = true

@@ -5,6 +5,8 @@ namespace Vertigo
 {
     public class Countdown : Control
     {
+        [Export] private readonly float _animationFinishThreshold = 4.5f;
+
         private AnimationPlayer _animationPlayer;
 
         private bool _animLock = false;
@@ -18,15 +20,13 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
 
             _animationPlayer.Play("Countdown");
-
-            //_animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
 
-            if (_animationPlayer.CurrentAnimationPosition >= 4.5f && !_animLock)
+            if (_animationPlayer.CurrentAnimationPosition >= _animationFinishThreshold && !_animLock)
             {
                 OnAnimationFinished("Countdown");
                 _animLock = true;

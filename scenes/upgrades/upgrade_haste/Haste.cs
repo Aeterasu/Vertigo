@@ -18,9 +18,14 @@ namespace Vertigo
         {
             base._Ready();
 
+            if (!Game.Instance.IsValid())
+            {
+                return;
+            }
+
             TotalIncrease += _initalIncrease;
 
-            _player = GetNodeOrNull<Player>("%Player");
+            _player = Game.Instance.GetNodeOrNull<Player>("%Player");
 
             if (!_player.IsValid())
             {

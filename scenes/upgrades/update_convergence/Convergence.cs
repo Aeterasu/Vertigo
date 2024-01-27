@@ -18,10 +18,15 @@ namespace Vertigo
         {
             base._Ready();
 
+            if (!Game.Instance.IsValid())
+            {
+                return;
+            }
+
             ProjectileCount += _initialProjectileCount;
 
-            _jumpRopeTop = GetNodeOrNull<JumpRope>("%JumpRopeTop");
-            _jumpRopeBottom = GetNodeOrNull<JumpRope>("%JumpRopeBottom");
+            _jumpRopeTop = Game.Instance.GetNodeOrNull<JumpRope>("%JumpRopeTop");
+            _jumpRopeBottom = Game.Instance.GetNodeOrNull<JumpRope>("%JumpRopeBottom");
 
             if (_jumpRopeTop.IsValid())
             {
