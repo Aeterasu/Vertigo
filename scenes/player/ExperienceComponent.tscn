@@ -4,3 +4,5 @@
 
 [node name="ExperienceComponent" type="Node"]
 script = ExtResource( 1 )
+_baseTargetExp = 10.0
+_targetExpCoeff = 1.4

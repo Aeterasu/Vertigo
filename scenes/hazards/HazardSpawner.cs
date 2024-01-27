@@ -71,18 +71,40 @@ namespace Vertigo
 
             var scene = _squareScene.Instance();
 
-            if (!(scene is Square))
+            if (!(scene is Square) && !(scene is SquareTelegraph))
             {
                 scene.SafeQueueFree();
                 return;
             }
-            
-            Square square = scene as Square;
+
+            if (scene is Square)
+            {
+                ProcessSquare(scene as Square, spawnPoint);
+            }
+            else if (scene is SquareTelegraph)
+            {
+                ProcessSquareTelegraph(scene as SquareTelegraph, spawnPoint);
+            }
+        }
+
+        private void ProcessSquare(Square square, SpawnPoint spawnPoint)
+        {
             square.GlobalPosition = spawnPoint.GlobalPosition;
             square.Direction = spawnPoint.Direction;
-            square.OnLeftThePlayArea += HazardLeftThePlayArea;
+            square.OnLeftThePlayArea += HazardLeftThePlayArea;     
 
-            Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", square);
+            Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", square);       
+        }
+
+        private void ProcessSquareTelegraph(SquareTelegraph telegraph, SpawnPoint spawnPoint)
+        {
+            telegraph.GlobalPosition = spawnPoint.GlobalPosition;
+            telegraph.GetNode<Sprite>("Sprite").Scale = new Vector2((float)spawnPoint.Direction, 1f);
+            Square square = telegraph.GetNode<Square>(telegraph.SquarePath);
+            square.Direction = spawnPoint.Direction;
+            square.OnLeftThePlayArea += HazardLeftThePlayArea; 
+
+            Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", telegraph);             
         }
 
         public void StepDifficulty()
