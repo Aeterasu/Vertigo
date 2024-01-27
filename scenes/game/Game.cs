@@ -64,6 +64,7 @@ namespace Vertigo
             _upgradeManager = GetNode<UpgradeManager>("%UpgradeManager");
 
             _gui = GetNode<Control>("%GUI");
+            _gui.Visible = false;
 
             _countdown = GetNode<Countdown>("%Countdown");
 
@@ -130,7 +131,5 @@ namespace Vertigo
         {
             SetStateToGame();
         }
-
-
     }
 }

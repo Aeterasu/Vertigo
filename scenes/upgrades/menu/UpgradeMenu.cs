@@ -18,6 +18,8 @@ namespace Vertigo
 
         private bool _upgradeConfirmed = false;
 
+        private float _inputDelay = 0.3f;
+
         private Tween _tween = new Tween();
 
         public event Action<UpgradeCard> OnUpgradeSelected;
@@ -74,6 +76,8 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            _inputDelay = Mathf.Max(_inputDelay - delta, 0);
+
             if (_upgradeConfirmed)
             {
                 _quitTimer -= delta;
@@ -95,19 +99,19 @@ namespace Vertigo
                 return;
             }
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT))
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && _inputDelay <= 0)
             {
                 CurrentSelection -= 1;
                 _selectionActivated = true;
             }
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT))
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && _inputDelay <= 0)
             {
                 CurrentSelection += 1;
                 _selectionActivated = true;
             }
             
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _selectionActivated)
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _selectionActivated && _inputDelay <= 0)
             {
                 _disableInput = true;
                 _upgradeConfirmed = true;
@@ -155,6 +159,11 @@ namespace Vertigo
                     int randomUpgradeId = random.Next(pool.Count);
                     button.UpgradeCard = pool[randomUpgradeId];
                     pool.RemoveAt(randomUpgradeId);
+
+                    if (pool.Count <= 0)
+                    {
+                        pool = new List<UpgradeCard>(upgradeManager.UpgradePool);
+                    }
                 }
             }
         }

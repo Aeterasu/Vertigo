@@ -26,6 +26,16 @@ namespace Vertigo
                 node.SafeQueueFree();
                 return;
             }
+
+            foreach (Node child in GetChildren())
+            {
+                if (child.GetType() == node.GetType())
+                {
+                    (child as Upgrade).AddStack();
+                    node.SafeQueueFree();
+                    return;
+                }
+            }
             
             AddChild(node);
         }
