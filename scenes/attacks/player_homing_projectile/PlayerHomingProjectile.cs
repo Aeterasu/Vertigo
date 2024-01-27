@@ -5,8 +5,11 @@ namespace Vertigo
 {
     public class PlayerHomingProjectile : Projectile
     {
+        [Export] private readonly float _deletionThreshold = 20f; // if a projectile can't hit the target before this time it will be deleted
         [Export] private readonly int _refreshTickrate = 5;
         private int _ticks = 15;
+
+        private float _deletionTimer = 0f;
 
         public Vector2 Target = Vector2.Zero;
 
@@ -25,6 +28,13 @@ namespace Vertigo
             {
                 _ticks = _refreshTickrate;
                 UpdateTarget();
+            }
+
+            _deletionTimer += delta;
+
+            if (_deletionTimer >= _deletionThreshold)
+            {
+                this.SafeQueueFree();
             }
 
             Rotation = Mathf.LerpAngle(Rotation, Mathf.Deg2Rad(Mathf.Rad2Deg(GlobalPosition.AngleToPoint(Target)) + 180), 6 * delta);
