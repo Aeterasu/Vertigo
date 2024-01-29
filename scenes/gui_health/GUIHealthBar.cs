@@ -78,6 +78,7 @@ namespace Vertigo
 
                 _hearts.Remove(heart);
                 _currentHp -= 1;
+                _currentOffset -= _offset;
             }
         }
     }

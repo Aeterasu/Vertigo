@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/upgrade_cards/Dullness.tres" type="Resource" id=1]
 [ext_resource path="res://resources/upgrade_cards/Convergence.tres" type="Resource" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://resources/upgrade_cards/Opulency.tres" type="Resource" id=7]
 [ext_resource path="res://resources/upgrade_cards/Omission.tres" type="Resource" id=8]
 [ext_resource path="res://resources/upgrade_cards/Passion.tres" type="Resource" id=9]
+[ext_resource path="res://resources/upgrade_cards/Aegis.tres" type="Resource" id=10]
 
 [node name="UpgradeManager" type="Node"]
 unique_name_in_owner = true
 script = ExtResource( 6 )
-UpgradePool = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ]
+UpgradePool = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ) ]

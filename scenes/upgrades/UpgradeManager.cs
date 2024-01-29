@@ -35,6 +35,11 @@ namespace Vertigo
                     node.SafeQueueFree();
                     return;
                 }
+
+                if (child is Aegis)
+                {
+                    (child as Aegis).ActivateImmunity();
+                }
             }
             
             AddChild(node);

@@ -52,6 +52,8 @@ namespace Vertigo
         private Node2D _spritePivot;
         private AnimationPlayer _animationPlayer;
 
+        private ImmunityBubble _immunityBubble;
+
         public GravityMode GravityMode
         {
             get => _gravityMode;
@@ -75,6 +77,9 @@ namespace Vertigo
 
         public bool IsGrazing { get; private set; }
 
+        public float ImmunityTimer { get; set; } = 0f;
+        public bool IsImmune { get => ImmunityTimer > 0f; }
+
         public override void _Ready()
         {
             base._Ready();
@@ -95,6 +100,8 @@ namespace Vertigo
 
             _spritePivot = GetNode<Node2D>("%SpritePivot");
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
+
+            _immunityBubble = GetNode<ImmunityBubble>("%ImmunityBubble");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -102,6 +109,25 @@ namespace Vertigo
             base._PhysicsProcess(delta);
 
             _spritePivot.Scale = _spritePivot.Scale.LinearInterpolate(new Vector2(_directionX, 1f), 10f * delta);
+
+            ImmunityTimer = Mathf.Max(ImmunityTimer - delta, 0f);
+
+            _immunityBubble.IsImmune = IsImmune;
+
+            if (ImmunityTimer > 2f)
+            {
+                _immunityBubble.PlayIdleAnimation();
+            }
+
+            if (ImmunityTimer <= 2.5f)
+            {
+                _immunityBubble.PlayFlashAnimation();
+            }
+
+            if (ImmunityTimer <= 0.8f)
+            {
+                _immunityBubble.PlayFastFlashAnimation();
+            }
 
             HandleInput();
 
@@ -195,7 +221,7 @@ namespace Vertigo
                 }
             }
 
-            if (area is Hazard)
+            if (area is Hazard && !IsImmune)
             {
                 _healthComponent.DealDamage();
             }
