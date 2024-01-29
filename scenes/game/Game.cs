@@ -37,13 +37,11 @@ namespace Vertigo
 
         public GameState State { get; private set; } = GameState.INTRO;
 
-        public static Game Instance { get; private set; }
+        public static Game Instance { get; set; }
 
         public override void _Ready()
         {
             base._Ready();
-
-            Instance = this;
 
             GameLayer = GetNode<CanvasLayer>("%GameLayer");
             GUILayer = GetNode<CanvasLayer>("%GUILayer");

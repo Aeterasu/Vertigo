@@ -18,6 +18,8 @@ namespace Vertigo
         private HurtboxComponent _hurtboxComponent;
 
         private CurrencyGenerator _currencyGenerator;
+        
+        private GrazeArea _grazeArea;
 
         private Sprite _sprite;
 
@@ -56,6 +58,8 @@ namespace Vertigo
 
             _currencyGenerator = GetNode<CurrencyGenerator>("%CurrencyGenerator");
 
+            _grazeArea = GetNode<GrazeArea>("%GrazeArea");
+
             _sprite = GetNode<Sprite>("%Sprite");
         }
 
@@ -74,6 +78,23 @@ namespace Vertigo
             }
         }
 
+        public override void _Process(float delta)
+        {
+            base._Process(delta);
+
+            Update();
+        }
+
+        public override void _Draw()
+        {
+            base._Draw();
+
+            if (_grazeArea.AffinityIncrease > 1f)
+            {
+                DrawArc(Vector2.Zero, _grazeArea.CircleShape2D.Radius * _grazeArea.Scale.Length(), 0, Mathf.Tau, 24, new Color(1, 1, 1, 0.35f), 1f);
+            }
+        }
+
         private void OnAreaEntered(Area2D area)
         {
             if (area is Hazard && _bounce)
@@ -84,6 +105,8 @@ namespace Vertigo
 
         private void OnHealthDepleted()
         {
+            _hurtboxComponent.GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
+            _hurtboxComponent.Immune = true;
             _currencyGenerator.Generate();
             this.SafeQueueFree();
         }

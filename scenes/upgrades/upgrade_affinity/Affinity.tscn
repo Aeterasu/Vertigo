@@ -4,5 +4,4 @@
 
 [node name="Affinity" type="Node"]
 script = ExtResource( 1 )
-_initialIncrease = 0.25
-_increasePerStack = 0.2
+_initialIncrease = 0.35

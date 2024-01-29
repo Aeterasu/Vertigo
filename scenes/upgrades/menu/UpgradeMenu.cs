@@ -22,6 +22,8 @@ namespace Vertigo
 
         private Tween _tween = new Tween();
 
+        private AnimationPlayer _animationPlayer;
+
         public event Action<UpgradeCard> OnUpgradeSelected;
         public event Action OnMenuClosed;
 
@@ -65,6 +67,9 @@ namespace Vertigo
             base._Ready();
 
             AddChild(_tween);
+
+            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+            _animationPlayer.Play("Appear");
 
             if (UpgradeManager.Instance.IsValid())
             {

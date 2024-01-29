@@ -1,3 +1,16 @@
-[gd_scene format=2]
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/upgrade_cards/Dullness.tres" type="Resource" id=1]
+[ext_resource path="res://resources/upgrade_cards/Convergence.tres" type="Resource" id=2]
+[ext_resource path="res://resources/upgrade_cards/Abundancy.tres" type="Resource" id=3]
+[ext_resource path="res://resources/upgrade_cards/Affinity.tres" type="Resource" id=4]
+[ext_resource path="res://resources/upgrade_cards/Haste.tres" type="Resource" id=5]
+[ext_resource path="res://scenes/upgrades/UpgradeManager.cs" type="Script" id=6]
+[ext_resource path="res://resources/upgrade_cards/Opulency.tres" type="Resource" id=7]
+[ext_resource path="res://resources/upgrade_cards/Omission.tres" type="Resource" id=8]
+[ext_resource path="res://resources/upgrade_cards/Passion.tres" type="Resource" id=9]
 
 [node name="UpgradeManager" type="Node"]
+unique_name_in_owner = true
+script = ExtResource( 6 )
+UpgradePool = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ]

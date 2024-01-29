@@ -53,6 +53,7 @@ namespace Vertigo
                 if (gameNode is Game)
                 {
                     _game = gameNode as Game;
+                    Game.Instance = _game;
                 }
 
                 AddChild(gameNode);

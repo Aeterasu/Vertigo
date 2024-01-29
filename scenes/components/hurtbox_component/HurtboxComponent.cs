@@ -9,6 +9,8 @@ namespace Vertigo
 
         public event Action<Projectile> OnProjectileCollide;
 
+        public bool Immune { get; set; } = false;
+
         public override void _Ready()
         {
             base._Ready();
@@ -20,6 +22,11 @@ namespace Vertigo
 
         private void OnAreaEntered(Area2D area)
         {
+            if (Immune)
+            {
+                return;
+            }
+
             if (area is Projectile)
             {
                 OnProjectileCollide?.Invoke(area as Projectile);
