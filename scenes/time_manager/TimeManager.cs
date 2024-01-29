@@ -9,6 +9,7 @@ namespace Vertigo
         [Export] private readonly float _difficultyStepThreshold = 10f;
         [Export] private readonly float _rainThreshold = 25f;
         [Export] private readonly float _dizzynessThreshold = 45f;
+        [Export] private readonly float _spiralDizzynessThreshold = 90f;
 
         private float _timer = 0f; 
         private float _persistentTimer = 0f;
@@ -18,6 +19,9 @@ namespace Vertigo
 
         private DrunkNode2D _dizzyness;
         private bool _dizzynessActivated = false;
+
+        private SpiralDrunkNode2D _spiralDizzyness;
+        private bool _spiralDizzynessActivated = false;
 
         public event Action OnDifficultyStepReached;
 
@@ -62,6 +66,12 @@ namespace Vertigo
             {
                 _dizzyness.Enabled = true;
                 _dizzynessActivated = true;
+            }
+
+            if (_persistentTimer >= _spiralDizzynessThreshold && !_spiralDizzynessActivated)
+            {
+                _spiralDizzyness.Enabled = true;
+                _spiralDizzynessActivated = true;
             }
         }
 

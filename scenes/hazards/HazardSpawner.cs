@@ -102,9 +102,15 @@ namespace Vertigo
             telegraph.GetNode<Sprite>("Sprite").Scale = new Vector2((float)spawnPoint.Direction, 1f);
             Square square = telegraph.GetNode<Square>(telegraph.SquarePath);
             square.Direction = spawnPoint.Direction;
-            square.OnLeftThePlayArea += HazardLeftThePlayArea; 
+            square.OnLeftThePlayArea += HazardLeftThePlayArea;
 
-            Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", telegraph);             
+            if (Game.Instance.IsValid())
+            {
+                if (Game.Instance.GameLayer.IsValid())
+                {
+                    Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", telegraph);
+                }
+            }
         }
 
         public void StepDifficulty()

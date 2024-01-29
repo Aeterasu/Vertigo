@@ -29,6 +29,8 @@ namespace Vertigo
         [Export] private readonly float _boundaryLeft = -9f;
         [Export] private readonly float _boundaryRight = 649f;
 
+        [Export(PropertyHint.Range, "0, 32")] private readonly float _onHitImmunity = 1f;
+
         private GravityMode _gravityMode = GravityMode.DOWNWARDS;
 
         private float _velocityX = 0f;
@@ -112,30 +114,13 @@ namespace Vertigo
 
             ImmunityTimer = Mathf.Max(ImmunityTimer - delta, 0f);
 
-            _immunityBubble.IsImmune = IsImmune;
-
-            if (ImmunityTimer > 2f)
-            {
-                _immunityBubble.PlayIdleAnimation();
-            }
-
-            if (ImmunityTimer <= 2.5f)
-            {
-                _immunityBubble.PlayFlashAnimation();
-            }
-
-            if (ImmunityTimer <= 0.8f)
-            {
-                _immunityBubble.PlayFastFlashAnimation();
-            }
-
             HandleInput();
 
             HandleMovement(delta);
 
             HandleGraze();
 
-            GD.Print(ImmunityTimer);
+            HandleImmunityBubble();
         }
 
         private void HandleInput()
@@ -226,6 +211,13 @@ namespace Vertigo
             if (area is Hazard && !IsImmune)
             {
                 _healthComponent.DealDamage();
+
+                Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(6f);
+                
+                if (_healthComponent.Health > 0)
+                {
+                    ImmunityTimer += _onHitImmunity;
+                }
             }
         }
 
@@ -251,6 +243,26 @@ namespace Vertigo
 
             IsGrazing = _grazeDetector.IsGrazing;
             _powerComponent.IsGrazing = IsGrazing;
+        }
+
+        private void HandleImmunityBubble()
+        {
+            _immunityBubble.IsImmune = IsImmune;
+
+            if (ImmunityTimer > 2f)
+            {
+                _immunityBubble.PlayIdleAnimation();
+            }
+
+            if (ImmunityTimer <= 2.5f)
+            {
+                _immunityBubble.PlayFlashAnimation();
+            }
+
+            if (ImmunityTimer <= 0.8f)
+            {
+                _immunityBubble.PlayFastFlashAnimation();
+            }
         }
     }
 }
