@@ -10,22 +10,13 @@ namespace Vertigo
 
         private float _immunityTime = 0f;
 
-        private Player _player;
-
         public override void _Ready()
         {
             base._Ready();
 
             _immunityTime += _initialImmunityTime;
 
-            _player = Game.Instance.GetNodeOrNull<Player>("%Player");
-
-            if (!_player.IsValid())
-            {
-                return;
-            }
-
-            _player.ImmunityTimer = _immunityTime;
+            ActivateImmunity();
         }
 
         public override void AddStack()
@@ -37,12 +28,9 @@ namespace Vertigo
 
         public void ActivateImmunity()
         {
-            if (!_player.IsValid())
-            {
-                return;
-            }
+            var player = Game.Instance.GetNodeOrNull<Player>("%Player");
 
-            _player.ImmunityTimer = _immunityTime;
+            player.ImmunityTimer += _immunityTime;
         }
     }
 }

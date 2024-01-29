@@ -33,7 +33,6 @@ namespace Vertigo
                 {
                     (child as Upgrade).AddStack();
                     node.SafeQueueFree();
-                    return;
                 }
 
                 if (child is Aegis)
@@ -42,7 +41,10 @@ namespace Vertigo
                 }
             }
             
-            AddChild(node);
+            if (node.IsValid())
+            {
+                AddChild(node);
+            }
         }
     }
 }

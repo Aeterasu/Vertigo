@@ -134,6 +134,8 @@ namespace Vertigo
             HandleMovement(delta);
 
             HandleGraze();
+
+            GD.Print(ImmunityTimer);
         }
 
         private void HandleInput()
