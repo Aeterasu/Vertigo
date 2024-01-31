@@ -47,7 +47,7 @@ namespace Vertigo
                 totalAmount += Opulency.Instance.AdditionalGems;
             }
 
-            for (int i = 0; i < amount; i++)
+            for (int i = 0; i < totalAmount; i++)
             {
                 var diamond = Game.Instance.DiamondScene.Instance() as Diamond;
                 diamond.GlobalPosition = GlobalPosition + new Vector2((float)GD.RandRange(-8, 8), (float)GD.RandRange(-8, 8));

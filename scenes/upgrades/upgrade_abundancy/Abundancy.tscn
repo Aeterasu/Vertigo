@@ -4,4 +4,4 @@
 
 [node name="Abundancy" type="Node"]
 script = ExtResource( 1 )
-_shotsRequired = 3
+_shotsRequired = 1

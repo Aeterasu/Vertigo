@@ -129,5 +129,10 @@ namespace Vertigo
                 Slowdown += Dullness.Instance.TotalSlowdown - 1;
             }
         }
+
+        public void Destroy()
+        {
+            OnHealthDepleted();
+        }
     }
 }

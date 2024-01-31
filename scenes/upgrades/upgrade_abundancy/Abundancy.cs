@@ -13,7 +13,7 @@ namespace Vertigo
         private Player _player;
         private PlayerGun _playerGun;
 
-        public int AdditionalProjectiles { get; private set; } = 2;
+        public int AdditionalProjectiles { get; private set; } = 1;
         public bool IsActive { get; private set; } = false;
 
         public override void _Ready()

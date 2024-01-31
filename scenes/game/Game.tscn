@@ -91,12 +91,6 @@ position = Vector2( 512, 184 )
 script = ExtResource( 8 )
 Direction = -1.0
 
-[node name="Label" type="Label" parent="GameLayer/HazardSpawner"]
-margin_left = 5.0
-margin_top = 59.0
-margin_right = 45.0
-margin_bottom = 94.0
-
 [node name="ArrowSpawner" type="Node" parent="GameLayer"]
 script = ExtResource( 23 )
 _canOnlySpawnAfter = 30.0
@@ -123,12 +117,6 @@ script = ExtResource( 8 )
 [node name="SpawnPoint4" type="Position2D" parent="GameLayer/ArrowSpawner"]
 position = Vector2( 384, 0 )
 script = ExtResource( 8 )
-
-[node name="Label" type="Label" parent="GameLayer/ArrowSpawner"]
-margin_left = 53.0
-margin_top = 59.0
-margin_right = 93.0
-margin_bottom = 94.0
 
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
 
@@ -175,6 +163,7 @@ _strengthLerpWeight = 1.0
 unique_name_in_owner = true
 position = Vector2( -240, -135 )
 script = ExtResource( 24 )
+_strengthLerpWeight = 1.5
 
 [node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer/DrunkNode2D/SpiralDrunkNode2D"]
 unique_name_in_owner = true

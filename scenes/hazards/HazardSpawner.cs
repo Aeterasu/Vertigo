@@ -55,10 +55,6 @@ namespace Vertigo
 
                 _init = true;
             }
-
-            Label label = GetNode<Label>("Label");
-
-            label.Text = $"{_currentHazardCount}";
         }
 
         private List<SpawnPoint> GetSpawnPoints()

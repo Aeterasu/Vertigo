@@ -223,6 +223,11 @@ namespace Vertigo
                 {
                     ImmunityTimer += _onHitImmunity;
                 }
+
+                if (area is Square)
+                {
+                    (area as Square).Destroy();
+                }
             }
         }
 
