@@ -7,6 +7,7 @@ namespace Vertigo
     {
         [Export] private readonly PackedScene _attackScene;
         [Export] private readonly float _rateOfFire = 0.3f;
+        [Export] private readonly float _mashingRateOfFire = 0.05f;
         [Export] private readonly float _spread = 8f;
         [Export] public float VerticalStall { get; private set; } = -0.8f;
         [Export] public float HorizontalKnockback { get; private set; } = 8f;
@@ -15,6 +16,7 @@ namespace Vertigo
         [Export] private readonly AudioStream _shotAudio;
 
         private float _fireCooldown = 0f;
+        private float _mashingCooldown = 0f;
 
         public event Action OnFired;
 
@@ -30,16 +32,34 @@ namespace Vertigo
             base._PhysicsProcess(delta);
 
             _fireCooldown = Mathf.Max(_fireCooldown - delta, 0f);
+            _mashingCooldown = Mathf.Max(_mashingCooldown - delta, 0f);
+        }
+
+        public void ResetCooldownOnMash()
+        {
+            if (_fireCooldown > _mashingCooldown)
+            {
+                _fireCooldown = _mashingCooldown;
+            }
+            else
+            {
+                _fireCooldown = 0f;
+            }
         }
 
         public void Fire(float directionAngleDegrees, PowerComponent power, int projectileCount = 1)
         {
-            if (_attackScene == null || _fireCooldown > 0f)
+            if (_attackScene == null)
             {
                 return;
             }
 
             if (power.CurrentPower < PowerConsumption)
+            {
+                return;
+            }
+
+            if (_fireCooldown > 0f)
             {
                 return;
             }
@@ -58,6 +78,7 @@ namespace Vertigo
             }
 
             _fireCooldown = _rateOfFire;
+            _mashingCooldown = _mashingRateOfFire;
 
             power.ConsumePower(PowerConsumption);
 
