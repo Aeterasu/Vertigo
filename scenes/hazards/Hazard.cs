@@ -10,6 +10,7 @@ namespace Vertigo
         public float Slowdown { get; set; } = 1.0f;
 
         public Action<Hazard> OnLeftThePlayArea;
+        public Action<Hazard> OnDestroyed;
 
         public override void _Ready()
         {

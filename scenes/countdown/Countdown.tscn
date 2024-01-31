@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 170, -2 ), Vector2( 170, 238 ), Vector2( 170, 268 ), Vector2( 170, 538 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AnimationPlayer/VailaLeft:modulate")
+tracks/2/path = NodePath("AnimationPlayer/VailaLeft:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 4.5, 4.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer/LabelHolder/Label:text")
@@ -199,7 +199,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0, 0.2, 4.5, 4.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("AnimationPlayer/VailaLeft/Outline:self_modulate")
@@ -243,7 +243,6 @@ unique_name_in_owner = true
 anims/Countdown = SubResource( 1 )
 
 [node name="VailaRight" type="TextureRect" parent="AnimationPlayer"]
-modulate = Color( 1, 1, 1, 0.501961 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 310.0
 margin_top = 270.0
@@ -253,14 +252,13 @@ rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Outline" type="TextureRect" parent="AnimationPlayer/VailaRight"]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 8.0
 margin_right = 93.0
 margin_bottom = 134.0
 texture = ExtResource( 5 )
 
 [node name="VailaLeft" type="TextureRect" parent="AnimationPlayer"]
-modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 170.0
 margin_top = -2.0
 margin_right = 255.0
@@ -269,7 +267,6 @@ rect_scale = Vector2( -2, -2 )
 texture = ExtResource( 2 )
 
 [node name="Outline" type="TextureRect" parent="AnimationPlayer/VailaLeft"]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 8.0
 margin_right = 93.0
 margin_bottom = 134.0

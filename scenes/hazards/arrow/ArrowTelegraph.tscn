@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/hazards/square/SquareTelegraph.cs" type="Script" id=1]
+[ext_resource path="res://assets/textures/hazards/sprite_telegraph.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hazards/arrow/Arrow.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ), Vector2( 0, 0 ) ]
+}
+
+[node name="ArrowTelegraph" type="Node2D"]
+script = ExtResource( 1 )
+SquarePath = NodePath("Arrow")
+_duration = 2.0
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+offset = Vector2( 82, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+unique_name_in_owner = true
+anims/Idle = SubResource( 1 )
+
+[node name="Arrow" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true

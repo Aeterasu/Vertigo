@@ -208,7 +208,7 @@ namespace Vertigo
                 }
             }
 
-            if (area is Hazard && !IsImmune)
+            if (area is Hazard && !IsImmune && !_healthComponent.IsDead)
             {
                 _healthComponent.DealDamage();
 

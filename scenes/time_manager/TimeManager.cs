@@ -32,6 +32,11 @@ namespace Vertigo
             get => _difficultyStepThreshold;
         }
 
+        public float GetPersistentTimer
+        {
+            get => _persistentTimer;
+        }
+
         public Stopwatch Stopwatch { get; private set; } = new Stopwatch();
 
         public override void _Ready()
@@ -41,6 +46,7 @@ namespace Vertigo
             _rain = GetNode<CPUParticles2D>("%Rain");
 
             _dizzyness = GetNode<DrunkNode2D>("%DrunkNode2D");
+            _spiralDizzyness = GetNode<SpiralDrunkNode2D>("%SpiralDrunkNode2D");
         }
 
         public override void _PhysicsProcess(float delta)

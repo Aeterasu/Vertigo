@@ -56,7 +56,7 @@ namespace Vertigo
                 else if (_currentHp == 0)
                 {
                     var bigHeart = _bigHeartScene.Instance() as Control;
-                    bigHeart.RectPosition = Vector2.Right * _currentOffset + Vector2.Up * 5;
+                    bigHeart.RectPosition = Vector2.Right * _currentOffset + Vector2.Up * 6;
                     _currentOffset += _bigHeartOffset;
                     _hearts.Add(bigHeart);
                     _currentHp += 1;

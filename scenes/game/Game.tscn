@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -22,8 +22,9 @@
 [ext_resource path="res://scenes/countdown/Countdown.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/currency/Diamond.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scenes/upgrades/upgrade_passion/Passion.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/hazards/HazardSpawner.cs" type="Script" id=23]
 [ext_resource path="res://scenes/fx/SpiralDrunkNode2D.cs" type="Script" id=24]
+[ext_resource path="res://scenes/hazards/arrow/ArrowTelegraph.tscn" type="PackedScene" id=25]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
 [ext_resource path="res://assets/textures/gui/sprite_gui_line_1.png" type="Texture" id=34]
@@ -56,10 +57,11 @@ _dizzynessThreshold = 60.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
-_squareScene = ExtResource( 3 )
-_squareSpawnRate = 3.0
-_squareSpawnRateDifficultyStep = 0.3
-_squareSpawnMinimalRate = 0.05
+_canOnlySpawnAfter = 0.0
+_scene = ExtResource( 3 )
+_spawnRate = 3.0
+_spawnRateDifficultyStep = 0.3
+_spawnMinimalRate = 0.35
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner"]
 position = Vector2( -32, 88 )
@@ -88,10 +90,47 @@ position = Vector2( 512, 184 )
 script = ExtResource( 8 )
 Direction = -1.0
 
-[node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
+[node name="Label" type="Label" parent="GameLayer/HazardSpawner"]
+visible = false
+margin_left = 5.0
+margin_top = 59.0
+margin_right = 45.0
+margin_bottom = 94.0
 
-[node name="Passion" parent="GameLayer/UpgradeManager" instance=ExtResource( 23 )]
-TargetStack = 3
+[node name="ArrowSpawner" type="Node" parent="GameLayer"]
+script = ExtResource( 23 )
+_canOnlySpawnAfter = 30.0
+_scene = ExtResource( 25 )
+_spawnRate = 6.0
+_spawnRateDifficultyStep = 0.3
+_spawnMinimalRate = 0.7
+
+[node name="SpawnPoint1" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 96, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint2" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 384, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint3" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 96, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint4" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 384, 0 )
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GameLayer/ArrowSpawner"]
+visible = false
+margin_left = 5.0
+margin_top = 59.0
+margin_right = 45.0
+margin_bottom = 94.0
+
+[node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
@@ -136,8 +175,6 @@ _strengthLerpWeight = 1.0
 unique_name_in_owner = true
 position = Vector2( -240, -135 )
 script = ExtResource( 24 )
-Enabled = true
-_strength = 12.0
 
 [node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer/DrunkNode2D/SpiralDrunkNode2D"]
 unique_name_in_owner = true

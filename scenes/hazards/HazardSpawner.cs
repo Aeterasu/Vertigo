@@ -6,14 +6,19 @@ namespace Vertigo
 {
     public class HazardSpawner : Node
     {
-        [Export] private PackedScene _squareScene;
-        [Export] private float _squareSpawnRate = 5f;
-        [Export] private float _squareSpawnRateDifficultyStep = 0.5f;
-        [Export] private float _squareSpawnMinimalRate = 0.5f;
-
-        private Timer _squareSpawnTimer = new Timer();
+        [Export] private float _canOnlySpawnAfter = 15f;
+        [Export] private PackedScene _scene;
+        [Export] private float _spawnRate = 5f;
+        [Export] private float _spawnRateDifficultyStep = 0.5f;
+        [Export] private float _spawnMinimalRate = 0.5f;
+        
+        private Timer _spawnTimer = new Timer();
 
         private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
+
+        private TimeManager _timeManager;
+
+        private bool _init = false;
 
         public int Difficulty { get; private set; } = 1;
 
@@ -23,19 +28,34 @@ namespace Vertigo
         {
             base._Ready();
 
-            _spawnPoints = GetSpawnPoints();
-
-            AddChild(_squareSpawnTimer);
-            _squareSpawnTimer.WaitTime = _squareSpawnRate;
-            _squareSpawnTimer.Connect("timeout", this, "OnSquareSpawnTimeout");
-            _squareSpawnTimer.Start();
-
-            TimeManager _timeManager = GetNodeOrNull<TimeManager>("%TimeManager");
+            _timeManager = GetNodeOrNull<TimeManager>("%TimeManager");
 
             if (_timeManager.IsValid())
             {
                 _timeManager.OnDifficultyStepReached += StepDifficulty;
             }
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (_timeManager.GetPersistentTimer >= _canOnlySpawnAfter && !_init)
+            {
+                _spawnPoints = GetSpawnPoints();
+
+                AddChild(_spawnTimer);
+
+                _spawnTimer.WaitTime = _spawnRate;
+                _spawnTimer.Connect("timeout", this, "OnSquareSpawnTimeout");
+                _spawnTimer.Start();
+
+                _init = true;
+            }
+
+            Label label = GetNode<Label>("Label");
+
+            label.Text = $"{_spawnTimer.WaitTime}{System.Environment.NewLine}{_spawnTimer.TimeLeft}";
         }
 
         private List<SpawnPoint> GetSpawnPoints()
@@ -55,7 +75,7 @@ namespace Vertigo
 
         private void OnSquareSpawnTimeout()
         {
-            if (_squareScene == null)
+            if (_scene == null)
             {
                 return;
             }
@@ -69,7 +89,7 @@ namespace Vertigo
             int randomId = random.Next(_spawnPoints.Count);
             SpawnPoint spawnPoint = _spawnPoints[randomId];
 
-            var scene = _squareScene.Instance();
+            var scene = _scene.Instance();
 
             if (!(scene is Square) && !(scene is SquareTelegraph))
             {
@@ -115,11 +135,16 @@ namespace Vertigo
 
         public void StepDifficulty()
         {
+            if (_timeManager.GetPersistentTimer < _canOnlySpawnAfter)
+            {
+                return;
+            }
+
             Difficulty += 1;
 
-            _squareSpawnRate = Mathf.Clamp(_squareSpawnRate - _squareSpawnRateDifficultyStep, _squareSpawnMinimalRate, 999f);
-            _squareSpawnTimer.WaitTime = _squareSpawnRate;
-            _squareSpawnTimer.Start();
+            _spawnRate = Mathf.Clamp(_spawnRate - _spawnRateDifficultyStep, _spawnMinimalRate, 999f);
+            _spawnTimer.WaitTime = _spawnRate;
+            _spawnTimer.Start();
         }
 
         private void HazardLeftThePlayArea(Hazard hazard)

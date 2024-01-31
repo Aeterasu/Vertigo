@@ -10,9 +10,12 @@ namespace Vertigo
         [Export] private float _speed = 16f;
         [Export] private float _rotationSpeed = 32f;
 
+        [Export] private Vector2 _vectorDirection = Vector2.Right;
+
         [Export(PropertyHint.Range, "-1, 1, 1")] private float _direction = 1f;
 
         [Export] private bool _bounce = false; // squares will bounce from each other
+        [Export] private bool _rotateSprite = true;
 
         private HealthComponent _healthComponent;
         private HurtboxComponent _hurtboxComponent;
@@ -67,9 +70,12 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            _sprite.RotationDegrees += _rotationSpeed * delta;
+            if (_rotateSprite)
+            {
+                _sprite.RotationDegrees += _rotationSpeed * delta;
+            }
 
-            Position += Vector2.Right * _speed * Direction * (1 / Slowdown) * delta;
+            Position += _vectorDirection * _speed * Direction * (1 / Slowdown) * delta;
 
             if (Position.x <= -96f || Position.x >= 576f)
             {
@@ -105,6 +111,8 @@ namespace Vertigo
 
         private void OnHealthDepleted()
         {
+            OnDestroyed?.Invoke(this);
+
             _hurtboxComponent.GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
             _hurtboxComponent.Immune = true;
             _currencyGenerator.Generate();
