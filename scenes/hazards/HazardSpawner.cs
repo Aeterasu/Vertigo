@@ -7,6 +7,7 @@ namespace Vertigo
     public class HazardSpawner : Node
     {
         [Export] private float _canOnlySpawnAfter = 15f;
+        [Export] private int _maxHazards = 16;
         [Export] private PackedScene _scene;
         [Export] private float _spawnRate = 5f;
         [Export] private float _spawnRateDifficultyStep = 0.5f;
@@ -17,6 +18,8 @@ namespace Vertigo
         private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
 
         private TimeManager _timeManager;
+
+        private int _currentHazardCount = 0;
 
         private bool _init = false;
 
@@ -55,7 +58,7 @@ namespace Vertigo
 
             Label label = GetNode<Label>("Label");
 
-            label.Text = $"{_spawnTimer.WaitTime}{System.Environment.NewLine}{_spawnTimer.TimeLeft}";
+            label.Text = $"{_currentHazardCount}";
         }
 
         private List<SpawnPoint> GetSpawnPoints()
@@ -85,6 +88,11 @@ namespace Vertigo
                 return;
             }
 
+            if (_currentHazardCount >= _maxHazards)
+            {
+                return;
+            }
+
             Random random = new Random();
             int randomId = random.Next(_spawnPoints.Count);
             SpawnPoint spawnPoint = _spawnPoints[randomId];
@@ -105,13 +113,16 @@ namespace Vertigo
             {
                 ProcessSquareTelegraph(scene as SquareTelegraph, spawnPoint);
             }
+
+            _currentHazardCount += 1;
         }
 
         private void ProcessSquare(Square square, SpawnPoint spawnPoint)
         {
             square.GlobalPosition = spawnPoint.GlobalPosition;
             square.Direction = spawnPoint.Direction;
-            square.OnLeftThePlayArea += HazardLeftThePlayArea;     
+            square.OnLeftThePlayArea += HazardLeftThePlayArea;   
+            square.OnDestroyed += OnHazardDestroyed;
 
             Game.Instance.IfValid().GameLayer.IfValid().CallDeferred("add_child", square);       
         }
@@ -123,6 +134,7 @@ namespace Vertigo
             Square square = telegraph.GetNode<Square>(telegraph.SquarePath);
             square.Direction = spawnPoint.Direction;
             square.OnLeftThePlayArea += HazardLeftThePlayArea;
+            square.OnDestroyed += OnHazardDestroyed;
 
             if (Game.Instance.IsValid())
             {
@@ -151,6 +163,13 @@ namespace Vertigo
         {
             hazard.OnLeftThePlayArea -= OnHazardLeftThePlayArea;
             OnHazardLeftThePlayArea?.Invoke(hazard);
+
+            _currentHazardCount -= 1;
+        }
+
+        private void OnHazardDestroyed(Hazard hazard)
+        {
+            _currentHazardCount -= 1;
         }
     }
 }

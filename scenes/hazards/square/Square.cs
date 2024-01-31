@@ -77,7 +77,7 @@ namespace Vertigo
 
             Position += _vectorDirection * _speed * Direction * (1 / Slowdown) * delta;
 
-            if (Position.x <= -96f || Position.x >= 576f)
+            if (Position.x <= -96f || Position.x >= 576f || Position.y <= -96f || Position.y >= 366f)
             {
                 OnLeftThePlayArea?.Invoke(this);
                 this.SafeQueueFree();
