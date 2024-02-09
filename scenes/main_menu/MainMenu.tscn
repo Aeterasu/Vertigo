@@ -1,11 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/textures/vaila/sprite_vaila.png" type="Texture" id=1]
+[ext_resource path="res://scenes/cliff/Cliff.tscn" type="PackedScene" id=2]
 
 [node name="MainMenu" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 310, 2 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
-centered = false
+[node name="Cliff" parent="." instance=ExtResource( 2 )]

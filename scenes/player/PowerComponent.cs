@@ -10,6 +10,8 @@ namespace Vertigo
         [Export] private float _grazeMultiplier = 1.8f;
         [Export] private readonly float _exhaustionRegenMultiplier = 0.6f; // triggers when power <1f
         [Export] private readonly float _nearExhaustionRegenMultiplier = 0.8f; // triggers when power >=1f <=2f
+        [Export] private readonly float _exhaustionThreshold = 1f;
+        [Export] private readonly float _nearExhaustionThreshold = 2f;
 
         private float _currentRegen = 0f;
 
@@ -78,11 +80,11 @@ namespace Vertigo
             
             float regenMultiplier = 1f;
 
-            if (CurrentPower < 1f)
+            if (CurrentPower < _exhaustionThreshold)
             {
                 regenMultiplier = _exhaustionRegenMultiplier;
             }
-            else if (CurrentPower >= 1f && CurrentPower <= 2f)
+            else if (CurrentPower >= _exhaustionThreshold && CurrentPower <= _nearExhaustionThreshold)
             {
                 regenMultiplier = _nearExhaustionRegenMultiplier;
             }

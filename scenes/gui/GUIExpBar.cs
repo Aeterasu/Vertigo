@@ -7,6 +7,8 @@ namespace Vertigo
     {
         [Export] private readonly float _animationSpeed = 4f;
 
+        private float _initialMaxValue = 0f;
+
         private ExperienceComponent _experienceComponent;
 
         private TextureProgress _textureProgress;
@@ -30,6 +32,7 @@ namespace Vertigo
             {
                 _experienceComponent.OnExperienceGranted += OnExperienceGranted;
                 _experienceComponent.OnLevelUp += OnLevelUp;
+                _initialMaxValue = _experienceComponent.TargetExp;
             }
 
             _textureProgress = GetNode<TextureProgress>("TextureProgress");
@@ -52,7 +55,7 @@ namespace Vertigo
                 _label.Text = $"Lvl. {_experienceComponent.Level}";
             }
 
-            Value = Mathf.Min((float)(Value + _animationSpeed * delta), (float)_textureProgress.Value);
+            Value = Mathf.Min((float)(Value + _animationSpeed * (MaxValue / _initialMaxValue) * delta), (float)_textureProgress.Value);
         }
 
         private void OnExperienceGranted(ExperienceComponent exp)

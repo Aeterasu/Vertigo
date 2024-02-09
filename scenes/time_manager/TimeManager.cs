@@ -39,9 +39,13 @@ namespace Vertigo
 
         public Stopwatch Stopwatch { get; private set; } = new Stopwatch();
 
+        public static TimeManager Instance { get; private set; }
+
         public override void _Ready()
         {
             base._Ready();
+
+            Instance = this;
 
             _rain = GetNode<CPUParticles2D>("%Rain");
 

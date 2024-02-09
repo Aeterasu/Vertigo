@@ -20,6 +20,8 @@ namespace Vertigo
         public float CurrentExp { get => _currentExp; }
         public float TargetExp { get => _targetExp; }
 
+        public bool Enabled { get; set; } = true;
+
         public override void _Ready()
         {
             base._Ready();
@@ -29,6 +31,11 @@ namespace Vertigo
 
         public void GrantExp(float amount)
         {
+            if (!Enabled)
+            {
+                return;
+            }
+
             _currentExp += amount;
 
             OnExperienceGranted?.Invoke(this);

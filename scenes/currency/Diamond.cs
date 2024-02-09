@@ -16,6 +16,8 @@ namespace Vertigo
 
         private Player _player;
 
+        private CPUParticles2D _cpuParticle2D;
+
         public override void _Ready()
         {
             base._Ready();
@@ -35,19 +37,31 @@ namespace Vertigo
             ).Normalized();
 
             _startupDuration *= (float)GD.RandRange(0.5f, 1.5f);
+
+            _cpuParticle2D = GetNode<CPUParticles2D>("CPUParticles2D");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
 
-            if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold)
+            if (_player.IsDead)
+            {
+                _cpuParticle2D.Emitting = false;
+            }
+
+            if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold && !_player.IsDead)
             {
                 var experienceComponent = _player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
 
                 if (experienceComponent.IsValid())
                 {
                     experienceComponent.GrantExp(_worth);
+                }
+
+                if (Game.Instance.IsValid())
+                {
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0, 1);
                 }
 
                 this.SafeQueueFree();

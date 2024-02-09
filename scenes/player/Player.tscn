@@ -122,7 +122,7 @@ tracks/1/keys = {
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
-height = 6.0
+height = 2.0
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 5.0
@@ -172,10 +172,11 @@ _healthLimit = 8
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
+_maxPower = 6.0
 _powerRegen = 1.6
 _grazeMultiplier = 3.0
-_exhaustionRegenMultiplier = 0.5
-_nearExhaustionRegenMultiplier = 0.85
+_exhaustionRegenMultiplier = 0.3
+_nearExhaustionRegenMultiplier = 0.7
 
 [node name="ExperienceComponent" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true

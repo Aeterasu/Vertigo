@@ -1,0 +1,46 @@
+,en,ru
+MENU_START,Start,Старт
+MENU_PALETTE,Palette,Палитра
+MENU_HOW_TO_PLAY,How to play,Как играть
+MENU_OPTIONS,Options,Настройки
+MENU_LANGUAGE,Language,Язык
+MENU_CREDITS,Credits,Авторы
+MENU_EXIT,Exit,Выход
+OPTIONS_MUSIC,Music,Музыка
+OPTIONS_SOUND,Sound Effects,Звук
+OPTIONS_FULLSCREEN,Fullscreen,Полный экран
+OPTIONS_TUTORIAL,Show tutorial,Показывать обучение
+OPTIONS_SCREEN_SHAKE,Screen shake,Тряска экрана
+OPTIONS_TRAIL_EFFECT,Trail effects,Эффект шлейфа
+LANGUAGE_EN,English,Английский
+LANGUAGE_RU,Russian,Русский
+UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
+UPGRADE_DESCRIPTION_ABUNDANCY,Fire an additional projectile every other shot.,Дополнительный снаряд через каждый выстрел.
+UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Fire one more additional projectile every other shot.,Дополнительный снаряд через каждый выстрел.
+UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
+UPGRADE_DESCRIPTION_AEGIS,Become invulnerable for 6 seconds after ascending.,Неуязвимость на 6 секунд после восхождения.
+UPGRADE_STACK_DESCRIPTION_AEGIS,Prolong invulnerability period for 3 more seconds.,Дополнительные 3 секунды неуязвимости.
+UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
+UPGRADE_DESCRIPTION_AFFINITY,Increased graze areas.,Увеличенные зоны грации.
+UPGRADE_STACK_DESCRIPTION_AFFINITY,Further increased graze areas.,Еще сильнее увеличенные зоны грации.
+UPGRADE_NAME_DULLNESS,DULLNESS,РАВНОДУШИЕ
+UPGRADE_DESCRIPTION_DULLNESS,Slow down hazards on hit.,Замедление угроз при попадании.
+UPGRADE_STACK_DESCRIPTION_DULLNESS,Further slow down hazards on hit.,Замедление угроз при попадании.
+UPGRADE_NAME_HASTE,HASTE,СПЕШКА
+UPGRADE_DESCRIPTION_HASTE,Faster power regeneration.,Ускоренное восстановление силы.
+UPGRADE_STACK_DESCRIPTION_HASTE,Faster power regeneration.,Ускоренное восстановление силы.
+UPGRADE_NAME_OMISSION,OMISSION,УПУЩЕНИЕ
+UPGRADE_DESCRIPTION_OMISSION,Receive diamonds for missed hazards.,Самоцветы за пропущенные угрозы.
+UPGRADE_STACK_DESCRIPTION_OMISSION,Receive more diamonds for missed hazards.,Больше самоцветов за пропущенные угрозы.
+UPGRADE_NAME_OPULENCY,OPULENCY,БОГАТСТВО
+UPGRADE_DESCRIPTION_OPULENCY,Receive additional diamonds from destroyed hazards.,Больше самоцветов при уничтожении угроз.
+UPGRADE_STACK_DESCRIPTION_OPULENCY,Receive even more additional diamonds from destroyed hazards.,Еще больше самоцветов при уничтожении угроз.
+UPGRADE_NAME_PASSION,PASSION,СТРАСТЬ
+UPGRADE_DESCRIPTION_PASSION,+1 HP.,+1 ОЗ.
+UPGRADE_STACK_DESCRIPTION_PASSION,+1 HP.,+1 ОЗ.
+UPGRADE_NAME_CONVERGENCE,CONVERGENCE,СХОЖДЕНИЕ
+UPGRADE_DESCRIPTION_CONVERGENCE,Release a homing projectile on flip.,Самонаводящийся снаряд при перевороте.
+UPGRADE_STACK_DESCRIPTION_CONVERGENCE,Release an additional homing projectile on flip.,Дополнительный самонаводящийся снаряд при перевороте.
+GUI_POWER,POWER,СИЛА
+GUI_LVL,LVL.,УР.
+GUI_GRAZE,GRAZE!,ГРАЦИЯ!

@@ -17,6 +17,8 @@ namespace Vertigo
         [Export] public PackedScene DiamondScene { get; private set; }
         [Export] public PackedScene ConvergenceProjectileScene { get; private set; }
 
+        [Export] public AudioStream GemPickupSound { get; private set; }
+
         private Player _player;
         private ExperienceComponent _playerExperienceComponent;
 

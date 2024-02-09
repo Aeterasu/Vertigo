@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://assets/localization/vertigo_localization_data.en.translation", "res://assets/localization/vertigo_localization_data.ru.translation" ]
+
+source_file="res://assets/localization/vertigo_localization_data.csv"
+dest_files=[ "res://assets/localization/vertigo_localization_data.en.translation", "res://assets/localization/vertigo_localization_data.ru.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

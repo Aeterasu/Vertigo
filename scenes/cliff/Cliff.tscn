@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/textures/vaila/sprite_vaila_onacliff.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/vaila/sprite_diamond.png" type="Texture" id=3]
+[ext_resource path="res://scenes/cliff/Cliff.cs" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -18,10 +19,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( -2, -2, -2 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 24 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Cliff" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -29,8 +31,9 @@ centered = false
 
 [node name="Rain" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.376471 )
 position = Vector2( 240, -28 )
-amount = 14
+amount = 48
 texture = ExtResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 240, 1 )
@@ -40,11 +43,12 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 800.0
 
 [node name="DiamondPivot" type="Node2D" parent="."]
-position = Vector2( 126, 44 )
+position = Vector2( 126, 64 )
 
 [node name="Diamond" type="Sprite" parent="DiamondPivot"]
-position = Vector2( 0, 0.00159853 )
+position = Vector2( 0, 24 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 anims/Idle = SubResource( 1 )

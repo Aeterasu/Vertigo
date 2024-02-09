@@ -276,12 +276,14 @@ scale_amount_curve = SubResource( 1 )
 
 [node name="BrokenLeft" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, 6 )
+position = Vector2( 6, 8 )
+scale = Vector2( 0.400001, 0.400001 )
 texture = ExtResource( 8 )
 
 [node name="BrokenRight" type="Sprite" parent="."]
 visible = false
-position = Vector2( 15, 10 )
+position = Vector2( 11, 8 )
+scale = Vector2( 0.400001, 0.400001 )
 texture = ExtResource( 7 )
 
 [node name="Flash" type="Sprite" parent="."]
@@ -292,7 +294,7 @@ texture = ExtResource( 4 )
 [node name="Heartbeat" type="Sprite" parent="."]
 visible = false
 position = Vector2( 8, 8 )
-scale = Vector2( 1e-05, 2 )
+scale = Vector2( 2, 0.5 )
 texture = ExtResource( 6 )
 offset = Vector2( 2, 0 )
 

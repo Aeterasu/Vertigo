@@ -10,6 +10,8 @@ namespace Vertigo
         [Export] private float _quitTimer = 1.5f;
         [Export] private float _quitAnimationDuration = 0.25f;
 
+        private Control _buttonHolder;
+
         private int _currentSelection = 1;
         private UpgradeButton _currentButton;
         private bool _selectionActivated = false;
@@ -18,7 +20,10 @@ namespace Vertigo
 
         private bool _upgradeConfirmed = false;
 
-        private float _inputDelay = 0.3f;
+        private float _inputDelay = 1f;
+
+        private Label _upgradeNameLabel;
+        private Label _upgradeDescriptionLabel;
 
         private Tween _tween = new Tween();
 
@@ -43,7 +48,7 @@ namespace Vertigo
 
                 _currentSelection = value;
 
-                foreach (Node node in GetChildren())
+                foreach (Node node in _buttonHolder.GetChildren())
                 {
                     if (node is UpgradeButton)
                     {
@@ -52,6 +57,12 @@ namespace Vertigo
                         {
                             button.IsFocused = true;
                             _currentButton = button;
+
+                            _upgradeNameLabel.Visible = true;
+                            _upgradeNameLabel.Text = Tr(button.UpgradeCard.NameKey);
+
+                            _upgradeDescriptionLabel.Visible = true;
+                            _upgradeDescriptionLabel.Text = Tr(button.UpgradeCard.DescriptionKey);
                         }
                         else
                         {
@@ -66,10 +77,19 @@ namespace Vertigo
         {
             base._Ready();
 
+            _buttonHolder = GetNode<Control>("%Buttons");
+
+            _upgradeNameLabel = GetNode<Label>("%UpgradeNameLabel");
+            _upgradeDescriptionLabel = GetNode<Label>("%UpgradeDescriptionLabel");
+            _upgradeNameLabel.Visible = false;
+            _upgradeDescriptionLabel.Visible = false;
+
             AddChild(_tween);
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _animationPlayer.Play("Appear");
+            _inputDelay = _animationPlayer.CurrentAnimationLength;
+            _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
 
             if (UpgradeManager.Instance.IsValid())
             {
@@ -128,7 +148,7 @@ namespace Vertigo
 
                 _currentButton.Confirm();
 
-                foreach (Node node in GetChildren())
+                foreach (Node node in _buttonHolder.GetChildren())
                 {
                     if (node is UpgradeButton)
                     {
@@ -156,7 +176,7 @@ namespace Vertigo
 
             Random random = new Random();
 
-            foreach (Node node in GetChildren())
+            foreach (Node node in _buttonHolder.GetChildren())
             {
                 if (node is UpgradeButton)
                 {
@@ -171,6 +191,11 @@ namespace Vertigo
                     }
                 }
             }
+        }
+
+        private void OnAnimationFinished(string animName)
+        {
+            _disableInput = false;
         }
     }
 }

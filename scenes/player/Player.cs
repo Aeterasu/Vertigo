@@ -45,6 +45,8 @@ namespace Vertigo
         private float _firingAngleDegrees = 0f;
         private float _directionX = 1f;
 
+        private ExperienceComponent _experienceComponent;
+
         private HealthComponent _healthComponent;
 
         private GrazeDetector _grazeDetector;
@@ -82,6 +84,8 @@ namespace Vertigo
         public float ImmunityTimer { get; set; } = 0f;
         public bool IsImmune { get => ImmunityTimer > 0f; }
 
+        public bool IsDead { get => _healthComponent.IfValid().IsDead; }
+
         public override void _Ready()
         {
             base._Ready();
@@ -94,6 +98,8 @@ namespace Vertigo
             _playerGun.OnFired += OnGunFired;
 
             _powerComponent = GetNode<PowerComponent>("%PowerComponent");
+
+            _experienceComponent = GetNode<ExperienceComponent>("%ExperienceComponent");
 
             _healthComponent = GetNode<HealthComponent>("%HealthComponent");
             _healthComponent.OnHealthDepleted += OnHealthDepleted;
@@ -242,6 +248,12 @@ namespace Vertigo
         private void OnHealthDepleted()
         {
             _state = PlayerState.DEAD;
+            _experienceComponent.Enabled = false;
+
+            if (TimeManager.Instance.IsValid())
+            {
+                TimeManager.Instance.StopTimer();
+            }
         }
 
         private void HandleGraze()

@@ -12,7 +12,7 @@ public class SpiralDrunkNode2D : Node2D
 
     private float _time = 0;
 
-    private Vector2 _defaultGlobalPosition = Vector2.Zero;
+    private Vector2 _defaultPosition = Vector2.Zero;
 
     private Vector2 _offset = Vector2.Zero;
 
@@ -20,7 +20,7 @@ public class SpiralDrunkNode2D : Node2D
     {
         base._Ready();
 
-        _defaultGlobalPosition = GlobalPosition;
+        _defaultPosition = Position;
     }
 
     public override void _PhysicsProcess(float delta)
@@ -34,8 +34,10 @@ public class SpiralDrunkNode2D : Node2D
 
         _time += _speed * delta;
 
-        _offset = _offset.LinearInterpolate(new Vector2(Mathf.Cos(_time), Mathf.Sin(_time)) * _strength, _strengthLerpWeight * delta);
+        _currentStrength = Mathf.Lerp(_currentStrength, _strength, _strengthLerpWeight);
 
-        GlobalPosition = _defaultGlobalPosition + _offset;
+        _offset = new Vector2(Mathf.Cos(_time), Mathf.Sin(_time)) * _currentStrength;
+
+        Position = _defaultPosition + _offset;
     }
 }

@@ -7,6 +7,6 @@
 script = ExtResource( 1 )
 UpgradeScene = ExtResource( 2 )
 TextureAtlasId = 6
-NameKey = null
-DescriptionKey = null
-StackDescriptionKey = null
+NameKey = "UPGRADE_NAME_OPULENCY"
+DescriptionKey = "UPGRADE_DESCRIPTION_OPULENCY"
+StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_OPULENCY"

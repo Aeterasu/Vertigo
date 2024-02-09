@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://scenes/hazards/HazardSpawner.cs" type="Script" id=23]
 [ext_resource path="res://scenes/fx/SpiralDrunkNode2D.cs" type="Script" id=24]
 [ext_resource path="res://scenes/hazards/arrow/ArrowTelegraph.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/audio/sfx_gem_pickup.wav" type="AudioStream" id=26]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
 [ext_resource path="res://assets/textures/gui/sprite_gui_line_1.png" type="Texture" id=34]
@@ -38,6 +39,7 @@ script = ExtResource( 4 )
 UpgradeMenuScene = ExtResource( 22 )
 DiamondScene = ExtResource( 21 )
 ConvergenceProjectileScene = ExtResource( 17 )
+GemPickupSound = ExtResource( 26 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -157,13 +159,15 @@ unique_name_in_owner = true
 position = Vector2( 240, 135 )
 script = ExtResource( 31 )
 _speed = 1.8
+_strength = 8.0
 _strengthLerpWeight = 1.0
 
 [node name="SpiralDrunkNode2D" type="Node2D" parent="GameLayer/DrunkNode2D"]
 unique_name_in_owner = true
 position = Vector2( -240, -135 )
 script = ExtResource( 24 )
-_strengthLerpWeight = 1.5
+_strength = 24.0
+_strengthLerpWeight = 0.01
 
 [node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer/DrunkNode2D/SpiralDrunkNode2D"]
 unique_name_in_owner = true
