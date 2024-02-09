@@ -8,6 +8,8 @@ namespace Vertigo
     {
         [Export] public List<UpgradeCard> UpgradePool { get; private set; } = new List<UpgradeCard>();
 
+        public List<int> UpgradeStacks { get; private set; } = new List<int>();
+
         public static UpgradeManager Instance { get; private set; }
 
         public override void _Ready()
@@ -15,6 +17,11 @@ namespace Vertigo
             base._Ready();
 
             Instance = this;
+
+            foreach (UpgradeCard card in UpgradePool)
+            {
+                UpgradeStacks.Add(1);
+            }
         }
 
         public void AddUpgrade(UpgradeCard card)
@@ -44,6 +51,14 @@ namespace Vertigo
             if (node.IsValid())
             {
                 AddChild(node);
+            }
+
+            for (int i = 0; i < UpgradePool.Count; i++)
+            {
+                if (i == UpgradePool.IndexOf(card))
+                {
+                    UpgradeStacks[i] += 1;
+                }
             }
         }
     }

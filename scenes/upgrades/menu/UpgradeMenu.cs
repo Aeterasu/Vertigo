@@ -59,7 +59,7 @@ namespace Vertigo
                             _currentButton = button;
 
                             _upgradeNameLabel.Visible = true;
-                            _upgradeNameLabel.Text = Tr(button.UpgradeCard.NameKey);
+                            _upgradeNameLabel.Text = $"{Tr(button.UpgradeCard.NameKey)} {RomanNumerals.IntToRoman(button.Stack)}";
 
                             _upgradeDescriptionLabel.Visible = true;
                             _upgradeDescriptionLabel.Text = Tr(button.UpgradeCard.DescriptionKey);
@@ -188,6 +188,14 @@ namespace Vertigo
                     if (pool.Count <= 0)
                     {
                         pool = new List<UpgradeCard>(upgradeManager.UpgradePool);
+                    }
+
+                    for (int i = 0; i < upgradeManager.UpgradePool.Count; i++)
+                    {
+                        if (i == upgradeManager.UpgradePool.IndexOf(button.UpgradeCard))
+                        {
+                            button.Stack = upgradeManager.UpgradeStacks[i];
+                        }
                     }
                 }
             }
