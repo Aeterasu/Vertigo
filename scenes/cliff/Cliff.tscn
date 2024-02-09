@@ -34,6 +34,7 @@ unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.376471 )
 position = Vector2( 240, -28 )
 amount = 48
+lifetime = 0.5
 texture = ExtResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 240, 1 )

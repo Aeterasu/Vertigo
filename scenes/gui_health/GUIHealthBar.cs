@@ -11,6 +11,7 @@ namespace Vertigo
         [Export] private int _targetHp = 1;
         [Export] private float _offset = 14f;
         [Export] private float _bigHeartOffset = 22f;
+        [Export] private int _textThreshold = 6;
 
         private int _currentHp = 0;
 
@@ -18,12 +19,16 @@ namespace Vertigo
 
         private List<Control> _hearts = new List<Control>();
 
+        private Label _label;
+
         private Player _player;
         private HealthComponent _healthComponent;
 
         public override void _Ready()
         {
             base._Ready();
+
+            _label = GetNode<Label>("Label");
 
             _player = GetNodeOrNull<Player>("%Player");
 
@@ -42,7 +47,18 @@ namespace Vertigo
                 _targetHp = _healthComponent.Health;
             }
 
-            if (_currentHp < _targetHp)
+            if (_targetHp > _textThreshold)
+            {
+                _label.Text = $"+{_targetHp - _textThreshold}";
+                _label.RectPosition = Vector2.Right * _currentOffset + Vector2.Right * 2 + Vector2.Down * 2;
+                _label.Visible = true;
+            }
+            else
+            {
+                _label.Visible = false;
+            }
+
+            if (_currentHp < _targetHp && _currentHp < _textThreshold)
             {
                 if (_currentHp > 0)
                 {
@@ -63,7 +79,7 @@ namespace Vertigo
                     CallDeferred("add_child", bigHeart);                    
                 }
             }
-            else if (_currentHp > _targetHp && _targetHp >= 0)
+            else if (_currentHp > _targetHp && _targetHp >= 0 && _targetHp < _textThreshold)
             {
                 var heart = _hearts[_currentHp - 1];
                 
