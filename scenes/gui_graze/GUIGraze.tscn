@@ -1,0 +1,221 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/gui_graze/GUIGraze.cs" type="Script" id=2]
+[ext_resource path="res://assets/textures/fx/sprite_fx_flash_big.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("RotationPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RotationPivot/Pivot/LabelPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RotationPivot/Pivot/LabelPivot/GhostPivot1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RotationPivot/Pivot/LabelPivot/GhostPivot2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 2 ), Vector2( 3, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RotationPivot:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RotationPivot/Pivot/LabelPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, 2 ), Vector2( 0, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RotationPivot/Pivot/LabelPivot/GhostPivot1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 2, 0 ), Vector2( -8, 0 ), Vector2( 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RotationPivot/Pivot/LabelPivot/GhostPivot2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -2, 0 ), Vector2( 8, 0 ), Vector2( -2, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RotationPivot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -6.0, 6.0, -6.0, 6.0, -6.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RotationPivot:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ) ]
+}
+
+[node name="GUIGraze" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="RotationPivot" type="Node2D" parent="."]
+visible = false
+
+[node name="Pivot" type="Node2D" parent="RotationPivot"]
+position = Vector2( -24, -6 )
+
+[node name="LabelPivot" type="Node2D" parent="RotationPivot/Pivot"]
+
+[node name="Label" type="Label" parent="RotationPivot/Pivot/LabelPivot"]
+anchor_right = 0.104
+anchor_bottom = 0.059
+margin_top = -2.0
+margin_right = 50.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "GRAZE!"
+
+[node name="GhostPivot1" type="Node2D" parent="RotationPivot/Pivot/LabelPivot"]
+show_behind_parent = true
+
+[node name="Ghost" type="Label" parent="RotationPivot/Pivot/LabelPivot/GhostPivot1"]
+modulate = Color( 0.596078, 0.376471, 1, 1 )
+show_behind_parent = true
+anchor_right = 0.104
+anchor_bottom = 0.059
+margin_top = -2.0
+margin_right = 50.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "GRAZE!"
+
+[node name="GhostPivot2" type="Node2D" parent="RotationPivot/Pivot/LabelPivot"]
+show_behind_parent = true
+
+[node name="Ghost" type="Label" parent="RotationPivot/Pivot/LabelPivot/GhostPivot2"]
+modulate = Color( 0.596078, 0.376471, 1, 1 )
+show_behind_parent = true
+anchor_right = 0.104
+anchor_bottom = 0.059
+margin_top = -2.0
+margin_right = 50.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "GRAZE!"
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 2 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.1
+playback_speed = 1.6
+anims/Appear = SubResource( 3 )
+anims/Idle = SubResource( 2 )
