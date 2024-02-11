@@ -31,6 +31,8 @@ namespace Vertigo
         {
             base._Ready();
 
+            AddChild(_spawnTimer);
+
             _timeManager = GetNodeOrNull<TimeManager>("%TimeManager");
 
             if (_timeManager.IsValid())
@@ -46,8 +48,6 @@ namespace Vertigo
             if (_timeManager.GetPersistentTimer >= _canOnlySpawnAfter && !_init)
             {
                 _spawnPoints = GetSpawnPoints();
-
-                AddChild(_spawnTimer);
 
                 _spawnTimer.WaitTime = _spawnRate;
                 _spawnTimer.Connect("timeout", this, "OnSquareSpawnTimeout");

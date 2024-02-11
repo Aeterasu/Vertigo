@@ -50,23 +50,6 @@ namespace Vertigo
                 _cpuParticle2D.Emitting = false;
             }
 
-            if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold && !_player.IsDead)
-            {
-                var experienceComponent = _player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
-
-                if (experienceComponent.IsValid())
-                {
-                    experienceComponent.GrantExp(_worth);
-                }
-
-                if (Game.Instance.IsValid())
-                {
-                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0, 1);
-                }
-
-                this.SafeQueueFree();
-            }
-
             if (_startupDuration > 0)
             {
                 _startupDuration -= delta;
@@ -83,6 +66,23 @@ namespace Vertigo
             _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9 * delta);
 
             GlobalPosition += GlobalPosition.DirectionTo(_player.GlobalPosition) * _currentSpeed * delta;
+
+            if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold && !_player.IsDead)
+            {
+                var experienceComponent = _player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
+
+                if (experienceComponent.IsValid())
+                {
+                    experienceComponent.GrantExp(_worth);
+                }
+
+                if (Game.Instance.IsValid())
+                {
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0, 1);
+                }
+
+                this.SafeQueueFree();
+            }
         }
     }
 }

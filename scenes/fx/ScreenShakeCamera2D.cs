@@ -17,7 +17,7 @@ namespace Vertigo
 
             Offset = new Vector2(x, y);
 
-            _force = Mathf.Lerp(_force, 0f, _shakeFalloff * delta);
+            _force = Mathf.Lerp(_force, 0f, _shakeFalloff * (delta / Engine.TimeScale));
         }
 
         public void AddShake(float amount)

@@ -92,6 +92,8 @@ namespace Vertigo
 
         public bool IsDead { get => _healthComponent.IfValid().IsDead; }
 
+        public event Action OnPlayerHit;
+
         public override void _Ready()
         {
             base._Ready();
@@ -190,7 +192,7 @@ namespace Vertigo
 
             _knockbackX = Mathf.Lerp(_knockbackX, 0f, _knockbackFalloff * delta);
 
-            Position += new Vector2(_velocityX, _velocityY) + new Vector2(_knockbackX, 0f);
+            Position += (new Vector2(_velocityX, _velocityY) + new Vector2(_knockbackX, 0f)) * delta;
 
             if (_boundaryType == PlayerBoundaryType.WRAP_AROUND)
             {
@@ -233,6 +235,8 @@ namespace Vertigo
                 _healthComponent.DealDamage();
 
                 Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(6f);
+
+                OnPlayerHit?.Invoke();
                 
                 if (_healthComponent.Health > 0)
                 {

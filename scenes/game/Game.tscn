@@ -40,6 +40,8 @@ script = ExtResource( 4 )
 UpgradeMenuScene = ExtResource( 22 )
 DiamondScene = ExtResource( 21 )
 ConvergenceProjectileScene = ExtResource( 17 )
+OnHitSlowMotionRatio = 0.05
+OnHitSlowMotionDuration = 2.0
 GemPickupSound = ExtResource( 26 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]

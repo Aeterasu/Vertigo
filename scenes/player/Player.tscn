@@ -130,9 +130,10 @@ radius = 5.0
 [node name="Player" type="Area2D"]
 collision_mask = 6
 script = ExtResource( 2 )
-_gravity = 5.0
-_horizontalSpeed = 2.0
-_knockbackFalloff = 4.0
+_gravity = 294.118
+_horizontalSpeed = 117.647
+_knockbackFalloff = 2.0
+_verticalStallFalloff = 15.0
 _boundaryRight = 489.0
 _onHitImmunity = 1.5
 _onHitImmunityFlashRate = 0.08
@@ -162,7 +163,7 @@ shape = SubResource( 1 )
 unique_name_in_owner = true
 script = ExtResource( 3 )
 VerticalStall = 0.18
-HorizontalKnockback = -1.4
+HorizontalKnockback = -43.75
 ScreenShakeStrength = 1.25
 _attackScene = ExtResource( 4 )
 _rateOfFire = 0.18
@@ -170,6 +171,7 @@ _shotAudio = ExtResource( 9 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
+_health = 64
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true

@@ -17,6 +17,9 @@ namespace Vertigo
         [Export] public PackedScene DiamondScene { get; private set; }
         [Export] public PackedScene ConvergenceProjectileScene { get; private set; }
 
+        [Export] public float OnHitSlowMotionRatio { get; private set; } = 0.2f;
+        [Export] public float OnHitSlowMotionDuration { get; private set; } = 1f;
+
         [Export] public AudioStream GemPickupSound { get; private set; }
 
         private Player _player;
@@ -28,6 +31,10 @@ namespace Vertigo
         private TimeManager _timeManager;
 
         private UpgradeManager _upgradeManager;
+
+        public float OnHitSlowMotionTimeLeft { get; private set; } = 0f;
+        public float CurrentOnHitSlowMotionRatio { get; private set; } = 1f;
+        public bool IsInOnHitSlowMotion { get; private set; } = false;
 
         public float RopeTopPosition { get; private set; }
         public float RopeBottomPosition { get; private set; }
@@ -51,6 +58,7 @@ namespace Vertigo
             _player = GetNode<Player>("%Player");
             _playerExperienceComponent = _player.GetNode<ExperienceComponent>("%ExperienceComponent");
             _playerExperienceComponent.OnLevelUp += OnPlayerLevelUp;
+            _player.OnPlayerHit += OnPlayerHit;
 
             ScreenShakeCamera2D = GetNodeOrNull<ScreenShakeCamera2D>("%ScreenShakeCamera2D");
 
@@ -77,6 +85,10 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            HandleOnHitSlowMotion(delta);
+
+            Engine.TimeScale = State == GameState.GAME ? CurrentOnHitSlowMotionRatio : 1f;
         }
 
         public override void _Process(float delta)
@@ -95,6 +107,27 @@ namespace Vertigo
         private void OnCountdownFinished()
         {
             SetStateToGame();
+        }
+
+        private void HandleOnHitSlowMotion(float delta)
+        {
+            OnHitSlowMotionTimeLeft = Mathf.Max(OnHitSlowMotionTimeLeft - (delta / Engine.TimeScale), 0f);
+
+            IsInOnHitSlowMotion = OnHitSlowMotionTimeLeft > 0f;
+
+            if (IsInOnHitSlowMotion)
+            {
+                CurrentOnHitSlowMotionRatio = Mathf.Lerp(CurrentOnHitSlowMotionRatio, OnHitSlowMotionRatio, 5 * (delta / Engine.TimeScale));
+            }
+            else
+            {
+                CurrentOnHitSlowMotionRatio = Mathf.Lerp(CurrentOnHitSlowMotionRatio, 1f, 5 * (delta / Engine.TimeScale));
+            }
+        }
+
+        private void OnPlayerHit()
+        {
+            OnHitSlowMotionTimeLeft = OnHitSlowMotionDuration;
         }
 
         private void OnPlayerLevelUp(ExperienceComponent exp)
