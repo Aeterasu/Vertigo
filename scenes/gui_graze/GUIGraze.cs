@@ -13,6 +13,8 @@ namespace Vertigo
 
         private Tween _tween = new Tween();
 
+        private CPUParticles2D _cpuParticles2D;
+
         private Player _player;
 
         public bool IsGrazing
@@ -48,6 +50,8 @@ namespace Vertigo
             _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
 
             AddChild(_tween);
+
+            _cpuParticles2D = GetNode<CPUParticles2D>("CPUParticles2D");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -57,9 +61,8 @@ namespace Vertigo
             if (_player.IsValid())
             {
                 IsGrazing = _player.IsGrazing;
+                _cpuParticles2D.Emitting = _player.IsGrazing;
             }
-
-            GD.Print(IsGrazing);
         }
 
         public void OnAnimationFinished(string animName)

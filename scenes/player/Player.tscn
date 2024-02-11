@@ -134,6 +134,8 @@ _gravity = 5.0
 _horizontalSpeed = 2.0
 _knockbackFalloff = 4.0
 _boundaryRight = 489.0
+_onHitImmunity = 1.5
+_onHitImmunityFlashRate = 0.08
 
 [node name="SpritePivot" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -168,7 +170,6 @@ _shotAudio = ExtResource( 9 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
-_healthLimit = 8
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true

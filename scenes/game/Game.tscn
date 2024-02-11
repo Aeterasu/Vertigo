@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://scenes/fx/SpiralDrunkNode2D.cs" type="Script" id=24]
 [ext_resource path="res://scenes/hazards/arrow/ArrowTelegraph.tscn" type="PackedScene" id=25]
 [ext_resource path="res://assets/audio/sfx_gem_pickup.wav" type="AudioStream" id=26]
-[ext_resource path="res://resources/upgrade_cards/Passion.tres" type="Resource" id=27]
 [ext_resource path="res://scenes/gui_graze/GUIGraze.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
@@ -123,7 +122,6 @@ position = Vector2( 384, 0 )
 script = ExtResource( 8 )
 
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
-UpgradePool = [ ExtResource( 27 ) ]
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 unique_name_in_owner = true

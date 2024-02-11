@@ -30,6 +30,9 @@ namespace Vertigo
         [Export] private readonly float _boundaryRight = 649f;
 
         [Export(PropertyHint.Range, "0, 32")] private readonly float _onHitImmunity = 1f;
+        [Export(PropertyHint.Range, "0, 1")] private readonly float _onHitImmunityFlashRate = 0.4f;
+        private float _onHitImmunityFlashCooldown = 0f;
+        private bool _isFlashing = true;
 
         private GravityMode _gravityMode = GravityMode.DOWNWARDS;
 
@@ -84,6 +87,9 @@ namespace Vertigo
         public float ImmunityTimer { get; set; } = 0f;
         public bool IsImmune { get => ImmunityTimer > 0f; }
 
+        public float OnHitImmunityTimer { get; set; } = 0f;
+        public bool IsOnHitImmune { get => OnHitImmunityTimer > 0f; }
+
         public bool IsDead { get => _healthComponent.IfValid().IsDead; }
 
         public override void _Ready()
@@ -119,6 +125,7 @@ namespace Vertigo
             _spritePivot.Scale = _spritePivot.Scale.LinearInterpolate(new Vector2(_directionX, 1f), 10f * delta);
 
             ImmunityTimer = Mathf.Max(ImmunityTimer - delta, 0f);
+            OnHitImmunityTimer = Mathf.Max(OnHitImmunityTimer - delta, 0f);
 
             HandleInput();
 
@@ -127,6 +134,8 @@ namespace Vertigo
             HandleGraze();
 
             HandleImmunityBubble();
+
+            HandleOnHitImmunityFlash(delta);
         }
 
         private void HandleInput()
@@ -219,7 +228,7 @@ namespace Vertigo
                 }
             }
 
-            if (area is Hazard && !IsImmune && !_healthComponent.IsDead)
+            if (area is Hazard && !IsImmune && !IsOnHitImmune && !_healthComponent.IsDead)
             {
                 _healthComponent.DealDamage();
 
@@ -227,7 +236,7 @@ namespace Vertigo
                 
                 if (_healthComponent.Health > 0)
                 {
-                    ImmunityTimer += _onHitImmunity;
+                    OnHitImmunityTimer += _onHitImmunity;
                 }
 
                 if (area is Square)
@@ -285,6 +294,27 @@ namespace Vertigo
             {
                 _immunityBubble.PlayFastFlashAnimation();
             }
+        }
+
+        private void HandleOnHitImmunityFlash(float delta)
+        {
+            if (!IsOnHitImmune)
+            {
+                _spritePivot.Visible = true;
+                _onHitImmunityFlashCooldown = 0f;
+                _isFlashing = false;
+                return;
+            }
+
+            _onHitImmunityFlashCooldown -= delta;
+
+            if (_onHitImmunityFlashCooldown <= 0)
+            {
+                _onHitImmunityFlashCooldown = _onHitImmunityFlashRate;
+                _isFlashing = !_isFlashing;
+            }
+
+            _spritePivot.Visible = _isFlashing;
         }
     }
 }

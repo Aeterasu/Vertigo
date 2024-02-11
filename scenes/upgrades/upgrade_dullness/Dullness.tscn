@@ -4,5 +4,5 @@
 
 [node name="Dullness" type="Node"]
 script = ExtResource( 1 )
-_initialSlowdown = 0.3
-_slowdownPerStack = 0.15
+_initialSlowdown = 0.42
+_slowdownPerStack = 0.23

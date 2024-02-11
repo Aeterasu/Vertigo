@@ -10,6 +10,9 @@ namespace Vertigo
 
         private TextureProgress _powerChargeBar;
 
+        private CPUParticles2D _grazeParticles1;
+        private CPUParticles2D _grazeParticles2;
+
         public override void _Ready()
         {
             base._Ready();
@@ -24,6 +27,9 @@ namespace Vertigo
             _playerPowerComponent = _player.GetNodeOrNull<PowerComponent>("%PowerComponent");
 
             _powerChargeBar = GetNode<TextureProgress>("PowerChargeBar");
+
+            _grazeParticles1 = GetNode<CPUParticles2D>("GrazeParticles1");
+            _grazeParticles2 = GetNode<CPUParticles2D>("GrazeParticles2");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -42,6 +48,9 @@ namespace Vertigo
             _powerChargeBar.MinValue = MinValue;
             _powerChargeBar.MaxValue = _playerPowerComponent.MaxPower;
             _powerChargeBar.Value = _playerPowerComponent.CurrentPower + _playerPowerComponent.CurrentRegen;
+
+            _grazeParticles1.Emitting = _playerPowerComponent.IsGrazing;
+            _grazeParticles2.Emitting = _playerPowerComponent.IsGrazing;
         }
     }
 }
