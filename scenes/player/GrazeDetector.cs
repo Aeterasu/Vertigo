@@ -6,8 +6,11 @@ namespace Vertigo
     public class GrazeDetector : Area2D
     {
         [Export] private readonly int _grazeTickRate = 2;
+        [Export] private readonly float _lingeringGrazeDuration = 0.3f;
 
         private int _tick = 0;
+
+        private float _lingeringGrazeTimeLeft = 0f;
 
         public bool IsGrazing { get; private set; } = false;
 
@@ -22,12 +25,16 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            _lingeringGrazeTimeLeft = Mathf.Max(_lingeringGrazeTimeLeft - delta, 0f);
+
             _tick -= 1;
 
             if (_tick <= 0)
             {
                 UpdateGraze();
             }
+
+            IsGrazing = _lingeringGrazeTimeLeft > 0f;
         }
 
         private void UpdateGraze()
@@ -38,7 +45,7 @@ namespace Vertigo
             {
                 if (area is GrazeArea)
                 {
-                    IsGrazing = true;
+                    _lingeringGrazeTimeLeft = _lingeringGrazeDuration;
                     return;
                 }
             }
