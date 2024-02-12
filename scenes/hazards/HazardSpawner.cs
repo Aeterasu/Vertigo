@@ -50,10 +50,16 @@ namespace Vertigo
                 _spawnPoints = GetSpawnPoints();
 
                 _spawnTimer.WaitTime = _spawnRate;
-                _spawnTimer.Connect("timeout", this, "OnSquareSpawnTimeout");
+                _spawnTimer.OneShot = true;
                 _spawnTimer.Start();
 
                 _init = true;
+            }
+
+            if (_spawnTimer.IsStopped())
+            {
+                OnSquareSpawnTimeout();
+                _spawnTimer.Start();
             }
         }
 

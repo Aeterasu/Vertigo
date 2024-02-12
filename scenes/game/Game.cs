@@ -80,6 +80,8 @@ namespace Vertigo
             {
                 _countdown.OnCountdownFinished += OnCountdownFinished;
             }
+
+            OnHitSlowMotionTimeLeft = 0;
         }
 
         public override void _PhysicsProcess(float delta)

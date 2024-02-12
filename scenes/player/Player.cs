@@ -100,8 +100,6 @@ namespace Vertigo
 
             AddToGroup(GROUP_PLAYER);
 
-            Connect("area_entered", this, "OnAreaEntered");
-
             _playerGun = GetNode<PlayerGun>("%PlayerGun");
             _playerGun.OnFired += OnGunFired;
 
@@ -128,6 +126,8 @@ namespace Vertigo
 
             ImmunityTimer = Mathf.Max(ImmunityTimer - delta, 0f);
             OnHitImmunityTimer = Mathf.Max(OnHitImmunityTimer - delta, 0f);
+
+            HandleAreas();
 
             HandleInput();
 
@@ -213,39 +213,42 @@ namespace Vertigo
             _verticalStallTimer -= delta;
         }
 
-        private void OnAreaEntered(Area2D area)
+        private void HandleAreas()
         {
-            if (area is JumpRope)
+            foreach (Area2D area in GetOverlappingAreas())
             {
-                var jumpRope = area as JumpRope;
-
-                if (jumpRope.GravityMode != GravityMode)
+                if (area is JumpRope)
                 {
-                    GravityMode = jumpRope.GravityMode;
-                    _velocityY *= _springCoeff;
+                    var jumpRope = area as JumpRope;
 
-                    jumpRope.LastPlayerPosition = GlobalPosition;
-                    jumpRope.AnimateSmoothPath(Position.x, -(float)jumpRope.GravityMode);
-                    jumpRope.OnJumpRopeActivated?.Invoke(jumpRope);
-                }
-            }
+                    if (jumpRope.GravityMode != GravityMode)
+                    {
+                        GravityMode = jumpRope.GravityMode;
+                        _velocityY *= _springCoeff;
 
-            if (area is Hazard && !IsImmune && !IsOnHitImmune && !_healthComponent.IsDead)
-            {
-                _healthComponent.DealDamage();
-
-                Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(6f);
-
-                OnPlayerHit?.Invoke();
-                
-                if (_healthComponent.Health > 0)
-                {
-                    OnHitImmunityTimer += _onHitImmunity;
+                        jumpRope.LastPlayerPosition = GlobalPosition;
+                        jumpRope.AnimateSmoothPath(Position.x, -(float)jumpRope.GravityMode);
+                        jumpRope.OnJumpRopeActivated?.Invoke(jumpRope);
+                    }
                 }
 
-                if (area is Square)
+                if (area is Hazard && !IsImmune && !IsOnHitImmune && !_healthComponent.IsDead)
                 {
-                    (area as Square).Destroy();
+                    _healthComponent.DealDamage();
+
+                    Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(6f);
+
+                    OnPlayerHit?.Invoke();
+                    
+                    if (_healthComponent.Health > 0)
+                    {
+                        OnHitImmunityTimer += _onHitImmunity;
+                    }
+
+                    if (area is Square)
+                    {
+                        (area as Square).Destroy();
+                    }
                 }
             }
         }

@@ -211,6 +211,20 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector2( 2, 0.5 ), Vector2( 0, 2 ) ]
 }
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnDeletionFinished"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -276,14 +290,12 @@ scale_amount_curve = SubResource( 1 )
 
 [node name="BrokenLeft" type="Sprite" parent="."]
 visible = false
-position = Vector2( 6, 8 )
-scale = Vector2( 0.400001, 0.400001 )
+position = Vector2( 2, 6 )
 texture = ExtResource( 8 )
 
 [node name="BrokenRight" type="Sprite" parent="."]
 visible = false
-position = Vector2( 11, 8 )
-scale = Vector2( 0.400001, 0.400001 )
+position = Vector2( 15, 10 )
 texture = ExtResource( 7 )
 
 [node name="Flash" type="Sprite" parent="."]
@@ -294,7 +306,7 @@ texture = ExtResource( 4 )
 [node name="Heartbeat" type="Sprite" parent="."]
 visible = false
 position = Vector2( 8, 8 )
-scale = Vector2( 2, 0.5 )
+scale = Vector2( 1e-05, 2 )
 texture = ExtResource( 6 )
 offset = Vector2( 2, 0 )
 

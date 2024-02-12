@@ -13,8 +13,6 @@ namespace Vertigo
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _animationPlayer.Play("Appear");
-
-            _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
         }
 
         public void Delete()
@@ -22,12 +20,9 @@ namespace Vertigo
             _animationPlayer.Play("Deletion");
         }
 
-        private void OnAnimationFinished(string animation)
+        public void OnDeletionFinished()
         {
-            if (animation == "Deletion")
-            {
-                this.SafeQueueFree();
-            }
+            this.SafeQueueFree();
         }
     }
 }

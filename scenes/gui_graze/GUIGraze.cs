@@ -47,7 +47,6 @@ namespace Vertigo
             Modulate = new Color(1, 1, 1, 0);
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-            _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
 
             AddChild(_tween);
 
@@ -65,12 +64,9 @@ namespace Vertigo
             }
         }
 
-        public void OnAnimationFinished(string animName)
+        public void OnAppearAnimationFinished()
         {
-            if (animName == "Appear")
-            {
-                _animationPlayer.Play("Idle");
-            }
+            _animationPlayer.Play("Idle");
         }
     }
 }

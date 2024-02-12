@@ -50,23 +50,6 @@ namespace Vertigo
                 _cpuParticle2D.Emitting = false;
             }
 
-            if (_startupDuration > 0)
-            {
-                _startupDuration -= delta;
-                GlobalPosition += _randomDirection * _speed * 1.1f * delta;
-                _randomDirection = _randomDirection.LinearInterpolate(Vector2.Zero, 3 * delta);
-                return;
-            }
-
-            if (_player == null)
-            {
-                return;
-            }
-
-            _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9 * delta);
-
-            GlobalPosition += GlobalPosition.DirectionTo(_player.GlobalPosition) * _currentSpeed * delta;
-
             if (GlobalPosition.DistanceTo(_player.GlobalPosition) <= _distanceThreshold && !_player.IsDead)
             {
                 var experienceComponent = _player.GetNodeOrNull<ExperienceComponent>("ExperienceComponent");
@@ -82,7 +65,24 @@ namespace Vertigo
                 }
 
                 this.SafeQueueFree();
+            }            
+
+            if (_startupDuration > 0)
+            {
+                _startupDuration -= delta;
+                GlobalPosition += _randomDirection * _speed * 1.1f * delta;
+                _randomDirection = _randomDirection.LinearInterpolate(Vector2.Zero, 3 * delta);
+                return;
             }
+
+            if (!_player.IsValid())
+            {
+                return;
+            }
+
+            _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9 * delta);
+
+            GlobalPosition += GlobalPosition.DirectionTo(_player.GlobalPosition) * _currentSpeed * delta;
         }
     }
 }

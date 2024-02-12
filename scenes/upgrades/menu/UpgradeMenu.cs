@@ -89,7 +89,6 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _animationPlayer.Play("Appear");
             _inputDelay = _animationPlayer.CurrentAnimationLength;
-            _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
 
             if (UpgradeManager.Instance.IsValid())
             {
@@ -201,7 +200,7 @@ namespace Vertigo
             }
         }
 
-        private void OnAnimationFinished(string animName)
+        public void OnAnimationFinished()
         {
             _disableInput = false;
         }

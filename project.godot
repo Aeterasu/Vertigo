@@ -135,9 +135,14 @@ restart={
 
 translations=PoolStringArray( "res://assets/localization/vertigo_localization_data.en.translation", "res://assets/localization/vertigo_localization_data.ru.translation" )
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [mono]
 
 project/assembly_name="Vertigo"
+profiler/enabled=true
 
 [physics]
 

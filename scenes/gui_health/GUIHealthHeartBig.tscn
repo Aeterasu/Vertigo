@@ -225,6 +225,20 @@ tracks/11/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnDeletionFinished"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -266,16 +280,17 @@ anims/Idle = SubResource( 2 )
 
 [node name="BrokenLeft" type="Sprite" parent="."]
 visible = false
-position = Vector2( 7, 10 )
+position = Vector2( 0, 7 )
 texture = ExtResource( 6 )
 
 [node name="BrokenRight" type="Sprite" parent="."]
 visible = false
-position = Vector2( 16, 11 )
+position = Vector2( 23, 14 )
 texture = ExtResource( 7 )
 
 [node name="Heartbeat" type="Sprite" parent="."]
 visible = false
 position = Vector2( 10, 11 )
+scale = Vector2( 1e-05, 4 )
 texture = ExtResource( 5 )
 offset = Vector2( 2, 0 )

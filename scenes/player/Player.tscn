@@ -171,7 +171,6 @@ _shotAudio = ExtResource( 9 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
-_health = 64
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true

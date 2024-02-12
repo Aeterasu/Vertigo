@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace Vertigo
 {
@@ -17,6 +18,9 @@ namespace Vertigo
         [Export] private bool _bounce = false; // squares will bounce from each other
         [Export] private bool _rotateSprite = true;
 
+        [Export] private readonly int _collisionListFlushTickrate = 8;
+        private int _collisionListFlushTicks = 0;
+
         private HealthComponent _healthComponent;
         private HurtboxComponent _hurtboxComponent;
 
@@ -25,6 +29,8 @@ namespace Vertigo
         private GrazeArea _grazeArea;
 
         private Sprite _sprite;
+
+        private List<Area2D> _collisionList = new List<Area2D>();
 
         public float Direction
         {
@@ -50,8 +56,6 @@ namespace Vertigo
             base._Ready();
 
             AddToGroup(GROUP_SQUARE);
-            
-            Connect("area_entered", this, "OnAreaEntered");
 
             _healthComponent = GetNode<HealthComponent>("%HealthComponent");
             _healthComponent.OnHealthDepleted += OnHealthDepleted;
@@ -82,6 +86,25 @@ namespace Vertigo
                 OnLeftThePlayArea?.Invoke(this);
                 this.SafeQueueFree();
             }
+
+            var areas = GetOverlappingAreas();
+
+            foreach (Area2D area in areas)
+            {
+                if (area is Hazard && _bounce && !_collisionList.Contains(area))
+                {
+                    Direction *= -1f;
+                    _collisionList.Add(area);
+                }
+            }
+
+            foreach (Area2D area in new List<Area2D>(_collisionList))
+            {
+                if (!areas.Contains(area))
+                {
+                    _collisionList.Remove(area);
+                }
+            }
         }
 
         public override void _Process(float delta)
@@ -98,14 +121,6 @@ namespace Vertigo
             if (_grazeArea.AffinityIncrease > 1f)
             {
                 DrawArc(Vector2.Zero, _grazeArea.CircleShape2D.Radius * _grazeArea.Scale.Length(), 0, Mathf.Tau, 24, new Color(1, 1, 1, 0.35f), 1f);
-            }
-        }
-
-        private void OnAreaEntered(Area2D area)
-        {
-            if (area is Hazard && _bounce)
-            {
-                Direction *= -1f;
             }
         }
 

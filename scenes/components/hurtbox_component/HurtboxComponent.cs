@@ -16,20 +16,25 @@ namespace Vertigo
             base._Ready();
 
             this.UpdateHurtboxCollisionLayerBits(_affiliation);
-
-            Connect("area_entered", this, "OnAreaEntered");
         }
 
-        private void OnAreaEntered(Area2D area)
+        public override void _PhysicsProcess(float delta)
         {
+            base._PhysicsProcess(delta);
+
             if (Immune)
             {
                 return;
             }
 
-            if (area is Projectile)
+            var areas = GetOverlappingAreas();
+
+            foreach (Area2D area in areas)
             {
-                OnProjectileCollide?.Invoke(area as Projectile);
+                if (area is Projectile)
+                {
+                    OnProjectileCollide?.Invoke(area as Projectile);
+                }
             }
         }
     }

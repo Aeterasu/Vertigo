@@ -86,6 +86,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnAppearAnimationFinished"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -170,13 +184,11 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="RotationPivot" type="Node2D" parent="."]
-rotation = -0.10472
 
 [node name="Pivot" type="Node2D" parent="RotationPivot"]
 position = Vector2( -24, -6 )
 
 [node name="LabelPivot" type="Node2D" parent="RotationPivot/Pivot"]
-position = Vector2( 0, -2 )
 
 [node name="Label" type="Label" parent="RotationPivot/Pivot/LabelPivot"]
 anchor_right = 0.104
@@ -189,7 +201,6 @@ text = "GRAZE!"
 
 [node name="GhostPivot1" type="Node2D" parent="RotationPivot/Pivot/LabelPivot"]
 show_behind_parent = true
-position = Vector2( 2, 0 )
 
 [node name="Ghost" type="Label" parent="RotationPivot/Pivot/LabelPivot/GhostPivot1"]
 modulate = Color( 0.596078, 0.376471, 1, 1 )
@@ -204,7 +215,6 @@ text = "GRAZE!"
 
 [node name="GhostPivot2" type="Node2D" parent="RotationPivot/Pivot/LabelPivot"]
 show_behind_parent = true
-position = Vector2( -2, 0 )
 
 [node name="Ghost" type="Label" parent="RotationPivot/Pivot/LabelPivot/GhostPivot2"]
 modulate = Color( 0.596078, 0.376471, 1, 1 )
