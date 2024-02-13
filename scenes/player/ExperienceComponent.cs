@@ -5,13 +5,16 @@ namespace Vertigo
 {
     public class ExperienceComponent : Node
     {
-        [Export] private float _baseTargetExp = 12f; // base exp required to lvl up from lvl 1 to 2
-        [Export] private float _targetExpCoeff = 1.5f; // by how much exp requirement increases with each level
+        [Export] private readonly float _baseTargetExp = 12f; // base exp required to lvl up from lvl 1 to 2
+        [Export] private readonly float _targetExpCoeff = 1.5f; // by how much exp requirement increases with each level
+        [Export] private readonly float _grazingExpGain = 1f;
 
         private float _currentExp = 0f;
         private float _targetExp = 0f;
 
         private int _level = 1;
+
+        private Player _player;
 
         public event Action<ExperienceComponent> OnExperienceGranted;
         public event Action<ExperienceComponent> OnLevelUp;
@@ -27,6 +30,21 @@ namespace Vertigo
             base._Ready();
 
             _targetExp = _baseTargetExp;
+
+            _player = GetParentOrNull<Player>();
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (_player.IsValid())
+            {
+                if (_player.IsGrazing)
+                {
+                    GrantExp(_grazingExpGain * delta);
+                }
+            }
         }
 
         public void GrantExp(float amount)

@@ -61,7 +61,7 @@ namespace Vertigo
 
                 if (Game.Instance.IsValid())
                 {
-                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0, 1);
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0f, 1f);
                 }
 
                 this.SafeQueueFree();
@@ -71,7 +71,7 @@ namespace Vertigo
             {
                 _startupDuration -= delta;
                 GlobalPosition += _randomDirection * _speed * 1.1f * delta;
-                _randomDirection = _randomDirection.LinearInterpolate(Vector2.Zero, 3 * delta);
+                _randomDirection = _randomDirection.LinearInterpolate(Vector2.Zero, 3f * delta);
                 return;
             }
 
@@ -80,7 +80,14 @@ namespace Vertigo
                 return;
             }
 
-            _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9 * delta);
+            if (_player.IsDead)
+            {
+                _currentSpeed = Mathf.Lerp(_currentSpeed, 0f, 9f * delta);
+            }
+            else
+            {
+                _currentSpeed = Mathf.Lerp(_currentSpeed, _speed, 9f * delta);
+            }
 
             GlobalPosition += GlobalPosition.DirectionTo(_player.GlobalPosition) * _currentSpeed * delta;
         }
