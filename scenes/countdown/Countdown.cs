@@ -6,8 +6,11 @@ namespace Vertigo
     public class Countdown : Control
     {
         [Export] private readonly float _animationFinishThreshold = 4.5f;
+        [Export] private readonly float _speedUpRatio = 3f;
 
         private AnimationPlayer _animationPlayer;
+
+        private float _ticks = 0;
 
         private bool _animLock = false;
 
@@ -26,10 +29,17 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            _ticks += delta;
+
             if (_animationPlayer.CurrentAnimationPosition >= _animationFinishThreshold && !_animLock)
             {
                 OnAnimationFinished("Countdown");
                 _animLock = true;
+            }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _animationPlayer.CurrentAnimationPosition < 3.6f && _ticks >= 0.3f)
+            {
+                _animationPlayer.PlaybackSpeed = _speedUpRatio;
             }
         }
 
