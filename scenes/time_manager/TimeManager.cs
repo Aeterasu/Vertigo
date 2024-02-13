@@ -10,9 +10,10 @@ namespace Vertigo
         [Export] private readonly float _rainThreshold = 25f;
         [Export] private readonly float _dizzynessThreshold = 45f;
         [Export] private readonly float _spiralDizzynessThreshold = 90f;
+        [Export] private readonly float _waveDizzynessThreshold = 120f;
 
         private float _timer = 0f; 
-        private float _persistentTimer = 0f;
+        private float _persistentTimer = 100f;
 
         private CPUParticles2D _rain;
         private bool _rainActivated = false;
@@ -22,6 +23,9 @@ namespace Vertigo
 
         private SpiralDrunkNode2D _spiralDizzyness;
         private bool _spiralDizzynessActivated = false;
+
+        private WaveScreenDistortion _waveDizzyness;
+        private bool _waveDizzynessActivated = false;
 
         public event Action OnDifficultyStepReached;
 
@@ -51,6 +55,7 @@ namespace Vertigo
 
             _dizzyness = GetNode<DrunkNode2D>("%DrunkNode2D");
             _spiralDizzyness = GetNode<SpiralDrunkNode2D>("%SpiralDrunkNode2D");
+            _waveDizzyness = GetNode<WaveScreenDistortion>("%WaveScreenDistortion");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -82,6 +87,12 @@ namespace Vertigo
             {
                 _spiralDizzyness.Enabled = true;
                 _spiralDizzynessActivated = true;
+            }
+
+            if (_persistentTimer >= _waveDizzynessThreshold && !_waveDizzynessActivated)
+            {
+                _waveDizzyness.Enabled = true;
+                _waveDizzynessActivated = true;
             }
         }
 
