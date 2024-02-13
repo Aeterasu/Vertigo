@@ -6,14 +6,14 @@ namespace Vertigo
 {
     public class HazardSpawner : Node
     {
-        [Export] private float _canOnlySpawnAfter = 15f;
-        [Export] private int _maxHazards = 16;
-        [Export] private PackedScene _scene;
+        [Export] private readonly float _canOnlySpawnAfter = 15f;
+        [Export] private readonly int _maxHazards = 16;
+        [Export] private readonly PackedScene _scene;
         [Export] private float _spawnRate = 5f;
-        [Export] private float _spawnRateDifficultyStep = 0.5f;
-        [Export] private float _spawnMinimalRate = 0.5f;
+        [Export] private readonly float _spawnRateDifficultyStep = 0.5f;
+        [Export] private readonly float _spawnMinimalRate = 0.5f;
         
-        private Timer _spawnTimer = new Timer();
+        private readonly Timer _spawnTimer = new Timer();
 
         private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
 

@@ -123,6 +123,78 @@ script = ExtResource( 8 )
 position = Vector2( 384, 0 )
 script = ExtResource( 8 )
 
+[node name="SpawnPoint5" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 128, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint6" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 160, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint7" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 192, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint8" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 224, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint9" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 256, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint10" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 288, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint11" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 320, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint12" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 352, 270 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint13" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 128, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint14" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 160, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint15" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 192, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint16" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 224, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint17" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 256, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint18" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 288, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint19" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 320, 0 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint20" type="Position2D" parent="GameLayer/ArrowSpawner"]
+position = Vector2( 352, 0 )
+script = ExtResource( 8 )
+
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]

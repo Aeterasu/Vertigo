@@ -4,22 +4,27 @@ using System.Collections.Generic;
 
 namespace Vertigo
 {
+    public enum HazardSpriteRotationMode
+    {
+        NONE,
+        SQUARE,
+        ARROW,
+    }
+
     public class Square : Hazard
     {
         public const string GROUP_SQUARE = "Square";
 
-        [Export] private float _speed = 16f;
-        [Export] private float _rotationSpeed = 32f;
+        [Export] private readonly float _speed = 16f;
+        [Export] private readonly float _rotationSpeed = 32f;
 
         [Export] private Vector2 _vectorDirection = Vector2.Right;
 
         [Export(PropertyHint.Range, "-1, 1, 1")] private float _direction = 1f;
 
-        [Export] private bool _bounce = false; // squares will bounce from each other
-        [Export] private bool _rotateSprite = true;
-
-        [Export] private readonly int _collisionListFlushTickrate = 8;
-        private int _collisionListFlushTicks = 0;
+        [Export] private readonly bool _bounce = false; // squares will bounce from each other
+        [Export] private readonly bool _rotateSprite = true;
+        [Export] private readonly HazardSpriteRotationMode _spriteRotationMode = HazardSpriteRotationMode.SQUARE;
 
         private HealthComponent _healthComponent;
         private HurtboxComponent _hurtboxComponent;
@@ -30,7 +35,7 @@ namespace Vertigo
 
         private Sprite _sprite;
 
-        private List<Area2D> _collisionList = new List<Area2D>();
+        private readonly List<Area2D> _collisionList = new List<Area2D>();
 
         public float Direction
         {
@@ -76,7 +81,17 @@ namespace Vertigo
 
             if (_rotateSprite)
             {
-                _sprite.RotationDegrees += _rotationSpeed * delta;
+                switch (_spriteRotationMode)
+                {
+                    case HazardSpriteRotationMode.NONE:
+                        break;
+                    case HazardSpriteRotationMode.SQUARE:
+                        _sprite.RotationDegrees += _rotationSpeed * delta;
+                        break;
+                    case HazardSpriteRotationMode.ARROW:
+                        _sprite.RotationDegrees = 90 * Direction;
+                        break;
+                }
             }
 
             Position += _vectorDirection * _speed * Direction * (1 / Slowdown) * delta;
