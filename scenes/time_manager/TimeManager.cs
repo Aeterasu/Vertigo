@@ -13,7 +13,7 @@ namespace Vertigo
         [Export] private readonly float _waveDizzynessThreshold = 120f;
 
         private float _timer = 0f; 
-        private float _persistentTimer = 100f;
+        private float _persistentTimer = 0f;
 
         private CPUParticles2D _rain;
         private bool _rainActivated = false;

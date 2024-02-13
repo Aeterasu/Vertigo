@@ -15,14 +15,14 @@ OPTIONS_TRAIL_EFFECT,Trail effects,Эффект шлейфа
 LANGUAGE_EN,English,Английский
 LANGUAGE_RU,Russian,Русский
 UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
-UPGRADE_DESCRIPTION_ABUNDANCY,Fire an additional projectile every other shot.,Дополнительный снаряд через каждый выстрел.
-UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Fire one more additional projectile every other shot.,Дополнительный снаряд через каждый выстрел.
+UPGRADE_DESCRIPTION_ABUNDANCY,Fire an additional projectile every second shot.,Дополнительный снаряд через каждый выстрел.
+UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Fire one more additional projectile every second shot.,Дополнительный снаряд через каждый выстрел.
 UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
 UPGRADE_DESCRIPTION_AEGIS,Become invulnerable for 6 seconds after ascending.,Неуязвимость на 6 секунд после восхождения.
 UPGRADE_STACK_DESCRIPTION_AEGIS,Prolong invulnerability period for 3 more seconds.,Дополнительные 3 секунды неуязвимости.
 UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
-UPGRADE_DESCRIPTION_AFFINITY,Increased graze areas.,Увеличенные зоны грации.
-UPGRADE_STACK_DESCRIPTION_AFFINITY,Further increased graze areas.,Еще сильнее увеличенные зоны грации.
+UPGRADE_DESCRIPTION_AFFINITY,Larger graze areas.,Увеличенные зоны грации.
+UPGRADE_STACK_DESCRIPTION_AFFINITY,Larger graze areas.,Еще сильнее увеличенные зоны грации.
 UPGRADE_NAME_DULLNESS,DULLNESS,РАВНОДУШИЕ
 UPGRADE_DESCRIPTION_DULLNESS,Slow down hazards on hit.,Замедление угроз при попадании.
 UPGRADE_STACK_DESCRIPTION_DULLNESS,Further slow down hazards on hit.,Замедление угроз при попадании.

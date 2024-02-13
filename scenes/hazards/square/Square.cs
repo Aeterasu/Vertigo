@@ -35,6 +35,8 @@ namespace Vertigo
 
         private Sprite _sprite;
 
+        private CPUParticles2D _slowdownFx;
+
         private readonly List<Area2D> _collisionList = new List<Area2D>();
 
         public float Direction
@@ -73,6 +75,13 @@ namespace Vertigo
             _grazeArea = GetNode<GrazeArea>("%GrazeArea");
 
             _sprite = GetNode<Sprite>("%Sprite");
+
+            _slowdownFx = GetNodeOrNull<CPUParticles2D>("SlowdownFx");
+
+            if (_slowdownFx.IsValid())
+            {
+                _slowdownFx.Emitting = false;
+            }
         }
 
         public override void _PhysicsProcess(float delta)
@@ -157,6 +166,11 @@ namespace Vertigo
             if (Dullness.Instance.IsValid())
             {
                 Slowdown += Dullness.Instance.TotalSlowdown - 1;
+                
+                if (_slowdownFx.IsValid())
+                {
+                    _slowdownFx.Emitting = true;
+                }
             }
         }
 
