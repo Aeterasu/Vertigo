@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Diagnostics;
 
 namespace Vertigo
 {
@@ -41,7 +40,9 @@ namespace Vertigo
             get => _persistentTimer;
         }
 
-        public Stopwatch Stopwatch { get; private set; } = new Stopwatch();
+        public float GetSecElapsed { get => _persistentTimer; }
+
+        public bool IsTimerStopped { get; private set; } = true;
 
         public static TimeManager Instance { get; private set; }
 
@@ -56,14 +57,23 @@ namespace Vertigo
             _dizzyness = GetNode<DrunkNode2D>("%DrunkNode2D");
             _spiralDizzyness = GetNode<SpiralDrunkNode2D>("%SpiralDrunkNode2D");
             _waveDizzyness = GetNode<WaveScreenDistortion>("%WaveScreenDistortion");
+
+            StartTimer();
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
 
-            _timer += delta;
-            _persistentTimer += delta;
+            if (!IsTimerStopped)
+            {
+                _timer += delta;
+                _persistentTimer += delta;
+            }
+            else
+            {
+
+            }
 
             if (_timer >= _difficultyStepThreshold)
             {
@@ -98,12 +108,12 @@ namespace Vertigo
 
         public void StartTimer()
         {
-            Stopwatch.Start();
+            IsTimerStopped = false;
         }
 
         public void StopTimer()
         {
-            Stopwatch.Stop();
+            IsTimerStopped = true;
         }
     }
 }

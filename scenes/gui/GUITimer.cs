@@ -27,8 +27,7 @@ namespace Vertigo
                 return;
             }
 
-            //_label.Text = _timeManager.Stopwatch.Elapsed.ToString("ss'.'ff");
-            double seconds = _timeManager.Stopwatch.Elapsed.TotalSeconds;
+            double seconds = _timeManager.GetSecElapsed;
             double secondsRounded = Math.Round(seconds);
             double milliseconds = Math.Floor((Math.Round(seconds, 2) - Math.Floor(seconds)) * 100);
 
