@@ -13,6 +13,8 @@ namespace Vertigo
         [Export] private readonly float _confirmAnimationOffset = 16f;
         [Export] private readonly float _discardAnimationDuration = 0.15f;
         [Export] private readonly float _discardAnimationOffset = -16f;
+        [Export] private readonly float _gradientTargetAlpha = 0.65f;
+        [Export] private readonly float _gradientAlphaChangeSpeed = 0.5f;
 
         private UpgradeCard _upgradeCard;
 
@@ -20,6 +22,9 @@ namespace Vertigo
 
         private Sprite _sprite;
         private Tween _tween = new Tween();
+
+        private Sprite _gradient;
+        private float _gradientAlpha = 0f;
 
         public int Id
         {
@@ -65,8 +70,25 @@ namespace Vertigo
             base._Ready();
 
             _sprite = GetNode<Sprite>("Sprite");
+            _gradient = GetNode<Sprite>("Gradient");
 
             AddChild(_tween);
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (IsFocused)
+            {
+                _gradientAlpha = Mathf.Min(_gradientAlpha + _gradientAlphaChangeSpeed * delta, _gradientTargetAlpha);
+            }
+            else
+            {
+                _gradientAlpha = Mathf.Max(_gradientAlpha - _gradientAlphaChangeSpeed * delta, 0f);
+            }
+
+            _gradient.Modulate = new Color(1f, 1f, 1f, _gradientAlpha);
         }
 
         public void Focus()

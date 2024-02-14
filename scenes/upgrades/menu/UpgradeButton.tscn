@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/upgrades/menu/UpgradeButton.cs" type="Script" id=1]
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_atlas.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.161125, 0.997442 )
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
+width = 42
+fill_from = Vector2( 0, 1 )
+fill_to = Vector2( 0, 0 )
 
 [node name="UpgradeButton" type="Control"]
 anchor_right = 1.0
@@ -13,6 +23,8 @@ margin_bottom = -126.0
 script = ExtResource( 1 )
 _confirmAnimationDuration = 0.3
 _confirmAnimationOffset = 24.0
+_gradientTargetAlpha = 0.8
+_gradientAlphaChangeSpeed = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -20,3 +32,9 @@ centered = false
 hframes = 6
 vframes = 2
 region_rect = Rect2( 0, 0, 42, 44 )
+
+[node name="Gradient" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 21, -28.5 )
+scale = Vector2( 1, 2.20313 )
+texture = SubResource( 2 )
