@@ -34,6 +34,7 @@ namespace Vertigo
         private CurrencyGenerator _currencyGenerator;
         
         private GrazeArea _grazeArea;
+        private GrazeVisual _grazeVisual;
 
         private Sprite _sprite;
 
@@ -75,6 +76,7 @@ namespace Vertigo
             _currencyGenerator = GetNode<CurrencyGenerator>("%CurrencyGenerator");
 
             _grazeArea = GetNode<GrazeArea>("%GrazeArea");
+            _grazeVisual = GetNodeOrNull<GrazeVisual>("GrazeVisual");
 
             _sprite = GetNode<Sprite>("%Sprite");
 
@@ -143,6 +145,20 @@ namespace Vertigo
                     _collisionList.Remove(area);
                 }
             }
+
+            if (_grazeVisual.IsValid())
+            {
+                if (_grazeArea.AffinityIncrease > 1f)
+                {
+                    _grazeVisual.TargetScale = _grazeArea.AffinityIncrease;
+                    _grazeVisual.TargetAlpha = 1f;
+                }
+                else
+                {
+                    _grazeVisual.TargetScale = 1f;
+                    _grazeVisual.TargetAlpha = 0.5f;
+                }
+            }
         }
 
         public override void _Process(float delta)
@@ -152,16 +168,6 @@ namespace Vertigo
             Update();
         }
 
-        public override void _Draw()
-        {
-            base._Draw();
-
-            if (_grazeArea.AffinityIncrease > 1f)
-            {
-                DrawArc(Vector2.Zero, _grazeArea.CircleShape2D.Radius * _grazeArea.Scale.Length(), 0, Mathf.Tau, 24, new Color(1, 1, 1, 0.35f), 1f);
-            }
-        }
-
         private void OnHealthDepleted()
         {
             OnDestroyed?.Invoke(this);
@@ -169,6 +175,7 @@ namespace Vertigo
             _hurtboxComponent.GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
             _hurtboxComponent.Immune = true;
             _currencyGenerator.Generate();
+
             this.SafeQueueFree();
         }
 
