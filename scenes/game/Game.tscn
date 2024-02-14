@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -31,10 +31,8 @@
 [ext_resource path="res://scenes/fx/WaveScreenDistortion.cs" type="Script" id=29]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
-[ext_resource path="res://resources/upgrade_cards/Haste.tres" type="Resource" id=32]
-[ext_resource path="res://resources/upgrade_cards/Abundancy.tres" type="Resource" id=33]
 [ext_resource path="res://assets/textures/gui/sprite_gui_line_1.png" type="Texture" id=34]
-[ext_resource path="res://resources/upgrade_cards/Passion.tres" type="Resource" id=35]
+[ext_resource path="res://scenes/hazards/diagonal/DiagonalTelegraph.tscn" type="PackedScene" id=36]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 27 )
@@ -70,6 +68,7 @@ region_rect = Rect2( 0, 0, 480, 270 )
 unique_name_in_owner = true
 _rainThreshold = 40.0
 _dizzynessThreshold = 60.0
+_waveDizzynessThreshold = 160.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
@@ -113,8 +112,8 @@ _canOnlySpawnAfter = 30.0
 _maxHazards = 4
 _scene = ExtResource( 25 )
 _spawnRate = 6.0
-_spawnRateDifficultyStep = 0.3
-_spawnMinimalRate = 0.7
+_spawnRateDifficultyStep = 0.8
+_spawnMinimalRate = 0.8
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/ArrowSpawner"]
 position = Vector2( 96, 270 )
@@ -206,8 +205,24 @@ script = ExtResource( 8 )
 position = Vector2( 352, 0 )
 script = ExtResource( 8 )
 
+[node name="DiagonalSpawner" parent="GameLayer" instance=ExtResource( 7 )]
+_canOnlySpawnAfter = 70.0
+_maxHazards = 2
+_scene = ExtResource( 36 )
+_spawnRate = 7.0
+_spawnRateDifficultyStep = 0.4
+_spawnMinimalRate = 1.5
+
+[node name="SpawnPoint1" type="Position2D" parent="GameLayer/DiagonalSpawner"]
+position = Vector2( -24, -13 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint2" type="Position2D" parent="GameLayer/DiagonalSpawner"]
+position = Vector2( 504, -13 )
+script = ExtResource( 8 )
+Direction = -1.0
+
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
-UpgradePool = [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ) ]
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 unique_name_in_owner = true

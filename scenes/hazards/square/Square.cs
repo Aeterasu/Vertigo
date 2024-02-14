@@ -21,6 +21,8 @@ namespace Vertigo
         [Export] private Vector2 _vectorDirection = Vector2.Right;
 
         [Export(PropertyHint.Range, "-1, 1, 1")] private float _direction = 1f;
+        [Export] private readonly bool directionAffectX = true;
+        [Export] private readonly bool directionAffectY = true;
 
         [Export] private readonly bool _bounce = false; // squares will bounce from each other
         [Export] private readonly bool _rotateSprite = true;
@@ -103,7 +105,19 @@ namespace Vertigo
                 }
             }
 
-            Position += _vectorDirection * _speed * Direction * (1 / Slowdown) * delta;
+            Vector2 targetDirection = _vectorDirection.Normalized();
+
+            if (directionAffectX)
+            {
+                targetDirection.x *= Direction;
+            }
+
+            if (directionAffectY)
+            {
+                targetDirection.y *= Direction;
+            }
+
+            Position += targetDirection * _speed * (1 / Slowdown) * delta;
 
             if (Position.x <= -96f || Position.x >= 576f || Position.y <= -96f || Position.y >= 366f)
             {

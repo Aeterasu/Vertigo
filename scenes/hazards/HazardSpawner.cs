@@ -6,6 +6,7 @@ namespace Vertigo
 {
     public class HazardSpawner : Node
     {
+        [Export] public bool Enabled { get; set; } = true;
         [Export] private readonly float _canOnlySpawnAfter = 15f;
         [Export] private readonly int _maxHazards = 16;
         [Export] private readonly PackedScene _scene;
@@ -80,6 +81,11 @@ namespace Vertigo
 
         private void OnSquareSpawnTimeout()
         {
+            if (!Enabled)
+            {
+                return;
+            }
+
             if (_scene == null)
             {
                 return;
@@ -132,7 +138,11 @@ namespace Vertigo
         private void ProcessSquareTelegraph(SquareTelegraph telegraph, SpawnPoint spawnPoint)
         {
             telegraph.GlobalPosition = spawnPoint.GlobalPosition;
-            telegraph.GetNode<Sprite>("Sprite").Scale = new Vector2((float)spawnPoint.Direction, 1f);
+
+            Sprite telegraphSprite = telegraph.GetNode<Sprite>("Sprite");
+            telegraphSprite.Scale = new Vector2((float)spawnPoint.Direction, 1f);
+            telegraphSprite.RotationDegrees *= spawnPoint.Direction;
+
             Square square = telegraph.GetNode<Square>(telegraph.SquarePath);
             square.Direction = spawnPoint.Direction;
             square.OnLeftThePlayArea += HazardLeftThePlayArea;
