@@ -13,6 +13,8 @@ namespace Vertigo
         private CPUParticles2D _grazeParticles1;
         private CPUParticles2D _grazeParticles2;
 
+        private Control _gradient;
+
         public override void _Ready()
         {
             base._Ready();
@@ -30,6 +32,9 @@ namespace Vertigo
 
             _grazeParticles1 = GetNode<CPUParticles2D>("GrazeParticles1");
             _grazeParticles2 = GetNode<CPUParticles2D>("GrazeParticles2");
+
+            _gradient = GetNode<Control>("Gradient");
+            _gradient.Modulate = new Color(1, 1, 1, 0);
         }
 
         public override void _PhysicsProcess(float delta)
@@ -51,6 +56,15 @@ namespace Vertigo
 
             _grazeParticles1.Emitting = _playerPowerComponent.IsGrazing;
             _grazeParticles2.Emitting = _playerPowerComponent.IsGrazing;
+            
+            if (_playerPowerComponent.IsGrazing)
+            {
+                _gradient.Modulate = new Color(1, 1, 1, Mathf.Lerp(_gradient.Modulate.a, 1f, 8 * delta));
+            }
+            else
+            {
+                _gradient.Modulate = new Color(1, 1, 1, Mathf.Lerp(_gradient.Modulate.a, 0f, 8 * delta));
+            }
         }
     }
 }

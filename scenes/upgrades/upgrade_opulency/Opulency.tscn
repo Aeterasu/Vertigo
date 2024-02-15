@@ -4,3 +4,4 @@
 
 [node name="Opulency" type="Node"]
 script = ExtResource( 1 )
+_initialIncrease = 1
