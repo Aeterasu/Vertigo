@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -39,6 +39,9 @@ shader = ExtResource( 27 )
 shader_param/wave_speed = 0.0
 shader_param/wave_freq = 0.0
 shader_param/wave_width = 1.0
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 14 )
@@ -311,6 +314,15 @@ anchor_bottom = 1.0
 margin_top = 18.0
 margin_bottom = 48.0
 
+[node name="PowerLabel" type="Label" parent="GUILayer/GUI/GUIPowerBar"]
+margin_left = -117.0
+margin_top = -16.0
+margin_right = 363.0
+custom_fonts/font = SubResource( 3 )
+text = "POWER"
+align = 1
+valign = 1
+
 [node name="GUIExpBar" parent="GUILayer/GUI" instance=ExtResource( 13 )]
 
 [node name="GUIHealthBar" parent="GUILayer/GUI" instance=ExtResource( 16 )]
@@ -319,6 +331,14 @@ margin_left = 4.0
 margin_top = 31.0
 margin_right = 4.15999
 margin_bottom = 31.0
+
+[node name="HealthLabel" type="Label" parent="GUILayer/GUI/GUIHealthBar"]
+margin_top = -29.0
+margin_right = 480.0
+margin_bottom = -13.0
+custom_fonts/font = SubResource( 3 )
+text = "VITALITY"
+valign = 1
 
 [node name="GUIGraze" parent="GUILayer/GUI" instance=ExtResource( 28 )]
 unique_name_in_owner = true

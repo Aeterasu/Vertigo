@@ -151,7 +151,7 @@ namespace Vertigo
                 if (_grazeArea.AffinityIncrease > 1f)
                 {
                     _grazeVisual.TargetScale = _grazeArea.AffinityIncrease;
-                    _grazeVisual.TargetAlpha = 1f;
+                    _grazeVisual.TargetAlpha = 0.5f;
                 }
                 else
                 {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.cs" type="Script" id=1]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
@@ -9,12 +9,26 @@
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_line.png" type="Texture" id=7]
 [ext_resource path="res://scenes/fx/scrolling_text/ScrollingText.tscn" type="PackedScene" id=8]
 
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 0.25098 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+width = 480
+height = 270
+fill_to = Vector2( 0, 1 )
+
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 4 )
+
+[sub_resource type="GradientTexture2D" id=7]
+gradient = SubResource( 5 )
+width = 150
+height = 200
 
 [sub_resource type="DynamicFont" id=4]
 size = 12
@@ -231,6 +245,42 @@ tracks/16/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/17/type = "value"
+tracks/17/path = NodePath("BorderGradient:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.4, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("BorderGradient2:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.4, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Gradient:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.611765 ) ]
+}
 
 [node name="UpgradeMenu" type="Control"]
 pause_mode = 2
@@ -240,14 +290,20 @@ script = ExtResource( 1 )
 _quitAnimationDuration = 0.15
 
 [node name="Backdrop" type="Sprite" parent="."]
-modulate = Color( 0.188235, 0.188235, 0.188235, 0.501961 )
+modulate = Color( 0.188235, 0.188235, 0.188235, 0 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
 
+[node name="Gradient" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 480.0
+margin_bottom = 270.0
+texture = SubResource( 6 )
+
 [node name="LabelBackground" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0.666667 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 161.0
@@ -256,12 +312,14 @@ color = Color( 0, 0, 0, 0.768627 )
 
 [node name="Buttons" type="Control" parent="."]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -0.000244141
 
 [node name="UpgradeButton1" parent="Buttons" instance=ExtResource( 3 )]
-margin_right = 115.0
+margin_left = 219.0
+margin_right = 179.0
 margin_bottom = 60.0
 
 [node name="UpgradeButton2" parent="Buttons" instance=ExtResource( 3 )]
@@ -271,8 +329,8 @@ margin_bottom = 60.0
 _id = 1
 
 [node name="UpgradeButton3" parent="Buttons" instance=ExtResource( 3 )]
-margin_left = 283.0
-margin_right = 243.0
+margin_left = 219.0
+margin_right = 179.0
 margin_bottom = 60.0
 _id = 2
 
@@ -303,31 +361,71 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="BorderGradient" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 36.0
+margin_top = -105.0
+margin_right = 186.0
+margin_bottom = 95.0
+rect_rotation = 45.0
+texture = SubResource( 7 )
+
 [node name="Border1" type="TextureRect" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
+margin_left = -150.0
+margin_top = 150.0
+margin_bottom = 300.0
 texture = ExtResource( 6 )
 
 [node name="ScrollingText" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 48.0
 margin_top = 32.0
 margin_right = 48.0
 margin_bottom = 32.0
 rect_rotation = -45.0
 
+[node name="ScrollingText3" parent="ScrollingText" instance=ExtResource( 8 )]
+modulate = Color( 0.596078, 0.376471, 1, 1 )
+show_behind_parent = true
+margin_left = -8.0
+margin_top = -4.0
+margin_right = -8.0
+margin_bottom = -4.0
+_speed = 0.5
+
+[node name="BorderGradient2" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 585.0
+margin_top = 36.0
+margin_right = 735.0
+margin_bottom = 236.0
+rect_rotation = -225.0
+texture = SubResource( 7 )
+
 [node name="Border2" type="TextureRect" parent="."]
-margin_left = 330.0
-margin_right = 480.0
-margin_bottom = 150.0
+margin_left = 480.0
+margin_top = 150.0
+margin_right = 630.0
+margin_bottom = 300.0
 texture = ExtResource( 6 )
 flip_h = true
 
 [node name="ScrollingText2" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 432.0
 margin_top = 32.0
 margin_right = 432.0
 margin_bottom = 32.0
 rect_rotation = 45.0
+
+[node name="ScrollingText4" parent="ScrollingText2" instance=ExtResource( 8 )]
+modulate = Color( 0.596078, 0.376471, 1, 1 )
+show_behind_parent = true
+margin_left = 8.0
+margin_top = -4.0
+margin_right = 8.0
+margin_bottom = -4.0
+_speed = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -336,16 +434,15 @@ anchor_bottom = 1.0
 color = Color( 0.596078, 0.376471, 1, 0.133333 )
 
 [node name="Line1" type="TextureRect" parent="."]
-margin_left = -36.2222
+margin_left = -326.0
 margin_top = 161.0
-margin_right = 289.778
 margin_bottom = 169.0
 texture = ExtResource( 7 )
 
 [node name="Line2" type="TextureRect" parent="."]
-margin_left = 190.222
+margin_left = 480.0
 margin_top = 235.0
-margin_right = 516.222
+margin_right = 806.0
 margin_bottom = 243.0
 texture = ExtResource( 7 )
 flip_h = true
@@ -353,6 +450,7 @@ flip_v = true
 
 [node name="FluffLabel" type="Label" parent="."]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
