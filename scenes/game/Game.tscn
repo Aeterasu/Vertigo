@@ -36,9 +36,9 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 27 )
-shader_param/wave_speed = 0.0
+shader_param/wave_speed = 3.0
 shader_param/wave_freq = 0.0
-shader_param/wave_width = 1.0
+shader_param/wave_width = 0.0
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 14 )
