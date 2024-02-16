@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/countdown/Countdown.cs" type="Script" id=1]
 [ext_resource path="res://assets/textures/vaila/sprite_vaila_fill.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 resource_name = "Countdown"
 length = 5.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/VailaRight:rect_position")
+tracks/0/path = NodePath("AnimationPlayer/VailaRight:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 310, 270 ), Vector2( 310, 32 ), Vector2( 310, 2 ), Vector2( 310, -268 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer/VailaLeft:rect_position")
+tracks/1/path = NodePath("AnimationPlayer/VailaLeft:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 4.5, 5 ),
 "transitions": PoolRealArray( 0.5, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 170, -2 ), Vector2( 170, 238 ), Vector2( 170, 268 ), Vector2( 170, 538 ) ]
+"values": [ Vector2( 0, -270 ), Vector2( 0, -32 ), Vector2( 0, -2 ), Vector2( 0, 272 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AnimationPlayer/VailaLeft:self_modulate")
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 4.5, 4.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer/LabelHolder/Label:text")
@@ -166,7 +166,7 @@ tracks/12/keys = {
 "values": [ Vector2( -16, 0 ), Vector2( 16, 0 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("AnimationPlayer/VailaRight/Outline:rect_position")
+tracks/13/path = NodePath("AnimationPlayer/VailaRight/OutlineRight:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -178,7 +178,7 @@ tracks/13/keys = {
 "values": [ Vector2( 8, 0 ), Vector2( -8, 0 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("AnimationPlayer/VailaLeft/Outline:rect_position")
+tracks/14/path = NodePath("AnimationPlayer/VailaLeft/OutlineLeft:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -187,7 +187,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 8, 0 ), Vector2( -8, 0 ) ]
+"values": [ Vector2( -8, 0 ), Vector2( 8, 0 ) ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("AnimationPlayer/VailaRight:self_modulate")
@@ -199,10 +199,10 @@ tracks/15/keys = {
 "times": PoolRealArray( 0, 0.2, 4.5, 4.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("AnimationPlayer/VailaLeft/Outline:self_modulate")
+tracks/16/path = NodePath("AnimationPlayer/VailaLeft/OutlineLeft:self_modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -214,7 +214,7 @@ tracks/16/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("AnimationPlayer/VailaRight/Outline:self_modulate")
+tracks/17/path = NodePath("AnimationPlayer/VailaRight/OutlineRight:self_modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -225,13 +225,80 @@ tracks/17/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Gradient:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 4.5, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("BorderLeft:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.5, 4.5, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("BorderRight:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.5, 4.5, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.501961 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 240
+height = 32
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=7]
+gradient = SubResource( 6 )
+width = 270
+height = 32
+fill_to = Vector2( 0.530973, 0 )
+
+[sub_resource type="GradientTexture2D" id=8]
+gradient = SubResource( 6 )
+width = 128
+height = 270
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 6 )
+width = 128
+height = 270
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 0, 0 )
 
 [node name="Countdown" type="Control"]
 anchor_right = 1.0
@@ -244,51 +311,48 @@ unique_name_in_owner = true
 playback_default_blend_time = 0.05
 anims/Countdown = SubResource( 1 )
 
-[node name="VailaRight" type="TextureRect" parent="AnimationPlayer"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 310.0
-margin_top = 270.0
-margin_right = 395.0
-margin_bottom = 404.0
-rect_scale = Vector2( 2, 2 )
+[node name="VailaRight" type="Sprite" parent="AnimationPlayer"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 310, 14 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+centered = false
 
-[node name="Outline" type="TextureRect" parent="AnimationPlayer/VailaRight"]
-margin_left = 8.0
-margin_right = 93.0
-margin_bottom = 134.0
+[node name="OutlineRight" type="Sprite" parent="AnimationPlayer/VailaRight"]
+position = Vector2( -1.28, 0 )
 texture = ExtResource( 5 )
+centered = false
 
-[node name="VailaLeft" type="TextureRect" parent="AnimationPlayer"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 170.0
-margin_top = -2.0
-margin_right = 255.0
-margin_bottom = 132.002
-rect_scale = Vector2( -2, -2 )
+[node name="VailaLeft" type="Sprite" parent="AnimationPlayer"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 0, -14 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+centered = false
+flip_h = true
+flip_v = true
 
-[node name="Outline" type="TextureRect" parent="AnimationPlayer/VailaLeft"]
-margin_left = 8.0
-margin_right = 93.0
-margin_bottom = 134.0
+[node name="OutlineLeft" type="Sprite" parent="AnimationPlayer/VailaLeft"]
+position = Vector2( 1.28, 0 )
 texture = ExtResource( 5 )
+centered = false
+flip_h = true
+flip_v = true
 
 [node name="LabelHolder" type="Control" parent="AnimationPlayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -16.0
-margin_right = -16.0
+margin_left = 2.56
+margin_right = 2.56
 
 [node name="Label" type="Label" parent="AnimationPlayer/LabelHolder"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -240.0
 margin_bottom = -135.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 2 )
-text = "3"
+text = "1"
 align = 1
 valign = 1
 
@@ -297,7 +361,10 @@ modulate = Color( 0.596078, 0.376471, 1, 1 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.92
+margin_right = 1.92
 custom_fonts/font = SubResource( 2 )
+text = "1"
 align = 1
 valign = 1
 
@@ -306,19 +373,73 @@ modulate = Color( 0.596078, 0.376471, 1, 1 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.92
+margin_right = -1.92
 custom_fonts/font = SubResource( 2 )
+text = "1"
 align = 1
 valign = 1
 
 [node name="LabelFluff" type="Label" parent="AnimationPlayer"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 89.0
-margin_bottom = 116.0
+margin_top = 68.3778
+margin_bottom = 95.3778
+custom_colors/font_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Vertigo - a sensation that you, or the environment around you, 
 is moving or spinning."
 align = 1
 autowrap = true
+
+[node name="TextureRect" type="TextureRect" parent="AnimationPlayer/LabelFluff"]
+show_behind_parent = true
+margin_left = 240.0
+margin_top = -3.0
+margin_right = 480.0
+margin_bottom = 29.0
+texture = SubResource( 5 )
+
+[node name="TextureRect2" type="TextureRect" parent="AnimationPlayer/LabelFluff"]
+show_behind_parent = true
+margin_left = 240.0
+margin_top = -3.0
+margin_right = 480.0
+margin_bottom = 29.0
+rect_scale = Vector2( -1, 1 )
+texture = SubResource( 5 )
+
+[node name="Gradient" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Gradient"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 240.0
+margin_top = 115.0
+margin_right = 510.0
+margin_bottom = 147.0
+texture = SubResource( 7 )
+
+[node name="TextureRect2" type="TextureRect" parent="Gradient"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 240.0
+margin_top = 115.0
+margin_right = 510.0
+margin_bottom = 147.0
+rect_scale = Vector2( -1, 1 )
+texture = SubResource( 7 )
+
+[node name="BorderLeft" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_right = 128.0
+margin_bottom = 270.0
+texture = SubResource( 8 )
+
+[node name="BorderRight" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 352.0
+margin_right = 480.0
+margin_bottom = 270.0
+texture = SubResource( 9 )

@@ -9,6 +9,7 @@ namespace Vertigo
         [Export] private readonly float _disappearanceSpeed = 1f;
         [Export] private readonly float _initialAlpha = 1f;
         [Export] private readonly Color _color;
+        [Export] private readonly NodePath _parentPath;
 
         private float _timer = 0f;
 
@@ -51,6 +52,9 @@ namespace Vertigo
                 _timer = _creationRate;
                 SpriteTrail trail = new SpriteTrail();
                 trail.Texture = _parent.Texture;
+                trail.Centered = _parent.Centered;
+                trail.FlipH = _parent.FlipH;
+                trail.FlipV = _parent.FlipV;
                 trail.DisappearanceSpeed = _disappearanceSpeed;
                 trail.Alpha = _initialAlpha;
                 trail.GlobalTransform = _parent.GlobalTransform;
@@ -61,7 +65,11 @@ namespace Vertigo
 
                 trail.Material = shaderMaterial;
 
-                if (Game.Instance.IsValid() && Game.Instance.GameLayer.IsValid())
+                if (_parentPath != null)
+                {
+                    GetNode(_parentPath).AddChild(trail);
+                }
+                else if (Game.Instance.IsValid() && Game.Instance.GameLayer.IsValid())
                 {
                     Game.Instance.GameLayer.AddChild(trail);
                 }

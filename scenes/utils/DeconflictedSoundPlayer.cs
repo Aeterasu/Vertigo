@@ -7,6 +7,7 @@ public static class DeconflictedSoundPlayer
         var audioScript = GD.Load<GDScript>("res://scenes/utils/sfx_deconflicter/deconflicted_audio_stream_player.gd");
         var audio = (AudioStreamPlayer)audioScript.New();
 
+        audio.PauseMode = Node.PauseModeEnum.Process;
         audio.PitchScale = pitch;
         audio.VolumeDb = volume;
         audio.Bus = "SFX";

@@ -21,6 +21,10 @@ namespace Vertigo
         [Export] public float OnHitSlowMotionDuration { get; private set; } = 1f;
 
         [Export] public AudioStream GemPickupSound { get; private set; }
+        [Export] private readonly float _minGemPickupPitch = 0.8f;
+        [Export] private readonly float _maxGemPickupPitch = 1.75f;
+        [Export] private readonly float _gemPickupPitchStep = 0.1f;
+        [Export] private readonly float _gemPickupPitchDecay = 1f;
 
         private Player _player;
         private ExperienceComponent _playerExperienceComponent;
@@ -31,6 +35,8 @@ namespace Vertigo
         private TimeManager _timeManager;
 
         private UpgradeManager _upgradeManager;
+
+        private float _gemPickupPitch = 0.8f;
 
         public float OnHitSlowMotionTimeLeft { get; private set; } = 0f;
         public float CurrentOnHitSlowMotionRatio { get; private set; } = 1f;
@@ -82,6 +88,8 @@ namespace Vertigo
             }
 
             OnHitSlowMotionTimeLeft = 0;
+
+            _gemPickupPitch = _minGemPickupPitch;
         }
 
         public override void _PhysicsProcess(float delta)
@@ -91,6 +99,8 @@ namespace Vertigo
             HandleOnHitSlowMotion(delta);
 
             Engine.TimeScale = State == GameState.GAME ? CurrentOnHitSlowMotionRatio : 1f;
+
+            _gemPickupPitch = Mathf.Max(_gemPickupPitch - _gemPickupPitchDecay * delta, _minGemPickupPitch);
         }
 
         public override void _Process(float delta)
@@ -165,6 +175,15 @@ namespace Vertigo
         private void OnUpgradeMenuClosed()
         {
             SetStateToGame();
+        }
+
+        public void PlayGemPickupSound()
+        {
+            if (GemPickupSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(GemPickupSound, this, 0f, _gemPickupPitch);
+                _gemPickupPitch = Mathf.Min(_gemPickupPitch + _gemPickupPitchStep, _maxGemPickupPitch);
+            }    
         }
     }
 }

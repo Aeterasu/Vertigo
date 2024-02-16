@@ -61,7 +61,7 @@ namespace Vertigo
 
                 if (Game.Instance.IsValid())
                 {
-                    DeconflictedSoundPlayer.PlayUnconflictingSound(Game.Instance.GemPickupSound, Game.Instance, 0f, 1f);
+                    Game.Instance.PlayGemPickupSound();
                 }
 
                 this.SafeQueueFree();

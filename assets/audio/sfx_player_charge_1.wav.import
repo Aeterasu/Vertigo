@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/sfx_player_shot_2.wav-0a64ef8a71e38d2683f1ba45856f84e1.sample"
+path="res://.import/sfx_player_charge_1.wav-42049e16d9cc06f928ab3f595d93e571.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx_player_shot_2.wav"
-dest_files=[ "res://.import/sfx_player_shot_2.wav-0a64ef8a71e38d2683f1ba45856f84e1.sample" ]
+source_file="res://assets/audio/sfx_player_charge_1.wav"
+dest_files=[ "res://.import/sfx_player_charge_1.wav-42049e16d9cc06f928ab3f595d93e571.sample" ]
 
 [params]
 

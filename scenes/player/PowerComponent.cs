@@ -12,6 +12,9 @@ namespace Vertigo
         [Export] private readonly float _nearExhaustionRegenMultiplier = 0.8f; // triggers when power >=1f <=2f
         [Export] private readonly float _exhaustionThreshold = 1f;
         [Export] private readonly float _nearExhaustionThreshold = 2f;
+        [Export] private readonly AudioStream _chargeUpSound;
+        [Export] private readonly float _lowerPitch = 0.5f;
+        [Export] private readonly float _higherPitch = 1.1f;
 
         private float _currentRegen = 0f;
 
@@ -97,6 +100,13 @@ namespace Vertigo
             {
                 _currentRegen = 0f;
                 CurrentPower += 1f;
+
+                if (_chargeUpSound != null)
+                {
+                    float targetPercentage = CurrentPower / MaxPower * 100;
+                    float pitch = (targetPercentage * (_higherPitch - _lowerPitch) / 100) + _lowerPitch;
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(_chargeUpSound, this, 0f, pitch);
+                }
             }
         }
 

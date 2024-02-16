@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/textures/player/sprite_player_1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/audio/sfx_player_shot.wav" type="AudioStream" id=9]
 [ext_resource path="res://scenes/player/ExperienceComponent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/player/immunity_bubble/ImmunityBubble.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/audio/sfx_player_charge_1.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=2]
 resource_name = "FlipDown"
@@ -179,6 +180,7 @@ _powerRegen = 1.6
 _grazeMultiplier = 3.0
 _exhaustionRegenMultiplier = 0.3
 _nearExhaustionRegenMultiplier = 0.7
+_chargeUpSound = ExtResource( 12 )
 
 [node name="ExperienceComponent" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true
