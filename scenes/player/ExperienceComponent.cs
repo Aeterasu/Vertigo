@@ -8,11 +8,16 @@ namespace Vertigo
         [Export] private readonly float _baseTargetExp = 12f; // base exp required to lvl up from lvl 1 to 2
         [Export] private readonly float _targetExpCoeff = 1.5f; // by how much exp requirement increases with each level
         [Export] private readonly float _grazingExpGain = 1f;
+        [Export] private readonly float _grazingCumulativeRate = 1.5f;
+        [Export] private readonly float _grazingCumulativeStep = 1f;
 
         private float _currentExp = 0f;
         private float _targetExp = 0f;
 
         private int _level = 1;
+        
+        private float _grazingTimer = 0f;
+        private float _currentGrazingGain = 0f;
 
         private Player _player;
 
@@ -42,9 +47,23 @@ namespace Vertigo
             {
                 if (_player.IsGrazing)
                 {
-                    GrantExp(_grazingExpGain * delta);
+                    GrantExp(_currentGrazingGain * delta);
+
+                    _grazingTimer += delta;
+
+                    if (_grazingTimer >= _grazingCumulativeRate)
+                    {
+                        _grazingTimer = 0;
+                        _currentGrazingGain += _grazingCumulativeStep;
+                    }
+                }
+                else
+                {
+                    _currentGrazingGain = _grazingExpGain;
                 }
             }
+
+            GD.Print(_currentGrazingGain);
         }
 
         public void GrantExp(float amount)

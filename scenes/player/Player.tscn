@@ -184,6 +184,8 @@ _chargeUpSound = ExtResource( 12 )
 
 [node name="ExperienceComponent" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true
+_grazingCumulativeRate = 2.0
+_grazingCumulativeStep = 0.5
 
 [node name="GrazeDetector" type="Area2D" parent="."]
 unique_name_in_owner = true

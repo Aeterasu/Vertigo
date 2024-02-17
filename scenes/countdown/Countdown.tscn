@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/countdown/Countdown.cs" type="Script" id=1]
 [ext_resource path="res://assets/textures/vaila/sprite_vaila_fill.png" type="Texture" id=2]
@@ -262,7 +262,13 @@ tracks/20/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=10]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.501961 )
+font_data = ExtResource( 3 )
+
 [sub_resource type="DynamicFont" id=2]
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -351,7 +357,7 @@ anchor_bottom = 1.0
 margin_right = -240.0
 margin_bottom = -135.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 text = "1"
 align = 1
 valign = 1
