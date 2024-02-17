@@ -23,6 +23,8 @@ namespace Vertigo
         private Sprite _sprite;
         private Tween _tween = new Tween();
 
+        private AnimationPlayer _animationPlayer;
+
         private Sprite _gradient;
         private float _gradientAlpha = 0f;
 
@@ -72,6 +74,8 @@ namespace Vertigo
             _sprite = GetNode<Sprite>("Sprite");
             _gradient = GetNode<Sprite>("Gradient");
 
+            _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
             AddChild(_tween);
         }
 
@@ -106,7 +110,9 @@ namespace Vertigo
         public void Confirm()
         {
             _tween.InterpolateProperty(_sprite, "position", _sprite.Position, Vector2.Up * _confirmAnimationOffset, _confirmAnimationDuration, Tween.TransitionType.Back, Tween.EaseType.Out);
-            _tween.Start();            
+            _tween.Start();        
+
+            _animationPlayer.Play("Purchase");    
         }
 
         public void Discard()

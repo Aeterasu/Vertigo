@@ -62,8 +62,6 @@ namespace Vertigo
                     _currentGrazingGain = _grazingExpGain;
                 }
             }
-
-            GD.Print(_currentGrazingGain);
         }
 
         public void GrantExp(float amount)
