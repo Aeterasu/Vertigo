@@ -72,11 +72,24 @@ namespace Vertigo
                 }
             }
 
-            for (int i = 0; i < projectileCount; i++)
+            if (projectileCount % 2 != 0)
             {
-                CreateAttack(directionAngleDegrees + ((i - (projectileCount / 2)) * _spread));
+                for (int i = 0; i < projectileCount; i++)
+                {
+                    CreateAttack(directionAngleDegrees + (i - (projectileCount / 2)) * _spread);
+                }
             }
-
+            else
+            {
+                for (int i = 0; i < projectileCount + 1; i++)
+                {
+                    if (i != projectileCount / 2)
+                    {
+                        CreateAttack(directionAngleDegrees + (i - (projectileCount / 2)) * _spread / 2);
+                    }
+                }
+            }
+            
             _fireCooldown = _rateOfFire;
             _mashingCooldown = _mashingRateOfFire;
 

@@ -168,6 +168,7 @@ HorizontalKnockback = -43.75
 ScreenShakeStrength = 1.25
 _attackScene = ExtResource( 4 )
 _rateOfFire = 0.18
+_spread = 10.0
 _shotAudio = ExtResource( 9 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
