@@ -1,12 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/fx/hue_shift_layer/HueShiftLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/main_menu/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ColorManager.cs" type="Script" id=5]
+[ext_resource path="res://resources/color_schemes/colors/color_default.tres" type="Texture" id=6]
+[ext_resource path="res://resources/color_schemes/colors/color_mint.tres" type="Texture" id=7]
+[ext_resource path="res://resources/color_schemes/colors/color_raspberry.tres" type="Texture" id=8]
+[ext_resource path="res://resources/color_schemes/colors/color_sunflower.tres" type="Texture" id=9]
+[ext_resource path="res://resources/color_schemes/colors/color_greyview.tres" type="Texture" id=10]
+[ext_resource path="res://resources/color_schemes/colors/color_safety.tres" type="Texture" id=11]
 
 [node name="Main" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
+_mainMenuScene = ExtResource( 4 )
 _gameScene = ExtResource( 2 )
 
-[node name="HueLayer" parent="." instance=ExtResource( 3 )]
+[node name="ColorManager" type="Node" parent="."]
+script = ExtResource( 5 )
+Colors = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="HueShiftLayer" parent="." instance=ExtResource( 3 )]

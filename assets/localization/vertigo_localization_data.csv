@@ -1,11 +1,11 @@
 ,en,ru
-MENU_START,Start,Старт
-MENU_PALETTE,Palette,Палитра
-MENU_HOW_TO_PLAY,How to play,Как играть
-MENU_OPTIONS,Options,Настройки
-MENU_LANGUAGE,Language,Язык
-MENU_CREDITS,Credits,Авторы
-MENU_EXIT,Exit,Выход
+MENU_BUTTON_START,Start,Старт
+MENU_BUTTON_COLOR,Palette,Палитра
+MENU_BUTTON_HOW_TO_PLAY,How to play,Как играть
+MENU_BUTTON_OPTIONS,Options,Настройки
+MENU_BUTTON_LANGUAGE,Language,Язык
+MENU_BUTTON_CREDITS,Credits,Авторы
+MENU_BUTTON_EXIT,Exit,Выход
 OPTIONS_MUSIC,Music,Музыка
 OPTIONS_SOUND,Sound Effects,Звук
 OPTIONS_FULLSCREEN,Fullscreen,Полный экран
