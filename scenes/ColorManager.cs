@@ -7,7 +7,9 @@ namespace Vertigo
     public class ColorManager : Node
     {
         [Export] private int _currentColorId = 0;
-        [Export] public List<GradientTexture2D> Colors { get; private set; } = new List<GradientTexture2D>();
+        [Export] public List<ColorScheme> Colors { get; private set; } = new List<ColorScheme>();
+
+        public static ColorScheme GetCurrentColor { get => Main.Instance.ColorManager.Colors[Main.Instance.ColorManager.CurrentColorId]; }
 
         public int CurrentColorId
         {

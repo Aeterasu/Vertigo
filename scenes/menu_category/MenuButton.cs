@@ -25,10 +25,17 @@ namespace Vertigo
 
         private AnimationPlayer _animationPlayer;
 
+        private TextureRect _tooltip;
+        private Label _tooltipLabel;
+        private Vector2 _tooltipDefaultPosition = Vector2.Zero;
+        private bool _isTooltipHidden = true;
+
         public event Action<MenuButton> OnButtonMouseEntered;
         public event Action<MenuButton> OnButtonMouseExited;
 
         public static Action<MenuButton> OnButtonExecuted;
+        public static Action<MenuButton> OnColorButtonPressedLeft;
+        public static Action<MenuButton> OnColorButtonPressedRight;
 
         public bool IsFocused
         {
@@ -55,6 +62,11 @@ namespace Vertigo
             _label = GetNode<Label>("%Label");
 
             _animationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+
+            _tooltip = GetNode<TextureRect>("Tooltip");
+            _tooltipLabel = _tooltip.GetNode<Label>("Label");
+            _tooltip.Modulate = new Color(1, 1, 1, 0);
+            _tooltipDefaultPosition = _tooltip.RectPosition;
         }
 
         public override void _PhysicsProcess(float delta)
@@ -62,6 +74,22 @@ namespace Vertigo
             base._PhysicsProcess(delta);
 
             _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
+
+            if (_isTooltipHidden)
+            {
+                _tooltip.Modulate = _tooltip.Modulate.LinearInterpolate(new Color(1, 1, 1, 0), 10 * delta);
+                _tooltip.RectPosition = _tooltip.RectPosition.LinearInterpolate(_tooltipDefaultPosition + Vector2.Left * 10, 10 * delta);
+            }
+            else
+            {
+                _tooltip.Modulate = _tooltip.Modulate.LinearInterpolate(new Color(1, 1, 1, 1), 10 * delta);
+                _tooltip.RectPosition = _tooltip.RectPosition.LinearInterpolate(_tooltipDefaultPosition, 10 * delta);
+            }
+
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR && !_isTooltipHidden)
+            {
+                _tooltipLabel.Text = Tr(ColorManager.GetCurrentColor.NameKey);
+            }
         }
 
         public void Focus()
@@ -71,6 +99,11 @@ namespace Vertigo
             if (_animationPlayer.IsValid())
             {
                 _animationPlayer.Play("Focus");
+            }
+
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                ShowTooltip();
             }
         }
 
@@ -82,11 +115,26 @@ namespace Vertigo
             {
                 _animationPlayer.Play("Unfocus");
             }
+
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                HideTooltip();
+            }
         }
 
         public void Execute()
         {
 
+        }
+
+        public void ShowTooltip()
+        {
+            _isTooltipHidden = false;
+        }
+
+        public void HideTooltip()
+        {
+            _isTooltipHidden = true;
         }
 
         private void OnMouseEntered()

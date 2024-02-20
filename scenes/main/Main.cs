@@ -47,15 +47,23 @@ namespace Vertigo
             }
         }
 
+        public ColorManager ColorManager { get => _colorManager; } 
+
         public bool IsPaused { get; private set; } = false;
+
+        public static Main Instance { get; private set; }
 
         public override void _Ready()
         {
             base._Ready();
 
+            Instance = this;
+
             InitMainMenu();
 
             MenuButton.OnButtonExecuted += OnMenuButtonExecuted;
+            MenuButton.OnColorButtonPressedLeft += OnColorButtonPressedLeft;
+            MenuButton.OnColorButtonPressedRight += OnColorButtonPressedRight;
 
             _colorManager = GetNode<ColorManager>("ColorManager");
             _hueShiftLayer = GetNode<HueShiftLayer>("HueShiftLayer");
@@ -152,13 +160,6 @@ namespace Vertigo
                 return;
             }
 
-            if (button.ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
-            {
-                _colorManager.CurrentColorId += 1;
-                UpdateColorManager();
-                return;
-            }
-
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_EXIT)
             {
                 GetTree().Quit();
@@ -166,9 +167,31 @@ namespace Vertigo
             }
         }
 
+        private void OnColorButtonPressedLeft(MenuButton button)
+        {
+            if (button.ButtonType != MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                return;
+            }
+
+            _colorManager.CurrentColorId -= 1;
+            UpdateColorManager();
+        }
+
+        private void OnColorButtonPressedRight(MenuButton button)
+        {
+            if (button.ButtonType != MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                return;
+            }
+
+            _colorManager.CurrentColorId += 1;
+            UpdateColorManager();
+        }
+
         private void UpdateColorManager()
         {
-            _hueShiftLayer.Gradient = _colorManager.Colors[_colorManager.CurrentColorId];
+            _hueShiftLayer.Gradient = _colorManager.Colors[_colorManager.CurrentColorId].Gradient;
         }
     }
 }

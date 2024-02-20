@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/textures/vaila/sprite_vaila_onacliff.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/fx/sprite_fx_star_2.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/vaila/sprite_diamond.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cliff/Cliff.cs" type="Script" id=4]
+[ext_resource path="res://assets/textures/fx/sprite_fx_star_3.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/vaila/sprite_vaila_onacliff_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/vaila/sprite_vaila_onacliff_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/fx/sprite_fx_star_1.png" type="Texture" id=8]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.411494, 0.736364 ), 0.0, 0.0, 0, 0, Vector2( 0.958621, 0 ), -3.82698, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
@@ -35,8 +42,54 @@ tracks/0/keys = {
 [node name="Cliff" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Stars1" type="CPUParticles2D" parent="."]
+position = Vector2( 240, 135 )
+amount = 4
+lifetime = 8.0
+preprocess = 3.0
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 240, 135 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+damping = 14.35
+scale_amount_curve = SubResource( 4 )
+
+[node name="Stars2" type="CPUParticles2D" parent="."]
+position = Vector2( 240, 135 )
+amount = 24
+lifetime = 6.0
+preprocess = 3.0
 texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 240, 135 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+damping = 14.35
+scale_amount_curve = SubResource( 4 )
+
+[node name="Stars3" type="CPUParticles2D" parent="."]
+position = Vector2( 240, 135 )
+amount = 48
+lifetime = 6.0
+preprocess = 3.0
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 240, 135 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+damping = 14.35
+scale_amount_curve = SubResource( 4 )
+
+[node name="Water" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
 centered = false
 
 [node name="Rain" type="CPUParticles2D" parent="."]

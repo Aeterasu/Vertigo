@@ -105,6 +105,16 @@ namespace Vertigo
             {
                 MenuButton.OnButtonExecuted?.Invoke(_currentButton);
             }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                MenuButton.OnColorButtonPressedLeft?.Invoke(_currentButton);
+            }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                MenuButton.OnColorButtonPressedRight?.Invoke(_currentButton);
+            }
         }
 
         private void OnButtonMouseEntered(MenuButton button)
