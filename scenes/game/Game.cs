@@ -36,7 +36,11 @@ namespace Vertigo
 
         private UpgradeManager _upgradeManager;
 
+        private RestartHandler _restartHandler;
+
         private float _gemPickupPitch = 0.8f;
+
+        public bool IsInRestart { get; set; } = false;
 
         public float OnHitSlowMotionTimeLeft { get; private set; } = 0f;
         public float CurrentOnHitSlowMotionRatio { get; private set; } = 1f;
@@ -79,6 +83,9 @@ namespace Vertigo
 
             _gui = GetNode<Control>("%GUI");
             _gui.Visible = false;
+
+            _restartHandler = GetNode<RestartHandler>("RestartHandler");
+            _restartHandler.OnRestart += OnRestart;
 
             _countdown = GetNode<Countdown>("%Countdown");
 
@@ -175,6 +182,11 @@ namespace Vertigo
         private void OnUpgradeMenuClosed()
         {
             SetStateToGame();
+        }
+
+        private void OnRestart()
+        {
+            Main.Instance.GameRestart();
         }
 
         public void PlayGemPickupSound()

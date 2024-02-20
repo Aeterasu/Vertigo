@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/color_schemes/ColorRaspberry.tres" type="Resource" id=9]
 [ext_resource path="res://resources/color_schemes/ColorSunflower.tres" type="Resource" id=10]
 [ext_resource path="res://resources/color_schemes/ColorDefault.tres" type="Resource" id=11]
+[ext_resource path="res://resources/color_schemes/ColorWaves.tres" type="Resource" id=12]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -20,6 +21,6 @@ _gameScene = ExtResource( 2 )
 
 [node name="ColorManager" type="Node" parent="."]
 script = ExtResource( 5 )
-Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ) ]
+Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="HueShiftLayer" parent="." instance=ExtResource( 3 )]

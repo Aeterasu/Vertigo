@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://scenes/fx/WaveScreenDistortion.cs" type="Script" id=29]
 [ext_resource path="res://assets/textures/fx/sprite_fx_rain.png" type="Texture" id=30]
 [ext_resource path="res://scenes/fx/DrunkNode2D.cs" type="Script" id=31]
+[ext_resource path="res://scenes/gui/gui_restart/GUIRestart.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scenes/game/RestartHandler.cs" type="Script" id=33]
 [ext_resource path="res://assets/textures/gui/sprite_gui_line_1.png" type="Texture" id=34]
 [ext_resource path="res://scenes/hazards/diagonal/DiagonalTelegraph.tscn" type="PackedScene" id=36]
 
@@ -75,6 +77,10 @@ OnHitSlowMotionDuration = 0.6
 GemPickupSound = ExtResource( 26 )
 _gemPickupPitchStep = 0.15
 _gemPickupPitchDecay = 0.2
+
+[node name="RestartHandler" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 33 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -446,6 +452,10 @@ margin_right = 480.0
 margin_bottom = 48.0
 texture = ExtResource( 34 )
 flip_h = true
+
+[node name="GUIRestart" parent="GUILayer" instance=ExtResource( 32 )]
+pause_mode = 2
+unique_name_in_owner = true
 
 [node name="Countdown" parent="GUILayer" instance=ExtResource( 20 )]
 pause_mode = 2

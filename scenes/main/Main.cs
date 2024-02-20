@@ -79,7 +79,7 @@ namespace Vertigo
 
             if (State == MainState.GAME)
             {
-                isGameStateContinuous = _game.State == GameState.GAME;
+                isGameStateContinuous = _game.State == GameState.GAME && !_game.IsInRestart;
             }
             else
             {
@@ -192,6 +192,17 @@ namespace Vertigo
         private void UpdateColorManager()
         {
             _hueShiftLayer.Gradient = _colorManager.Colors[_colorManager.CurrentColorId].Gradient;
+        }
+
+        public void GameRestart()
+        {
+            if (State != MainState.GAME)
+            {
+                return;
+            }
+
+            Clear();
+            InitGame();
         }
     }
 }
