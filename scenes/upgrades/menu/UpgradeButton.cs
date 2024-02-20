@@ -28,6 +28,8 @@ namespace Vertigo
         private Sprite _gradient;
         private float _gradientAlpha = 0f;
 
+        public event Action<UpgradeButton> OnButtonMouseEntered;
+
         public int Id
         {
             get => _id;
@@ -76,6 +78,8 @@ namespace Vertigo
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
+            Connect("mouse_entered", this, "OnMouseEntered");
+
             AddChild(_tween);
         }
 
@@ -97,18 +101,21 @@ namespace Vertigo
 
         public void Focus()
         {
+            _tween.RemoveAll();
             _tween.InterpolateProperty(_sprite, "position", Vector2.Zero, Vector2.Up * _focusAnimationOffset, _focusAnimationDuration, Tween.TransitionType.Back, Tween.EaseType.Out);
             _tween.Start();
         }
 
         public void Unfocus()
         {
+            _tween.RemoveAll();
             _tween.InterpolateProperty(_sprite, "position", _sprite.Position, Vector2.Zero, _unfocusAnimationDuration, Tween.TransitionType.Cubic, Tween.EaseType.InOut);
             _tween.Start();
         }
 
         public void Confirm()
         {
+            _tween.RemoveAll();
             _tween.InterpolateProperty(_sprite, "position", _sprite.Position, Vector2.Up * _confirmAnimationOffset, _confirmAnimationDuration, Tween.TransitionType.Back, Tween.EaseType.Out);
             _tween.Start();        
 
@@ -117,9 +124,15 @@ namespace Vertigo
 
         public void Discard()
         {
+            _tween.RemoveAll();
             _tween.InterpolateProperty(_sprite, "position", _sprite.Position, Vector2.Up * _discardAnimationOffset, _discardAnimationDuration, Tween.TransitionType.Linear);
             _tween.InterpolateProperty(_sprite, "modulate", new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), _discardAnimationDuration, Tween.TransitionType.Linear);
             _tween.Start();            
+        }
+
+        private void OnMouseEntered()
+        {
+            OnButtonMouseEntered?.Invoke(this);
         }
     }
 }

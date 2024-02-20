@@ -79,6 +79,14 @@ namespace Vertigo
 
             _buttonHolder = GetNode<Control>("%Buttons");
 
+            foreach (Node node in _buttonHolder.GetChildren())
+            {
+                if (node is UpgradeButton)
+                {
+                    (node as UpgradeButton).OnButtonMouseEntered += OnButtonMouseEntered;
+                }
+            }
+
             _upgradeNameLabel = GetNode<Label>("%UpgradeNameLabel");
             _upgradeDescriptionLabel = GetNode<Label>("%UpgradeDescriptionLabel");
             _upgradeNameLabel.Visible = false;
@@ -203,6 +211,17 @@ namespace Vertigo
         public void OnAnimationFinished()
         {
             _disableInput = false;
+        }
+
+        private void OnButtonMouseEntered(UpgradeButton button)
+        {
+            if (_inputDelay > 0 || _disableInput)
+            {
+                return;
+            }
+
+            CurrentSelection = button.Id;
+            _selectionActivated = true;
         }
     }
 }
