@@ -261,6 +261,18 @@ tracks/20/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/21/type = "value"
+tracks/21/path = NodePath("ColorFlash:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="DynamicFont" id=10]
 outline_size = 1
@@ -318,20 +330,21 @@ playback_default_blend_time = 0.05
 anims/Countdown = SubResource( 1 )
 
 [node name="VailaRight" type="Sprite" parent="AnimationPlayer"]
-self_modulate = Color( 1, 1, 1, 0.313726 )
-position = Vector2( 310, 14 )
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 310, -268 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="OutlineRight" type="Sprite" parent="AnimationPlayer/VailaRight"]
-position = Vector2( -1.28, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -8, 0 )
 texture = ExtResource( 5 )
 centered = false
 
 [node name="VailaLeft" type="Sprite" parent="AnimationPlayer"]
-self_modulate = Color( 1, 1, 1, 0.313726 )
-position = Vector2( 0, -14 )
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, 272 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 centered = false
@@ -339,7 +352,8 @@ flip_h = true
 flip_v = true
 
 [node name="OutlineLeft" type="Sprite" parent="AnimationPlayer/VailaLeft"]
-position = Vector2( 1.28, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
 texture = ExtResource( 5 )
 centered = false
 flip_h = true
@@ -348,17 +362,19 @@ flip_v = true
 [node name="LabelHolder" type="Control" parent="AnimationPlayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.56
-margin_right = 2.56
+margin_left = 16.0
+margin_right = 16.0
 
 [node name="Label" type="Label" parent="AnimationPlayer/LabelHolder"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 64.0
 margin_right = -240.0
-margin_bottom = -135.0
+margin_bottom = -71.0
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 10 )
-text = "1"
+text = "VERTIGO!"
 align = 1
 valign = 1
 
@@ -367,10 +383,10 @@ modulate = Color( 0.596078, 0.376471, 1, 1 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.92
-margin_right = 1.92
+margin_left = 16.0
+margin_right = 16.0
 custom_fonts/font = SubResource( 2 )
-text = "1"
+text = "VERTIGO!"
 align = 1
 valign = 1
 
@@ -379,19 +395,20 @@ modulate = Color( 0.596078, 0.376471, 1, 1 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.92
-margin_right = -1.92
+margin_left = -16.0
+margin_right = -16.0
 custom_fonts/font = SubResource( 2 )
-text = "1"
+text = "VERTIGO!"
 align = 1
 valign = 1
 
 [node name="LabelFluff" type="Label" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 68.3778
-margin_bottom = 95.3778
+margin_top = 41.0
+margin_bottom = 68.0
 custom_colors/font_color = Color( 0.482353, 0.482353, 0.482353, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Vertigo - a sensation that you, or the environment around you, 
@@ -417,6 +434,7 @@ rect_scale = Vector2( -1, 1 )
 texture = SubResource( 5 )
 
 [node name="Gradient" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -438,14 +456,20 @@ rect_scale = Vector2( -1, 1 )
 texture = SubResource( 7 )
 
 [node name="BorderLeft" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 128.0
 margin_bottom = 270.0
 texture = SubResource( 8 )
 
 [node name="BorderRight" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 352.0
 margin_right = 480.0
 margin_bottom = 270.0
 texture = SubResource( 9 )
+
+[node name="ColorFlash" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.596078, 0.376471, 1, 1 )

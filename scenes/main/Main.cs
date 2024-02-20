@@ -201,6 +201,8 @@ namespace Vertigo
                 return;
             }
 
+            Engine.TimeScale = 1.0f;
+
             Clear();
             InitGame();
         }

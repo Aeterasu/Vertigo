@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -34,7 +34,6 @@
 [ext_resource path="res://scenes/gui/gui_restart/GUIRestart.tscn" type="PackedScene" id=32]
 [ext_resource path="res://scenes/game/RestartHandler.cs" type="Script" id=33]
 [ext_resource path="res://assets/textures/gui/sprite_gui_line_1.png" type="Texture" id=34]
-[ext_resource path="res://scenes/upgrades/upgrade_opulency/Opulency.tscn" type="PackedScene" id=35]
 [ext_resource path="res://scenes/hazards/diagonal/DiagonalTelegraph.tscn" type="PackedScene" id=36]
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -253,9 +252,6 @@ script = ExtResource( 8 )
 Direction = -1.0
 
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
-
-[node name="Opulency" parent="GameLayer/UpgradeManager" instance=ExtResource( 35 )]
-TargetStack = 32
 
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
