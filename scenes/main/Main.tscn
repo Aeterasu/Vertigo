@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -12,11 +12,13 @@
 [ext_resource path="res://resources/color_schemes/ColorSunflower.tres" type="Resource" id=10]
 [ext_resource path="res://resources/color_schemes/ColorDefault.tres" type="Resource" id=11]
 [ext_resource path="res://resources/color_schemes/ColorWaves.tres" type="Resource" id=12]
+[ext_resource path="res://scenes/interlude/Interlude.tscn" type="PackedScene" id=13]
 
 [node name="Main" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
 _mainMenuScene = ExtResource( 4 )
+_interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
 
 [node name="ColorManager" type="Node" parent="."]

@@ -6,6 +6,7 @@ namespace Vertigo
     public enum MainState
     {
         MAIN_MENU,
+        INTERLUDE,
         GAME,
     }
 
@@ -13,9 +14,11 @@ namespace Vertigo
     {
         [Export] private MainState _state = MainState.MAIN_MENU;
         [Export] private readonly PackedScene _mainMenuScene;
+        [Export] private readonly PackedScene _interludeScene;
         [Export] private readonly PackedScene _gameScene;
 
         private MainMenu _mainMenu;
+        private Interlude _interlude;
         private Game _game;
 
         private ColorManager _colorManager;
@@ -39,6 +42,9 @@ namespace Vertigo
                 {
                     case MainState.MAIN_MENU:
                         InitMainMenu();
+                        break;
+                    case MainState.INTERLUDE:
+                        InitInterlude();
                         break;
                     case MainState.GAME:
                         InitGame();
@@ -131,6 +137,33 @@ namespace Vertigo
             }
         }
 
+        private void InitInterlude()
+        {
+            if (_interludeScene != null)
+            {
+                var interludeNode = _interludeScene.Instance();
+
+                if (interludeNode is Interlude)
+                {
+                    _interlude = interludeNode as Interlude;
+                    _interlude.OnInterludeAnimationFinished += OnInterludeAnimationFinished;
+                }
+
+                AddChild(_interlude);
+            }
+            else
+            {
+                State = MainState.GAME;
+            }           
+        }
+
+        private void OnInterludeAnimationFinished()
+        {
+            GD.Print("MEOW");
+
+            State = MainState.GAME;
+        }
+
         private void Clear()
         {
             // main menu
@@ -140,7 +173,16 @@ namespace Vertigo
                 _mainMenu.SafeQueueFree();
             }
 
-            _mainMenu = null;            
+            _mainMenu = null;
+
+            // interlude
+
+            if (_interlude.IsValid())
+            {
+                _interlude.SafeQueueFree();
+            }            
+
+            _interlude = null;
 
             // game
 
@@ -156,7 +198,7 @@ namespace Vertigo
         {
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_START)
             {
-                State = MainState.GAME;
+                State = MainState.INTERLUDE;
                 return;
             }
 
