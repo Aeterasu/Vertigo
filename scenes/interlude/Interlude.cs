@@ -21,7 +21,6 @@ namespace Vertigo
         private void OnAnimationFinished(string animName)
         {
             OnInterludeAnimationFinished?.Invoke();
-            GD.Print("MEOW");
         }
     }
 }

@@ -154,8 +154,6 @@ namespace Vertigo
 
         private void OnInterludeAnimationFinished()
         {
-            GD.Print("MEOW");
-
             State = MainState.GAME;
         }
 

@@ -38,6 +38,8 @@ namespace Vertigo
 
         private Sprite _sprite;
 
+        private SquareDestroyedFX _squareDestroyedFx;
+
         private CPUParticles2D _slowdownFx;
 
         private readonly List<Area2D> _collisionList = new List<Area2D>();
@@ -79,6 +81,13 @@ namespace Vertigo
             _grazeVisual = GetNodeOrNull<GrazeVisual>("GrazeVisual");
 
             _sprite = GetNode<Sprite>("%Sprite");
+
+            _squareDestroyedFx = GetNodeOrNull<SquareDestroyedFX>("SquareDestroyedFX");
+
+            if (_squareDestroyedFx.IsValid())
+            {
+                RemoveChild(_squareDestroyedFx);
+            }
 
             _slowdownFx = GetNodeOrNull<CPUParticles2D>("SlowdownFx");
 
@@ -175,6 +184,14 @@ namespace Vertigo
             _hurtboxComponent.GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
             _hurtboxComponent.Immune = true;
             _currencyGenerator.Generate();
+
+            if (_squareDestroyedFx.IsValid())
+            {
+                _squareDestroyedFx.GlobalPosition = GlobalPosition;
+                _squareDestroyedFx.SquareSprite.RotationDegrees = _sprite.RotationDegrees;
+                Game.Instance.GameLayer.AddChild(_squareDestroyedFx);
+                _squareDestroyedFx.Animate();
+            }
 
             this.SafeQueueFree();
         }
