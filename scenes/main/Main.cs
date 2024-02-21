@@ -29,11 +29,6 @@ namespace Vertigo
             get => _state;
             set
             {
-                if (_state == value) // if the state would not be changed, do nothing
-                {
-                    return;
-                }
-
                 _state = value;
 
                 Clear();
@@ -65,8 +60,6 @@ namespace Vertigo
 
             Instance = this;
 
-            InitMainMenu();
-
             MenuButton.OnButtonExecuted += OnMenuButtonExecuted;
             MenuButton.OnColorButtonPressedLeft += OnColorButtonPressedLeft;
             MenuButton.OnColorButtonPressedRight += OnColorButtonPressedRight;
@@ -75,6 +68,8 @@ namespace Vertigo
             _hueShiftLayer = GetNode<HueShiftLayer>("HueShiftLayer");
 
             UpdateColorManager();
+
+            State = _state;
         }
 
         public override void _PhysicsProcess(float delta)
@@ -83,7 +78,7 @@ namespace Vertigo
 
             bool isGameStateContinuous = true;
 
-            if (State == MainState.GAME)
+            if (State == MainState.GAME && _game.IsValid())
             {
                 isGameStateContinuous = _game.State == GameState.GAME && !_game.IsInRestart;
             }

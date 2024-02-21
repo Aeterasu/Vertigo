@@ -17,6 +17,7 @@
 [node name="Main" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
+_state = 1
 _mainMenuScene = ExtResource( 4 )
 _interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
