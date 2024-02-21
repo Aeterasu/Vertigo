@@ -69,6 +69,7 @@ namespace Vertigo
             _playerExperienceComponent = _player.GetNode<ExperienceComponent>("%ExperienceComponent");
             _playerExperienceComponent.OnLevelUp += OnPlayerLevelUp;
             _player.OnPlayerHit += OnPlayerHit;
+            _player.OnPlayerDeath += OnPlayerDeath;
 
             ScreenShakeCamera2D = GetNodeOrNull<ScreenShakeCamera2D>("%ScreenShakeCamera2D");
 
@@ -97,6 +98,8 @@ namespace Vertigo
             OnHitSlowMotionTimeLeft = 0;
 
             _gemPickupPitch = _minGemPickupPitch;
+
+            GetNode<CanvasLayer>("GUILayer").Visible = true;
         }
 
         public override void _PhysicsProcess(float delta)
@@ -147,6 +150,12 @@ namespace Vertigo
         private void OnPlayerHit()
         {
             OnHitSlowMotionTimeLeft = OnHitSlowMotionDuration;
+        }
+
+        private void OnPlayerDeath()
+        {
+            GetNode<GameOverLayer>("GameOverLayer").Animate(_player);
+            GetNode<CanvasLayer>("GUILayer").Visible = false;
         }
 
         private void OnPlayerLevelUp(ExperienceComponent exp)

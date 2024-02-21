@@ -93,6 +93,7 @@ namespace Vertigo
         public bool IsDead { get => _healthComponent.IfValid().IsDead; }
 
         public event Action OnPlayerHit;
+        public event Action OnPlayerDeath;
 
         public override void _Ready()
         {
@@ -265,6 +266,8 @@ namespace Vertigo
         {
             _state = PlayerState.DEAD;
             _experienceComponent.Enabled = false;
+
+            OnPlayerDeath?.Invoke();
 
             if (TimeManager.Instance.IsValid())
             {
