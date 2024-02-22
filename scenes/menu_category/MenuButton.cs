@@ -79,6 +79,12 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (!Active)
+            {
+                Modulate = new Color(1, 1, 1, 0.3f);
+                return;
+            }
+
             _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
 
             if (_isTooltipHidden)
@@ -130,11 +136,6 @@ namespace Vertigo
             {
                 HideTooltip();
             }
-        }
-
-        public void Execute()
-        {
-
         }
 
         public void ShowTooltip()

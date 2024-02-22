@@ -18,6 +18,16 @@ namespace Vertigo
             _animationPlayer.Connect("animation_finished", this, "OnAnimationFinished");
         }
 
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM))
+            {
+                _animationPlayer.Play("Skip");
+            }
+        }
+
         private void OnAnimationFinished(string animName)
         {
             OnInterludeAnimationFinished?.Invoke();
