@@ -5,6 +5,8 @@ namespace Vertigo
 {
     public class GameOverLayer : CanvasLayer
     {
+        [Export] public Color TimerColor;
+
         private AnimationPlayer _animationPlayer;
 
         public override void _Ready()
@@ -23,6 +25,8 @@ namespace Vertigo
             _animationPlayer.Play("GameOver");
 
             GetNode<Sprite>("Sprite").GlobalTransform = player.GetNode<Sprite>("SpritePivot/Sprite").GlobalTransform;
+
+            GetNode<GUITimer>("Timer").Enabled = true;
         }
     }
 }

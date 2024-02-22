@@ -5,6 +5,7 @@ namespace Vertigo
 {
     public class RestartHandler : Node
     {
+        [Export] public bool Enabled = true;
         [Export] private readonly float _restartTime = 2.0f;
         [Export] private readonly float _flashThreshold = 1.5f;
 
@@ -21,6 +22,11 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            if (!Enabled)
+            {
+                return;
+            }
 
             if (!_guiRestart.IsValid())
             {

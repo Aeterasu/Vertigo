@@ -5,6 +5,8 @@ namespace Vertigo
 {
     public class GUITimer : Control
     {
+        [Export] public bool Enabled = true;
+
         private TimeManager _timeManager;
         
         private Label _label;
@@ -21,6 +23,11 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            if (!Enabled)
+            {
+                return;
+            }
 
             if (!_timeManager.IsValid())
             {

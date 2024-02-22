@@ -17,18 +17,15 @@ namespace Vertigo
             get => _currentButtonId;
             set
             {
-                if (value < 0)
-                {
-                    value = _buttons.Count - 1;
-                }
-                else if (value >= _buttons.Count)
-                {
-                    value = 0;
-                }
-
                 if (_currentButton.IsValid())
                 {
                     _currentButton.Unfocus();
+                }
+
+                if (value == -1)
+                {
+                    _currentButtonId = value;
+                    return;
                 }
 
                 _currentButtonId = value;
@@ -86,7 +83,14 @@ namespace Vertigo
                     return;
                 }
 
-                CurrentButtonId -= 1;
+                if (CurrentButtonId - 1 >= 0)
+                {
+                    CurrentButtonId -= 1;
+                }
+                else
+                {
+                    CurrentButtonId = _buttons.Count - 1;
+                }
             }
 
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN))
@@ -98,7 +102,14 @@ namespace Vertigo
                     return;
                 }
 
-                CurrentButtonId += 1;
+                if (CurrentButtonId + 1 <= _buttons.Count - 1)
+                {
+                    CurrentButtonId += 1;
+                }
+                else
+                {
+                    CurrentButtonId = 0;
+                }
             }
 
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && !FirstInput && _currentButton.IsValid())
@@ -141,6 +152,10 @@ namespace Vertigo
             {
                 return;
             }
+
+            FirstInput = true;
+            CurrentButtonId = -1;
+            _currentButton = null;
         }
     }
 }

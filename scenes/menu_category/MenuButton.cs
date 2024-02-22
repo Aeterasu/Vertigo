@@ -12,14 +12,20 @@ namespace Vertigo
         MENU_BUTTON_CREDITS,
         MENU_BUTTON_EXIT,
         MENU_BUTTON_HOW_TO_PLAY,
+        MENU_BUTTON_RESTART,
+        MENU_BUTTON_BACK_TO_MENU,
     }
 
     public class MenuButton : Control
     {
         [Export] public MenuButtonType ButtonType { get; private set; } = MenuButtonType.MENU_BUTTON_START;
+        [Export] public bool HasTooltip { get; private set; }
+        [Export] public string TooltipTextKey { get; private set; } = "TOOLTIP_DEFAULT";
         [Export] public bool Active { get; private set; } = true;
 
         private bool _isFocused = false;
+
+        private bool _isHoveredOver = false;
 
         private Label _label;
 
@@ -86,9 +92,13 @@ namespace Vertigo
                 _tooltip.RectPosition = _tooltip.RectPosition.LinearInterpolate(_tooltipDefaultPosition, 10 * delta);
             }
 
-            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR && !_isTooltipHidden)
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
             {
-                _tooltipLabel.Text = Tr(ColorManager.GetCurrentColor.NameKey);
+                _tooltipLabel.Text = Tr(TooltipTextKey) + System.Environment.NewLine + Tr(ColorManager.GetCurrentColor.NameKey);
+            }
+            else if (_isTooltipHidden)
+            {
+                _tooltipLabel.Text = Tr(TooltipTextKey);
             }
         }
 
@@ -101,7 +111,7 @@ namespace Vertigo
                 _animationPlayer.Play("Focus");
             }
 
-            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR || HasTooltip)
             {
                 ShowTooltip();
             }
@@ -116,7 +126,7 @@ namespace Vertigo
                 _animationPlayer.Play("Unfocus");
             }
 
-            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
+            if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR || HasTooltip)
             {
                 HideTooltip();
             }

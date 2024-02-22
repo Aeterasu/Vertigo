@@ -38,13 +38,19 @@ texture = SubResource( 2 )
 [node name="StartButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 156.0
 margin_bottom = 180.0
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_START"
 
 [node name="ColorButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 188.0
 margin_bottom = 212.0
 ButtonType = 1
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_COLOR"
 
 [node name="ExitButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 220.0
 margin_bottom = 244.0
 ButtonType = 5
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_EXIT"

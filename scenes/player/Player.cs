@@ -269,6 +269,8 @@ namespace Vertigo
 
             OnPlayerDeath?.Invoke();
 
+            Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(12f);
+
             if (TimeManager.Instance.IsValid())
             {
                 TimeManager.Instance.StopTimer();

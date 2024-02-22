@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/time_manager/TimeManager.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/gui/gui_health/GUIHealthBar.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/attacks/player_homing_projectile/PlayerHomingProjectile.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timer.png" type="Texture" id=18]
+[ext_resource path="res://scenes/time_manager/Timer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/gui/GUITimer.cs" type="Script" id=19]
 [ext_resource path="res://scenes/countdown/Countdown.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/currency/Diamond.tscn" type="PackedScene" id=21]
@@ -38,6 +38,15 @@
 [ext_resource path="res://scenes/hazards/diagonal/DiagonalTelegraph.tscn" type="PackedScene" id=36]
 [ext_resource path="res://shaders/color_fill.tres" type="Shader" id=37]
 [ext_resource path="res://assets/textures/player/sprite_player_1.png" type="Texture" id=38]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=39]
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 37 )
+shader_param/color = null
+shader_param/mixture = 1.0
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 37 )
@@ -88,6 +97,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Timer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0.596078, 0.376471, 1, 1 ), Color( 0.596078, 0.376471, 1, 1 ), Color( 0.596078, 0.376471, 1, 0 ) ]
+}
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 27 )
@@ -115,9 +136,6 @@ gradient = SubResource( 4 )
 width = 128
 fill_from = Vector2( 1, 0.8 )
 fill_to = Vector2( 0.7, 0.6 )
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 14 )
 
 [node name="Game" type="Node2D"]
 pause_mode = 1
@@ -376,11 +394,36 @@ initial_velocity = 512.0
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 script = ExtResource( 35 )
+TimerColor = Color( 0, 0, 0, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="GameOverLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Timer" type="Control" parent="GameOverLayer"]
+modulate = Color( 0.596078, 0.376471, 1, 1 )
+material = SubResource( 11 )
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 19 )
+
+[node name="TextureRect" type="TextureRect" parent="GameOverLayer/Timer"]
+margin_left = 456.0
+margin_top = 235.0
+margin_right = 474.0
+margin_bottom = 259.0
+texture = ExtResource( 39 )
+
+[node name="Label" type="Label" parent="GameOverLayer/Timer"]
+margin_left = 370.0
+margin_top = 243.0
+margin_right = 451.0
+margin_bottom = 259.0
+custom_fonts/font = SubResource( 1 )
+text = "00.00"
+align = 2
+valign = 2
 
 [node name="Sprite" type="Sprite" parent="GameOverLayer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -480,41 +523,7 @@ margin_right = 33.0
 margin_bottom = 8.0
 texture = SubResource( 5 )
 
-[node name="Timer" type="Control" parent="GUILayer/GUI"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 19 )
-
-[node name="TextureRect" type="TextureRect" parent="GUILayer/GUI/Timer"]
-margin_left = 456.0
-margin_top = 235.0
-margin_right = 474.0
-margin_bottom = 259.0
-texture = ExtResource( 18 )
-
-[node name="Label" type="Label" parent="GUILayer/GUI/Timer"]
-margin_left = 370.0
-margin_top = 243.0
-margin_right = 451.0
-margin_bottom = 259.0
-custom_fonts/font = SubResource( 1 )
-text = "00.00"
-align = 2
-valign = 2
-
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Timer"]
-margin_left = 415.0
-margin_top = 258.0
-margin_right = 450.0
-margin_bottom = 259.0
-color = Color( 0.596078, 0.376471, 1, 1 )
-
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Timer"]
-margin_left = 415.0
-margin_top = 241.0
-margin_right = 450.0
-margin_bottom = 242.0
-color = Color( 0.596078, 0.376471, 1, 1 )
+[node name="Timer" parent="GUILayer/GUI" instance=ExtResource( 18 )]
 
 [node name="LineLeft" type="TextureRect" parent="GUILayer/GUI"]
 margin_top = 47.0

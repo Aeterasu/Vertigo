@@ -154,8 +154,14 @@ namespace Vertigo
 
         private void OnPlayerDeath()
         {
-            GetNode<GameOverLayer>("GameOverLayer").Animate(_player);
+            var gameOverLayer = GetNode<GameOverLayer>("GameOverLayer");
+
+            gameOverLayer.Animate(_player);
+            gameOverLayer.GetNode<AnimationPlayer>("AnimationPlayer").Connect("animation_finished", Main.Instance, "OnGameOverAnimationFinished");
+            
             GetNode<CanvasLayer>("GUILayer").Visible = false;
+
+            _restartHandler.Enabled = false;
         }
 
         private void OnPlayerLevelUp(ExperienceComponent exp)

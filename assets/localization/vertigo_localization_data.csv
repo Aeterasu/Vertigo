@@ -6,6 +6,8 @@ MENU_BUTTON_OPTIONS,Options,Настройки
 MENU_BUTTON_LANGUAGE,Language,Язык
 MENU_BUTTON_CREDITS,Credits,Авторы
 MENU_BUTTON_EXIT,Exit,Выход
+MENU_BUTTON_RESTART,Begin again,
+MENU_BUTTON_BACK_TO_MENU,Back to menu,
 OPTIONS_MUSIC,Music,Музыка
 OPTIONS_SOUND,Sound Effects,Звук
 OPTIONS_FULLSCREEN,Fullscreen,Полный экран
@@ -51,3 +53,9 @@ COLOR_NAME_SUNFLOWER,Sunflower,
 COLOR_NAME_GREYVIEW,Greyview,
 COLOR_NAME_SAFETY,Safety,
 COLOR_NAME_WAVES,Waves,
+TOOLTIP_DEFAULT,TOOLTIP,
+TOOLTIP_START,"Fall asleep, fall into Vertigo!",
+TOOLTIP_COLOR,Palette:,
+TOOLTIP_EXIT,Abandon the world of slumber and dreams.,
+TOOLTIP_BEGIN_ANEW,Begin the dream anew.,
+TOOLTIP_BACK_TO_MENU,Wake up and go back to the main menu.,

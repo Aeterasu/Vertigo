@@ -8,6 +8,7 @@ namespace Vertigo
         MAIN_MENU,
         INTERLUDE,
         GAME,
+        GAME_OVER,
     }
 
     public class Main : Node
@@ -16,10 +17,12 @@ namespace Vertigo
         [Export] private readonly PackedScene _mainMenuScene;
         [Export] private readonly PackedScene _interludeScene;
         [Export] private readonly PackedScene _gameScene;
+        [Export] private readonly PackedScene _gameOverScene;
 
         private MainMenu _mainMenu;
         private Interlude _interlude;
         private Game _game;
+        private GameOverScreen _gameOver;
 
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
@@ -43,6 +46,9 @@ namespace Vertigo
                         break;
                     case MainState.GAME:
                         InitGame();
+                        break;
+                    case MainState.GAME_OVER:
+                        InitGameOver();
                         break;
                 }
             }
@@ -152,9 +158,33 @@ namespace Vertigo
             }           
         }
 
+        private void InitGameOver()
+        {
+            if (_gameOverScene != null)
+            {
+                var gameOverNode = _gameOverScene.Instance();
+
+                if (gameOverNode is GameOverScreen)
+                {
+                    _gameOver = gameOverNode as GameOverScreen;
+                }
+
+                AddChild(_gameOver);
+            }
+            else
+            {
+                State = MainState.MAIN_MENU;
+            }
+        }
+
         private void OnInterludeAnimationFinished()
         {
             State = MainState.GAME;
+        }
+
+        public void OnGameOverAnimationFinished(string animName)
+        {
+            State = MainState.GAME_OVER;
         }
 
         private void Clear()
@@ -185,6 +215,15 @@ namespace Vertigo
             }
 
             _game = null;
+
+            // game over
+
+            if (_gameOver.IsValid())
+            {
+                _gameOver.SafeQueueFree();
+            }
+
+            _gameOver = null;
         }
 
         private void OnMenuButtonExecuted(MenuButton button)
@@ -198,6 +237,18 @@ namespace Vertigo
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_EXIT)
             {
                 GetTree().Quit();
+                return;
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_RESTART)
+            {
+                State = MainState.GAME;
+                return;
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_BACK_TO_MENU)
+            {
+                State = MainState.MAIN_MENU;
                 return;
             }
         }
