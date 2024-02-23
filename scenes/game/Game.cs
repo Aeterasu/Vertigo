@@ -162,6 +162,11 @@ namespace Vertigo
             GetNode<CanvasLayer>("GUILayer").Visible = false;
 
             _restartHandler.Enabled = false;
+
+            if (GameResultsManager.Instance.IsValid())
+            {
+                GameResultsManager.Instance.CurrentGameResults = new GameResults(_timeManager.GetElapsedTime);
+            }
         }
 
         private void OnPlayerLevelUp(ExperienceComponent exp)

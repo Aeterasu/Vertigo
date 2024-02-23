@@ -46,7 +46,7 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            if (_timeManager.GetPersistentTimer >= _canOnlySpawnAfter && !_init)
+            if (_timeManager.GetElapsedTime >= _canOnlySpawnAfter && !_init)
             {
                 _spawnPoints = GetSpawnPoints();
 
@@ -159,7 +159,7 @@ namespace Vertigo
 
         public void StepDifficulty()
         {
-            if (_timeManager.GetPersistentTimer < _canOnlySpawnAfter)
+            if (_timeManager.GetElapsedTime < _canOnlySpawnAfter)
             {
                 return;
             }

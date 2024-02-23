@@ -5,9 +5,9 @@ namespace Vertigo
 {
     public class GameResults
     {
-        public float Time { get; private set; } = 0f;
+        public double Time { get; private set; } = 0f;
 
-        public GameResults(float time)
+        public GameResults(double time)
         {
             Time = time;
         }

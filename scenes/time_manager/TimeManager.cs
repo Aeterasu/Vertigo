@@ -11,8 +11,8 @@ namespace Vertigo
         [Export] private readonly float _spiralDizzynessThreshold = 90f;
         [Export] private readonly float _waveDizzynessThreshold = 120f;
 
-        private float _timer = 0f; 
-        private float _persistentTimer = 0f;
+        private float _difficultyStepTimer = 0f; 
+        private float _timer = 0f;
 
         private CPUParticles2D _rain;
         private bool _rainActivated = false;
@@ -28,19 +28,15 @@ namespace Vertigo
 
         public event Action OnDifficultyStepReached;
 
-        public float GetTimer { get => _timer; }
-
         public float GetDifficultyStepThreshold
         {
             get => _difficultyStepThreshold;
         }
 
-        public float GetPersistentTimer
+        public float GetElapsedTime
         {
-            get => _persistentTimer;
+            get => _timer;
         }
-
-        public float GetSecElapsed { get => _persistentTimer; }
 
         public bool IsTimerStopped { get; private set; } = true;
 
@@ -67,39 +63,39 @@ namespace Vertigo
 
             if (!IsTimerStopped)
             {
+                _difficultyStepTimer += delta;
                 _timer += delta;
-                _persistentTimer += delta;
             }
             else
             {
 
             }
 
-            if (_timer >= _difficultyStepThreshold)
+            if (_difficultyStepTimer >= _difficultyStepThreshold)
             {
                 OnDifficultyStepReached?.Invoke();
-                _timer = 0f;
+                _difficultyStepTimer = 0f;
             }
 
-            if (_persistentTimer >= _rainThreshold && !_rainActivated)
+            if (_timer >= _rainThreshold && !_rainActivated)
             {
                 _rain.Emitting = true;
                 _rainActivated = true;
             }
 
-            if (_persistentTimer >= _dizzynessThreshold && !_dizzynessActivated)
+            if (_timer >= _dizzynessThreshold && !_dizzynessActivated)
             {
                 _dizzyness.Enabled = true;
                 _dizzynessActivated = true;
             }
 
-            if (_persistentTimer >= _spiralDizzynessThreshold && !_spiralDizzynessActivated)
+            if (_timer >= _spiralDizzynessThreshold && !_spiralDizzynessActivated)
             {
                 _spiralDizzyness.Enabled = true;
                 _spiralDizzynessActivated = true;
             }
 
-            if (_persistentTimer >= _waveDizzynessThreshold && !_waveDizzynessActivated)
+            if (_timer >= _waveDizzynessThreshold && !_waveDizzynessActivated)
             {
                 _waveDizzyness.Enabled = true;
                 _waveDizzynessActivated = true;
