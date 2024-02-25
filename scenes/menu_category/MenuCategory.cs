@@ -6,6 +6,8 @@ namespace Vertigo
 {
     public class MenuCategory : Control
     {
+        [Export] public bool DisableInput { get; set; }
+
         private List<MenuButton> _buttons = new List<MenuButton>();
 
         private int _currentButtonId = 0;
@@ -17,7 +19,7 @@ namespace Vertigo
             get => _currentButtonId;
             set
             {
-                if (_currentButton.IsValid())
+                if (_currentButton.IsValid() && _currentButtonId != -1)
                 {
                     _currentButton.Unfocus();
                 }
@@ -40,8 +42,6 @@ namespace Vertigo
         }
 
         public bool FirstInput { get; private set; } = true;
-
-        public bool DisableInput { get; private set; }
 
         public override void _Ready()
         {
@@ -71,6 +71,7 @@ namespace Vertigo
         {
             if (DisableInput)
             {
+                CurrentButtonId = -1;
                 return;
             }
 
@@ -91,6 +92,11 @@ namespace Vertigo
                 {
                     CurrentButtonId = _buttons.Count - 1;
                 }
+
+                if (!_buttons[CurrentButtonId].Active)
+                {
+                    CurrentButtonId -= 1;
+                }
             }
 
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN))
@@ -109,6 +115,11 @@ namespace Vertigo
                 else
                 {
                     CurrentButtonId = 0;
+                }
+
+                if (!_buttons[CurrentButtonId].Active)
+                {
+                    CurrentButtonId += 1;
                 }
             }
 

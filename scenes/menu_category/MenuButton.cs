@@ -79,13 +79,18 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
+
+            if (ButtonType == MenuButtonType.MENU_BUTTON_EXIT && OS.GetName() == "HTML5")
+            {
+                Active = false;
+            }
+
             if (!Active)
             {
                 Modulate = new Color(1, 1, 1, 0.3f);
                 return;
             }
-
-            _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
 
             if (_isTooltipHidden)
             {
@@ -110,6 +115,11 @@ namespace Vertigo
 
         public void Focus()
         {
+            if (!Active)
+            {
+                return;
+            }
+
             IsFocused = true;
 
             if (_animationPlayer.IsValid())
@@ -125,6 +135,11 @@ namespace Vertigo
 
         public void Unfocus()
         {
+            if (!Active)
+            {
+                return;
+            }
+
             IsFocused = false;
 
             if (_animationPlayer.IsValid())
