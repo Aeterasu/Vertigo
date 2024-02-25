@@ -47,8 +47,6 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
-
-            
         }
 
         private void OnFocusChanged(Control control)

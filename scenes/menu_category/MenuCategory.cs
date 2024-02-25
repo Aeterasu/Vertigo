@@ -19,7 +19,7 @@ namespace Vertigo
             get => _currentButtonId;
             set
             {
-                if (_currentButton.IsValid() && _currentButtonId != -1)
+                if (_currentButton.IsValid() && _currentButton.IsFocused && _currentButtonId != -1)
                 {
                     _currentButton.Unfocus();
                 }
@@ -143,6 +143,11 @@ namespace Vertigo
 
         private void OnButtonMouseEntered(MenuButton button)
         {
+            if (DisableInput)
+            {
+                return;
+            }
+
             if (!_buttons.Contains(button))
             {
                 return;
