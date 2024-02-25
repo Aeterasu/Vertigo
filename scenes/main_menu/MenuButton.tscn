@@ -154,8 +154,8 @@ mouse_filter = 2
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Tooltip"]
-margin_left = 22.0
-margin_right = 114.0
+margin_left = 21.0
+margin_right = 113.0
 margin_bottom = 56.0
 custom_fonts/font = SubResource( 10 )
 text = "TOOLTIP"

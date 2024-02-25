@@ -98,7 +98,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Timer:modulate")
+tracks/3/path = NodePath("TimerLayer/Timer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -166,9 +166,10 @@ region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
-_rainThreshold = 40.0
-_dizzynessThreshold = 60.0
-_waveDizzynessThreshold = 160.0
+_rainThreshold = 0.0
+_dizzynessThreshold = 0.0
+_spiralDizzynessThreshold = 0.0
+_waveDizzynessThreshold = 0.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true
@@ -399,23 +400,31 @@ TimerColor = Color( 0, 0, 0, 1 )
 [node name="ColorRect" type="ColorRect" parent="GameOverLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+color = Color( 0.596078, 0.376471, 1, 0 )
 
-[node name="Timer" type="Control" parent="GameOverLayer"]
-modulate = Color( 0.596078, 0.376471, 1, 1 )
+[node name="TimerLayer" type="CanvasLayer" parent="GameOverLayer"]
+layer = 4
+
+[node name="Timer" type="Control" parent="GameOverLayer/TimerLayer"]
+modulate = Color( 0, 0, 0, 1 )
 material = SubResource( 11 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 19 )
+Enabled = false
 
-[node name="TextureRect" type="TextureRect" parent="GameOverLayer/Timer"]
+[node name="TextureRect" type="TextureRect" parent="GameOverLayer/TimerLayer/Timer"]
 margin_left = 456.0
 margin_top = 235.0
 margin_right = 474.0
 margin_bottom = 259.0
 texture = ExtResource( 39 )
 
-[node name="Label" type="Label" parent="GameOverLayer/Timer"]
+[node name="Label" type="Label" parent="GameOverLayer/TimerLayer/Timer"]
 margin_left = 370.0
 margin_top = 243.0
 margin_right = 451.0
@@ -431,7 +440,6 @@ material = SubResource( 8 )
 texture = ExtResource( 38 )
 
 [node name="Sprite2" type="Sprite" parent="GameOverLayer/Sprite"]
-modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 9 )
 texture = ExtResource( 38 )
 

@@ -16,6 +16,8 @@ namespace Vertigo
             Visible = false;
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
+            GetNode<GUITimer>("TimerLayer/Timer").Visible = false;
         }
 
         public void Animate(Player player)
@@ -26,7 +28,8 @@ namespace Vertigo
 
             GetNode<Sprite>("Sprite").GlobalTransform = player.GetNode<Sprite>("SpritePivot/Sprite").GlobalTransform;
 
-            GetNode<GUITimer>("Timer").Enabled = true;
+            GetNode<GUITimer>("TimerLayer/Timer").Visible = true;
+            GetNode<GUITimer>("TimerLayer/Timer").Enabled = true;
         }
     }
 }
