@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=2]
@@ -6,8 +6,27 @@
 [ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=4]
 [ext_resource path="res://scenes/leaderboard/ScoreGetter.gd" type="Script" id=5]
 [ext_resource path="res://scenes/leaderboard/ScoreSender.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=7]
+[ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 4 )
+width = 186
+height = 18
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 186
+height = 1
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -90,17 +109,57 @@ margin_top = 186.0
 margin_right = 222.0
 margin_bottom = 202.0
 
-[node name="LeaderboardCurrentPosition" parent="." instance=ExtResource( 3 )]
+[node name="LeaderboardCurrentPosition" type="Control" parent="."]
 margin_left = 12.0
 margin_top = 208.0
 margin_right = 222.0
 margin_bottom = 224.0
+script = ExtResource( 8 )
+_highlightColor = Color( 0.596078, 0.376471, 1, 1 )
+
+[node name="PlayerNameLabel" type="Label" parent="LeaderboardCurrentPosition"]
+margin_right = 186.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+[node name="ScoreLabel" type="Label" parent="LeaderboardCurrentPosition"]
+margin_right = 178.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 1 )
+text = "00:00"
+align = 2
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="LeaderboardCurrentPosition"]
+margin_left = 181.0
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Gradient" type="TextureRect" parent="LeaderboardCurrentPosition"]
+modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_top = -4.0
+margin_right = 186.0
+margin_bottom = 14.0
+rect_scale = Vector2( 1, 1.225 )
+texture = SubResource( 3 )
+
+[node name="Underscore" type="TextureRect" parent="LeaderboardCurrentPosition"]
+show_behind_parent = true
+margin_top = 17.0
+margin_right = 186.0
+margin_bottom = 18.0
+texture = SubResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 margin_top = 4.0
 margin_right = 210.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 8 )
 text = "LEADERBOARD"
 align = 1
 autowrap = true
@@ -110,7 +169,7 @@ visible = false
 margin_top = 32.0
 margin_right = 210.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 8 )
 text = "Error while
 retrieving the leaderboard."
 align = 1

@@ -1,51 +1,52 @@
 ,en,ru
-MENU_BUTTON_START,Start,Старт
-MENU_BUTTON_COLOR,Palette,Палитра
-MENU_BUTTON_HOW_TO_PLAY,How to play,Как играть
-MENU_BUTTON_OPTIONS,Options,Настройки
-MENU_BUTTON_LANGUAGE,Language,Язык
-MENU_BUTTON_CREDITS,Credits,Авторы
-MENU_BUTTON_EXIT,Exit,Выход
+MENU_BUTTON_START,Start,
+MENU_BUTTON_COLOR,Palette,
+MENU_BUTTON_HOW_TO_PLAY,How to play,
+MENU_BUTTON_OPTIONS,Options,
+MENU_BUTTON_LANGUAGE,Language,
+MENU_BUTTON_CREDITS,Credits,
+MENU_BUTTON_EXIT,Exit,
 MENU_BUTTON_RESTART,Begin again,
 MENU_BUTTON_BACK_TO_MENU,Back to menu,
-OPTIONS_MUSIC,Music,Музыка
-OPTIONS_SOUND,Sound Effects,Звук
-OPTIONS_FULLSCREEN,Fullscreen,Полный экран
-OPTIONS_TUTORIAL,Show tutorial,Показывать обучение
-OPTIONS_SCREEN_SHAKE,Screen shake,Тряска экрана
-OPTIONS_TRAIL_EFFECT,Trail effects,Эффект шлейфа
-LANGUAGE_EN,English,Английский
-LANGUAGE_RU,Russian,Русский
-UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
-UPGRADE_DESCRIPTION_ABUNDANCY,Fire an additional projectile every second shot.,Дополнительный снаряд через каждый выстрел.
-UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Fire one more additional projectile every second shot.,Дополнительный снаряд через каждый выстрел.
-UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
-UPGRADE_DESCRIPTION_AEGIS,Become invulnerable for 6 seconds after ascending.,Неуязвимость на 6 секунд после восхождения.
-UPGRADE_STACK_DESCRIPTION_AEGIS,Prolong invulnerability period for 3 more seconds.,Дополнительные 3 секунды неуязвимости.
-UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
-UPGRADE_DESCRIPTION_AFFINITY,Larger graze areas.,Увеличенные зоны грации.
-UPGRADE_STACK_DESCRIPTION_AFFINITY,Larger graze areas.,Еще сильнее увеличенные зоны грации.
-UPGRADE_NAME_DULLNESS,DULLNESS,РАВНОДУШИЕ
-UPGRADE_DESCRIPTION_DULLNESS,Slow down hazards on hit.,Замедление угроз при попадании.
-UPGRADE_STACK_DESCRIPTION_DULLNESS,Further slow down hazards on hit.,Замедление угроз при попадании.
-UPGRADE_NAME_HASTE,HASTE,СПЕШКА
-UPGRADE_DESCRIPTION_HASTE,Faster power regeneration.,Ускоренное восстановление силы.
-UPGRADE_STACK_DESCRIPTION_HASTE,Faster power regeneration.,Ускоренное восстановление силы.
-UPGRADE_NAME_OMISSION,OMISSION,УПУЩЕНИЕ
-UPGRADE_DESCRIPTION_OMISSION,Receive diamonds for missed hazards.,Самоцветы за пропущенные угрозы.
-UPGRADE_STACK_DESCRIPTION_OMISSION,Receive more diamonds for missed hazards.,Больше самоцветов за пропущенные угрозы.
-UPGRADE_NAME_OPULENCY,OPULENCY,БОГАТСТВО
-UPGRADE_DESCRIPTION_OPULENCY,Receive additional diamonds from destroyed hazards.,Больше самоцветов при уничтожении угроз.
-UPGRADE_STACK_DESCRIPTION_OPULENCY,Receive even more additional diamonds from destroyed hazards.,Еще больше самоцветов при уничтожении угроз.
-UPGRADE_NAME_PASSION,PASSION,СТРАСТЬ
-UPGRADE_DESCRIPTION_PASSION,+1 HP.,+1 ОЗ.
-UPGRADE_STACK_DESCRIPTION_PASSION,+1 HP.,+1 ОЗ.
-UPGRADE_NAME_CONVERGENCE,CONVERGENCE,СХОЖДЕНИЕ
-UPGRADE_DESCRIPTION_CONVERGENCE,Release a homing projectile on flip.,Самонаводящийся снаряд при перевороте.
-UPGRADE_STACK_DESCRIPTION_CONVERGENCE,Release an additional homing projectile on flip.,Дополнительный самонаводящийся снаряд при перевороте.
-GUI_POWER,POWER,СИЛА
-GUI_LVL,LVL.,УР.
-GUI_GRAZE,GRAZE!,ГРАЦИЯ!
+MENU_BUTTON_LEADERBOARD_MENU,Leaderboard,
+OPTIONS_MUSIC,Music,
+OPTIONS_SOUND,Sound Effects,
+OPTIONS_FULLSCREEN,Fullscreen,
+OPTIONS_TUTORIAL,Show tutorial,
+OPTIONS_SCREEN_SHAKE,Screen shake,
+OPTIONS_TRAIL_EFFECT,Trail effects,
+LANGUAGE_EN,English,
+LANGUAGE_RU,Russian,
+UPGRADE_NAME_ABUNDANCY,ABUNDANCY,
+UPGRADE_DESCRIPTION_ABUNDANCY,Fire an additional projectile every second shot.,
+UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Fire one more additional projectile every second shot.,
+UPGRADE_NAME_AEGIS,AEGIS,
+UPGRADE_DESCRIPTION_AEGIS,Become invulnerable for 10 seconds after ascending.,
+UPGRADE_STACK_DESCRIPTION_AEGIS,Prolong invulnerability period for 4 more seconds.,
+UPGRADE_NAME_AFFINITY,AFFINITY,
+UPGRADE_DESCRIPTION_AFFINITY,Larger graze areas.,
+UPGRADE_STACK_DESCRIPTION_AFFINITY,Larger graze areas.,
+UPGRADE_NAME_DULLNESS,DULLNESS,
+UPGRADE_DESCRIPTION_DULLNESS,Slow down hazards on hit.,
+UPGRADE_STACK_DESCRIPTION_DULLNESS,Further slow down hazards on hit.,
+UPGRADE_NAME_HASTE,HASTE,
+UPGRADE_DESCRIPTION_HASTE,Faster power regeneration.,
+UPGRADE_STACK_DESCRIPTION_HASTE,Faster power regeneration.,
+UPGRADE_NAME_OMISSION,OMISSION,
+UPGRADE_DESCRIPTION_OMISSION,Receive diamonds for missed hazards.,
+UPGRADE_STACK_DESCRIPTION_OMISSION,Receive more diamonds for missed hazards.,
+UPGRADE_NAME_OPULENCY,OPULENCY,
+UPGRADE_DESCRIPTION_OPULENCY,Receive additional diamonds from destroyed hazards.,
+UPGRADE_STACK_DESCRIPTION_OPULENCY,Receive even more additional diamonds from destroyed hazards.,
+UPGRADE_NAME_PASSION,PASSION,
+UPGRADE_DESCRIPTION_PASSION,+1 HP.,
+UPGRADE_STACK_DESCRIPTION_PASSION,+1 HP.,
+UPGRADE_NAME_CONVERGENCE,CONVERGENCE,
+UPGRADE_DESCRIPTION_CONVERGENCE,Release a homing projectile on flip.,
+UPGRADE_STACK_DESCRIPTION_CONVERGENCE,Release an additional homing projectile on flip.,
+GUI_POWER,POWER,
+GUI_LVL,LVL.,
+GUI_GRAZE,GRAZE!,
 COLOR_NAME_DEFAULT,Vertigo,
 COLOR_NAME_MINT,Mint,
 COLOR_NAME_RASPBERRY,Raspberry,

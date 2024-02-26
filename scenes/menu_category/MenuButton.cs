@@ -14,6 +14,7 @@ namespace Vertigo
         MENU_BUTTON_HOW_TO_PLAY,
         MENU_BUTTON_RESTART,
         MENU_BUTTON_BACK_TO_MENU,
+        MENU_BUTTON_LEADERBOARD_MENU,
     }
 
     public class MenuButton : Control

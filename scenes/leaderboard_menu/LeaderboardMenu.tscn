@@ -1,0 +1,195 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=2]
+[ext_resource path="res://scenes/main_menu/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/leaderboard/LeaderboardPosition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=5]
+[ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=6]
+[ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=7]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scenes/leaderboard/ScoreGetter.gd" type="Script" id=9]
+[ext_resource path="res://scenes/leaderboard/ScoreSender.gd" type="Script" id=10]
+[ext_resource path="res://scenes/leaderboard_menu/LeaderboardMenu.cs" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 4 )
+width = 186
+height = 18
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 186
+height = 1
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 8 )
+
+[node name="LeaderboardMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="Backdrop" type="Sprite" parent="."]
+modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 480, 270 )
+
+[node name="Leaderboard" type="Control" parent="."]
+margin_left = 135.0
+margin_right = 345.0
+margin_bottom = 270.0
+mouse_filter = 2
+script = ExtResource( 5 )
+
+[node name="ScoreGetter" type="Node" parent="Leaderboard"]
+script = ExtResource( 9 )
+
+[node name="ScoreSender" type="Node" parent="Leaderboard"]
+script = ExtResource( 10 )
+
+[node name="TopTenPositions" type="Control" parent="Leaderboard"]
+
+[node name="LeaderboardPosition1" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 24.0
+margin_right = 222.0
+margin_bottom = 40.0
+
+[node name="LeaderboardPosition2" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 42.0
+margin_right = 222.0
+margin_bottom = 58.0
+
+[node name="LeaderboardPosition3" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 222.0
+margin_bottom = 76.0
+
+[node name="LeaderboardPosition4" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 78.0
+margin_right = 222.0
+margin_bottom = 94.0
+
+[node name="LeaderboardPosition5" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 96.0
+margin_right = 222.0
+margin_bottom = 112.0
+
+[node name="LeaderboardPosition6" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 114.0
+margin_right = 222.0
+margin_bottom = 130.0
+
+[node name="LeaderboardPosition7" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 132.0
+margin_right = 222.0
+margin_bottom = 148.0
+
+[node name="LeaderboardPosition8" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 150.0
+margin_right = 222.0
+margin_bottom = 166.0
+
+[node name="LeaderboardPosition9" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 168.0
+margin_right = 222.0
+margin_bottom = 184.0
+
+[node name="LeaderboardPosition10" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+margin_left = 12.0
+margin_top = 186.0
+margin_right = 222.0
+margin_bottom = 202.0
+
+[node name="LeaderboardCurrentPosition" type="Control" parent="Leaderboard"]
+margin_left = 12.0
+margin_top = 208.0
+margin_right = 222.0
+margin_bottom = 224.0
+script = ExtResource( 7 )
+_highlightColor = Color( 0.596078, 0.376471, 1, 1 )
+
+[node name="PlayerNameLabel" type="Label" parent="Leaderboard/LeaderboardCurrentPosition"]
+margin_right = 186.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 1 )
+valign = 1
+
+[node name="ScoreLabel" type="Label" parent="Leaderboard/LeaderboardCurrentPosition"]
+margin_right = 178.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 1 )
+text = "00:00"
+align = 2
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Leaderboard/LeaderboardCurrentPosition"]
+margin_left = 181.0
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Gradient" type="TextureRect" parent="Leaderboard/LeaderboardCurrentPosition"]
+modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_top = -4.0
+margin_right = 186.0
+margin_bottom = 14.0
+rect_scale = Vector2( 1, 1.225 )
+texture = SubResource( 3 )
+
+[node name="Underscore" type="TextureRect" parent="Leaderboard/LeaderboardCurrentPosition"]
+show_behind_parent = true
+margin_top = 17.0
+margin_right = 186.0
+margin_bottom = 18.0
+texture = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Leaderboard"]
+margin_top = 4.0
+margin_right = 210.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 8 )
+text = "LEADERBOARD"
+align = 1
+autowrap = true
+
+[node name="ErrorMessage" type="Label" parent="Leaderboard"]
+visible = false
+margin_top = 32.0
+margin_right = 210.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 8 )
+text = "Error while
+retrieving the leaderboard."
+align = 1
+autowrap = true
+
+[node name="MenuCategory" type="Control" parent="."]
+mouse_filter = 2
+script = ExtResource( 6 )
+
+[node name="MenuButtonBackToMenu" parent="MenuCategory" instance=ExtResource( 3 )]
+margin_top = 232.0
+margin_bottom = 256.0
+ButtonType = 8
