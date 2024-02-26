@@ -80,7 +80,7 @@ namespace Vertigo
 
             GameResults currentResults = GameResultsManager.Instance.CurrentGameResults;
 
-            GetNode<Node>("/root/SilentWolf/Scores").Call("persist_score", _lineEdit.Text, Math.Round(currentResults.Time, 2));
+            _leaderboard.Submit(_lineEdit.Text, Math.Round(currentResults.Time, 2));
 
             ScoreSubmitted = true;
             _lineEdit.Text = "";

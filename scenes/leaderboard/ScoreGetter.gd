@@ -10,5 +10,5 @@ func _ready():
 
 func refresh():
 	finished_refresh = false
-	scores = yield(SilentWolf.Scores.get_high_scores(), "sw_scores_received")
+	scores = yield(SilentWolf.Scores.get_high_scores(0), "sw_scores_received")
 	finished_refresh = true

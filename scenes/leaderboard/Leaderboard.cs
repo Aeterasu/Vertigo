@@ -8,10 +8,12 @@ namespace Vertigo
     public class Leaderboard : Control
     {
         private Node _scoreGetter;
+        private Node _scoreSender;
 
         public bool _finishedRefresh = false;
 
         private List<LeaderboardPosition> _leaderboardPositions = new List<LeaderboardPosition>();
+        private LeaderboardPosition _currentLeaderboardPosition;
 
         private Godot.Collections.Array _scores;
 
@@ -20,7 +22,10 @@ namespace Vertigo
             base._Ready();
 
             _scoreGetter = GetNode<Node>("ScoreGetter");
+            _scoreSender = GetNode<Node>("ScoreSender");
             _scoreGetter.Call("refresh");
+
+            _currentLeaderboardPosition = GetNode<LeaderboardPosition>("LeaderboardCurrentPosition");
 
             foreach (Node node in GetNode<Control>("TopTenPositions").GetChildren())
             {
@@ -43,14 +48,35 @@ namespace Vertigo
                 _scores = GetNode<Node>("/root/SilentWolf/Scores").Get("scores") as Godot.Collections.Array;
 
                 int i = 0;
+                int j = 0;
 
                 foreach (Godot.Collections.Dictionary score in _scores)
                 {
-                    _leaderboardPositions[i].Position = i + 1;
-                    _leaderboardPositions[i].PlayerName = (string)score["player_name"];
-                    _leaderboardPositions[i].Score = (float)score["score"];
+                    if (i <= 9)
+                    {
+                        _leaderboardPositions[i].Position = i + 1;
+                        _leaderboardPositions[i].PlayerName = (string)score["player_name"];
+                        _leaderboardPositions[i].Score = (float)score["score"];
 
-                    i++;
+                        if (Equals(score["score_id"], _scoreSender.Get("score_id")))
+                        {
+                            _leaderboardPositions[i].Highlight();
+                        }
+
+                        i++;
+                    }
+                    else
+                    {
+                        if (Equals(score["score_id"], _scoreSender.Get("score_id")))
+                        {
+                            _currentLeaderboardPosition.Position = j + 1;
+                            _currentLeaderboardPosition.PlayerName = (string)score["player_name"];
+                            _currentLeaderboardPosition.Score = (float)score["score"];
+                            _currentLeaderboardPosition.Highlight();
+                        }
+                    }
+
+                    j++;
                 }
             }
         }
@@ -59,6 +85,11 @@ namespace Vertigo
         {
             _scoreGetter.Call("refresh");
             _finishedRefresh = false;
+        }
+
+        public void Submit(string playerName, double score)
+        {
+            _scoreSender.Call("send_score", playerName, score);
         }
     }
 }
