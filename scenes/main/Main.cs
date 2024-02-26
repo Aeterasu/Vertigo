@@ -27,6 +27,8 @@ namespace Vertigo
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
 
+        private Node _silentWolf;
+
         public MainState State
         {
             get => _state;

@@ -11,9 +11,13 @@ namespace Vertigo
         private Label _highscoreLabel;
         
         private MenuCategory _menuCategory;
+        private Button _scoreSubmitButton;
         private LineEdit _lineEdit;
 
-        public GameResults GameResults { get; set; } = new GameResults(0);
+        private Leaderboard _leaderboard;
+        private Timer _refreshTimer = new Timer();
+
+        public bool ScoreSubmitted { get; private set; } = false;
 
         public override void _Ready()
         {
@@ -41,17 +45,45 @@ namespace Vertigo
             }
 
             _menuCategory = GetNode<MenuCategory>("Control/MenuCategory");
+            _scoreSubmitButton = GetNode<Button>("Control/Leaderboard/ScoreSubmitButton");
             _lineEdit = GetNode<LineEdit>("Control/Leaderboard/LineEdit");
+
+            _scoreSubmitButton.Connect("pressed", this, "OnScoreSubmitButtonPressed");
+
+            _leaderboard = GetNode<Leaderboard>("Control/Leaderboard");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            _scoreSubmitButton.Disabled = _lineEdit.Text == "" || ScoreSubmitted;
+            _lineEdit.Editable = !ScoreSubmitted;
         }
 
         private void OnFocusChanged(Control control)
         {
             _menuCategory.DisableInput = control == _lineEdit;
+        }
+
+        private void OnScoreSubmitButtonPressed()
+        {
+            if (GameResultsManager.Instance == null)
+            {
+                return;
+            }
+
+            if (GameResultsManager.Instance.CurrentGameResults == null)
+            {
+                return;
+            }
+
+            GameResults currentResults = GameResultsManager.Instance.CurrentGameResults;
+
+            GetNode<Node>("/root/SilentWolf/Scores").Call("persist_score", _lineEdit.Text, Math.Round(currentResults.Time, 2));
+
+            ScoreSubmitted = true;
+            _lineEdit.Text = "";
         }
     }
 }

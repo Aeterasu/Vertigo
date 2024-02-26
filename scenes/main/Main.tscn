@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/interlude/Interlude.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/game_over_screen/GameOverScreen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/game/GameResultsManager.cs" type="Script" id=15]
+[ext_resource path="res://scenes/main/SilentWolfConfig.gd" type="Script" id=16]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -23,6 +24,9 @@ _mainMenuScene = ExtResource( 4 )
 _interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
 _gameOverScene = ExtResource( 14 )
+
+[node name="SilentWolfConfig" type="Node" parent="."]
+script = ExtResource( 16 )
 
 [node name="ColorManager" type="Node" parent="."]
 script = ExtResource( 5 )

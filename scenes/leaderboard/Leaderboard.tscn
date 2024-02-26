@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/leaderboard/LeaderboardPosition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=4]
+[ext_resource path="res://scenes/leaderboard/ScoreGetter.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[node name="Leaderboard" type="Control"]
+margin_right = 210.0
+margin_bottom = 270.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="ScoreGetter" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="TopTenPositions" type="Control" parent="."]
+
+[node name="LeaderboardPosition1" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 24.0
+margin_right = 222.0
+margin_bottom = 40.0
+
+[node name="LeaderboardPosition2" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 42.0
+margin_right = 222.0
+margin_bottom = 58.0
+
+[node name="LeaderboardPosition3" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 222.0
+margin_bottom = 76.0
+
+[node name="LeaderboardPosition4" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 78.0
+margin_right = 222.0
+margin_bottom = 94.0
+
+[node name="LeaderboardPosition5" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 96.0
+margin_right = 222.0
+margin_bottom = 112.0
+
+[node name="LeaderboardPosition6" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 114.0
+margin_right = 222.0
+margin_bottom = 130.0
+
+[node name="LeaderboardPosition7" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 132.0
+margin_right = 222.0
+margin_bottom = 148.0
+
+[node name="LeaderboardPosition8" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 150.0
+margin_right = 222.0
+margin_bottom = 166.0
+
+[node name="LeaderboardPosition9" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 168.0
+margin_right = 222.0
+margin_bottom = 184.0
+
+[node name="LeaderboardPosition10" parent="TopTenPositions" instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 186.0
+margin_right = 222.0
+margin_bottom = 202.0
+
+[node name="LeaderboardCurrentPosition" parent="." instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 208.0
+margin_right = 222.0
+margin_bottom = 224.0
+
+[node name="Label" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 210.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "LEADERBOARD"
+align = 1
+autowrap = true
+
+[node name="ErrorMessage" type="Label" parent="."]
+visible = false
+margin_top = 32.0
+margin_right = 210.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+text = "Error while
+retrieving the leaderboard."
+align = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 12.0
+margin_top = 234.0
+margin_right = 128.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 6 )
+max_length = 12
+placeholder_text = "Enter name..."
+placeholder_alpha = 0.5
+
+[node name="ScoreSubmitButton" type="Button" parent="."]
+margin_left = 138.0
+margin_top = 234.0
+margin_right = 202.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 7 )
+text = "SUBMIT"
