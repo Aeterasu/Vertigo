@@ -38,6 +38,8 @@ namespace Vertigo
 
         private Sprite _sprite;
 
+        private Sprite _hitFlashSprite;
+
         private SquareDestroyedFX _squareDestroyedFx;
 
         private CPUParticles2D _slowdownFx;
@@ -81,6 +83,13 @@ namespace Vertigo
             _grazeVisual = GetNodeOrNull<GrazeVisual>("GrazeVisual");
 
             _sprite = GetNode<Sprite>("%Sprite");
+
+            _hitFlashSprite = GetNodeOrNull<Sprite>("Sprite/HitFlashSprite");
+            
+            if (_hitFlashSprite.IsValid())
+            {
+                _hitFlashSprite.Modulate = new Color(1, 1, 1, 0);
+            }
 
             _squareDestroyedFx = GetNodeOrNull<SquareDestroyedFX>("SquareDestroyedFX");
 
@@ -168,6 +177,11 @@ namespace Vertigo
                     _grazeVisual.TargetAlpha = 0.5f;
                 }
             }
+
+            if (_hitFlashSprite.IsValid())
+            {
+                _hitFlashSprite.Modulate = _hitFlashSprite.Modulate.LinearInterpolate(new Color(1, 1, 1, 0), 6 * delta);
+            }
         }
 
         public override void _Process(float delta)
@@ -204,6 +218,11 @@ namespace Vertigo
                 {
                     DeconflictedSoundPlayer.PlayUnconflictingSound(DestroyedSound, Game.Instance.GameLayer);
                 }
+            }
+
+            if (_hitFlashSprite.IsValid())
+            {
+                _hitFlashSprite.Modulate = new Color(1, 1, 1, 1);
             }
 
             _healthComponent.DealDamage();

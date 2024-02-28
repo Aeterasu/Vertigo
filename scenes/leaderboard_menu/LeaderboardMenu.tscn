@@ -201,7 +201,6 @@ margin_bottom = 256.0
 ButtonType = 8
 
 [node name="Blackout" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

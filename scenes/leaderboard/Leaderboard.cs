@@ -60,7 +60,7 @@ namespace Vertigo
 
                 foreach (Godot.Collections.Dictionary score in _scores)
                 {
-                    if (i <= _visibleHighscores - 1)
+                    if (i <= _visibleHighscores - 1 && i < _leaderboardPositions.Count)
                     {
                         _leaderboardPositions[i].Position = i + 1;
                         _leaderboardPositions[i].PlayerName = (string)score["player_name"];
