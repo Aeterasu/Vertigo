@@ -123,14 +123,14 @@ namespace Vertigo
                 }
             }
 
-            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused) ||
+            if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver))
             {
                 MenuButton.OnButtonExecuted?.Invoke(_currentButton);
                 _currentButton.PlayConfirmAudio();
             }
 
-            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_DISCARD)) 
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) || Input.IsActionJustPressed(InputActions.INPUT_MENU_DISCARD)) 
             && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_RIGHT_CLICK) 
             && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR))
@@ -139,7 +139,7 @@ namespace Vertigo
                 _currentButton.PlayConfirmAudio();
             }
 
-            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM)) 
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM)) 
             && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) 
             && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR))

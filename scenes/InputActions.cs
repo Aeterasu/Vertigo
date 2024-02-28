@@ -10,6 +10,8 @@ namespace Vertigo
         public const string INPUT_ACTION_DISCARD = "action_discard";
         public const string INPUT_PAUSE = "pause";
         public const string INPUT_RESTART = "restart";
+        public const string INPUT_MENU_CONFIRM = "menu_confirm";
+        public const string INPUT_MENU_DISCARD = "menu_discard";
         public const string INPUT_MENU_LEFT_CLICK = "menu_left_click";
         public const string INPUT_MENU_RIGHT_CLICK = "menu_right_click";
     }
