@@ -198,6 +198,14 @@ namespace Vertigo
 
         private void OnProjectileCollide(Projectile projectile)
         {
+            if (_healthComponent.Health - 1 <= 0)
+            {
+                if (DestroyedSound != null)
+                {
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(DestroyedSound, Game.Instance.GameLayer);
+                }
+            }
+
             _healthComponent.DealDamage();
             projectile.ProcessCollision();
 
@@ -209,6 +217,11 @@ namespace Vertigo
                 {
                     _slowdownFx.Emitting = true;
                 }
+            }
+
+            if (HitSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(HitSound, Game.Instance.GameLayer);
             }
         }
 

@@ -5,7 +5,9 @@ namespace Vertigo
 {
     public class Cliff : Node2D
     {
-        private Tween _tween = new Tween();
+        private Camera2D _camera;
+
+        private readonly Tween _tween = new Tween();
 
         public override void _Ready()
         {
@@ -15,9 +17,12 @@ namespace Vertigo
 
             GetNode<AnimationPlayer>("%AnimationPlayer").Play("Idle");
 
-            Camera2D _camera = GetNode<Camera2D>("Camera2D");
+            _camera = GetNode<Camera2D>("Camera2D");
+        }
 
-            _tween.InterpolateProperty(_camera, "position", new Vector2(-128f, 0f), Vector2.Zero, 2f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
+        public void Animate()
+        {
+            _tween.InterpolateProperty(_camera, "position", new Vector2(-480f, 0f), Vector2.Zero, 2f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
             _tween.Start();
         }
     }

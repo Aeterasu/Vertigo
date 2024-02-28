@@ -62,7 +62,7 @@ namespace Vertigo
                             _upgradeNameLabel.Text = $"{Tr(button.UpgradeCard.NameKey)} {RomanNumerals.IntToRoman(button.Stack)}";
 
                             _upgradeDescriptionLabel.Visible = true;
-                            _upgradeDescriptionLabel.Text = Tr(button.UpgradeCard.DescriptionKey);
+                            _upgradeDescriptionLabel.Text = button.Stack > 1 ? Tr(button.UpgradeCard.StackDescriptionKey) : Tr(button.UpgradeCard.DescriptionKey);
                         }
                         else
                         {

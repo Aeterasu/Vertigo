@@ -5,6 +5,8 @@ namespace Vertigo
 {
     public class MainMenu : Control
     {
+        private MenuCategory _menuCategory;
+
         private Tween _tween = new Tween();
 
         public static MainMenu Instance { get; set; }
@@ -12,6 +14,8 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+
+            _menuCategory = GetNode<MenuCategory>("MenuLayer/MenuCategory");
 
             AddChild(_tween);
 

@@ -14,6 +14,7 @@ namespace Vertigo
         [Export] public float ScreenShakeStrength { get; private set; } = 2f;
         [Export] public float PowerConsumption { get; private set; } = 1f;
         [Export] private readonly AudioStream _shotAudio;
+        [Export] private readonly AudioStream _superShotAudio;
 
         private float _fireCooldown = 0f;
         private float _mashingCooldown = 0f;
@@ -97,7 +98,14 @@ namespace Vertigo
 
             OnFired?.Invoke();
 
-            DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
+            if (projectileCount == 1)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
+            }
+            else if (projectileCount > 1)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_superShotAudio, this, 0f, 1f);
+            }
         }
 
         private void CreateAttack(float directionAngleDegrees)

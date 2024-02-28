@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sfx_rain.mp3-4e40145ba19f3ed77e1c15087c0ebcdc.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx_rain.mp3"
+dest_files=[ "res://.import/sfx_rain.mp3-4e40145ba19f3ed77e1c15087c0ebcdc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

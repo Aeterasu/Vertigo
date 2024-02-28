@@ -31,6 +31,9 @@ namespace Vertigo
 
         [Export(PropertyHint.Range, "0, 32")] private readonly float _onHitImmunity = 1f;
         [Export(PropertyHint.Range, "0, 1")] private readonly float _onHitImmunityFlashRate = 0.4f;
+
+        [Export] private readonly AudioStream _hitSound;
+
         private float _onHitImmunityFlashCooldown = 0f;
         private bool _isFlashing = true;
 
@@ -240,6 +243,11 @@ namespace Vertigo
                     Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(9f);
 
                     OnPlayerHit?.Invoke();
+
+                    if (_hitSound != null)
+                    {
+                        DeconflictedSoundPlayer.PlayUnconflictingSound(_hitSound, this);
+                    }
                     
                     if (_healthComponent.Health > 0)
                     {
