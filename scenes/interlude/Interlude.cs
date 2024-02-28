@@ -5,6 +5,10 @@ namespace Vertigo
 {
     public class Interlude : Control
     {
+        private float _delay = 0.1f;
+
+        private bool _isSkipped = false;
+
         private AnimationPlayer _animationPlayer;
 
         public event Action OnInterludeAnimationFinished;
@@ -22,11 +26,27 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM))
+            _delay = Mathf.Max(_delay - delta, 0f);
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+            base._Input(@event);
+
+            if (_delay > 0.0f)
             {
-                _animationPlayer.Play("Skip");
+                return;
+            }
+
+            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
+            {
+                if (!_isSkipped)
+                {
+                    _animationPlayer.Play("Skip");
+                }
             }
         }
+
 
         private void OnAnimationFinished(string animName)
         {

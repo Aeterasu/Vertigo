@@ -26,7 +26,7 @@ namespace Vertigo
 
             if (DestroyedSound == null)
             {
-                DestroyedSound = GD.Load<AudioStream>("res://assets/audio/sfx_hazard_destroyed.wav");
+                DestroyedSound = GD.Load<AudioStream>("res://assets/audio/sfx_hazard_destroyed_1.wav");
             }
 
             this.UpdateAttackCollisionMaskBits(Affiliation);

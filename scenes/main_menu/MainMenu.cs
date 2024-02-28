@@ -54,7 +54,7 @@ namespace Vertigo
         {
             base._Input(@event);
 
-            if (@event is InputEventKey || @event is InputEventJoypadButton)
+            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
             {
                 if (!IsMenuActive)
                 {

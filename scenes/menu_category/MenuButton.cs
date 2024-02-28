@@ -39,6 +39,8 @@ namespace Vertigo
         private Vector2 _tooltipDefaultPosition = Vector2.Zero;
         private bool _isTooltipHidden = true;
 
+        public bool IsHoveredOver { get => _isHoveredOver; }
+
         public event Action<MenuButton> OnButtonMouseEntered;
         public event Action<MenuButton> OnButtonMouseExited;
 
@@ -174,11 +176,15 @@ namespace Vertigo
         private void OnMouseEntered()
         {
             OnButtonMouseEntered?.Invoke(this);
+
+            _isHoveredOver = true;
         }
 
         private void OnMouseExited()
         {
             OnButtonMouseExited?.Invoke(this);
+
+            _isHoveredOver = false;
         }
 
         public void PlayConfirmAudio()
