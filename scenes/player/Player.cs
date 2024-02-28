@@ -262,12 +262,19 @@ namespace Vertigo
             }
         }
 
-        private void OnGunFired()
+        private void OnGunFired(bool isSupershot)
         {
             _verticalStallTimer = _playerGun.VerticalStall;
             _knockbackX += _playerGun.HorizontalKnockback * _directionX;
 
-            Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(_playerGun.ScreenShakeStrength);
+            if (isSupershot)
+            {
+                Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(_playerGun.ScreenShakeStrength * 1.5f);
+            }
+            else
+            {
+                Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(_playerGun.ScreenShakeStrength);
+            }
         }
 
         private void OnHealthDepleted()

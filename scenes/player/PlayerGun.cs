@@ -19,7 +19,7 @@ namespace Vertigo
         private float _fireCooldown = 0f;
         private float _mashingCooldown = 0f;
 
-        public event Action OnFired;
+        public event Action<bool> OnFired; // bool - is supershot or not
 
         public Abundancy Abundancy { get; set; } = null;
 
@@ -96,7 +96,7 @@ namespace Vertigo
 
             power.ConsumePower(PowerConsumption);
 
-            OnFired?.Invoke();
+            OnFired?.Invoke(projectileCount > 1);
 
             if (projectileCount == 1)
             {

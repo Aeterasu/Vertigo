@@ -48,7 +48,7 @@ namespace Vertigo
             AdditionalProjectiles += 1;
         }
 
-        private void OnGunFired()
+        private void OnGunFired(bool isSupershot)
         {
             if (_currentShots >= _shotsRequired)
             {
