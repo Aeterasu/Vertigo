@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/leaderboard/ScoreGetter.gd" type="Script" id=9]
 [ext_resource path="res://scenes/leaderboard/ScoreSender.gd" type="Script" id=10]
 [ext_resource path="res://scenes/leaderboard_menu/LeaderboardMenu.cs" type="Script" id=11]
+[ext_resource path="res://scenes/gui/LoadingArc.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -185,6 +186,10 @@ retrieving the leaderboard."
 align = 1
 autowrap = true
 
+[node name="LoadingArc" type="Node2D" parent="Leaderboard"]
+position = Vector2( 105, 135 )
+script = ExtResource( 12 )
+
 [node name="MenuCategory" type="Control" parent="."]
 mouse_filter = 2
 script = ExtResource( 6 )
@@ -193,3 +198,10 @@ script = ExtResource( 6 )
 margin_top = 232.0
 margin_bottom = 256.0
 ButtonType = 8
+
+[node name="Blackout" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )

@@ -17,9 +17,15 @@ namespace Vertigo
 
         private Godot.Collections.Array _scores;
 
+        private Node2D _loadingArc;
+
+        public bool IsRefreshFinished { get => _finishedRefresh; }
+
         public override void _Ready()
         {
             base._Ready();
+
+            _loadingArc = GetNode<Node2D>("LoadingArc");
 
             _scoreGetter = GetNode<Node>("ScoreGetter");
             _scoreSender = GetNode<Node>("ScoreSender");
@@ -79,6 +85,8 @@ namespace Vertigo
                     j++;
                 }
             }
+
+            _loadingArc.Visible = !IsRefreshFinished;
         }
 
         public void Refresh(object data)
