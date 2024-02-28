@@ -56,7 +56,7 @@ namespace Vertigo
 
             if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
             {
-                if (!IsMenuActive)
+                if (!IsMenuActive && @event.IsPressed())
                 {
                     Activate();
                     GetNode<AudioStreamPlayer>("StartAudio").Play();

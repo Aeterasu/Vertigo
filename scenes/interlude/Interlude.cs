@@ -40,7 +40,7 @@ namespace Vertigo
 
             if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
             {
-                if (!_isSkipped)
+                if (!_isSkipped && @event.IsPressed())
                 {
                     _animationPlayer.Play("Skip");
                 }
