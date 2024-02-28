@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=1]
 [ext_resource path="res://scenes/cliff/Cliff.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main_menu/MainMenu.cs" type="Script" id=3]
 [ext_resource path="res://scenes/main_menu/MenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/audio/sfx_menu_happy.wav" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
@@ -12,6 +14,17 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
 gradient = SubResource( 1 )
 width = 128
 height = 270
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 240
+height = 18
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -59,3 +72,31 @@ margin_bottom = 249.0
 ButtonType = 5
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_EXIT"
+
+[node name="PressAnyKeyLabel" type="Label" parent="MenuLayer"]
+margin_top = 156.0
+margin_right = 480.0
+margin_bottom = 172.0
+custom_fonts/font = SubResource( 3 )
+text = "Press any button"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/PressAnyKeyLabel"]
+show_behind_parent = true
+margin_top = -1.0
+margin_right = 240.0
+margin_bottom = 17.0
+texture = SubResource( 5 )
+
+[node name="TextureRect2" type="TextureRect" parent="MenuLayer/PressAnyKeyLabel"]
+show_behind_parent = true
+margin_left = 240.0
+margin_top = -1.0
+margin_right = 480.0
+margin_bottom = 17.0
+texture = SubResource( 5 )
+flip_h = true
+
+[node name="StartAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

@@ -123,9 +123,10 @@ namespace Vertigo
                 }
             }
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && !FirstInput && _currentButton.IsValid())
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused)
             {
                 MenuButton.OnButtonExecuted?.Invoke(_currentButton);
+                _currentButton.PlayConfirmAudio();
             }
 
             if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_DISCARD)) 

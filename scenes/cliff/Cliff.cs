@@ -25,5 +25,11 @@ namespace Vertigo
             _tween.InterpolateProperty(_camera, "position", new Vector2(-480f, 0f), Vector2.Zero, 2f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
             _tween.Start();
         }
+
+        public void QuickAnimate()
+        {
+            _tween.InterpolateProperty(_camera, "position", new Vector2(-128f, 0f), Vector2.Zero, 0.5f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
+            _tween.Start();
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace Vertigo
         [Export] public bool HasTooltip { get; private set; }
         [Export] public string TooltipTextKey { get; private set; } = "TOOLTIP_DEFAULT";
         [Export] public bool Active { get; private set; } = true;
+        [Export] public AudioStream SelectSound { get; private set; }
+        [Export] public AudioStream ConfirmSound { get; private set; }
 
         private bool _isFocused = false;
 
@@ -132,6 +134,11 @@ namespace Vertigo
             {
                 ShowTooltip();
             }
+
+            if (SelectSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(SelectSound, GetNode<Node>("/root/"), 0, 1);
+            }
         }
 
         public void Unfocus()
@@ -172,6 +179,14 @@ namespace Vertigo
         private void OnMouseExited()
         {
             OnButtonMouseExited?.Invoke(this);
+        }
+
+        public void PlayConfirmAudio()
+        {
+            if (ConfirmSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(ConfirmSound, GetNode<Node>("/root/"), 0, 1);
+            }
         }
     }
 }
