@@ -7,12 +7,14 @@ namespace Vertigo
 {
     public class Leaderboard : Control
     {
+        [Export] private readonly int _visibleHighscores = 10;
+
         private Node _scoreGetter;
         private Node _scoreSender;
 
         public bool _finishedRefresh = false;
 
-        private List<LeaderboardPosition> _leaderboardPositions = new List<LeaderboardPosition>();
+        private readonly List<LeaderboardPosition> _leaderboardPositions = new List<LeaderboardPosition>();
         private LeaderboardPosition _currentLeaderboardPosition;
 
         private Godot.Collections.Array _scores;
@@ -58,7 +60,7 @@ namespace Vertigo
 
                 foreach (Godot.Collections.Dictionary score in _scores)
                 {
-                    if (i <= 9)
+                    if (i <= _visibleHighscores - 1)
                     {
                         _leaderboardPositions[i].Position = i + 1;
                         _leaderboardPositions[i].PlayerName = (string)score["player_name"];

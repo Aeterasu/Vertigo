@@ -53,6 +53,8 @@ namespace Vertigo
                 {
                     MenuButton button = node as MenuButton;
 
+                    button.Id = _buttons.Count;
+
                     _buttons.Add(button);
                     button.OnButtonMouseEntered += OnButtonMouseEntered;
                     button.OnButtonMouseExited += OnButtonMouseExited;
@@ -84,18 +86,56 @@ namespace Vertigo
                     return;
                 }
 
-                if (CurrentButtonId - 1 >= 0)
+                int targetId = CurrentButtonId - 1;
+                int nextButtonId = 0; // if all else fails
+
+                if (targetId < 0)
                 {
-                    CurrentButtonId -= 1;
+                    targetId = _buttons.Count - 1;
+                }
+
+                if (_buttons[targetId].Active)
+                {
+                    CurrentButtonId = targetId;
                 }
                 else
                 {
-                    CurrentButtonId = _buttons.Count - 1;
-                }
+                    if (CurrentButtonId > 0)
+                    {
+                        for (int i = CurrentButtonId - 1; i > 0; i--)
+                        {
+                            if (i < 0)
+                            {
+                                i = _buttons.Count - 1;
+                            }
 
-                if (!_buttons[CurrentButtonId].Active)
-                {
-                    CurrentButtonId -= 1;
+                            if (_buttons[i].Active)
+                            {
+                                nextButtonId = i;
+                                break;
+                            }
+                        }
+
+                        CurrentButtonId = nextButtonId;
+                    }
+                    else
+                    {
+                        for (int i = _buttons.Count - 1; i > 0; i--)
+                        {
+                            if (i < 0)
+                            {
+                                i = _buttons.Count - 1;
+                            }
+
+                            if (_buttons[i].Active)
+                            {
+                                nextButtonId = i;
+                                break;
+                            }
+                        }
+
+                        CurrentButtonId = nextButtonId;                        
+                    }
                 }
             }
 
@@ -108,23 +148,40 @@ namespace Vertigo
                     return;
                 }
 
-                if (CurrentButtonId + 1 <= _buttons.Count - 1)
+                int targetId = CurrentButtonId + 1;
+                int nextButtonId = 0; // if all else fails
+
+                if (targetId > _buttons.Count - 1)
                 {
-                    CurrentButtonId += 1;
+                    targetId = 0;
+                }
+
+                if (_buttons[targetId].Active)
+                {
+                    CurrentButtonId = targetId;
                 }
                 else
                 {
-                    CurrentButtonId = 0;
-                }
+                    for (int i = CurrentButtonId + 1; i < _buttons.Count; i++)
+                    {
+                        if (i > _buttons.Count - 1)
+                        {
+                            i = 0;
+                        }
+                        
+                        if (_buttons[i].Active)
+                        {
+                            nextButtonId = i;
+                            break;
+                        }
+                    }
 
-                if (!_buttons[CurrentButtonId].Active)
-                {
-                    CurrentButtonId += 1;
+                    CurrentButtonId = nextButtonId;
                 }
             }
 
             if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused) ||
-            (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver))
+            (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && !FirstInput && _currentButton.IsValid() && _currentButton.Active && _currentButton.IsHoveredOver))
             {
                 MenuButton.OnButtonExecuted?.Invoke(_currentButton);
                 _currentButton.PlayConfirmAudio();

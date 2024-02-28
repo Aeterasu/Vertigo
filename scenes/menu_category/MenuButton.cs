@@ -63,6 +63,8 @@ namespace Vertigo
             }
         }
 
+        public int Id { get; set; } = 0;
+
         public override void _Ready()
         {
             base._Ready();

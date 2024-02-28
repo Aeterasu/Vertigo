@@ -51,6 +51,7 @@ margin_right = 345.0
 margin_bottom = 270.0
 mouse_filter = 2
 script = ExtResource( 5 )
+_visibleHighscores = 1024
 
 [node name="ScoreGetter" type="Node" parent="Leaderboard"]
 script = ExtResource( 9 )
