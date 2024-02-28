@@ -143,15 +143,11 @@ namespace Vertigo
                 _selectionActivated = true;
             }
             
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _selectionActivated && _inputDelay <= 0)
+            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) && _selectionActivated && _inputDelay <= 0 && _currentButton.IsValid()) ||
+            (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && _selectionActivated && _inputDelay <= 0 && _currentButton.IsValid() && _currentButton.IsHoveredOver))
             {
                 _disableInput = true;
                 _upgradeConfirmed = true;
-
-                if (!_currentButton.IsValid())
-                {
-                    return;
-                }
 
                 _currentButton.Confirm();
 

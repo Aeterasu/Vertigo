@@ -67,6 +67,8 @@ namespace Vertigo
             }
         }
 
+        public bool IsHoveredOver { get; private set; } = false;
+
         public int Stack { get; set; } = 1;
 
         public override void _Ready()
@@ -79,6 +81,7 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
             Connect("mouse_entered", this, "OnMouseEntered");
+            Connect("mouse_exited", this, "OnMouseExited");
 
             AddChild(_tween);
         }
@@ -133,6 +136,13 @@ namespace Vertigo
         private void OnMouseEntered()
         {
             OnButtonMouseEntered?.Invoke(this);
+
+            IsHoveredOver = true;
+        }
+
+        private void OnMouseExited()
+        {
+            IsHoveredOver = false;
         }
     }
 }
