@@ -275,14 +275,12 @@ tracks/21/keys = {
 }
 
 [sub_resource type="DynamicFont" id=10]
-size = 32
 outline_size = 1
-outline_color = Color( 0, 0, 0, 0.501961 )
+outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 3
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 3
 font_data = ExtResource( 3 )
@@ -370,6 +368,10 @@ margin_right = 10.88
 [node name="Label" type="Label" parent="AnimationPlayer/LabelHolder"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.0
+margin_right = -240.0
+margin_bottom = -134.0
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 10 )
 text = "VERTIGO!"
 align = 1

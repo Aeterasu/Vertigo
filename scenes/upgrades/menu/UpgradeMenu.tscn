@@ -486,4 +486,5 @@ anims/Appear = SubResource( 3 )
 
 [node name="RevealAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -4.0
+volume_db = -3.0
+bus = "SFX"
