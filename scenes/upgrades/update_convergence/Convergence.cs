@@ -8,6 +8,7 @@ namespace Vertigo
         [Export] private readonly int _initialProjectileCount = 1;
         [Export] private readonly int _projectilesPerStack = 1;
         [Export] private readonly float _spread = 8f;
+        [Export] private readonly AudioStream _shotAudio;
 
         private JumpRope _jumpRopeTop;
         private JumpRope _jumpRopeBottom;
@@ -56,6 +57,11 @@ namespace Vertigo
             for (int i = 0; i < ProjectileCount; i++)
             {
                 CreateProjectile(90, jumpRope, (i - (ProjectileCount / 2)) * _spread);
+                
+                if (_shotAudio != null)
+                {
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, GetNode("/root"), -2f, 1f);
+                }
             }
         }
 
@@ -69,6 +75,11 @@ namespace Vertigo
             for (int i = 0; i < ProjectileCount; i++)
             {
                 CreateProjectile(-90, jumpRope, (i - (ProjectileCount / 2)) * _spread);
+                
+                if (_shotAudio != null)
+                {
+                    DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, GetNode("/root"), -2f, 1f);
+                }
             }
         }
 

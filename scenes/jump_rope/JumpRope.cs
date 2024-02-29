@@ -27,7 +27,7 @@ namespace Vertigo
 
             if (_activationSound != null)
             {
-                float pitch = GravityMode == GravityMode.UPWARDS ? 1f : 0.8f;
+                float pitch = GravityMode == GravityMode.UPWARDS ? 1.2f : 1f;
                 DeconflictedSoundPlayer.PlayUnconflictingSound(_activationSound, this, 0, pitch);
             }
         }

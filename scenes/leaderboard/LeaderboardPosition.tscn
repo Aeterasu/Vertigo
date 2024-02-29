@@ -5,6 +5,8 @@
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=4]
@@ -31,6 +33,7 @@ _highlightColor = Color( 0.596078, 0.376471, 1, 1 )
 margin_right = 186.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 1 )
+text = "1."
 valign = 1
 
 [node name="ScoreLabel" type="Label" parent="."]

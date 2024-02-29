@@ -40,7 +40,7 @@
 [ext_resource path="res://assets/textures/player/sprite_player_1.png" type="Texture" id=38]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=39]
 [ext_resource path="res://scenes/pause_menu/PauseMenu.tscn" type="PackedScene" id=40]
-[ext_resource path="res://scenes/upgrades/upgrade_passion/Passion.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/audio/sfx_convergence_shot.wav" type="AudioStream" id=42]
 
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 37 )
@@ -327,9 +327,6 @@ Direction = -1.0
 
 [node name="UpgradeManager" parent="GameLayer" instance=ExtResource( 11 )]
 
-[node name="Passion" parent="GameLayer/UpgradeManager" instance=ExtResource( 41 )]
-TargetStack = 2
-
 [node name="Player" parent="GameLayer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
 position = Vector2( 240, 90 )
@@ -338,6 +335,7 @@ z_index = 16
 [node name="JumpRopeTop" parent="GameLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 GravityMode = 1
+_activationSound = ExtResource( 42 )
 
 [node name="JumpRopeSmoothPath" parent="GameLayer/JumpRopeTop" instance=ExtResource( 9 )]
 curve = null
@@ -351,6 +349,7 @@ _animationOutDuraion = 0.6
 [node name="JumpRopeBottom" parent="GameLayer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( 0, 206 )
+_activationSound = ExtResource( 42 )
 
 [node name="JumpRopeSmoothPath" parent="GameLayer/JumpRopeBottom" instance=ExtResource( 9 )]
 position = Vector2( 0, -206 )
