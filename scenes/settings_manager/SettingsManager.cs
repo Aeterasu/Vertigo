@@ -14,20 +14,21 @@ namespace Vertigo
         private const string CONFIG_KEY_COLOR = "color";
         private const string CONFIG_KEY_SFX_VOLUME = "sfx_volume";
         private const string CONFIG_KEY_MUSIC_VOLUME = "music_volume";
+        private const string CONFIG_KEY_LOCALE = "locale";
 
         private const int CONFIG_FULLSCREEN_DEFAULT = 0;
         private const int CONFIG_SCREEN_SHAKE_DEFAULT = 1;
         private const int CONFIG_TRAIL_EFFECT_DEFAULT = 1;
         private const int CONFIG_COLOR_DEFAULT = 0;
-        private const float CONFIG_SFX_VOLUME_DEFAULT = 0.0f;
-        private const float CONFIG_MUSIC_VOLUME_DEFAULT = 0.0f;
+        private const float CONFIG_SFX_VOLUME_DEFAULT = 1.0f;
+        private const float CONFIG_MUSIC_VOLUME_DEFAULT = 1.0f;
+        private const string CONFIG_LOCALE_DEFAULT = LocalizationManager.LOCALE_EN;
 
         private bool _isFullscreen = false;
         private bool _isScreenShakeEnabled = true;
         private bool _isTrailEffectEnabled = true;
         private float _sfxVolume = 1.0f;
         private float _musicVolume = 1.0f;
-        private LocaleEnum _locale = LocaleEnum.EN;
 
         public bool IsFullscreen
         {
@@ -109,8 +110,11 @@ namespace Vertigo
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_SCREEN_SHAKE, Convert.ToInt32(IsScreenShakeEnabled));
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_TRAIL_EFFECT, Convert.ToInt32(IsTrailEffectEnabled));
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_COLOR, Convert.ToInt32(GetParent<Main>().GetNode<ColorManager>("ColorManager").CurrentColorId));
+
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_SFX_VOLUME, SfxVolume);
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_MUSIC_VOLUME, MusicVolume);
+
+            config.SetValue(CONFIG_SECTION, CONFIG_KEY_LOCALE, LocalizationManager.LanguageEnumToString(GetParent<Main>().GetNode<LocalizationManager>("LocalizationManager").CurrentLocale));
 
             config.Save(CONFIG_FILE_PATH);
         }
@@ -164,6 +168,11 @@ namespace Vertigo
             float loadedMusicVolume = (float)config.GetValue(CONFIG_SECTION, CONFIG_KEY_MUSIC_VOLUME, CONFIG_MUSIC_VOLUME_DEFAULT);
             loadedMusicVolume = Mathf.Clamp(loadedMusicVolume, 0.0f, 1.0f);
             MusicVolume = loadedMusicVolume;
+
+            // locale
+
+            string loadedLocale = (string)config.GetValue(CONFIG_SECTION, CONFIG_KEY_LOCALE, CONFIG_LOCALE_DEFAULT);
+            GetParent<Main>().GetNode<LocalizationManager>("LocalizationManager").CurrentLocale = LocalizationManager.LanguageStringToEnum(loadedLocale);
         }
     }
 }

@@ -124,6 +124,10 @@ namespace Vertigo
             {
                 _tooltipLabel.Text = Tr(TooltipTextKey) + System.Environment.NewLine + Tr(ColorManager.GetCurrentColor.NameKey);
             }
+            else if (ButtonType == MenuButtonType.MENU_BUTTON_LANGUAGE_OPTIONS)
+            {
+                _tooltipLabel.Text = Tr("MENU_BUTTON_LANGUAGE_OPTIONS") + ":" + System.Environment.NewLine + Tr("LOCALE_" + Enum.GetName(typeof(LocaleEnum), LocalizationManager.Instance.CurrentLocale));
+            }
             else if (_isTooltipHidden)
             {
                 _tooltipLabel.Text = Tr(TooltipTextKey);

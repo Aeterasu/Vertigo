@@ -180,12 +180,16 @@ namespace Vertigo
                 }
             }
 
+            // normal button
+
             if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && !FirstInput && _currentButton.IsValid() && _currentButton.Active && _currentButton.IsHoveredOver))
             {
                 MenuButton.OnButtonExecuted?.Invoke(_currentButton);
                 _currentButton.PlayConfirmAudio();
             }
+
+            // color
 
             if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) || Input.IsActionJustPressed(InputActions.INPUT_MENU_DISCARD)) 
             && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_COLOR) ||
@@ -205,6 +209,8 @@ namespace Vertigo
                 _currentButton.PlayConfirmAudio();
             }
 
+            // volume
+
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && !FirstInput && _currentButton.IsValid() && _currentButton is VolumeSlider)
             {
                 (_currentButton as VolumeSlider).StepLeft();
@@ -214,6 +220,26 @@ namespace Vertigo
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && !FirstInput && _currentButton.IsValid() && _currentButton is VolumeSlider)
             {
                 (_currentButton as VolumeSlider).StepRight();
+                _currentButton.PlayConfirmAudio();
+            }
+
+            // locale change
+
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM)) 
+            && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_LANGUAGE_OPTIONS) ||
+            (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) 
+            && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_LANGUAGE_OPTIONS))
+            {
+                LocalizationManager.Instance.CurrentLocale += 1;
+                _currentButton.PlayConfirmAudio();
+            }
+
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT)) 
+            && !FirstInput && _currentButton.IsValid() && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_LANGUAGE_OPTIONS) ||
+            (Input.IsActionJustPressed(InputActions.INPUT_MENU_RIGHT_CLICK) 
+            && !FirstInput && _currentButton.IsValid() && _currentButton.IsHoveredOver && _currentButton.ButtonType == MenuButtonType.MENU_BUTTON_LANGUAGE_OPTIONS))
+            {
+                LocalizationManager.Instance.CurrentLocale -= 1;
                 _currentButton.PlayConfirmAudio();
             }
         }

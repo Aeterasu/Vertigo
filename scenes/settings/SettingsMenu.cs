@@ -18,6 +18,8 @@ namespace Vertigo
         private MenuCategory _visualsCategory;
         private MenuCategory _soundCategory;
 
+        private Label _settingsLabel;
+
         public override void _Ready()
         {
             base._Ready();
@@ -25,6 +27,8 @@ namespace Vertigo
             _defaultCategory = GetNode<MenuCategory>("DefaultCategory");
             _visualsCategory = GetNode<MenuCategory>("VisualsCategory");
             _soundCategory = GetNode<MenuCategory>("SoundCategory");
+
+            _settingsLabel = GetNode<Label>("SettingsLabel");
 
             MenuButton.OnButtonExecuted += OnMenuButtonExecuted;
         }
@@ -41,6 +45,19 @@ namespace Vertigo
 
             _soundCategory.Visible = _state == SettingsMenuState.SOUND;
             _soundCategory.DisableInput = !(_state == SettingsMenuState.SOUND);
+
+            switch (_state)
+            {
+                case SettingsMenuState.DEFAULT:
+                    _settingsLabel.Text = Tr("MENU_OPTIONS");
+                    break;
+                case SettingsMenuState.VISUALS:
+                    _settingsLabel.Text = Tr("MENU_VISUAL_OPTIONS");
+                    break;
+                case SettingsMenuState.SOUND:
+                    _settingsLabel.Text = Tr("MENU_SOUND_OPTIONS");
+                    break;
+            }
         }
 
         private void OnMenuButtonExecuted(MenuButton button)

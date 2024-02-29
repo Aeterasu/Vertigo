@@ -235,9 +235,9 @@ anims/Idle = SubResource( 5 )
 anims/Unfocus = SubResource( 6 )
 
 [node name="Tooltip" type="TextureRect" parent="."]
-margin_left = 316.0
+margin_left = 346.0
 margin_top = -17.0
-margin_right = 434.0
+margin_right = 464.0
 margin_bottom = 39.0
 mouse_filter = 2
 texture = ExtResource( 1 )

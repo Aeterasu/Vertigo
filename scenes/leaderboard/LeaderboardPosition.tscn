@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_small.png" type="Texture" id=2]
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
@@ -43,10 +43,9 @@ valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 181.0
-margin_top = 2.0
-margin_right = 199.0
-margin_bottom = 26.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_top = -1.0
+margin_right = 192.0
+margin_bottom = 14.0
 texture = ExtResource( 2 )
 
 [node name="Gradient" type="TextureRect" parent="."]
