@@ -12,6 +12,16 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (!SettingsManager.Instance.IsValid())
+            {
+                return;
+            }
+
+            if (SettingsManager.Instance.IsScreenShakeEnabled)
+            {
+                Offset = Vector2.Zero;
+            }
+
             float x = (float)GD.RandRange(-_force, _force);
             float y = (float)GD.RandRange(-_force, _force);
 
@@ -22,6 +32,11 @@ namespace Vertigo
 
         public void AddShake(float amount)
         {
+            if (SettingsManager.Instance.IsValid() && !SettingsManager.Instance.IsScreenShakeEnabled)
+            {
+                return;
+            }
+
             _force += amount;
         }
     }

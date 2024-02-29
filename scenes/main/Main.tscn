@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://scenes/game/GameResultsManager.cs" type="Script" id=15]
 [ext_resource path="res://scenes/main/SilentWolfConfig.gd" type="Script" id=16]
 [ext_resource path="res://scenes/leaderboard_menu/LeaderboardMenu.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/settings/SettingsMenu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/LocalizationManager.cs" type="Script" id=19]
+[ext_resource path="res://scenes/settings_manager/SettingsManager.cs" type="Script" id=20]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -26,6 +29,7 @@ _interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
 _gameOverScene = ExtResource( 14 )
 _leaderboardMenuScene = ExtResource( 17 )
+_settingsMenuScene = ExtResource( 18 )
 
 [node name="SilentWolfConfig" type="Node" parent="."]
 script = ExtResource( 16 )
@@ -36,5 +40,11 @@ Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 1
 
 [node name="GameResultsManager" type="Node" parent="."]
 script = ExtResource( 15 )
+
+[node name="SettingsManager" type="Node" parent="."]
+script = ExtResource( 20 )
+
+[node name="LocalizationManager" type="Node" parent="."]
+script = ExtResource( 19 )
 
 [node name="HueShiftLayer" parent="." instance=ExtResource( 3 )]

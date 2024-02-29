@@ -40,6 +40,11 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (SettingsManager.Instance.IsValid() && !SettingsManager.Instance.IsTrailEffectEnabled)
+            {
+                return;
+            }
+
             if (_parent == null)
             {
                 return;

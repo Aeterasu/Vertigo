@@ -1,10 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/settings/SettingsMenu.cs" type="Script" id=3]
+[ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=4]
+[ext_resource path="res://scenes/settings/MenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/settings/SettingsCheckmark.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.607843, 0.4, 1, 1, 0.607843, 0.4, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 2 )
+width = 128
+height = 24
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="Backdrop" type="Sprite" parent="."]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -12,3 +31,98 @@ texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
+
+[node name="SettingsLabel" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 480.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "SETTINGS"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="SettingsLabel"]
+modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_left = 240.0
+margin_top = -4.0
+margin_right = 368.0
+margin_bottom = 20.0
+texture = SubResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="SettingsLabel"]
+modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_left = 112.0
+margin_top = -4.0
+margin_right = 240.0
+margin_bottom = 20.0
+texture = SubResource( 3 )
+flip_h = true
+
+[node name="DefaultCategory" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="SoundButton" parent="DefaultCategory" instance=ExtResource( 5 )]
+ButtonType = 10
+
+[node name="VisualsButton" parent="DefaultCategory" instance=ExtResource( 5 )]
+margin_top = 96.0
+margin_bottom = 120.0
+ButtonType = 11
+
+[node name="LanguageButton" parent="DefaultCategory" instance=ExtResource( 5 )]
+margin_top = 138.0
+margin_bottom = 162.0
+ButtonType = 12
+
+[node name="BackButton" parent="DefaultCategory" instance=ExtResource( 5 )]
+margin_top = 222.0
+margin_bottom = 246.0
+ButtonType = 8
+
+[node name="VisualsCategory" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="FullscreenButton" parent="VisualsCategory" instance=ExtResource( 5 )]
+ButtonType = 13
+
+[node name="SettingsCheckmark" parent="VisualsCategory/FullscreenButton" instance=ExtResource( 6 )]
+margin_left = 302.0
+margin_top = 2.0
+margin_right = -158.0
+margin_bottom = -2.0
+
+[node name="ScreenshakeButton" parent="VisualsCategory" instance=ExtResource( 5 )]
+margin_top = 96.0
+margin_bottom = 120.0
+ButtonType = 14
+
+[node name="SettingsCheckmark" parent="VisualsCategory/ScreenshakeButton" instance=ExtResource( 6 )]
+margin_left = 302.0
+margin_top = 2.0
+margin_right = -158.0
+margin_bottom = -2.0
+_setting = 1
+
+[node name="TrailEffectButton" parent="VisualsCategory" instance=ExtResource( 5 )]
+margin_top = 138.0
+margin_bottom = 162.0
+ButtonType = 15
+
+[node name="SettingsCheckmark" parent="VisualsCategory/TrailEffectButton" instance=ExtResource( 6 )]
+margin_left = 302.0
+margin_top = 2.0
+margin_right = -158.0
+margin_bottom = -2.0
+_setting = 2
+
+[node name="BackButton" parent="VisualsCategory" instance=ExtResource( 5 )]
+margin_top = 222.0
+margin_bottom = 246.0
+ButtonType = 19

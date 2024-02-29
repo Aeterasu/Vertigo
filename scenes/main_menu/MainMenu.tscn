@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=1]
 [ext_resource path="res://scenes/cliff/Cliff.tscn" type="PackedScene" id=2]
@@ -14,6 +14,12 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
 gradient = SubResource( 1 )
 width = 128
 height = 270
+
+[sub_resource type="DynamicFont" id=8]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 5 )
@@ -49,17 +55,22 @@ margin_bottom = 270.0
 texture = SubResource( 2 )
 
 [node name="StartButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 129.0
-margin_bottom = 153.0
+margin_top = 97.0
+margin_bottom = 121.0
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_START"
 
 [node name="ColorButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 161.0
-margin_bottom = 185.0
+margin_top = 129.0
+margin_bottom = 153.0
 ButtonType = 1
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_COLOR"
+
+[node name="OptionsButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
+margin_top = 161.0
+margin_bottom = 185.0
+ButtonType = 2
 
 [node name="LeaderboardMenuButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 193.0
@@ -72,6 +83,17 @@ margin_bottom = 249.0
 ButtonType = 5
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_EXIT"
+
+[node name="Label" type="Label" parent="MenuLayer/MenuCategory"]
+margin_left = 293.0
+margin_top = 228.0
+margin_right = 475.0
+margin_bottom = 270.0
+custom_constants/line_spacing = 10
+custom_fonts/font = SubResource( 8 )
+text = "Game by Matvey Kerov
+Made with Godot Engine"
+align = 2
 
 [node name="PressAnyKeyLabel" type="Label" parent="MenuLayer"]
 margin_top = 156.0
