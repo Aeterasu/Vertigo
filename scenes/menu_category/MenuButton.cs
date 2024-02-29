@@ -25,6 +25,8 @@ namespace Vertigo
         MENU_BUTTON_OPTIONS_SFX_VOLUME,
         MENU_BUTTON_OPTIONS_MUSIC_VOLUME,
         MENU_BUTTON_OPTIONS_BACK_TO_OPTIONS_MENU,
+        MENU_BUTTON_PAUSE_RESUME,
+        MENU_BUTTON_PAUSE_RESTART,
     }
 
     public class MenuButton : Control

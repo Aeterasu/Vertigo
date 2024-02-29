@@ -110,6 +110,18 @@ namespace Vertigo
                 IsPaused = !IsPaused;
             }
 
+            if (State == MainState.GAME)
+            {
+                if (_game.State == GameState.GAME)
+                {
+                    _game.PauseMenu.IsDisplayed = IsPaused;
+                }
+                else
+                {
+                    _game.PauseMenu.IsDisplayed = false;
+                }
+            }
+
             if (State != MainState.GAME)
             {
                 IsPaused = false;
@@ -321,6 +333,15 @@ namespace Vertigo
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_OPTIONS_TRAIL_EFFECT && SettingsManager.Instance.IsValid())
             {
                 SettingsManager.Instance.IsTrailEffectEnabled = !SettingsManager.Instance.IsTrailEffectEnabled;
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_PAUSE_RESUME)
+            {
+                if (State == MainState.GAME)
+                {
+                    _game.AddPlayerInputDelay(0.25f);
+                    IsPaused = false;
+                }
             }
         }
 

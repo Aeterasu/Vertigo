@@ -54,6 +54,8 @@ namespace Vertigo
 
         public ScreenShakeCamera2D ScreenShakeCamera2D { get; private set; }
 
+        public PauseMenu PauseMenu { get; private set; }
+
         public GameState State { get; private set; } = GameState.INTRO;
 
         public static Game Instance { get; set; }
@@ -64,6 +66,8 @@ namespace Vertigo
 
             GameLayer = GetNode<CanvasLayer>("%GameLayer");
             GUILayer = GetNode<CanvasLayer>("%GUILayer");
+
+            PauseMenu = GetNode<PauseMenu>("GUILayer/PauseMenu");
 
             _player = GetNode<Player>("%Player");
             _playerExperienceComponent = _player.GetNode<ExperienceComponent>("%ExperienceComponent");
@@ -216,6 +220,11 @@ namespace Vertigo
                 DeconflictedSoundPlayer.PlayUnconflictingSound(GemPickupSound, this, 0f, _gemPickupPitch);
                 _gemPickupPitch = Mathf.Min(_gemPickupPitch + _gemPickupPitchStep, _maxGemPickupPitch);
             }    
+        }
+
+        public void AddPlayerInputDelay(float amount)
+        {
+            _player.InputDelay += amount;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Vertigo
                 _guiRestart.Modulate = new Color(1, 1, 1, 0);
             }
 
-            if (Input.IsActionPressed(InputActions.INPUT_RESTART) && Game.Instance.State == GameState.GAME)
+            if (Input.IsActionPressed(InputActions.INPUT_RESTART) && Game.Instance.State == GameState.GAME && !Main.Instance.IsPaused)
             {
                 _currentRestartTicks += delta;
                 _guiRestart.Modulate = _guiRestart.Modulate.LinearInterpolate(new Color(1, 1, 1, 1), 8 * delta);

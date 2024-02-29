@@ -93,6 +93,8 @@ namespace Vertigo
         public float OnHitImmunityTimer { get; set; } = 0f;
         public bool IsOnHitImmune { get => OnHitImmunityTimer > 0f; }
 
+        public float InputDelay { get; set; } = 0.0f;
+
         public bool IsDead { get => _healthComponent.IfValid().IsDead; }
 
         public event Action OnPlayerHit;
@@ -131,6 +133,8 @@ namespace Vertigo
             ImmunityTimer = Mathf.Max(ImmunityTimer - delta, 0f);
             OnHitImmunityTimer = Mathf.Max(OnHitImmunityTimer - delta, 0f);
 
+            InputDelay = Mathf.Max(InputDelay - delta, 0f);
+
             HandleAreas();
 
             HandleInput();
@@ -167,12 +171,12 @@ namespace Vertigo
                 _directionX = 1f;
             }
 
-            if (Input.IsActionPressed(InputActions.INPUT_ACTION_CONFIRM) && _playerGun.IsValid())
+            if (Input.IsActionPressed(InputActions.INPUT_ACTION_CONFIRM) && _playerGun.IsValid() && InputDelay <= 0f)
             {
                 _playerGun.Fire(directionAngleDegrees: _firingAngleDegrees, power: _powerComponent);
             }
 
-            if (Input.IsActionJustReleased(InputActions.INPUT_ACTION_CONFIRM) && _playerGun.IsValid())
+            if (Input.IsActionJustReleased(InputActions.INPUT_ACTION_CONFIRM) && _playerGun.IsValid() && InputDelay <= 0f)
             {
                 _playerGun.ResetCooldownOnMash();
             }

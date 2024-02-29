@@ -9,7 +9,20 @@ namespace Vertigo
         [Export] private int _currentColorId = 0;
         [Export] public List<ColorScheme> Colors { get; private set; } = new List<ColorScheme>();
 
-        public static ColorScheme GetCurrentColor { get => Main.Instance.ColorManager.Colors[Main.Instance.ColorManager.CurrentColorId]; }
+        public static ColorScheme GetCurrentColor 
+        { 
+            get
+            {
+                if (Main.Instance.IsValid())
+                {
+                    return Main.Instance.ColorManager.Colors[Main.Instance.ColorManager.CurrentColorId];
+                }
+                else
+                {
+                    return GD.Load<ColorScheme>("res://resources/color_schemes/ColorDefault.tres");
+                }
+            }
+        }
 
         public int CurrentColorId
         {
