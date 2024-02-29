@@ -90,6 +90,11 @@ namespace Vertigo
             _tooltipLabel = _tooltip.GetNode<Label>("Label");
             _tooltip.Modulate = new Color(1, 1, 1, 0);
             _tooltipDefaultPosition = _tooltip.RectPosition;
+
+            if (ButtonType == MenuButtonType.MENU_BUTTON_OPTIONS_FULLSCREEN && OS.GetName() == "HTML5")
+            {
+                Active = false;
+            }
         }
 
         public override void _PhysicsProcess(float delta)

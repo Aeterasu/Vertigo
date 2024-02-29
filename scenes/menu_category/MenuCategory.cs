@@ -81,7 +81,15 @@ namespace Vertigo
             {
                 if (FirstInput)
                 {
-                    CurrentButtonId = 0;
+                    if (_buttons[0].Active)
+                    {
+                        CurrentButtonId = 0;
+                    }
+                    else
+                    {
+                        CurrentButtonId = 1;
+                    }
+
                     FirstInput = false;
                     return;
                 }
@@ -97,6 +105,10 @@ namespace Vertigo
                 if (_buttons[targetId].Active)
                 {
                     CurrentButtonId = targetId;
+                }
+                else if (targetId == 0 && !_buttons[0].Active)
+                {
+                    CurrentButtonId = _buttons.Count - 1;
                 }
                 else
                 {
@@ -143,7 +155,15 @@ namespace Vertigo
             {
                 if (FirstInput)
                 {
-                    CurrentButtonId = 0;
+                    if (_buttons[0].Active)
+                    {
+                        CurrentButtonId = 0;
+                    }
+                    else
+                    {
+                        CurrentButtonId = 1;
+                    }
+                    
                     FirstInput = false;
                     return;
                 }
@@ -159,6 +179,10 @@ namespace Vertigo
                 if (_buttons[targetId].Active)
                 {
                     CurrentButtonId = targetId;
+                }
+                else if (targetId == 0 && !_buttons[0].Active)
+                {
+                    CurrentButtonId = 1;
                 }
                 else
                 {

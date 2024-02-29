@@ -22,7 +22,7 @@ namespace Vertigo
 
         public void Animate()
         {
-            _tween.InterpolateProperty(_camera, "position", new Vector2(-480f, 0f), Vector2.Zero, 2f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
+            _tween.InterpolateProperty(_camera, "position", new Vector2(-520f, 0f), Vector2.Zero, 2f, Tween.TransitionType.Cubic, Tween.EaseType.Out);
             _tween.Start();
         }
 
