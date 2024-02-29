@@ -8,7 +8,9 @@ namespace Vertigo
     {
         [Export(PropertyHint.Range, "1, 8, 1")] private int _upgradeCount = 3;
         [Export] private float _quitTimer = 1.5f;
-        [Export] private float _quitAnimationDuration = 0.25f;
+        [Export] private readonly float _quitAnimationDuration = 0.25f;
+        [Export] private readonly AudioStream _selectionAudio;
+        [Export] private readonly AudioStream _purchaseAudio;
 
         private Control _buttonHolder;
 
@@ -135,12 +137,14 @@ namespace Vertigo
             {
                 CurrentSelection -= 1;
                 _selectionActivated = true;
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_selectionAudio, GetNode("/root"), 0, 1);
             }
 
             if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && _inputDelay <= 0)
             {
                 CurrentSelection += 1;
                 _selectionActivated = true;
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_selectionAudio, GetNode("/root"), 0, 1);
             }
             
             if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && _selectionActivated && _inputDelay <= 0 && _currentButton.IsValid()) ||
@@ -165,6 +169,8 @@ namespace Vertigo
 
                 _tween.InterpolateProperty(this, "modulate", new Color(1, 1, 1, 1), new Color(1, 1, 1, 0), _quitAnimationDuration, Tween.TransitionType.Linear, Tween.EaseType.InOut, _quitTimer - _quitAnimationDuration);
                 _tween.Start();
+
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_purchaseAudio, GetNode("/root"), 0, 1);
             }
         }
 
@@ -215,6 +221,8 @@ namespace Vertigo
             {
                 return;
             }
+
+            DeconflictedSoundPlayer.PlayUnconflictingSound(_selectionAudio, GetNode("/root"), 0, 1);
 
             CurrentSelection = button.Id;
             _selectionActivated = true;

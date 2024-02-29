@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.cs" type="Script" id=1]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_menu_border.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_line.png" type="Texture" id=7]
 [ext_resource path="res://scenes/fx/scrolling_text/ScrollingText.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/audio/sfx_upgrade_reveal.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sfx_upgrade_purchase.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx_upgrade_selection.wav" type="AudioStream" id=11]
 
 [sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 0.25098 )
@@ -281,6 +284,20 @@ tracks/19/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.611765 ) ]
 }
+tracks/20/type = "method"
+tracks/20/path = NodePath("RevealAudio")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [node name="UpgradeMenu" type="Control"]
 pause_mode = 2
@@ -289,22 +306,24 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
 _quitAnimationDuration = 0.15
+_selectionAudio = ExtResource( 11 )
+_purchaseAudio = ExtResource( 10 )
 
 [node name="Backdrop" type="Sprite" parent="."]
-modulate = Color( 0.188235, 0.188235, 0.188235, 0.501961 )
+modulate = Color( 0.188235, 0.188235, 0.188235, 0 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Gradient" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.611765 )
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 480.0
 margin_bottom = 270.0
 texture = SubResource( 6 )
 
 [node name="LabelBackground" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0.75 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 161.0
@@ -313,12 +332,14 @@ color = Color( 0, 0, 0, 0.768627 )
 
 [node name="Buttons" type="Control" parent="."]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -0.000244141
 
 [node name="UpgradeButton1" parent="Buttons" instance=ExtResource( 3 )]
-margin_right = 115.0
+margin_left = 219.0
+margin_right = 179.0
 margin_bottom = 60.0
 
 [node name="UpgradeButton2" parent="Buttons" instance=ExtResource( 3 )]
@@ -328,8 +349,8 @@ margin_bottom = 60.0
 _id = 1
 
 [node name="UpgradeButton3" parent="Buttons" instance=ExtResource( 3 )]
-margin_left = 283.0
-margin_right = 243.0
+margin_left = 219.0
+margin_right = 179.0
 margin_bottom = 60.0
 _id = 2
 
@@ -361,7 +382,6 @@ valign = 1
 autowrap = true
 
 [node name="BorderGradient" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.142857 )
 margin_left = 36.0
 margin_top = -105.0
 margin_right = 186.0
@@ -370,11 +390,13 @@ rect_rotation = 45.0
 texture = SubResource( 7 )
 
 [node name="Border1" type="TextureRect" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
+margin_left = -150.0
+margin_top = 150.0
+margin_bottom = 300.0
 texture = ExtResource( 6 )
 
 [node name="ScrollingText" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 48.0
 margin_top = 32.0
 margin_right = 48.0
@@ -391,7 +413,6 @@ margin_bottom = -4.0
 _speed = 0.5
 
 [node name="BorderGradient2" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.142857 )
 margin_left = 585.0
 margin_top = 36.0
 margin_right = 735.0
@@ -400,13 +421,15 @@ rect_rotation = -225.0
 texture = SubResource( 7 )
 
 [node name="Border2" type="TextureRect" parent="."]
-margin_left = 330.0
-margin_right = 480.0
-margin_bottom = 150.0
+margin_left = 480.0
+margin_top = 150.0
+margin_right = 630.0
+margin_bottom = 300.0
 texture = ExtResource( 6 )
 flip_h = true
 
 [node name="ScrollingText2" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 432.0
 margin_top = 32.0
 margin_right = 432.0
@@ -429,16 +452,15 @@ anchor_bottom = 1.0
 color = Color( 0.596078, 0.376471, 1, 0.133333 )
 
 [node name="Line1" type="TextureRect" parent="."]
-margin_left = -20.375
+margin_left = -326.0
 margin_top = 161.0
-margin_right = 305.625
 margin_bottom = 169.0
 texture = ExtResource( 7 )
 
 [node name="Line2" type="TextureRect" parent="."]
-margin_left = 174.375
+margin_left = 480.0
 margin_top = 235.0
-margin_right = 500.375
+margin_right = 806.0
 margin_bottom = 243.0
 texture = ExtResource( 7 )
 flip_h = true
@@ -446,6 +468,7 @@ flip_v = true
 
 [node name="FluffLabel" type="Label" parent="."]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -460,3 +483,7 @@ autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 3 )
+
+[node name="RevealAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -4.0
