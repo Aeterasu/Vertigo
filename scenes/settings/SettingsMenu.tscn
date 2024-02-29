@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=4]
 [ext_resource path="res://scenes/settings/MenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/settings/SettingsCheckmark.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/settings/volume_slider/VolumeSlider.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/sfx_rain_muffled.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/textures/menu/sprite_menu_volume_music.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/menu/sprite_menu_volume_sfx.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
@@ -85,6 +89,7 @@ margin_bottom = 246.0
 ButtonType = 8
 
 [node name="VisualsCategory" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
@@ -126,3 +131,57 @@ _setting = 2
 margin_top = 222.0
 margin_bottom = 246.0
 ButtonType = 19
+
+[node name="SoundCategory" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="SFXSlider" parent="SoundCategory" instance=ExtResource( 7 )]
+margin_top = 78.0
+margin_bottom = 102.0
+
+[node name="Icon1" type="TextureRect" parent="SoundCategory/SFXSlider"]
+margin_left = 132.0
+margin_top = 5.0
+margin_right = 145.0
+margin_bottom = 22.0
+texture = ExtResource( 10 )
+
+[node name="Icon2" type="TextureRect" parent="SoundCategory/SFXSlider"]
+margin_left = 343.0
+margin_top = 5.0
+margin_right = 356.0
+margin_bottom = 22.0
+texture = ExtResource( 10 )
+
+[node name="MusicSlider" parent="SoundCategory" instance=ExtResource( 7 )]
+margin_top = 150.0
+margin_bottom = 174.0
+ButtonType = 18
+_audioBus = 2
+
+[node name="Icon1" type="TextureRect" parent="SoundCategory/MusicSlider"]
+margin_left = 132.0
+margin_top = 5.0
+margin_right = 145.0
+margin_bottom = 22.0
+texture = ExtResource( 9 )
+
+[node name="Icon2" type="TextureRect" parent="SoundCategory/MusicSlider"]
+margin_left = 343.0
+margin_top = 5.0
+margin_right = 356.0
+margin_bottom = 22.0
+texture = ExtResource( 9 )
+
+[node name="BackButton" parent="SoundCategory" instance=ExtResource( 5 )]
+margin_top = 222.0
+margin_bottom = 246.0
+ButtonType = 19
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+autoplay = true
+bus = "SFX"

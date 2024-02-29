@@ -204,6 +204,18 @@ namespace Vertigo
                 MenuButton.OnColorButtonPressedRight?.Invoke(_currentButton);
                 _currentButton.PlayConfirmAudio();
             }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && !FirstInput && _currentButton.IsValid() && _currentButton is VolumeSlider)
+            {
+                (_currentButton as VolumeSlider).StepLeft();
+                _currentButton.PlayConfirmAudio();
+            }
+
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && !FirstInput && _currentButton.IsValid() && _currentButton is VolumeSlider)
+            {
+                (_currentButton as VolumeSlider).StepRight();
+                _currentButton.PlayConfirmAudio();
+            }
         }
 
         private void OnButtonMouseEntered(MenuButton button)

@@ -120,7 +120,7 @@ centered = false
 
 [node name="Sprite" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer3"]
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 

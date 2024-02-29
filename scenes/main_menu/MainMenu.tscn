@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=1]
 [ext_resource path="res://scenes/cliff/Cliff.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/main_menu/MenuButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/audio/sfx_menu_happy.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx_rain.mp3" type="AudioStream" id=7]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
@@ -122,3 +123,11 @@ flip_h = true
 
 [node name="StartAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = 4.0
+bus = "SFX"
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+autoplay = true
+bus = "SFX"
