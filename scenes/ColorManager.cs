@@ -26,6 +26,11 @@ namespace Vertigo
                 }
 
                 _currentColorId = value;
+
+                if (SettingsManager.Instance.IsValid())
+                {
+                    SettingsManager.Instance.SaveSettings();
+                }
             }
         }
 

@@ -11,10 +11,12 @@ namespace Vertigo
         private const string CONFIG_KEY_FULLSCREEN = "fullscreen";
         private const string CONFIG_KEY_SCREEN_SHAKE = "screen_shake";
         private const string CONFIG_KEY_TRAIL_EFFECT = "trail_effect";
+        private const string CONFIG_KEY_COLOR = "color";
 
         private const int CONFIG_FULLSCREEN_DEFAULT = 0;
         private const int CONFIG_SCREEN_SHAKE_DEFAULT = 1;
         private const int CONFIG_TRAIL_EFFECT_DEFAULT = 1;
+        private const int CONFIG_COLOR_DEFAULT = 0;
 
         [Export] private bool _isFullscreen = false;
         [Export] private bool _isScreenShakeEnabled = true;
@@ -30,7 +32,7 @@ namespace Vertigo
 
                 OS.WindowFullscreen = value;
 
-                SaveSettings(this);
+                SaveSettings();
             }
         }
 
@@ -41,7 +43,7 @@ namespace Vertigo
             {
                 _isScreenShakeEnabled = value;
 
-                SaveSettings(this);
+                SaveSettings();
             }
         }
 
@@ -52,7 +54,7 @@ namespace Vertigo
             {
                 _isTrailEffectEnabled = value;
 
-                SaveSettings(this);
+                SaveSettings();
             }
         }
 
@@ -67,18 +69,19 @@ namespace Vertigo
             LoadSettings();
         }
 
-        private void SaveSettings(SettingsManager settings)
+        public void SaveSettings()
         {
             var config = new ConfigFile();
 
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_FULLSCREEN, Convert.ToInt32(IsFullscreen));
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_SCREEN_SHAKE, Convert.ToInt32(IsScreenShakeEnabled));
             config.SetValue(CONFIG_SECTION, CONFIG_KEY_TRAIL_EFFECT, Convert.ToInt32(IsTrailEffectEnabled));
+            config.SetValue(CONFIG_SECTION, CONFIG_KEY_COLOR, Convert.ToInt32(GetParent<Main>().GetNode<ColorManager>("ColorManager").CurrentColorId));
 
             config.Save(CONFIG_FILE_PATH);
         }
 
-        private void LoadSettings()
+        public void LoadSettings()
         {
             var config = new ConfigFile();
 
@@ -107,6 +110,14 @@ namespace Vertigo
             int loadedTrailEffect = (int)config.GetValue(CONFIG_SECTION, CONFIG_KEY_TRAIL_EFFECT, CONFIG_TRAIL_EFFECT_DEFAULT);
             loadedTrailEffect = Mathf.Clamp(loadedTrailEffect, 0, 1);
             IsTrailEffectEnabled = Convert.ToBoolean(loadedTrailEffect);
+
+            // color scheme
+
+            var colorManager = GetParent<Main>().GetNode<ColorManager>("ColorManager");
+
+            int loadedColor = (int)config.GetValue(CONFIG_SECTION, CONFIG_KEY_COLOR, CONFIG_COLOR_DEFAULT);
+            loadedColor = Mathf.Clamp(loadedColor, 0, colorManager.Colors.Count - 1);
+            colorManager.CurrentColorId = loadedColor;
         }
     }
 }

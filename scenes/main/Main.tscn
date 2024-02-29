@@ -34,15 +34,15 @@ _settingsMenuScene = ExtResource( 18 )
 [node name="SilentWolfConfig" type="Node" parent="."]
 script = ExtResource( 16 )
 
-[node name="ColorManager" type="Node" parent="."]
-script = ExtResource( 5 )
-Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ) ]
-
 [node name="GameResultsManager" type="Node" parent="."]
 script = ExtResource( 15 )
 
 [node name="SettingsManager" type="Node" parent="."]
 script = ExtResource( 20 )
+
+[node name="ColorManager" type="Node" parent="."]
+script = ExtResource( 5 )
+Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="LocalizationManager" type="Node" parent="."]
 script = ExtResource( 19 )
