@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_small.png" type="Texture" id=2]
 [ext_resource path="res://scenes/settings/MenuButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=5]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
 [sub_resource type="Gradient" id=4]
@@ -44,6 +46,7 @@ font_data = ExtResource( 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
+_scrollSpeed = 4.0
 
 [node name="Backdrop" type="Sprite" parent="."]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -54,11 +57,12 @@ region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Leaderboard" type="Control" parent="."]
 margin_left = 135.0
-margin_right = 345.0
-margin_bottom = 270.0
+margin_right = 175.0
+margin_bottom = 40.0
 mouse_filter = 2
 script = ExtResource( 5 )
 _visibleHighscores = 1024
+_generateNewPositions = true
 
 [node name="ScoreGetter" type="Node" parent="Leaderboard"]
 script = ExtResource( 9 )
@@ -68,67 +72,14 @@ script = ExtResource( 10 )
 
 [node name="TopTenPositions" type="Control" parent="Leaderboard"]
 
-[node name="LeaderboardPosition1" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
+[node name="LeaderboardPosition" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
 margin_left = 12.0
 margin_top = 24.0
 margin_right = 222.0
 margin_bottom = 40.0
 
-[node name="LeaderboardPosition2" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 42.0
-margin_right = 222.0
-margin_bottom = 58.0
-
-[node name="LeaderboardPosition3" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 60.0
-margin_right = 222.0
-margin_bottom = 76.0
-
-[node name="LeaderboardPosition4" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 78.0
-margin_right = 222.0
-margin_bottom = 94.0
-
-[node name="LeaderboardPosition5" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 96.0
-margin_right = 222.0
-margin_bottom = 112.0
-
-[node name="LeaderboardPosition6" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 114.0
-margin_right = 222.0
-margin_bottom = 130.0
-
-[node name="LeaderboardPosition7" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 132.0
-margin_right = 222.0
-margin_bottom = 148.0
-
-[node name="LeaderboardPosition8" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 150.0
-margin_right = 222.0
-margin_bottom = 166.0
-
-[node name="LeaderboardPosition9" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 168.0
-margin_right = 222.0
-margin_bottom = 184.0
-
-[node name="LeaderboardPosition10" parent="Leaderboard/TopTenPositions" instance=ExtResource( 4 )]
-margin_left = 12.0
-margin_top = 186.0
-margin_right = 222.0
-margin_bottom = 202.0
-
 [node name="LeaderboardCurrentPosition" type="Control" parent="Leaderboard"]
+visible = false
 margin_left = 12.0
 margin_top = 208.0
 margin_right = 222.0
@@ -152,10 +103,9 @@ valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/LeaderboardCurrentPosition"]
 margin_left = 181.0
-margin_top = 2.0
+margin_top = -1.0
 margin_right = 199.0
-margin_bottom = 26.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_bottom = 23.0
 texture = ExtResource( 2 )
 
 [node name="Gradient" type="TextureRect" parent="Leaderboard/LeaderboardCurrentPosition"]
@@ -174,9 +124,18 @@ margin_right = 186.0
 margin_bottom = 18.0
 texture = SubResource( 5 )
 
-[node name="Label" type="Label" parent="Leaderboard"]
+[node name="Backdrop2" type="Sprite" parent="Leaderboard"]
+self_modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+position = Vector2( -135, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 480, 20 )
+
+[node name="Label" type="Label" parent="Leaderboard/Backdrop2"]
+margin_left = 135.0
 margin_top = 4.0
-margin_right = 210.0
+margin_right = 345.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 9 )
 text = "LEADERBOARD"
@@ -198,16 +157,27 @@ autowrap = true
 position = Vector2( 105, 135 )
 script = ExtResource( 12 )
 
-[node name="MenuCategory" type="Control" parent="."]
+[node name="Backdrop3" type="Sprite" parent="."]
+self_modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+position = Vector2( 0, 233 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, -23, 480, 96 )
+
+[node name="MenuCategory" type="Control" parent="Backdrop3"]
+margin_top = -233.0
+margin_bottom = -233.0
 mouse_filter = 2
 script = ExtResource( 6 )
 
-[node name="MenuButtonBackToMenu" parent="MenuCategory" instance=ExtResource( 3 )]
+[node name="MenuButtonBackToMenu" parent="Backdrop3/MenuCategory" instance=ExtResource( 3 )]
 margin_top = 237.0
 margin_bottom = 261.0
 ButtonType = 8
 
 [node name="Blackout" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -218,3 +188,7 @@ stream = ExtResource( 13 )
 volume_db = -5.0
 autoplay = true
 bus = "SFX"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0

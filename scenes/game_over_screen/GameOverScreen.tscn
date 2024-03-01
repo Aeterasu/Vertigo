@@ -99,13 +99,14 @@ mouse_default_cursor_shape = 2
 script = ExtResource( 6 )
 
 [node name="Backdrop" type="Sprite" parent="."]
-modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+modulate = Color( 0.12549, 0.12549, 0.12549, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -195,9 +196,10 @@ margin_left = 270.0
 margin_right = 480.0
 
 [node name="Label" type="Label" parent="."]
-margin_top = 24.0
-margin_right = 269.0
-margin_bottom = 40.0
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 135.0
+margin_right = 480.0
+margin_bottom = 151.0
 custom_fonts/font = SubResource( 1 )
 text = "The gauntlet has come to an end..."
 align = 1

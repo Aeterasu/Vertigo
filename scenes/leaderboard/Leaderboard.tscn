@@ -6,11 +6,13 @@
 [ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=4]
 [ext_resource path="res://scenes/leaderboard/ScoreGetter.gd" type="Script" id=5]
 [ext_resource path="res://scenes/leaderboard/ScoreSender.gd" type="Script" id=6]
-[ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/gui/sprite_gui_timer_small.png" type="Texture" id=7]
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=8]
 [ext_resource path="res://scenes/gui/LoadingArc.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="Gradient" id=4]
@@ -124,12 +126,14 @@ script = ExtResource( 8 )
 _highlightColor = Color( 0.596078, 0.376471, 1, 1 )
 
 [node name="PlayerNameLabel" type="Label" parent="LeaderboardCurrentPosition"]
+margin_top = -1.0
 margin_right = 186.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 1 )
 valign = 1
 
 [node name="ScoreLabel" type="Label" parent="LeaderboardCurrentPosition"]
+margin_top = -1.0
 margin_right = 178.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 1 )
@@ -139,10 +143,9 @@ valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="LeaderboardCurrentPosition"]
 margin_left = 181.0
-margin_top = 2.0
+margin_top = -2.0
 margin_right = 199.0
-margin_bottom = 26.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_bottom = 22.0
 texture = ExtResource( 7 )
 
 [node name="Gradient" type="TextureRect" parent="LeaderboardCurrentPosition"]

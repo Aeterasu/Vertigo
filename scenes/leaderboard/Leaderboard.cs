@@ -8,6 +8,7 @@ namespace Vertigo
     public class Leaderboard : Control
     {
         [Export] private readonly int _visibleHighscores = 10;
+        [Export] private bool _generateNewPositions = false;
 
         private Node _scoreGetter;
         private Node _scoreSender;
@@ -15,11 +16,16 @@ namespace Vertigo
         public bool _finishedRefresh = false;
 
         private readonly List<LeaderboardPosition> _leaderboardPositions = new List<LeaderboardPosition>();
+        private LeaderboardPosition _initialLeaderboardPosition;
         private LeaderboardPosition _currentLeaderboardPosition;
+
+        private Control _highscoresParent;
 
         private Godot.Collections.Array _scores;
 
         private Node2D _loadingArc;
+
+        public float TotalYOffset { get; private set; } = 0f;
 
         public bool IsRefreshFinished { get => _finishedRefresh; }
 
@@ -29,19 +35,23 @@ namespace Vertigo
 
             _loadingArc = GetNode<Node2D>("LoadingArc");
 
+            _highscoresParent = GetNode<Control>("TopTenPositions");
+
             _scoreGetter = GetNode<Node>("ScoreGetter");
             _scoreSender = GetNode<Node>("ScoreSender");
             _scoreGetter.Call("refresh");
 
             _currentLeaderboardPosition = GetNode<LeaderboardPosition>("LeaderboardCurrentPosition");
 
-            foreach (Node node in GetNode<Control>("TopTenPositions").GetChildren())
+            foreach (Node node in _highscoresParent.GetChildren())
             {
                 if (node is LeaderboardPosition)
                 {
                     _leaderboardPositions.Add(node as LeaderboardPosition);
                 }
             }
+
+            _initialLeaderboardPosition = _leaderboardPositions[0];
 
             GetNode("/root/SilentWolf/Scores").Connect("sw_score_posted", this, "Refresh");
         }
@@ -62,6 +72,15 @@ namespace Vertigo
                 {
                     if (i <= _visibleHighscores - 1 && i < _leaderboardPositions.Count)
                     {
+                        if (_generateNewPositions)
+                        {
+                            LeaderboardPosition leaderboardPosition = _initialLeaderboardPosition.Duplicate() as LeaderboardPosition;
+                            _leaderboardPositions.Add(leaderboardPosition);
+                            leaderboardPosition.RectPosition = new Vector2(12f, 24f) + Vector2.Down * 18 * (i + 1);
+                            TotalYOffset = _scores.Count > 10 ? 18 * (i - 10) : 0f;
+                            _highscoresParent.AddChild(leaderboardPosition);
+                        }
+
                         _leaderboardPositions[i].Position = i + 1;
                         _leaderboardPositions[i].PlayerName = (string)score["player_name"];
                         _leaderboardPositions[i].Score = (float)score["score"];
