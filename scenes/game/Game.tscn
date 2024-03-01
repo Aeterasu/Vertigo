@@ -454,6 +454,7 @@ anims/GameOver = SubResource( 10 )
 unique_name_in_owner = true
 
 [node name="WaveScreenDistortion" type="ColorRect" parent="GUILayer"]
+pause_mode = 2
 unique_name_in_owner = true
 material = SubResource( 2 )
 anchor_right = 1.0

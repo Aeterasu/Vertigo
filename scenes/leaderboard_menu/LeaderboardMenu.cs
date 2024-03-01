@@ -55,14 +55,24 @@ namespace Vertigo
 
                 if (mouseEvent.ButtonIndex == 4) // 4 = BUTTON_WHEEL_UP 
                 {
-                    _targetYOffset -= _scrollSpeed;
+                    ScrollUp();
                 }
 
                 if (mouseEvent.ButtonIndex == 5) // 5 = BUTTON_WHEEL_DOWN  
                 {
-                    _targetYOffset += _scrollSpeed;
+                    ScrollDown();
                 }
             }
+        }
+
+        public void ScrollUp(float multiplier = 1.0f)
+        {
+            _targetYOffset -= _scrollSpeed * multiplier;
+        }
+
+        public void ScrollDown(float multiplier = 1.0f)
+        {
+            _targetYOffset += _scrollSpeed * multiplier;
         }
     }
 }

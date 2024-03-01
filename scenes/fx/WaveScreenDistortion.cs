@@ -19,6 +19,9 @@ public class WaveScreenDistortion : ColorRect
         base._Ready();
 
         _material = Material as ShaderMaterial;
+
+        _material.SetShaderParam("wave_width", 0f);
+        _material.SetShaderParam("wave_freq", 0f);        
     }
 
     public override void _PhysicsProcess(float delta)

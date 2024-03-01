@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer_small.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/gui/LoadingArc.gd" type="Script" id=12]
 [ext_resource path="res://assets/audio/sfx_rain_muffled.mp3" type="AudioStream" id=13]
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://scenes/leaderboard_menu/ScrollButton.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -47,7 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
 _scrollSpeed = 12.0
-_lerpWeight = 12.0
+_lerpWeight = 9.0
 
 [node name="Backdrop" type="Sprite" parent="."]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
@@ -177,7 +178,22 @@ margin_top = 237.0
 margin_bottom = 261.0
 ButtonType = 8
 
+[node name="MenuButtonScrollUp" parent="Backdrop3/MenuCategory" instance=ExtResource( 20 )]
+margin_left = 356.0
+margin_top = 30.0
+margin_right = 377.0
+margin_bottom = 54.0
+
+[node name="MenuButtonScrollDown" parent="Backdrop3/MenuCategory" instance=ExtResource( 20 )]
+margin_left = 356.0
+margin_top = 227.0
+margin_right = 377.0
+margin_bottom = 251.0
+rect_scale = Vector2( 1, -1 )
+ButtonType = 23
+
 [node name="Blackout" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

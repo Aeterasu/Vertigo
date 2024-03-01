@@ -27,6 +27,8 @@ namespace Vertigo
         MENU_BUTTON_OPTIONS_BACK_TO_OPTIONS_MENU,
         MENU_BUTTON_PAUSE_RESUME,
         MENU_BUTTON_PAUSE_RESTART,
+        MENU_BUTTON_LEADERBOARD_SCROLL_UP,
+        MENU_BUTTON_LEADERBOARD_SCROLL_DOWN,
     }
 
     public class MenuButton : Control

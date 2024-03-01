@@ -343,6 +343,16 @@ namespace Vertigo
                     IsPaused = false;
                 }
             }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_LEADERBOARD_SCROLL_UP && State == MainState.LEADERBOARD_MENU)
+            {
+                _leaderboardMenu.ScrollUp(multiplier: 8f);
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_LEADERBOARD_SCROLL_DOWN && State == MainState.LEADERBOARD_MENU)
+            {
+                _leaderboardMenu.ScrollDown(multiplier: 8f);
+            }
         }
 
         private void OnColorButtonPressedLeft(MenuButton button)
