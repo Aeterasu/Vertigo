@@ -72,11 +72,15 @@ TooltipTextKey = "TOOLTIP_COLOR"
 margin_top = 161.0
 margin_bottom = 185.0
 ButtonType = 2
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_SETTINGS"
 
 [node name="LeaderboardMenuButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 193.0
 margin_bottom = 217.0
 ButtonType = 9
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_LEADERBOARD"
 
 [node name="ExitButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
 margin_top = 225.0
@@ -92,7 +96,7 @@ margin_right = 475.0
 margin_bottom = 270.0
 custom_constants/line_spacing = 10
 custom_fonts/font = SubResource( 8 )
-text = "Game by Matvey Kerov
+text = "Game by TheJohnyFeeD
 Made with Godot Engine"
 align = 2
 

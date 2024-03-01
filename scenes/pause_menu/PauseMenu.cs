@@ -9,6 +9,8 @@ namespace Vertigo
 
         private MenuCategory _menuCategory;
 
+        private Label _flavorText;
+
         public bool IsDisplayed { get; set; } = false;
 
         public override void _Ready()
@@ -16,6 +18,8 @@ namespace Vertigo
             base._Ready();
 
             _menuCategory = GetNode<MenuCategory>("MenuCategory");
+
+            _flavorText = GetNode<Label>("FlavorText");
 
             Modulate = new Color(1, 1, 1, 0);
         }
@@ -27,6 +31,7 @@ namespace Vertigo
             if (IsDisplayed)
             {
                 Modulate = Modulate.LinearInterpolate(new Color(1, 1, 1, 1), _lerpWeight * delta);
+                _flavorText.Text = Tr("FLAVOR_TEXT_1");
             }
             else
             {

@@ -16,7 +16,7 @@ namespace Vertigo
 
             _hSlider = GetNode<HSlider>("HSlider");
 
-            _hSlider.Connect("drag_ended", this, "OnVolumeDrag");
+            _hSlider.Connect("value_changed", this, "OnVolumeDrag");
             
             switch (_audioBus)
             {
@@ -29,14 +29,10 @@ namespace Vertigo
             }
         }
 
-        private void OnVolumeDrag(bool valueChanged)
+        private void OnVolumeDrag(float value)
         {
-            if (!valueChanged)
-            {
-                return;
-            }
-
             UpdateVolume();
+            PlaySelectAudio();
         }
 
         private void UpdateVolume()

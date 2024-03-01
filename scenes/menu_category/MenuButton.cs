@@ -137,6 +137,14 @@ namespace Vertigo
             {
                 _tooltipLabel.Text = Tr("MENU_BUTTON_LANGUAGE_OPTIONS") + ":" + System.Environment.NewLine + Tr("LOCALE_" + Enum.GetName(typeof(LocaleEnum), LocalizationManager.Instance.CurrentLocale));
             }
+            else if (ButtonType == MenuButtonType.MENU_BUTTON_OPTIONS_SFX_VOLUME)
+            {
+                _tooltipLabel.Text = Tr(TooltipTextKey) + ":" + System.Environment.NewLine + SettingsManager.Instance.SfxVolume * 100f + "%";
+            }
+            else if (ButtonType == MenuButtonType.MENU_BUTTON_OPTIONS_MUSIC_VOLUME)
+            {
+                _tooltipLabel.Text = Tr(TooltipTextKey) + ":" + System.Environment.NewLine + SettingsManager.Instance.MusicVolume * 100f + "%";
+            }
             else if (_isTooltipHidden)
             {
                 _tooltipLabel.Text = Tr(TooltipTextKey);
@@ -162,10 +170,7 @@ namespace Vertigo
                 ShowTooltip();
             }
 
-            if (SelectSound != null)
-            {
-                DeconflictedSoundPlayer.PlayUnconflictingSound(SelectSound, GetNode<Node>("/root/"), 0, 1);
-            }
+            PlaySelectAudio();
         }
 
         public void Unfocus()
@@ -217,6 +222,14 @@ namespace Vertigo
             if (ConfirmSound != null)
             {
                 DeconflictedSoundPlayer.PlayUnconflictingSound(ConfirmSound, GetNode<Node>("/root/"), 0, 1);
+            }
+        }
+
+        public void PlaySelectAudio()
+        {
+            if (SelectSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(SelectSound, GetNode<Node>("/root/"), 0, 1);
             }
         }
     }

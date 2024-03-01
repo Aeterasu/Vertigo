@@ -72,11 +72,15 @@ script = ExtResource( 4 )
 
 [node name="SoundButton" parent="DefaultCategory" instance=ExtResource( 5 )]
 ButtonType = 10
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_SOUND_SETTINGS"
 
 [node name="VisualsButton" parent="DefaultCategory" instance=ExtResource( 5 )]
 margin_top = 96.0
 margin_bottom = 120.0
 ButtonType = 11
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_VISUALS"
 
 [node name="LanguageButton" parent="DefaultCategory" instance=ExtResource( 5 )]
 margin_top = 138.0
@@ -96,6 +100,8 @@ script = ExtResource( 4 )
 
 [node name="FullscreenButton" parent="VisualsCategory" instance=ExtResource( 5 )]
 ButtonType = 13
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_FULLSCREEN"
 
 [node name="SettingsCheckmark" parent="VisualsCategory/FullscreenButton" instance=ExtResource( 6 )]
 margin_left = 302.0
@@ -107,6 +113,8 @@ margin_bottom = -2.0
 margin_top = 96.0
 margin_bottom = 120.0
 ButtonType = 14
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_SCREENSHAKE"
 
 [node name="SettingsCheckmark" parent="VisualsCategory/ScreenshakeButton" instance=ExtResource( 6 )]
 margin_left = 302.0
@@ -119,6 +127,8 @@ _setting = 1
 margin_top = 138.0
 margin_bottom = 162.0
 ButtonType = 15
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_TRAIL_EFFECT"
 
 [node name="SettingsCheckmark" parent="VisualsCategory/TrailEffectButton" instance=ExtResource( 6 )]
 margin_left = 302.0
@@ -140,6 +150,8 @@ script = ExtResource( 4 )
 [node name="SFXSlider" parent="SoundCategory" instance=ExtResource( 7 )]
 margin_top = 78.0
 margin_bottom = 102.0
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_SFX"
 
 [node name="Icon1" type="TextureRect" parent="SoundCategory/SFXSlider"]
 margin_left = 132.0
@@ -159,6 +171,8 @@ texture = ExtResource( 10 )
 margin_top = 150.0
 margin_bottom = 174.0
 ButtonType = 18
+HasTooltip = true
+TooltipTextKey = "TOOLTIP_MUSIC"
 _audioBus = 2
 
 [node name="Icon1" type="TextureRect" parent="SoundCategory/MusicSlider"]

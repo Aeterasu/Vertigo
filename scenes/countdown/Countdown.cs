@@ -23,6 +23,7 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
 
             _animationPlayer.Play("Countdown");
+            GetNode<Label>("AnimationPlayer/LabelFluff").Text = Tr($"COUNTDOWN_TEXT_{(GD.Randi() % 4) + 1}");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -62,6 +63,18 @@ namespace Vertigo
             {
                 OnCountdownFinished?.Invoke();
             }
+        }
+
+        public void PlayTickAudio()
+        {
+            var audioStream = GetNode<AudioStreamPlayer>("TickAudio");
+            DeconflictedSoundPlayer.PlayUnconflictingSound(audioStream.Stream, this, audioStream.VolumeDb, audioStream.PitchScale);
+        }
+
+        public void PlayVertigoAudio()
+        {
+            var audioStream = GetNode<AudioStreamPlayer>("VertigoAudio");
+            DeconflictedSoundPlayer.PlayUnconflictingSound(audioStream.Stream, this, audioStream.VolumeDb, audioStream.PitchScale);
         }
     }
 }

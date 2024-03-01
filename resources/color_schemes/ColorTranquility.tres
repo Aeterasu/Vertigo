@@ -3,8 +3,8 @@
 [ext_resource path="res://resources/color_schemes/ColorScheme.cs" type="Script" id=1]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 1.54143e-43, 0.304786, 1 )
-colors = PoolColorArray( 0.1, 0.055, 0.0835, 1, 0.53, 0.2332, 0.297507, 1, 0.882353, 0.960784, 0.909804, 1 )
+offsets = PoolRealArray( 1.54143e-43, 0.244332, 1 )
+colors = PoolColorArray( 0.1, 0.055, 0.0835, 1, 0.529412, 0.231373, 0.231373, 1, 0.890196, 0.921569, 0.772549, 1 )
 
 [sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
