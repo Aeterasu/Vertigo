@@ -122,7 +122,7 @@ namespace Vertigo
                 }
             }
 
-            if (State != MainState.GAME)
+            if (State != MainState.GAME || (_game.IsValid() && _game.Player.IsDead))
             {
                 IsPaused = false;
             }

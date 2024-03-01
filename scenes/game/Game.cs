@@ -48,6 +48,8 @@ namespace Vertigo
 
         public float RopeTopPosition { get; private set; }
         public float RopeBottomPosition { get; private set; }
+
+        public Player Player { get => _player; }
         
         public CanvasLayer GameLayer { get; private set; }
         public CanvasLayer GUILayer { get; private set; }

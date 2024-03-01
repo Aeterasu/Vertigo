@@ -179,7 +179,7 @@ unique_name_in_owner = true
 _canOnlySpawnAfter = 0.0
 _maxHazards = 8
 _scene = ExtResource( 3 )
-_spawnRate = 1.0
+_spawnRate = 3.0
 _spawnRateDifficultyStep = 0.2
 _spawnMinimalRate = 0.35
 
