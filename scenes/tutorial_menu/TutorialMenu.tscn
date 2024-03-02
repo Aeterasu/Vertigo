@@ -342,7 +342,21 @@ script = ExtResource( 8 )
 StringKeyKeyboard = "TUTORIAL_MENU_5_2"
 StringKeyGamepad = "TUTORIAL_MENU_5_2"
 
+[node name="Label3" type="Label" parent="TutorialPages/TutorialPage5"]
+anchor_top = 0.619
+anchor_bottom = 0.619
+margin_top = 48.87
+margin_right = 480.0
+margin_bottom = 60.87
+custom_fonts/font = SubResource( 1 )
+text = "Put tutorial text here"
+align = 1
+script = ExtResource( 8 )
+StringKeyKeyboard = "TUTORIAL_MENU_5_3"
+StringKeyGamepad = "TUTORIAL_MENU_5_3"
+
 [node name="TutorialPage6" type="Control" parent="TutorialPages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

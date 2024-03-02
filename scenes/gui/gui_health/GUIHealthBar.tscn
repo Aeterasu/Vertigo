@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/gui/gui_health/GUIHealthHeart.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gui/gui_health/GUIHealthHeartBig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/gui/gui_health/GUIHealthBar.cs" type="Script" id=4]
+[ext_resource path="res://assets/textures/gui/sprite_gui_heart.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/gui/sprite_gui_heart_empty.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -26,3 +28,13 @@ anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 text = "+1"
 valign = 2
+
+[node name="GrazeProgress" type="TextureProgress" parent="."]
+visible = false
+margin_right = 16.0
+margin_bottom = 16.0
+max_value = 1.0
+step = 0.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3

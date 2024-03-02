@@ -48,7 +48,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 9, 0 ), Vector2( 0, 0 ) ]
 }
@@ -60,7 +60,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -9, 0 ), Vector2( 0, 0 ) ]
 }
@@ -140,13 +140,14 @@ mouse_default_cursor_shape = 2
 script = ExtResource( 6 )
 
 [node name="Backdrop" type="Sprite" parent="."]
-modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+modulate = Color( 0.12549, 0.12549, 0.12549, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -215,9 +216,9 @@ valign = 1
 
 [node name="NewLabel" type="Label" parent="Control/Highscore"]
 margin_left = 220.0
-margin_top = -2.0
+margin_top = -0.787423
 margin_right = 259.0
-margin_bottom = 22.0
+margin_bottom = 23.2126
 custom_fonts/font = SubResource( 4 )
 text = "NEW!"
 align = 1
@@ -226,7 +227,8 @@ valign = 1
 [node name="Label1" type="Label" parent="Control/Highscore/NewLabel"]
 modulate = Color( 0.607843, 0.396078, 1, 1 )
 show_behind_parent = true
-margin_right = 39.0
+margin_left = 0.827067
+margin_right = 39.8271
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 4 )
 text = "NEW!"
@@ -236,7 +238,8 @@ valign = 1
 [node name="Label2" type="Label" parent="Control/Highscore/NewLabel"]
 modulate = Color( 0.607843, 0.396078, 1, 1 )
 show_behind_parent = true
-margin_right = 39.0
+margin_left = -0.827067
+margin_right = 38.1729
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 4 )
 text = "NEW!"
@@ -269,9 +272,10 @@ margin_left = 270.0
 margin_right = 480.0
 
 [node name="Label" type="Label" parent="."]
-margin_top = 24.0
-margin_right = 269.0
-margin_bottom = 40.0
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 135.0
+margin_right = 480.0
+margin_bottom = 151.0
 custom_fonts/font = SubResource( 1 )
 text = "The gauntlet has come to an end..."
 align = 1

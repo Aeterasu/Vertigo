@@ -114,6 +114,7 @@ TUTORIAL_MENU_4_2,Collect enough gems and you will Ascend.,
 TUTORIAL_MENU_4_3,"Each time you Ascend, you get to choose one out of the three upgrades.",
 TUTORIAL_MENU_5_1,Stay close to hazards to enter the GRAZE state.,
 TUTORIAL_MENU_5_2,"In the GRAZE state, you gain a massive power regeneration boost and begin accumulating gems, filling up your gem bar over time.",
+TUTORIAL_MENU_5_3,Staying in the GRAZE state long enough will grant you an additional heart.,
 TUTORIAL_MENU_6_1,May the spirit of Vertigo guide you to your success.,
 TUTORIAL_MENU_6_2,Good luck!,
 COUNTDOWN_TEXT_1,"Vertigo - a sensation that you, or the environment around you, 
@@ -128,3 +129,5 @@ COUNTDOWN_TEXT_5,"Vertigo is defined in medicine as a false sensation of movemen
 and is often caused by a dysfunction in the inner ear or brain. ",
 FLAVOR_TEXT_1,"Vertigo is but an illusion of the mind brought forth from an imbalance of bodily perception. 
 It reveals the limitations of our physical bodies and the fragility of our grasp on reality.",
+NAUSEA_ANNOUNCEMENT,"The breath of Vertigo encircles your mind.
+Your senses spiral, whirling to chaos.",

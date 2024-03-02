@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/textures/player/sprite_player_1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.cs" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/audio/sfx_player_charge_1.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/sfx_player_shot_super.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/sfx_player_hit.wav" type="AudioStream" id=14]
+[ext_resource path="res://scenes/player/GrazeHeal.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=2]
 resource_name = "FlipDown"
@@ -191,6 +192,10 @@ _chargeUpSound = ExtResource( 12 )
 unique_name_in_owner = true
 _grazingCumulativeRate = 2.0
 _grazingCumulativeStep = 0.5
+
+[node name="GrazeHeal" parent="." instance=ExtResource( 15 )]
+_baseRequiredGraze = 2.0
+_multiplierOnEachGrantedHp = 4.5
 
 [node name="GrazeDetector" type="Area2D" parent="."]
 unique_name_in_owner = true

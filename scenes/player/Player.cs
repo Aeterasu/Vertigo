@@ -90,6 +90,8 @@ namespace Vertigo
         public float ImmunityTimer { get; set; } = 0f;
         public bool IsImmune { get => ImmunityTimer > 0f; }
 
+        public HealthComponent GetHealthComponent { get => _healthComponent; }
+
         public float OnHitImmunityTimer { get; set; } = 0f;
         public bool IsOnHitImmune { get => OnHitImmunityTimer > 0f; }
 

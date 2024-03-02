@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/player/GrazeHeal.cs" type="Script" id=1]
+
+[node name="GrazeHeal" type="Node"]
+script = ExtResource( 1 )
+_enabled = true
+_baseRequiredGraze = 3.0
+_multiplierOnEachGrantedHp = 3.0

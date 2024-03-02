@@ -12,6 +12,8 @@ namespace Vertigo
         [Export] private float _offset = 14f;
         [Export] private float _bigHeartOffset = 22f;
         [Export] private int _textThreshold = 6;
+        
+        private TextureProgress _grazeBuildup;
 
         private int _currentHp = 0;
 
@@ -22,6 +24,7 @@ namespace Vertigo
         private Label _label;
 
         private Player _player;
+        private GrazeHeal _playerGrazeHeal;
         private HealthComponent _healthComponent;
 
         public override void _Ready()
@@ -32,10 +35,15 @@ namespace Vertigo
 
             _player = GetNodeOrNull<Player>("%Player");
 
+            _grazeBuildup = GetNode<TextureProgress>("GrazeProgress");
+
             if (_player.IsValid())
             {
                 _healthComponent = _player.GetNodeOrNull<HealthComponent>("HealthComponent");
+                _playerGrazeHeal = _player.GetNodeOrNull<GrazeHeal>("GrazeHeal");
             }
+
+            _grazeBuildup.Visible = _playerGrazeHeal.IfValid().IsEnabled;
         }
 
         public override void _Process(float delta)
@@ -96,6 +104,14 @@ namespace Vertigo
                 _currentHp -= 1;
                 _currentOffset -= _offset;
             }
+
+            _grazeBuildup.RectPosition = Vector2.Right * _currentOffset;
+            _grazeBuildup.Value = _playerGrazeHeal.Percentage;
+        }
+
+        public void ShowGrazeHeart()
+        {
+            _grazeBuildup.Visible = true;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace Vertigo
         [Export] private readonly float _grazingExpGain = 1f;
         [Export] private readonly float _grazingCumulativeRate = 1.5f;
         [Export] private readonly float _grazingCumulativeStep = 1f;
+        [Export] private readonly bool _grantHpOnLevelUp = false;
+        [Export(PropertyHint.Range, "0, 32")] private readonly int _hpAmountOnLevelUp = 1;
 
         private float _currentExp = 0f;
         private float _targetExp = 0f;
@@ -89,6 +91,11 @@ namespace Vertigo
             _targetExp *= _targetExpCoeff;
 
             OnLevelUp?.Invoke(this);
+
+            if (_grantHpOnLevelUp)
+            {
+                _player.GetNode<HealthComponent>("HealthComponent").Health += _hpAmountOnLevelUp;
+            }
         }
     }
 }
