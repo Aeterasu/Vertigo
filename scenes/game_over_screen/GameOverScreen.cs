@@ -44,6 +44,9 @@ namespace Vertigo
                 }
             }
 
+            GetNode<Label>("Control/Highscore/NewLabel").Visible = GameResultsManager.Instance.CurrentGameResults.NewHighscore;
+            GetNode<AnimationPlayer>("Control/Highscore/NewLabel/AnimationPlayer").Play("Loop");
+
             _menuCategory = GetNode<MenuCategory>("Control/MenuCategory");
             _scoreSubmitButton = GetNode<Button>("Control/Leaderboard/ScoreSubmitButton");
             _lineEdit = GetNode<LineEdit>("Control/Leaderboard/LineEdit");

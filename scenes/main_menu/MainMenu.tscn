@@ -56,42 +56,42 @@ margin_bottom = 270.0
 texture = SubResource( 2 )
 
 [node name="StartButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 79.0
-margin_bottom = 103.0
+margin_top = 65.0
+margin_bottom = 89.0
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_START"
 
 [node name="ColorButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 111.0
-margin_bottom = 135.0
+margin_top = 97.0
+margin_bottom = 121.0
 ButtonType = 1
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_COLOR"
 
 [node name="OptionsButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 143.0
-margin_bottom = 167.0
+margin_top = 129.0
+margin_bottom = 153.0
 ButtonType = 2
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_SETTINGS"
 
 [node name="LeaderboardMenuButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 174.0
-margin_bottom = 198.0
+margin_top = 160.0
+margin_bottom = 184.0
 ButtonType = 9
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_LEADERBOARD"
 
 [node name="TutorialButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 206.0
-margin_bottom = 230.0
+margin_top = 192.0
+margin_bottom = 216.0
 ButtonType = 24
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_TUTORIAL"
 
 [node name="ExitButton" parent="MenuLayer/MenuCategory" instance=ExtResource( 4 )]
-margin_top = 239.0
-margin_bottom = 263.0
+margin_top = 225.0
+margin_bottom = 249.0
 ButtonType = 5
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_EXIT"

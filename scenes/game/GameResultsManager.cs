@@ -20,6 +20,7 @@ namespace Vertigo
                 if (value.Time > HighscoreResults.Time)
                 {
                     HighscoreResults = value;
+                    _currentGameResults.NewHighscore = true;
                 }
             }
         }
