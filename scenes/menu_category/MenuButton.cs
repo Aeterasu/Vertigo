@@ -29,16 +29,21 @@ namespace Vertigo
         MENU_BUTTON_PAUSE_RESTART,
         MENU_BUTTON_LEADERBOARD_SCROLL_UP,
         MENU_BUTTON_LEADERBOARD_SCROLL_DOWN,
+        MENU_BUTTON_TUTORIAL_MENU,
+        MENU_BUTTON_TUTORIAL_PREVIOUS_PAGE,
+        MENU_BUTTON_TUTORIAL_NEXT_PAGE,
     }
 
     public class MenuButton : Control
     {
         [Export] public MenuButtonType ButtonType { get; private set; } = MenuButtonType.MENU_BUTTON_START;
         [Export] public bool HasTooltip { get; private set; }
-        [Export] public string TooltipTextKey { get; private set; } = "TOOLTIP_DEFAULT";
+        [Export] public string TooltipTextKey { get; set; } = "TOOLTIP_DEFAULT";
         [Export] public bool Active { get; private set; } = true;
         [Export] public AudioStream SelectSound { get; private set; }
         [Export] public AudioStream ConfirmSound { get; private set; }
+        
+        public bool StopTextUpdate { get; set; } = false;
 
         private bool _isFocused = false;
 
@@ -79,6 +84,8 @@ namespace Vertigo
 
         public int Id { get; set; } = 0;
 
+        public Label GetLabel { get => _label; }
+
         public override void _Ready()
         {
             base._Ready();
@@ -105,8 +112,6 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
-
             if (ButtonType == MenuButtonType.MENU_BUTTON_EXIT && OS.GetName() == "HTML5")
             {
                 Active = false;
@@ -116,6 +121,11 @@ namespace Vertigo
             {
                 Modulate = new Color(1, 1, 1, 0.3f);
                 return;
+            }
+
+            if (!StopTextUpdate)
+            {
+                UpdateText();
             }
 
             if (_isTooltipHidden)
@@ -128,6 +138,11 @@ namespace Vertigo
                 _tooltip.Modulate = _tooltip.Modulate.LinearInterpolate(new Color(1, 1, 1, 1), 10 * delta);
                 _tooltip.RectPosition = _tooltip.RectPosition.LinearInterpolate(_tooltipDefaultPosition, 10 * delta);
             }
+        }
+
+        private void UpdateText()
+        {
+            _label.Text = Tr(Enum.GetName(typeof(MenuButtonType), ButtonType));
 
             if (ButtonType == MenuButtonType.MENU_BUTTON_COLOR)
             {

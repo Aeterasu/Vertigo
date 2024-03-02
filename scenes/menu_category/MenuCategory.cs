@@ -4,8 +4,15 @@ using System.Collections.Generic;
 
 namespace Vertigo
 {
+    public enum MenuCategoryOrientation
+    {
+        VERTICAL,
+        HORIZONTAL,
+    }
+
     public class MenuCategory : Control
     {
+        [Export] public MenuCategoryOrientation Orientation { get; private set; } = MenuCategoryOrientation.VERTICAL;
         [Export] public bool DisableInput { get; set; }
 
         private List<MenuButton> _buttons = new List<MenuButton>();
@@ -77,7 +84,8 @@ namespace Vertigo
                 return;
             }
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_UP))
+            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_UP) && Orientation == MenuCategoryOrientation.VERTICAL) 
+            || (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && Orientation == MenuCategoryOrientation.HORIZONTAL))
             {
                 if (FirstInput)
                 {
@@ -151,7 +159,8 @@ namespace Vertigo
                 }
             }
 
-            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN))
+            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN) && Orientation == MenuCategoryOrientation.VERTICAL)
+            || (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && Orientation == MenuCategoryOrientation.HORIZONTAL))
             {
                 if (FirstInput)
                 {

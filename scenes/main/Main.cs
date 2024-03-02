@@ -11,6 +11,7 @@ namespace Vertigo
         GAME_OVER,
         LEADERBOARD_MENU,
         OPTIONS_MENU,
+        TUTORIAL_MENU,
     }
 
     public class Main : Node
@@ -22,6 +23,7 @@ namespace Vertigo
         [Export] private readonly PackedScene _gameOverScene;
         [Export] private readonly PackedScene _leaderboardMenuScene;
         [Export] private readonly PackedScene _settingsMenuScene;
+        [Export] private readonly PackedScene _tutorialMenuScene;
 
         private MainMenu _mainMenu;
         private Interlude _interlude;
@@ -29,6 +31,7 @@ namespace Vertigo
         private GameOverScreen _gameOver;
         private LeaderboardMenu _leaderboardMenu;
         private SettingsMenu _settingsMenu;
+        private TutorialMenu _tutorialMenu;
 
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
@@ -61,6 +64,9 @@ namespace Vertigo
                         break;
                     case MainState.OPTIONS_MENU:
                         InitSettingsMenu();
+                        break;
+                    case MainState.TUTORIAL_MENU:
+                        InitTutorialMenu();
                         break;
                 }
             }
@@ -239,6 +245,25 @@ namespace Vertigo
             }                        
         }
 
+        private void InitTutorialMenu()
+        {
+            if (_tutorialMenuScene != null)
+            {
+                var tutorialMenuNode = _tutorialMenuScene.Instance();
+
+                if (tutorialMenuNode is TutorialMenu)
+                {
+                    _tutorialMenu = tutorialMenuNode as TutorialMenu;
+                }
+
+                AddChild(_tutorialMenu);
+            }
+            else
+            {
+                State = MainState.MAIN_MENU;
+            }                          
+        }
+
         private void OnInterludeAnimationFinished()
         {
             State = MainState.GAME;
@@ -280,6 +305,11 @@ namespace Vertigo
 
             _settingsMenu.SafeQueueFree();
             _settingsMenu = null;
+
+            // tutorial
+
+            _tutorialMenu.SafeQueueFree();
+            _tutorialMenu = null;
         }
 
         private void OnMenuButtonExecuted(MenuButton button)
@@ -320,6 +350,12 @@ namespace Vertigo
                 return;
             }
 
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_TUTORIAL_MENU)
+            {
+                State = MainState.TUTORIAL_MENU;
+                return;
+            }
+
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_OPTIONS_FULLSCREEN && SettingsManager.Instance.IsValid())
             {
                 SettingsManager.Instance.IsFullscreen = !SettingsManager.Instance.IsFullscreen;
@@ -352,6 +388,16 @@ namespace Vertigo
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_LEADERBOARD_SCROLL_DOWN && State == MainState.LEADERBOARD_MENU)
             {
                 _leaderboardMenu.ScrollDown(multiplier: 8f);
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_TUTORIAL_NEXT_PAGE && State == MainState.TUTORIAL_MENU)
+            {
+                _tutorialMenu.NextPage();
+            }
+
+            if (button.ButtonType == MenuButtonType.MENU_BUTTON_TUTORIAL_PREVIOUS_PAGE && State == MainState.TUTORIAL_MENU)
+            {
+                _tutorialMenu.PreviousPage();
             }
         }
 
