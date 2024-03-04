@@ -62,6 +62,8 @@ namespace Vertigo
         private Node2D _spritePivot;
         private AnimationPlayer _animationPlayer;
 
+        private PlayerGrazeFx _grazeFx;
+
         private ImmunityBubble _immunityBubble;
 
         public GravityMode GravityMode
@@ -124,6 +126,8 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
 
             _immunityBubble = GetNode<ImmunityBubble>("%ImmunityBubble");
+
+            _grazeFx = GetNode<PlayerGrazeFx>("GrazeFx");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -148,6 +152,8 @@ namespace Vertigo
             HandleImmunityBubble();
 
             HandleOnHitImmunityFlash(delta);
+
+            _grazeFx.IsEnabled = IsGrazing;
         }
 
         private void HandleInput()
