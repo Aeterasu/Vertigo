@@ -212,6 +212,11 @@ namespace Vertigo
 
         private void OnProjectileCollide(Projectile projectile)
         {
+            if (_healthComponent.Health <= 0)
+            {
+                return;
+            }
+
             if (_healthComponent.Health - 1 <= 0)
             {
                 if (DestroyedSound != null)

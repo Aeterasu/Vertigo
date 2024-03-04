@@ -193,6 +193,8 @@ namespace Vertigo
                 SetStateToGame();
                 return;
             }
+
+            Engine.TimeScale = 1f;
             
             UpgradeMenu upgradeMenu = node as UpgradeMenu;
             upgradeMenu.OnMenuClosed += OnUpgradeMenuClosed;
