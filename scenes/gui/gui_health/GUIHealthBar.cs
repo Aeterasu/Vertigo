@@ -9,9 +9,13 @@ namespace Vertigo
         [Export] private readonly PackedScene _heartScene;
         [Export] private readonly PackedScene _bigHeartScene;
         [Export] private int _targetHp = 1;
-        [Export] private float _offset = 14f;
-        [Export] private float _bigHeartOffset = 22f;
-        [Export] private int _textThreshold = 6;
+        [Export] private readonly float _offset = 14f;
+        [Export] private readonly float _bigHeartOffset = 22f;
+        [Export] private readonly int _textThreshold = 6;
+        [Export] private readonly float _grazeHealHeartLerpWeight = 8f;
+        [Export] private readonly float _onHitGrazeHeartAnimationDelay = 1.5f;
+        private float _onHitGrazeHeartAnimationCurrentDelay = 0f;
+        private bool _setGrazeHeart = false;
         
         private TextureProgress _grazeBuildup;
 
@@ -34,6 +38,7 @@ namespace Vertigo
             _label = GetNode<Label>("Label");
 
             _player = GetNodeOrNull<Player>("%Player");
+            _player.OnPlayerHit += OnPlayerHit;
 
             _grazeBuildup = GetNode<TextureProgress>("GrazeProgress");
 
@@ -58,7 +63,7 @@ namespace Vertigo
             if (_targetHp > _textThreshold)
             {
                 _label.Text = $"+{_targetHp - _textThreshold}";
-                _label.RectPosition = Vector2.Right * _currentOffset + Vector2.Right * 2 + Vector2.Down * 2;
+                _label.RectPosition = Vector2.Right * _currentOffset + Vector2.Right * 2 + Vector2.Down * 2 + (_playerGrazeHeal.IfValid().IsEnabled ? Vector2.Right * 16 : Vector2.Zero); // this is the worst possible use of a ternary operator ever
                 _label.Visible = true;
             }
             else
@@ -105,13 +110,30 @@ namespace Vertigo
                 _currentOffset -= _offset;
             }
 
-            _grazeBuildup.RectPosition = Vector2.Right * _currentOffset;
+            _onHitGrazeHeartAnimationCurrentDelay = Mathf.Max(_onHitGrazeHeartAnimationCurrentDelay - delta, 0.0f);
+
+            if (!_setGrazeHeart)
+            {
+                _grazeBuildup.RectPosition = Vector2.Right * _currentOffset;
+                _setGrazeHeart = true;
+            }
+
+            if (_onHitGrazeHeartAnimationCurrentDelay <= 0)
+            {
+                _grazeBuildup.RectPosition = _grazeBuildup.RectPosition.LinearInterpolate(Vector2.Right * _currentOffset, _grazeHealHeartLerpWeight * delta);
+            }
+
             _grazeBuildup.Value = _playerGrazeHeal.Percentage;
         }
 
         public void ShowGrazeHeart()
         {
             _grazeBuildup.Visible = true;
+        }
+
+        private void OnPlayerHit()
+        {
+            _onHitGrazeHeartAnimationCurrentDelay = _onHitGrazeHeartAnimationDelay;
         }
     }
 }

@@ -178,6 +178,7 @@ _superShotAudio = ExtResource( 13 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
+_health = 9
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
@@ -194,8 +195,9 @@ _grazingCumulativeRate = 2.0
 _grazingCumulativeStep = 0.5
 
 [node name="GrazeHeal" parent="." instance=ExtResource( 15 )]
-_baseRequiredGraze = 2.0
-_multiplierOnEachGrantedHp = 4.5
+_baseRequiredGraze = 2.25
+_multiplierOnEachGrantedHp = 4.65
+_resetOnGettingHit = true
 
 [node name="GrazeDetector" type="Area2D" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer_small.png" type="Texture" id=7]
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.cs" type="Script" id=8]
 [ext_resource path="res://scenes/gui/LoadingArc.gd" type="Script" id=9]
+[ext_resource path="res://assets/textures/menu/sprite_line_edit.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/menu/sprite_line_edit_focus.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/menu/sprite_line_edit_disabled.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -40,7 +43,24 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 116, 26 )
+margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 116, 26 )
+margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 116, 26 )
+margin_left = 6.0
+
 [sub_resource type="DynamicFont" id=7]
+outline_size = 1
+outline_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 font_data = ExtResource( 1 )
 
 [node name="Leaderboard" type="Control"]
@@ -190,6 +210,9 @@ margin_top = 234.0
 margin_right = 128.0
 margin_bottom = 258.0
 custom_fonts/font = SubResource( 6 )
+custom_styles/read_only = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 max_length = 12
 placeholder_text = "Enter name..."
 placeholder_alpha = 0.5
@@ -199,6 +222,7 @@ margin_left = 138.0
 margin_top = 234.0
 margin_right = 202.0
 margin_bottom = 258.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "SUBMIT"
 

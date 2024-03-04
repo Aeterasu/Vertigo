@@ -100,11 +100,11 @@ namespace Vertigo
 
             if (projectileCount == 1)
             {
-                DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, 0f, 1f);
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_shotAudio, this, -2.5f, 1f);
             }
             else if (projectileCount > 1)
             {
-                DeconflictedSoundPlayer.PlayUnconflictingSound(_superShotAudio, this, 0f, 1f);
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_superShotAudio, this, -2.5f, 1f);
             }
         }
 
