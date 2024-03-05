@@ -368,15 +368,15 @@ _animationOutDuraion = 0.6
 unique_name_in_owner = true
 position = Vector2( 240, 135 )
 script = ExtResource( 31 )
-_speed = 1.8
-_strength = 8.0
+_speed = 1.4
+_strength = 9.0
 _strengthLerpWeight = 1.0
 
 [node name="SpiralDrunkNode2D" type="Node2D" parent="GameLayer/DrunkNode2D"]
 unique_name_in_owner = true
 position = Vector2( -240, -135 )
 script = ExtResource( 24 )
-_strength = 24.0
+_strength = 18.0
 _strengthLerpWeight = 0.01
 
 [node name="ScreenShakeCamera2D" type="Camera2D" parent="GameLayer/DrunkNode2D/SpiralDrunkNode2D"]

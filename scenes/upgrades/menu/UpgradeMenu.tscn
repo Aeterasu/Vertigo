@@ -320,6 +320,7 @@ region_rect = Rect2( 0, 0, 480, 270 )
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 480.0
 margin_bottom = 270.0
+mouse_filter = 2
 texture = SubResource( 6 )
 
 [node name="LabelBackground" type="ColorRect" parent="."]
@@ -328,6 +329,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 161.0
 margin_bottom = -27.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.768627 )
 
 [node name="Buttons" type="Control" parent="."]
@@ -336,6 +338,7 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -0.000244141
+mouse_filter = 2
 
 [node name="UpgradeButton1" parent="Buttons" instance=ExtResource( 3 )]
 margin_left = 219.0
@@ -387,12 +390,14 @@ margin_top = -105.0
 margin_right = 186.0
 margin_bottom = 95.0
 rect_rotation = 45.0
+mouse_filter = 2
 texture = SubResource( 7 )
 
 [node name="Border1" type="TextureRect" parent="."]
 margin_left = -150.0
 margin_top = 150.0
 margin_bottom = 300.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 
 [node name="ScrollingText" parent="." instance=ExtResource( 8 )]
@@ -402,6 +407,7 @@ margin_top = 32.0
 margin_right = 48.0
 margin_bottom = 32.0
 rect_rotation = -45.0
+mouse_filter = 2
 
 [node name="ScrollingText3" parent="ScrollingText" instance=ExtResource( 8 )]
 modulate = Color( 0.596078, 0.376471, 1, 1 )
@@ -410,6 +416,7 @@ margin_left = -8.0
 margin_top = -4.0
 margin_right = -8.0
 margin_bottom = -4.0
+mouse_filter = 2
 _speed = 0.5
 
 [node name="BorderGradient2" type="TextureRect" parent="."]
@@ -418,6 +425,7 @@ margin_top = 36.0
 margin_right = 735.0
 margin_bottom = 236.0
 rect_rotation = -225.0
+mouse_filter = 2
 texture = SubResource( 7 )
 
 [node name="Border2" type="TextureRect" parent="."]
@@ -425,6 +433,7 @@ margin_left = 480.0
 margin_top = 150.0
 margin_right = 630.0
 margin_bottom = 300.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 flip_h = true
 
@@ -435,6 +444,7 @@ margin_top = 32.0
 margin_right = 432.0
 margin_bottom = 32.0
 rect_rotation = 45.0
+mouse_filter = 2
 
 [node name="ScrollingText4" parent="ScrollingText2" instance=ExtResource( 8 )]
 modulate = Color( 0.596078, 0.376471, 1, 1 )
@@ -443,12 +453,14 @@ margin_left = 8.0
 margin_top = -4.0
 margin_right = 8.0
 margin_bottom = -4.0
+mouse_filter = 2
 _speed = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.596078, 0.376471, 1, 0.133333 )
 
 [node name="Line1" type="TextureRect" parent="."]

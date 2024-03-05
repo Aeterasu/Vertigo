@@ -217,7 +217,7 @@ namespace Vertigo
 
         private void OnButtonMouseEntered(UpgradeButton button)
         {
-            if (_inputDelay > 0 || _disableInput)
+            if (_disableInput)
             {
                 return;
             }
