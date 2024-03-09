@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/audio/sfx_menu_happy.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/sfx_rain.mp3" type="AudioStream" id=7]
+[ext_resource path="res://scenes/main_menu/CreditsButton.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
@@ -15,12 +16,6 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
 gradient = SubResource( 1 )
 width = 128
 height = 270
-
-[sub_resource type="DynamicFont" id=8]
-size = 12
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 5 )
@@ -96,16 +91,32 @@ ButtonType = 5
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_EXIT"
 
-[node name="Label" type="Label" parent="MenuLayer/MenuCategory"]
-margin_left = 293.0
-margin_top = 228.0
-margin_right = 475.0
+[node name="CreditsButton1" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+margin_left = 352.0
+margin_top = 198.0
+margin_right = 524.0
+margin_bottom = 222.0
+CreditsLink = "https://thejohnyfeed.itch.io/"
+
+[node name="CreditsButton2" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+margin_left = 352.0
+margin_top = 222.0
+margin_right = 524.0
+margin_bottom = 246.0
+CreditsLink = "https://inmerty.bandcamp.com/"
+_creditsTextKey = "MENU_CREDITS_MUSIC"
+
+[node name="CreditsButton3" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+margin_left = 352.0
+margin_top = 246.0
+margin_right = 524.0
 margin_bottom = 270.0
-custom_constants/line_spacing = 10
-custom_fonts/font = SubResource( 8 )
-text = "Game by Matvey Kerov
-Made with Godot Engine"
-align = 2
+CreditsLink = "https://godotengine.org/"
+_creditsTextKey = "MENU_CREDITS_ENGINE"
+
+[node name="CreditsCategory" type="Control" parent="MenuLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="PressAnyKeyLabel" type="Label" parent="MenuLayer"]
 margin_top = 156.0

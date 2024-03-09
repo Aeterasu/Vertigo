@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/inmerty - A Light That Gives Hope - 05 Living in the Past.mp3-f80f66f6d8bebf1f5755b7cb2a026037.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/inmerty - A Light That Gives Hope - 05 Living in the Past.mp3"
+dest_files=[ "res://.import/inmerty - A Light That Gives Hope - 05 Living in the Past.mp3-f80f66f6d8bebf1f5755b7cb2a026037.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

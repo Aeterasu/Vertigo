@@ -32,6 +32,7 @@ namespace Vertigo
         MENU_BUTTON_TUTORIAL_MENU,
         MENU_BUTTON_TUTORIAL_PREVIOUS_PAGE,
         MENU_BUTTON_TUTORIAL_NEXT_PAGE,
+        MENU_BUTTON_DEFAULT,
     }
 
     public class MenuButton : Control
@@ -218,14 +219,14 @@ namespace Vertigo
             _isTooltipHidden = true;
         }
 
-        private void OnMouseEntered()
+        public void OnMouseEntered()
         {
             OnButtonMouseEntered?.Invoke(this);
 
             _isHoveredOver = true;
         }
 
-        private void OnMouseExited()
+        public void OnMouseExited()
         {
             OnButtonMouseExited?.Invoke(this);
 

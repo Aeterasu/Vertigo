@@ -314,6 +314,18 @@ namespace Vertigo
 
         private void OnMenuButtonExecuted(MenuButton button)
         {
+            if (button is CreditsButton)
+            {
+                CreditsButton creditsButton = button as CreditsButton;
+                
+                if (creditsButton.CreditsLink != "")
+                {
+                    OS.ShellOpen(creditsButton.CreditsLink);
+                    creditsButton.OnMouseExited();
+                    return;
+                }
+            }
+
             if (button.ButtonType == MenuButtonType.MENU_BUTTON_START)
             {
                 State = MainState.INTERLUDE;

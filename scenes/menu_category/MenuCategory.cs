@@ -218,8 +218,8 @@ namespace Vertigo
             if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && !FirstInput && _currentButton.IsValid() && _currentButton.IsFocused) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && !FirstInput && _currentButton.IsValid() && _currentButton.Active && _currentButton.IsHoveredOver))
             {
-                MenuButton.OnButtonExecuted?.Invoke(_currentButton);
                 _currentButton.PlayConfirmAudio();
+                MenuButton.OnButtonExecuted?.Invoke(_currentButton);
             }
 
             // color
