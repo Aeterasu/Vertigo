@@ -30,8 +30,8 @@ radius = 54.0
 collision_layer = 4
 script = ExtResource( 2 )
 Affiliation = 0
-_speed = 72.0
-_rotationSpeed = 196.0
+_speed = 96.0
+_rotationSpeed = 256.0
 _bounce = true
 
 [node name="Sprite" type="Sprite" parent="."]

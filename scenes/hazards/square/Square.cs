@@ -31,6 +31,8 @@ namespace Vertigo
         private HealthComponent _healthComponent;
         private HurtboxComponent _hurtboxComponent;
 
+        private float _ticks = 0.0f;
+
         private CurrencyGenerator _currencyGenerator;
         
         private GrazeArea _grazeArea;
@@ -104,11 +106,15 @@ namespace Vertigo
             {
                 _slowdownFx.Emitting = false;
             }
+
+            Connect("area_entered", this, "OnAreaEntered");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            _ticks += delta;
 
             if (_rotateSprite)
             {
@@ -147,15 +153,6 @@ namespace Vertigo
 
             var areas = GetOverlappingAreas();
 
-            foreach (Area2D area in areas)
-            {
-                if (area is Hazard && _bounce && !_collisionList.Contains(area))
-                {
-                    Direction *= -1f;
-                    _collisionList.Add(area);
-                }
-            }
-
             foreach (Area2D area in new List<Area2D>(_collisionList))
             {
                 if (!areas.Contains(area))
@@ -189,6 +186,18 @@ namespace Vertigo
             base._Process(delta);
 
             Update();
+        }
+
+        private void OnAreaEntered(Area2D area)
+        {
+            if (_ticks >= 0.2f)
+            {
+                if (area is Hazard && _bounce && !_collisionList.Contains(area))
+                {
+                    Direction *= -1f;
+                    _collisionList.Add(area);
+                }
+            }
         }
 
         private void OnHealthDepleted()
