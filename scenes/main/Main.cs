@@ -36,6 +36,8 @@ namespace Vertigo
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
 
+        private MusicManager _musicManager;
+
         public MainState State
         {
             get => _state;
@@ -48,15 +50,21 @@ namespace Vertigo
                 switch (value)
                 {
                     case MainState.MAIN_MENU:
+                        _musicManager.StartMusicMenu();
+                        _musicManager.StopMusicGame();
                         InitMainMenu();
                         break;
                     case MainState.INTERLUDE:
+                        _musicManager.StopMusicMenu();
                         InitInterlude();
                         break;
                     case MainState.GAME:
+                        _musicManager.StartMusicGame();
                         InitGame();
                         break;
                     case MainState.GAME_OVER:
+                        _musicManager.StopMusicGame();
+                        _musicManager.StartMusicMenu();
                         InitGameOver();
                         break;
                     case MainState.LEADERBOARD_MENU:
@@ -74,6 +82,8 @@ namespace Vertigo
 
         public ColorManager ColorManager { get => _colorManager; } 
 
+        public MusicManager MusicManager { get => _musicManager; }
+
         public bool IsPaused { get; private set; } = false;
 
         public static Main Instance { get; private set; }
@@ -90,6 +100,8 @@ namespace Vertigo
 
             _colorManager = GetNode<ColorManager>("ColorManager");
             _hueShiftLayer = GetNode<HueShiftLayer>("HueShiftLayer");
+
+            _musicManager = GetNode<MusicManager>("MusicManager");
 
             UpdateColorManager();
 

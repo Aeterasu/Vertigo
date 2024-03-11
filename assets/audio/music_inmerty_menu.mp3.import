@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/music_inmerty_menu.mp3-1f105f4a3980770a9486cfd490177413.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music_inmerty_menu.mp3"
+dest_files=[ "res://.import/music_inmerty_menu.mp3-1f105f4a3980770a9486cfd490177413.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -23,6 +23,9 @@
 [ext_resource path="res://resources/color_schemes/ColorTranquility.tres" type="Resource" id=21]
 [ext_resource path="res://resources/color_schemes/ColorMikasa.tres" type="Resource" id=22]
 [ext_resource path="res://scenes/tutorial_menu/TutorialMenu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/audio/music_inmerty_menu.mp3" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/music_inmerty_game.mp3" type="AudioStream" id=25]
+[ext_resource path="res://scenes/music/MusicManager.cs" type="Script" id=26]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -50,5 +53,21 @@ Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 1
 
 [node name="LocalizationManager" type="Node" parent="."]
 script = ExtResource( 19 )
+
+[node name="MusicManager" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 26 )
+_fadeOutTime = 2.0
+_fadeInTime = 2.0
+
+[node name="MusicMenu" type="AudioStreamPlayer" parent="MusicManager"]
+pause_mode = 2
+stream = ExtResource( 24 )
+bus = "Music"
+
+[node name="MusicGame" type="AudioStreamPlayer" parent="MusicManager"]
+pause_mode = 2
+stream = ExtResource( 25 )
+bus = "Music"
 
 [node name="HueShiftLayer" parent="." instance=ExtResource( 3 )]
