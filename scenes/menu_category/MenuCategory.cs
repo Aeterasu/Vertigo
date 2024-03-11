@@ -10,9 +10,16 @@ namespace Vertigo
         HORIZONTAL,
     }
 
+    public enum MenuCategoryInputType
+    {
+        NORMAL,
+        MOUSE_ONLY,
+    }
+
     public class MenuCategory : Control
     {
         [Export] public MenuCategoryOrientation Orientation { get; private set; } = MenuCategoryOrientation.VERTICAL;
+        [Export] public MenuCategoryInputType InputType { get; private set; } = MenuCategoryInputType.NORMAL;
         [Export] public bool DisableInput { get; set; }
 
         private List<MenuButton> _buttons = new List<MenuButton>();
@@ -48,7 +55,9 @@ namespace Vertigo
             }
         }
 
-        public bool FirstInput { get; private set; } = true;
+        public MenuButton GetCurrentButton { get => _currentButton; }
+
+        public bool FirstInput { get; set; } = true;
 
         public override void _Ready()
         {
@@ -84,8 +93,9 @@ namespace Vertigo
                 return;
             }
 
-            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_UP) && Orientation == MenuCategoryOrientation.VERTICAL) 
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_UP) && Orientation == MenuCategoryOrientation.VERTICAL) 
             || (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT) && Orientation == MenuCategoryOrientation.HORIZONTAL))
+            && InputType == MenuCategoryInputType.NORMAL)
             {
                 if (FirstInput)
                 {
@@ -159,8 +169,9 @@ namespace Vertigo
                 }
             }
 
-            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN) && Orientation == MenuCategoryOrientation.VERTICAL)
+            if (((Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN) && Orientation == MenuCategoryOrientation.VERTICAL)
             || (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) && Orientation == MenuCategoryOrientation.HORIZONTAL))
+            && InputType == MenuCategoryInputType.NORMAL)
             {
                 if (FirstInput)
                 {

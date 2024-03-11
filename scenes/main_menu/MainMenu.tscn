@@ -91,14 +91,20 @@ ButtonType = 5
 HasTooltip = true
 TooltipTextKey = "TOOLTIP_EXIT"
 
-[node name="CreditsButton1" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+[node name="CreditsCategory" type="Control" parent="MenuLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+InputType = 1
+
+[node name="CreditsButton1" parent="MenuLayer/CreditsCategory" instance=ExtResource( 8 )]
 margin_left = 352.0
 margin_top = 198.0
 margin_right = 524.0
 margin_bottom = 222.0
 CreditsLink = "https://thejohnyfeed.itch.io/"
 
-[node name="CreditsButton2" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+[node name="CreditsButton2" parent="MenuLayer/CreditsCategory" instance=ExtResource( 8 )]
 margin_left = 352.0
 margin_top = 222.0
 margin_right = 524.0
@@ -106,17 +112,13 @@ margin_bottom = 246.0
 CreditsLink = "https://inmerty.bandcamp.com/"
 _creditsTextKey = "MENU_CREDITS_MUSIC"
 
-[node name="CreditsButton3" parent="MenuLayer/MenuCategory" instance=ExtResource( 8 )]
+[node name="CreditsButton3" parent="MenuLayer/CreditsCategory" instance=ExtResource( 8 )]
 margin_left = 352.0
 margin_top = 246.0
 margin_right = 524.0
 margin_bottom = 270.0
 CreditsLink = "https://godotengine.org/"
 _creditsTextKey = "MENU_CREDITS_ENGINE"
-
-[node name="CreditsCategory" type="Control" parent="MenuLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="PressAnyKeyLabel" type="Label" parent="MenuLayer"]
 margin_top = 156.0

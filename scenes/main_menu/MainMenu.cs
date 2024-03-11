@@ -6,12 +6,15 @@ namespace Vertigo
     public class MainMenu : Control
     {
         private MenuCategory _menuCategory;
+        private MenuCategory _creditsCatergory;
 
         private Cliff _cliff;
 
         private Label _pressAnyLabel;
 
         private Tween _tween = new Tween();
+
+        private bool _isSwappedToCredits = false;
 
         public static bool IsMenuActive { get; private set; } = false;
         public static MainMenu Instance { get; set; }
@@ -23,6 +26,8 @@ namespace Vertigo
             _menuCategory = GetNode<MenuCategory>("MenuLayer/MenuCategory");
             _menuCategory.DisableInput = true;
             _menuCategory.Visible = false;
+
+            _creditsCatergory = GetNode<MenuCategory>("MenuLayer/CreditsCategory");
 
             _cliff = GetNode<Cliff>("Cliff");
 
@@ -48,6 +53,26 @@ namespace Vertigo
                     _pressAnyLabel.QueueFree();
                 }
             }
+
+            /*if (IsMenuActive 
+            && (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT)) 
+            && _menuCategory.GetCurrentButton.IfValid().ButtonType != MenuButtonType.MENU_BUTTON_COLOR)
+            {
+                _isSwappedToCredits = !_isSwappedToCredits;
+
+                if (_isSwappedToCredits)
+                {
+                    _creditsCatergory.CurrentButtonId = 0;
+                    _creditsCatergory.FirstInput = false;
+                }
+                else
+                {
+                    _menuCategory.CurrentButtonId = 0;
+                }
+            }*/
+
+            //_menuCategory.DisableInput = _isSwappedToCredits;
+            //_creditsCatergory.DisableInput = !_isSwappedToCredits;
         }
 
         public override void _Input(InputEvent @event)
