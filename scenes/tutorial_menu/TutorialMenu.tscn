@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
 [ext_resource path="res://scenes/tutorial_menu/TutorialMenu.cs" type="Script" id=2]
@@ -15,8 +15,15 @@
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_4.png" type="Texture" id=13]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_5.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://scenes/tutorial_menu/TutorialRichTextLabel.cs" type="Script" id=16]
 
 [sub_resource type="DynamicFont" id=1]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 12
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -204,16 +211,21 @@ margin_right = -3.05176e-05
 margin_bottom = -12.03
 texture = ExtResource( 12 )
 
-[node name="Label" type="Label" parent="TutorialPages/TutorialPage3"]
-anchor_top = 0.619
-anchor_bottom = 0.619
-margin_top = -13.13
+[node name="Label" type="RichTextLabel" parent="TutorialPages/TutorialPage3"]
+anchor_top = 0.548
+anchor_bottom = 0.548
+margin_top = 6.03999
 margin_right = 480.0
-margin_bottom = -1.13
-custom_fonts/font = SubResource( 1 )
-text = "Put tutorial text here"
-align = 1
-script = ExtResource( 8 )
+margin_bottom = 32.04
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Put tutorial text here
+[/center]"
+text = "Put tutorial text here
+"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 16 )
 StringKeyKeyboard = "TUTORIAL_MENU_3_1_KEYBOARD"
 StringKeyGamepad = "TUTORIAL_MENU_3_1_GAMEPAD"
 
@@ -393,6 +405,10 @@ StringKeyGamepad = "TUTORIAL_MENU_6_2"
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 2.0
+margin_bottom = 3.0
 mouse_filter = 2
 color = Color( 0.603922, 0.396078, 1, 1 )
 
