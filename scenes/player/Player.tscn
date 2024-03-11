@@ -195,6 +195,8 @@ _superShotAudio = ExtResource( 13 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
+_health = 256
+_healthLimit = 256
 
 [node name="PowerComponent" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true

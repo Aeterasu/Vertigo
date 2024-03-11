@@ -37,6 +37,8 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            AudioServer.SetBusEffectEnabled(AudioServer.GetBusIndex(AudioBuses.AUDIO_BUS_MUSIC), 0, Muffle);
         }
 
         public void StartMusicMenu()
@@ -46,7 +48,7 @@ namespace Vertigo
                 return;
             }
 
-            _musicMenu.VolumeDb = GD.Linear2Db(0.0f);
+            _musicMenu.VolumeDb = -80;
 
             _tween.InterpolateProperty(_musicMenu, "volume_db", -80, _menuMusicDefaultVolume, _fadeInTime);
             _tween.Start();
@@ -63,7 +65,7 @@ namespace Vertigo
                 return;
             }
 
-            _musicGame.VolumeDb = GD.Linear2Db(0.0f);
+            _musicGame.VolumeDb = -80;
 
             _tween.InterpolateProperty(_musicGame, "volume_db", -80, _gameMusicDefaultVolume, _fadeInTime);
             _tween.Start();

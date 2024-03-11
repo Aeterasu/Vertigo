@@ -63,11 +63,14 @@ _fadeInTime = 2.0
 [node name="MusicMenu" type="AudioStreamPlayer" parent="MusicManager"]
 pause_mode = 2
 stream = ExtResource( 24 )
+volume_db = 3.0
 bus = "Music"
 
 [node name="MusicGame" type="AudioStreamPlayer" parent="MusicManager"]
 pause_mode = 2
 stream = ExtResource( 25 )
+volume_db = -1.5
+autoplay = true
 bus = "Music"
 
 [node name="HueShiftLayer" parent="." instance=ExtResource( 3 )]

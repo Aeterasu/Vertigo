@@ -146,6 +146,8 @@ namespace Vertigo
             }
 
             GetTree().Paused = IsPaused || !isGameStateContinuous;
+
+            _musicManager.Muffle = State == MainState.GAME && (_game.State == GameState.UPGRADE_MENU || GetTree().Paused);
         }
 
         private void InitMainMenu()
