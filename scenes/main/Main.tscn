@@ -57,7 +57,7 @@ script = ExtResource( 19 )
 [node name="MusicManager" type="Node" parent="."]
 pause_mode = 2
 script = ExtResource( 26 )
-_fadeOutTime = 2.0
+_fadeOutTime = 1.5
 _fadeInTime = 2.0
 
 [node name="MusicMenu" type="AudioStreamPlayer" parent="MusicManager"]

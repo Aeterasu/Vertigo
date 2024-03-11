@@ -182,8 +182,7 @@ _canOnlySpawnAfter = 0.0
 _maxHazards = 8
 _scene = ExtResource( 3 )
 _spawnRate = 2.5
-_spawnRateDifficultyStep = 0.24
-_spawnMinimalRate = 0.3
+_spawnRateDifficultyStep = 0.3
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner"]
 position = Vector2( -32, 88 )
@@ -208,6 +207,41 @@ script = ExtResource( 8 )
 Direction = -1.0
 
 [node name="SpawnPoint6" type="Position2D" parent="GameLayer/HazardSpawner"]
+position = Vector2( 512, 184 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="HazardSpawner2" parent="GameLayer" instance=ExtResource( 7 )]
+unique_name_in_owner = true
+_canOnlySpawnAfter = 200.0
+_maxHazards = 5
+_scene = ExtResource( 3 )
+_spawnRate = 1.0
+_spawnMinimalRate = 0.1
+
+[node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner2"]
+position = Vector2( -32, 88 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint2" type="Position2D" parent="GameLayer/HazardSpawner2"]
+position = Vector2( -32, 136 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint3" type="Position2D" parent="GameLayer/HazardSpawner2"]
+position = Vector2( -32, 184 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint4" type="Position2D" parent="GameLayer/HazardSpawner2"]
+position = Vector2( 512, 88 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint5" type="Position2D" parent="GameLayer/HazardSpawner2"]
+position = Vector2( 512, 136 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint6" type="Position2D" parent="GameLayer/HazardSpawner2"]
 position = Vector2( 512, 184 )
 script = ExtResource( 8 )
 Direction = -1.0
