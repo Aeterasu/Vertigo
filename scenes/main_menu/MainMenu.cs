@@ -28,6 +28,7 @@ namespace Vertigo
             _menuCategory.Visible = false;
 
             _creditsCatergory = GetNode<MenuCategory>("MenuLayer/CreditsCategory");
+            _creditsCatergory.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
             _cliff = GetNode<Cliff>("Cliff");
 
@@ -53,6 +54,13 @@ namespace Vertigo
                     _pressAnyLabel.QueueFree();
                 }
             }
+
+            if (IsMenuActive)
+            {
+                _creditsCatergory.Modulate = _creditsCatergory.Modulate.LinearInterpolate(new Color(1.0f, 1.0f, 1.0f, 1.0f), 6.0f * delta);
+            }
+
+            _creditsCatergory.DisableInput = !IsMenuActive;
 
             /*if (IsMenuActive 
             && (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT)) 

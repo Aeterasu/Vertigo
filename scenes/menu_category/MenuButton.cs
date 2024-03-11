@@ -113,6 +113,11 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (!StopTextUpdate)
+            {
+                UpdateText();
+            }
+
             if (ButtonType == MenuButtonType.MENU_BUTTON_EXIT && OS.GetName() == "HTML5")
             {
                 Active = false;
@@ -122,11 +127,6 @@ namespace Vertigo
             {
                 Modulate = new Color(1, 1, 1, 0.3f);
                 return;
-            }
-
-            if (!StopTextUpdate)
-            {
-                UpdateText();
             }
 
             if (_isTooltipHidden)
