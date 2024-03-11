@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/fx/hue_shift_layer/HueShiftLayer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/main_menu/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ColorManager.cs" type="Script" id=5]
 [ext_resource path="res://resources/color_schemes/ColorGreyview.tres" type="Resource" id=6]
 [ext_resource path="res://resources/color_schemes/ColorSafety.tres" type="Resource" id=7]
@@ -26,10 +26,12 @@
 [ext_resource path="res://assets/audio/music_inmerty_menu.mp3" type="AudioStream" id=24]
 [ext_resource path="res://assets/audio/music_inmerty_game.mp3" type="AudioStream" id=25]
 [ext_resource path="res://scenes/music/MusicManager.cs" type="Script" id=26]
+[ext_resource path="res://scenes/seizure/Seizure.tscn" type="PackedScene" id=27]
 
 [node name="Main" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
+_state = 7
 _mainMenuScene = ExtResource( 4 )
 _interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
@@ -37,6 +39,7 @@ _gameOverScene = ExtResource( 14 )
 _leaderboardMenuScene = ExtResource( 17 )
 _settingsMenuScene = ExtResource( 18 )
 _tutorialMenuScene = ExtResource( 23 )
+_seizureScene = ExtResource( 27 )
 
 [node name="SilentWolfConfig" type="Node" parent="."]
 script = ExtResource( 16 )

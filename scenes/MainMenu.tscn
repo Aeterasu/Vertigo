@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=1]
 [ext_resource path="res://scenes/cliff/Cliff.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/audio/sfx_menu_happy.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/audio/sfx_rain.mp3" type="AudioStream" id=7]
 [ext_resource path="res://scenes/main_menu/CreditsButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/fx/blackout/Blackout.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
@@ -144,6 +145,12 @@ margin_right = 480.0
 margin_bottom = 17.0
 texture = SubResource( 5 )
 flip_h = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Blackout" parent="CanvasLayer" instance=ExtResource( 9 )]
+speed = 4.0
 
 [node name="StartAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

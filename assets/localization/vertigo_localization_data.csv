@@ -131,3 +131,7 @@ FLAVOR_TEXT_1,"Vertigo is but an illusion of the mind brought forth from an imba
 It reveals the limitations of our physical bodies and the fragility of our grasp on reality.",
 NAUSEA_ANNOUNCEMENT,"The breath of Vertigo encircles your mind.
 Your senses spiral, whirling to chaos.",
+GAME_OVER_1,The gauntlet has come to an end...,
+SEIZURE_WARNING,"[b]Warning![/b]
+
+This game contains flashing lights and visual effects that may trigger an epilepsy seizure in some people or cause motion sickness.",

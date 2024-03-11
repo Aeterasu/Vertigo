@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/seizure/Seizure.cs" type="Script" id=2]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=4]
+gradient = SubResource( 3 )
+width = 480
+height = 270
+fill_to = Vector2( 0, 1 )
+
+[node name="Seizure" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+_duration = 3.25
+_fadeOut = 0.5
+
+[node name="Label" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 96.0
+margin_right = -80.0
+margin_bottom = 12.0
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][b]SEIZURE_WARNING[/b][/center]"
+text = "SEIZURE_WARNING"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.12549 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )

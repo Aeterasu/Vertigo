@@ -12,6 +12,7 @@ namespace Vertigo
         LEADERBOARD_MENU,
         OPTIONS_MENU,
         TUTORIAL_MENU,
+        SEIZURE,
     }
 
     public class Main : Node
@@ -24,6 +25,7 @@ namespace Vertigo
         [Export] private readonly PackedScene _leaderboardMenuScene;
         [Export] private readonly PackedScene _settingsMenuScene;
         [Export] private readonly PackedScene _tutorialMenuScene;
+        [Export] private readonly PackedScene _seizureScene;
 
         private MainMenu _mainMenu;
         private Interlude _interlude;
@@ -32,6 +34,7 @@ namespace Vertigo
         private LeaderboardMenu _leaderboardMenu;
         private SettingsMenu _settingsMenu;
         private TutorialMenu _tutorialMenu;
+        private Seizure _seizure;
 
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
@@ -75,6 +78,9 @@ namespace Vertigo
                         break;
                     case MainState.TUTORIAL_MENU:
                         InitTutorialMenu();
+                        break;
+                    case MainState.SEIZURE:
+                        InitSeizure();
                         break;
                 }
             }
@@ -278,6 +284,25 @@ namespace Vertigo
             }                          
         }
 
+        private void InitSeizure()
+        {
+            if (_seizureScene != null)
+            {
+                var seizureNode = _seizureScene.Instance();
+
+                if (seizureNode is Seizure)
+                {
+                    _seizure = seizureNode as Seizure;
+                }
+
+                AddChild(_seizure);
+            }
+            else
+            {
+                State = MainState.MAIN_MENU;
+            }
+        }
+
         private void OnInterludeAnimationFinished()
         {
             State = MainState.GAME;
@@ -324,6 +349,11 @@ namespace Vertigo
 
             _tutorialMenu.SafeQueueFree();
             _tutorialMenu = null;
+
+            // seizure
+
+            _seizure.SafeQueueFree();
+            _seizure = null;
         }
 
         private void OnMenuButtonExecuted(MenuButton button)
