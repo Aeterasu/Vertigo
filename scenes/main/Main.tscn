@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/audio/music_inmerty_game.mp3" type="AudioStream" id=25]
 [ext_resource path="res://scenes/music/MusicManager.cs" type="Script" id=26]
 [ext_resource path="res://scenes/seizure/Seizure.tscn" type="PackedScene" id=27]
+[ext_resource path="res://resources/color_schemes/ColorConversion.tres" type="Resource" id=28]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -52,7 +53,7 @@ script = ExtResource( 20 )
 
 [node name="ColorManager" type="Node" parent="."]
 script = ExtResource( 5 )
-Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 22 ) ]
+Colors = [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ) ]
 
 [node name="LocalizationManager" type="Node" parent="."]
 script = ExtResource( 19 )
