@@ -252,7 +252,7 @@ namespace Vertigo
                 {
                     _healthComponent.DealDamage();
 
-                    Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(9f);
+                    Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(12f);
 
                     OnPlayerHit?.Invoke();
 

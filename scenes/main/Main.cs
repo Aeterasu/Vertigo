@@ -53,21 +53,15 @@ namespace Vertigo
                 switch (value)
                 {
                     case MainState.MAIN_MENU:
-                        _musicManager.StartMusicMenu();
-                        _musicManager.StopMusicGame();
                         InitMainMenu();
                         break;
                     case MainState.INTERLUDE:
-                        _musicManager.StopMusicMenu();
                         InitInterlude();
                         break;
                     case MainState.GAME:
-                        _musicManager.StartMusicGame();
                         InitGame();
                         break;
                     case MainState.GAME_OVER:
-                        _musicManager.StopMusicGame();
-                        _musicManager.StartMusicMenu();
                         InitGameOver();
                         break;
                     case MainState.LEADERBOARD_MENU:
@@ -82,6 +76,22 @@ namespace Vertigo
                     case MainState.SEIZURE:
                         InitSeizure();
                         break;
+                }
+
+                if (value == MainState.GAME)
+                {
+                    _musicManager.StartMusicGame();
+                    _musicManager.StopMusicMenu();
+                }
+                else if (value != MainState.GAME && value != MainState.INTERLUDE && value != MainState.SEIZURE)
+                {
+                    _musicManager.StartMusicMenu();
+                    _musicManager.StopMusicGame();
+                }
+                else if (value == MainState.INTERLUDE || value == MainState.SEIZURE)
+                {
+                    _musicManager.StopMusicMenu();
+                    _musicManager.StopMusicGame();
                 }
             }
         }

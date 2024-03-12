@@ -76,6 +76,14 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (Game.Instance.IsValid())
+            {
+                if (Game.Instance.Player.IsDead)
+                {
+                    return;
+                }
+            }
+
             if (CurrentPower >= MaxPower)
             {
                 return;
