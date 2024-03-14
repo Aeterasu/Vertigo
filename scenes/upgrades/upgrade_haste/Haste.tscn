@@ -4,5 +4,5 @@
 
 [node name="Haste" type="Node"]
 script = ExtResource( 1 )
-_initalIncrease = 0.3
-_increasePerStack = 0.15
+_initalIncrease = 0.5
+_increasePerStack = 0.25
