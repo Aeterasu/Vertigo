@@ -32,6 +32,8 @@ namespace Vertigo
         [Export(PropertyHint.Range, "0, 32")] private readonly float _onHitImmunity = 1f;
         [Export(PropertyHint.Range, "0, 1")] private readonly float _onHitImmunityFlashRate = 0.4f;
 
+        [Export] private readonly NodePath _shockwaveEffectNodePath;
+
         [Export] private readonly AudioStream _hitSound;
 
         private float _onHitImmunityFlashCooldown = 0f;
@@ -65,6 +67,10 @@ namespace Vertigo
         private PlayerGrazeFx _grazeFx;
 
         private ImmunityBubble _immunityBubble;
+
+        private ShockwaveEffect _shockwaveEffect;
+
+        private Area2D _blankArea;
 
         public GravityMode GravityMode
         {
@@ -101,6 +107,8 @@ namespace Vertigo
 
         public bool IsDead { get => _healthComponent.IfValid().IsDead; }
 
+        public Area2D GetBlankArea { get => _blankArea; }
+
         public event Action OnPlayerHit;
         public event Action OnPlayerDeath;
 
@@ -128,6 +136,10 @@ namespace Vertigo
             _immunityBubble = GetNode<ImmunityBubble>("%ImmunityBubble");
 
             _grazeFx = GetNode<PlayerGrazeFx>("GrazeFx");
+
+            _shockwaveEffect = GetNodeOrNull<ShockwaveEffect>(_shockwaveEffectNodePath);
+
+            _blankArea = GetNode<Area2D>("BlankArea");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -266,7 +278,7 @@ namespace Vertigo
                         OnHitImmunityTimer += _onHitImmunity;
                     }
 
-                    if (area is Square)
+                    if (area is Square && !Passion.Instance.IsValid())
                     {
                         (area as Square).Destroy();
                     }
@@ -354,6 +366,16 @@ namespace Vertigo
             }
 
             _spritePivot.Visible = _isFlashing;
+        }
+
+        public void AnimateShockwaveEffect()
+        {
+            if (!_shockwaveEffect.IsValid())
+            {
+                return;
+            }
+
+            _shockwaveEffect.ResetSize();
         }
     }
 }

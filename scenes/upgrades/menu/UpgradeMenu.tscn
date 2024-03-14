@@ -119,12 +119,12 @@ tracks/6/path = NodePath("ColorRect:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = false
+tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.3, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0.596078, 0.376471, 1, 0.133333 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0.596078, 0.376471, 1, 0 ), Color( 0.596078, 0.376471, 1, 0.0313726 ), Color( 0.596078, 0.376471, 1, 0 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Line1:rect_position")
@@ -457,11 +457,10 @@ mouse_filter = 2
 _speed = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.596078, 0.376471, 1, 0.133333 )
+color = Color( 0.596078, 0.376471, 1, 0 )
 
 [node name="Line1" type="TextureRect" parent="."]
 margin_left = -326.0

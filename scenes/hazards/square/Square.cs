@@ -146,7 +146,7 @@ namespace Vertigo
             Position += targetDirection * _speed * (1 / Slowdown) * delta;
 
             if (Position.x <= -96f || Position.x >= 576f || Position.y <= -96f || Position.y >= 366f)
-            {
+            {             
                 OnLeftThePlayArea?.Invoke(this);
                 this.SafeQueueFree();
             }
@@ -202,8 +202,6 @@ namespace Vertigo
 
         private void OnHealthDepleted()
         {
-            OnDestroyed?.Invoke(this);
-
             _hurtboxComponent.GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
             _hurtboxComponent.Immune = true;
             _currencyGenerator.Generate();
@@ -215,6 +213,8 @@ namespace Vertigo
                 Game.Instance.GameLayer.AddChild(_squareDestroyedFx);
                 _squareDestroyedFx.Animate();
             }
+
+            OnDestroyed?.Invoke(this);
 
             this.SafeQueueFree();
         }

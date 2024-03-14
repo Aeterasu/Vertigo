@@ -7,8 +7,8 @@
 shader = ExtResource( 2 )
 shader_param/global_position = Vector2( 270, 128 )
 shader_param/screen_size = Vector2( 480, 270 )
-shader_param/force = 0.1
-shader_param/size = 0.326
+shader_param/force = 1.032
+shader_param/size = 0.218
 shader_param/thickness = -0.018
 
 [sub_resource type="GradientTexture2D" id=2]
