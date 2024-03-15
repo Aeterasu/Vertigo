@@ -5,7 +5,10 @@ namespace Vertigo
 {
     public class Passion : Upgrade
     {
-        [Export] private bool _enableBlankEffect = false;
+        [Export] private readonly bool _enableBlankEffect = false;
+        [Export] private readonly float _blankEffectDuration = 1.0f;
+
+        private float _blankEffectTicks = 0.0f;
 
         private Player _player;
         private HealthComponent _playerHealthComponent;
@@ -33,6 +36,29 @@ namespace Vertigo
                 }
 
                 _player.OnPlayerHit += OnBlankEffect;  
+            }
+        }
+
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
+
+            if (!_enableBlankEffect)
+            {
+                return;
+            }
+
+            _blankEffectTicks = Mathf.Max(_blankEffectTicks - delta, 0.0f);
+
+            if (_blankEffectTicks > 0)
+            {
+                foreach (Area2D area in _player.GetBlankArea.GetOverlappingAreas())
+                {
+                    if (area is Square)
+                    {
+                        (area as Square).Destroy();
+                    }
+                }                
             }
         }
 
@@ -73,13 +99,7 @@ namespace Vertigo
 
             _player.AnimateShockwaveEffect();
 
-            foreach (Area2D area in _player.GetBlankArea.GetOverlappingAreas())
-            {
-                if (area is Square)
-                {
-                    (area as Square).Destroy();
-                }
-            }
+            _blankEffectTicks = _blankEffectDuration;
         }
     }
 }

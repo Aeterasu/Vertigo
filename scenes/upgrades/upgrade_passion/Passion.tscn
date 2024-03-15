@@ -5,3 +5,4 @@
 [node name="Passion" type="Node"]
 script = ExtResource( 1 )
 _enableBlankEffect = true
+_blankEffectDuration = 0.5
