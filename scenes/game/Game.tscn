@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -44,6 +44,8 @@
 [ext_resource path="res://assets/audio/sfx_convergence_shot.wav" type="AudioStream" id=42]
 [ext_resource path="res://shaders/positioned_shockwave.tres" type="Shader" id=43]
 [ext_resource path="res://scenes/fx/shockwave_effect/ShockwaveEffect.cs" type="Script" id=44]
+[ext_resource path="res://assets/audio/sfx_heal.wav" type="AudioStream" id=45]
+[ext_resource path="res://assets/audio/sfx_heartbreak.wav" type="AudioStream" id=46]
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 43 )
@@ -168,6 +170,8 @@ ConvergenceProjectileScene = ExtResource( 17 )
 OnHitSlowMotionRatio = 0.0
 OnHitSlowMotionDuration = 0.6
 GemPickupSound = ExtResource( 26 )
+HealSound = ExtResource( 45 )
+HeartbreakSound = ExtResource( 46 )
 _gemPickupPitchStep = 0.15
 _gemPickupPitchDecay = 0.2
 
@@ -233,7 +237,7 @@ unique_name_in_owner = true
 _canOnlySpawnAfter = 180.0
 _maxHazards = 5
 _scene = ExtResource( 3 )
-_spawnRate = 1.0
+_spawnRate = 2.0
 _spawnMinimalRate = 0.1
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/HazardSpawner2"]

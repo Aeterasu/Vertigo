@@ -3,7 +3,7 @@ using System;
 
 namespace Vertigo
 {
-    // AFFINITY - increases the scale of graze areas.
+    // DULLNESS - slow down hazards on hit
     public class Dullness : Upgrade
     {
         [Export] private float _initialSlowdown = 0.2f;

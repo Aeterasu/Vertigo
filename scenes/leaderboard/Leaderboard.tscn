@@ -33,8 +33,8 @@ width = 186
 height = 1
 
 [sub_resource type="DynamicFont" id=9]
-outline_size = 2
-outline_color = Color( 1, 1, 1, 0.282353 )
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.282353 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]

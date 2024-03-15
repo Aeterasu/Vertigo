@@ -24,5 +24,15 @@ namespace Vertigo
         {
             this.SafeQueueFree();
         }
+
+        public void PlayHealSound()
+        {
+            Game.Instance.PlayHealSound();
+        }
+
+        public void PlayHeartbreakSound()
+        {
+            Game.Instance.PlayHeartbreakSound();
+        }
     }
 }

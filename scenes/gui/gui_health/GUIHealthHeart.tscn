@@ -63,6 +63,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.5, 2 ), Vector2( 2, 0 ) ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayHealSound"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Deletion"
@@ -218,9 +232,12 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.45, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "PlayHeartbreakSound"
+}, {
 "args": [  ],
 "method": "OnDeletionFinished"
 } ]
@@ -271,12 +288,11 @@ margin_bottom = 16.0
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 8, 0 )
-texture = ExtResource( 3 )
+position = Vector2( 8, 8 )
+texture = ExtResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 8, 11 )
-emitting = false
 amount = 4
 lifetime = 1.5
 texture = ExtResource( 7 )
@@ -291,23 +307,25 @@ scale_amount_curve = SubResource( 1 )
 
 [node name="BrokenLeft" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, 6 )
+position = Vector2( 6, 8 )
+scale = Vector2( 0.400001, 0.400001 )
 texture = ExtResource( 8 )
 
 [node name="BrokenRight" type="Sprite" parent="."]
 visible = false
-position = Vector2( 15, 10 )
+position = Vector2( 11, 8 )
+scale = Vector2( 0.400001, 0.400001 )
 texture = ExtResource( 5 )
 
 [node name="Flash" type="Sprite" parent="."]
 position = Vector2( 8, 8 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 2, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="Heartbeat" type="Sprite" parent="."]
 visible = false
 position = Vector2( 8, 8 )
-scale = Vector2( 1e-05, 2 )
+scale = Vector2( 2, 0.5 )
 texture = ExtResource( 6 )
 offset = Vector2( 2, 0 )
 

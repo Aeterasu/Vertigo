@@ -76,6 +76,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.3, 3 ), Vector2( 3, 0 ) ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "PlayHealSound"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Deletion"
@@ -280,17 +294,17 @@ anims/Idle = SubResource( 2 )
 
 [node name="BrokenLeft" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, 7 )
+position = Vector2( 2.73438, 8.17188 )
 texture = ExtResource( 7 )
 
 [node name="BrokenRight" type="Sprite" parent="."]
 visible = false
-position = Vector2( 23, 14 )
+position = Vector2( 20.2656, 12.8281 )
 texture = ExtResource( 8 )
 
 [node name="Heartbeat" type="Sprite" parent="."]
 visible = false
 position = Vector2( 10, 11 )
-scale = Vector2( 1e-05, 4 )
+scale = Vector2( 1.2, 2.8 )
 texture = ExtResource( 6 )
 offset = Vector2( 2, 0 )

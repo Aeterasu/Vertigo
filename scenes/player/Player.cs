@@ -376,6 +376,8 @@ namespace Vertigo
             }
 
             _shockwaveEffect.ResetSize();
+
+            Game.Instance.IfValid().ScreenShakeCamera2D.IfValid().AddShake(12f);
         }
     }
 }

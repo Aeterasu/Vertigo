@@ -26,6 +26,9 @@ namespace Vertigo
         [Export] private readonly float _gemPickupPitchStep = 0.1f;
         [Export] private readonly float _gemPickupPitchDecay = 1f;
 
+        [Export] public AudioStream HealSound { get; private set; }
+        [Export] public AudioStream HeartbreakSound { get; private set; }
+
         private Player _player;
         private ExperienceComponent _playerExperienceComponent;
 
@@ -223,6 +226,22 @@ namespace Vertigo
             {
                 DeconflictedSoundPlayer.PlayUnconflictingSound(GemPickupSound, this, 0f, _gemPickupPitch);
                 _gemPickupPitch = Mathf.Min(_gemPickupPitch + _gemPickupPitchStep, _maxGemPickupPitch);
+            }    
+        }
+
+        public void PlayHealSound()
+        {
+            if (HealSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(HealSound, this, 0f, 1f);
+            }    
+        }
+
+        public void PlayHeartbreakSound()
+        {
+            if (HeartbreakSound != null)
+            {
+                DeconflictedSoundPlayer.PlayUnconflictingSound(HeartbreakSound, this, 0f, 1f);
             }    
         }
 
