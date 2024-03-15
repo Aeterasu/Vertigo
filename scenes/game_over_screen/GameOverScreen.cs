@@ -54,6 +54,8 @@ namespace Vertigo
             _scoreSubmitButton.Connect("pressed", this, "OnScoreSubmitButtonPressed");
 
             _leaderboard = GetNode<Leaderboard>("Control/Leaderboard");
+
+            GetNode<Label>("Control/RunCountLabel").Text = Tr("GAME_OVER_RUN_COUNTER") + GameResultsManager.Instance.RunCount;
         }
 
         public override void _PhysicsProcess(float delta)

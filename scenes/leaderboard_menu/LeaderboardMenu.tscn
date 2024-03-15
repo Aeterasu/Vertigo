@@ -192,7 +192,6 @@ rect_scale = Vector2( 1, -1 )
 ButtonType = 23
 
 [node name="Blackout" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

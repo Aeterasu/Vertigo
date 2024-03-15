@@ -192,10 +192,10 @@ region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
-_rainThreshold = 45.0
-_dizzynessThreshold = 75.0
-_spiralDizzynessThreshold = 120.0
-_waveDizzynessThreshold = 150.0
+_rainThreshold = 50.0
+_dizzynessThreshold = 80.0
+_spiralDizzynessThreshold = 150.0
+_waveDizzynessThreshold = 240.0
 
 [node name="HazardSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 unique_name_in_owner = true

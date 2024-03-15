@@ -59,6 +59,8 @@ namespace Vertigo
                         InitInterlude();
                         break;
                     case MainState.GAME:
+                        GameResultsManager.Instance.RunCount += 1;
+                        GameResultsManager.Instance.SaveHighscore();
                         InitGame();
                         break;
                     case MainState.GAME_OVER:

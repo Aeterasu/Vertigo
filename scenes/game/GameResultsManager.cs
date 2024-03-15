@@ -35,6 +35,8 @@ namespace Vertigo
             }
         }
 
+        public uint RunCount { get; set; } = 0;
+
         public static GameResultsManager Instance { get; private set; }
 
         public override void _Ready()
@@ -62,6 +64,7 @@ namespace Vertigo
             }
 
             HighscoreResults = new GameResults(saveGame.GetDouble());
+            RunCount = saveGame.Get32();
             saveGame.Close();
         }
 
@@ -76,6 +79,7 @@ namespace Vertigo
             }
 
             saveGame.StoreDouble(HighscoreResults.Time);
+            saveGame.Store32(RunCount);
             saveGame.Close();
         }
     }
