@@ -5,6 +5,10 @@ namespace Vertigo
 {
     public class GUIHeart : Control
     {
+        [Export] private readonly Texture _passionTexture;
+
+        private Sprite _sprite;
+
         private AnimationPlayer _animationPlayer;
 
         public override void _Ready()
@@ -13,6 +17,18 @@ namespace Vertigo
 
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _animationPlayer.Play("Appear");
+
+            _sprite = GetNode<Sprite>("Sprite");
+        }
+
+        public override void _Process(float delta)
+        {
+            base._Process(delta);
+
+            if (_passionTexture != null && Passion.Instance.IsValid() && _sprite.Texture != _passionTexture)
+            {
+                _sprite.Texture = _passionTexture;
+            }
         }
 
         public void Delete()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/gui/gui_health/GUIHeart.cs" type="Script" id=1]
 [ext_resource path="res://assets/textures/gui/sprite_gui_heart.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/textures/fx/sprite_fx_heartbeat.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/fx/sprite_fx_line.png" type="Texture" id=7]
 [ext_resource path="res://assets/textures/gui/sprite_gui_heart_broken_left.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/gui/sprite_gui_heart_passion.png" type="Texture" id=9]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.128889, 0.945454 ), 1.07143, 1.07143, 0, 0, Vector2( 0.786667, 0.590909 ), -2.45454, -2.45454, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -286,6 +287,7 @@ tracks/2/keys = {
 margin_right = 16.0
 margin_bottom = 16.0
 script = ExtResource( 1 )
+_passionTexture = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8, 8 )
