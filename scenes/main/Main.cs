@@ -153,6 +153,11 @@ namespace Vertigo
                 if (_game.State == GameState.GAME)
                 {
                     _game.PauseMenu.IsDisplayed = IsPaused;
+
+                    if (IsPaused)
+                    {
+                        Engine.TimeScale = 1.0f;
+                    }
                 }
                 else
                 {
