@@ -27,6 +27,8 @@ namespace Vertigo
         private Label _upgradeNameLabel;
         private Label _upgradeDescriptionLabel;
 
+        private Label _fluffLabel;
+
         private Tween _tween = new Tween();
 
         private AnimationPlayer _animationPlayer;
@@ -100,6 +102,8 @@ namespace Vertigo
             _animationPlayer.Play("Appear");
             _inputDelay = _animationPlayer.CurrentAnimationLength;
 
+            _fluffLabel = GetNode<Label>("%FluffLabel");
+
             if (UpgradeManager.Instance.IsValid())
             {
                 RandomizeUpgrades(UpgradeManager.Instance);
@@ -109,6 +113,8 @@ namespace Vertigo
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
+
+            _fluffLabel.Text = Tr(ColorManager.GetCurrentColor.UpgradeFluffTextKey);
 
             _inputDelay = Mathf.Max(_inputDelay - delta, 0);
 

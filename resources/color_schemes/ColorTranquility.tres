@@ -13,3 +13,4 @@ gradient = SubResource( 1 )
 script = ExtResource( 1 )
 Gradient = SubResource( 2 )
 NameKey = "COLOR_NAME_TRANQUILITY"
+UpgradeFluffTextKey = "UPGRADE_MENU_FLUFF_TRANQUILITY"
