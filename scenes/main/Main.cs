@@ -50,6 +50,8 @@ namespace Vertigo
 
                 Clear();
 
+                Engine.TimeScale = 1.0f;
+
                 switch (value)
                 {
                     case MainState.MAIN_MENU:
