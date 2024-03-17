@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://scenes/music/MusicManager.cs" type="Script" id=26]
 [ext_resource path="res://scenes/seizure/Seizure.tscn" type="PackedScene" id=27]
 [ext_resource path="res://resources/color_schemes/ColorConversion.tres" type="Resource" id=28]
+[ext_resource path="res://scenes/intro/Intro.tscn" type="PackedScene" id=29]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -41,6 +42,7 @@ _leaderboardMenuScene = ExtResource( 17 )
 _settingsMenuScene = ExtResource( 18 )
 _tutorialMenuScene = ExtResource( 23 )
 _seizureScene = ExtResource( 27 )
+_introScene = ExtResource( 29 )
 
 [node name="SilentWolfConfig" type="Node" parent="."]
 script = ExtResource( 16 )

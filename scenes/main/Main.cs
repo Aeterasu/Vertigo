@@ -13,6 +13,7 @@ namespace Vertigo
         OPTIONS_MENU,
         TUTORIAL_MENU,
         SEIZURE,
+        INTRO,
     }
 
     public class Main : Node
@@ -26,6 +27,7 @@ namespace Vertigo
         [Export] private readonly PackedScene _settingsMenuScene;
         [Export] private readonly PackedScene _tutorialMenuScene;
         [Export] private readonly PackedScene _seizureScene;
+        [Export] private readonly PackedScene _introScene;
 
         private MainMenu _mainMenu;
         private Interlude _interlude;
@@ -35,6 +37,7 @@ namespace Vertigo
         private SettingsMenu _settingsMenu;
         private TutorialMenu _tutorialMenu;
         private Seizure _seizure;
+        private Intro _intro;
 
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
@@ -80,6 +83,9 @@ namespace Vertigo
                     case MainState.SEIZURE:
                         InitSeizure();
                         break;
+                    case MainState.INTRO:
+                        InitIntro();
+                        break;
                 }
 
                 if (value == MainState.GAME)
@@ -87,12 +93,12 @@ namespace Vertigo
                     _musicManager.StartMusicGame();
                     _musicManager.StopMusicMenu();
                 }
-                else if (value != MainState.GAME && value != MainState.INTERLUDE && value != MainState.SEIZURE)
+                else if (value != MainState.GAME && value != MainState.INTERLUDE && value != MainState.SEIZURE && value != MainState.INTRO)
                 {
                     _musicManager.StartMusicMenu();
                     _musicManager.StopMusicGame();
                 }
-                else if (value == MainState.INTERLUDE || value == MainState.SEIZURE)
+                else if (value == MainState.INTERLUDE || value == MainState.SEIZURE || value == MainState.INTRO)
                 {
                     _musicManager.StopMusicMenu();
                     _musicManager.StopMusicGame();
@@ -322,6 +328,25 @@ namespace Vertigo
             }
         }
 
+        private void InitIntro()
+        {
+            if (_introScene != null)
+            {
+                var introNode = _introScene.Instance();
+
+                if (introNode is Intro)
+                {
+                    _intro = introNode as Intro;
+                }
+
+                AddChild(_intro);
+            }
+            else
+            {
+                State = MainState.MAIN_MENU;
+            }
+        }
+
         private void OnInterludeAnimationFinished()
         {
             State = MainState.GAME;
@@ -373,6 +398,11 @@ namespace Vertigo
 
             _seizure.SafeQueueFree();
             _seizure = null;
+            
+            // intro
+
+            _intro.SafeQueueFree();
+            _intro = null;
         }
 
         private void OnMenuButtonExecuted(MenuButton button)

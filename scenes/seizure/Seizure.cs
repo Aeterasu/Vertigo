@@ -5,6 +5,7 @@ namespace Vertigo
 {
     public class Seizure : Control
     {
+        [Export] private readonly MainState _targetState = MainState.INTRO;
         [Export] private readonly float _duration = 3.0f;
         [Export] private readonly float _fadeIn = 0.5f;
         [Export] private readonly float _fadeOut = 0.8f;
@@ -53,7 +54,7 @@ namespace Vertigo
 
             if (_ticks <= 0)
             {
-                Main.Instance.State = MainState.MAIN_MENU;
+                Main.Instance.State = _targetState;
             }
         }
 

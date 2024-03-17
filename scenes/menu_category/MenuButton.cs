@@ -51,6 +51,8 @@ namespace Vertigo
         private bool _isHoveredOver = false;
 
         private Label _label;
+        private int _labelFontDefaultSize = 16;
+        private DynamicFont _labelFont;
 
         private AnimationPlayer _animationPlayer;
 
@@ -107,6 +109,11 @@ namespace Vertigo
             {
                 Active = false;
             }
+        }
+
+        public override void _Process(float delta)
+        {
+            base._Process(delta);
         }
 
         public override void _PhysicsProcess(float delta)
