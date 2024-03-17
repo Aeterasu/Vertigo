@@ -5,6 +5,9 @@ namespace Vertigo
 {
     public class Interlude : Control
     {
+        private Label _label1;
+        private Label _label2;
+
         private float _delay = 0.1f;
 
         private bool _isSkipped = false;
@@ -16,6 +19,15 @@ namespace Vertigo
         public override void _Ready()
         {
             base._Ready();
+
+            _label1 = GetNode<Label>("%Label1");
+            _label2 = GetNode<Label>("%Label2");
+
+            _label1.Text = Tr(ColorManager.GetCurrentColor.InterludeTextBeginningKey);
+            _label2.Text = Tr(ColorManager.GetCurrentColor.InterludeTextEndingKey);
+
+            _label1.GetNode<Label>("GhostLabel1").Text = _label1.Text;
+            _label2.GetNode<Label>("GhostLabel2").Text = _label2.Text;
 
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
             _animationPlayer.Play("Interlude");

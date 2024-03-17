@@ -528,20 +528,19 @@ color = Color( 0.596078, 0.376471, 1, 1 )
 
 [node name="IntroAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -2.0
 bus = "SFX"
 
 [node name="TickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -4.0
+volume_db = -2.0
 bus = "SFX"
 
 [node name="VertigoAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -4.0
+volume_db = -2.0
 bus = "SFX"
 
 [node name="EndAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -4.0
+volume_db = -2.0
 bus = "SFX"

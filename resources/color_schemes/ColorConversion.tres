@@ -14,3 +14,5 @@ script = ExtResource( 1 )
 Gradient = SubResource( 2 )
 NameKey = "COLOR_NAME_CONVERSION"
 UpgradeFluffTextKey = "UPGRADE_MENU_FLUFF_CONVERSION"
+InterludeTextBeginningKey = "INTERLUDE_CONVERSION_1"
+InterludeTextEndingKey = "INTERLUDE_CONVERSION_2"

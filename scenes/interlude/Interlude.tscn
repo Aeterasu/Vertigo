@@ -4,58 +4,61 @@
 [ext_resource path="res://scenes/interlude/Interlude.cs" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.588235 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Interlude"
-length = 5.0
+length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label/GhostLabel:rect_position")
+tracks/0/path = NodePath("Label1:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( -12, 8 ), Vector2( 12, 8 ) ]
+"values": [ Vector2( 0, 80 ), Vector2( 64, 80 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Label:rect_position")
+tracks/1/path = NodePath("Blackout:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -8, 0 ), Vector2( 8, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("GhostLabelBig:rect_position")
+tracks/2/path = NodePath("Label2:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 2, 3.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( -390, -145 ), Vector2( -102, -145 ) ]
+"values": [ Vector2( 0, -80 ), Vector2( -64, -80 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Blackout:modulate")
+tracks/3/path = NodePath("Label2:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Flash:modulate")
@@ -64,15 +67,63 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 4.5, 5 ),
+"times": PoolRealArray( 0, 3.7, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label1/GhostLabel1:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 32, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Label1/GhostLabel1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.596078, 0.376471, 1, 0.596078 ), Color( 0.596078, 0.376471, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Label2/GhostLabel2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.596078, 0.376471, 1, 0.596078 ), Color( 0.596078, 0.376471, 1, 0.25098 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Label2/GhostLabel2:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Skip"
-length = 0.3
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flash:modulate")
 tracks/0/interp = 1
@@ -80,7 +131,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -92,48 +143,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Label1" type="Label" parent="."]
+unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_right = 8.0
+margin_left = 64.0
+margin_top = 80.0
+margin_right = 64.0015
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting.."
-align = 1
-valign = 1
+text = "Oh, Vertigo, ever so inviting..."
 
-[node name="GhostLabel" type="Label" parent="Label"]
-modulate = Color( 0.596078, 0.376471, 1, 0.501961 )
+[node name="GhostLabel1" type="Label" parent="Label1"]
+unique_name_in_owner = true
+modulate = Color( 0.596078, 0.376471, 1, 0 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 12.0
-margin_bottom = 8.0
+margin_left = 32.0
+margin_right = 32.0009
+custom_fonts/font = SubResource( 1 )
+text = "Oh, Vertigo, ever so inviting..."
+
+[node name="Label2" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -80.0
+margin_right = -64.0
+margin_bottom = -80.0
 custom_fonts/font = SubResource( 1 )
 text = "Oh, Vertigo, ever so inviting.."
-align = 1
-valign = 1
+align = 2
+valign = 2
 
-[node name="GhostLabelBig" type="Label" parent="."]
+[node name="GhostLabel2" type="Label" parent="Label2"]
 modulate = Color( 0.596078, 0.376471, 1, 0.25098 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -102.0
-margin_top = -145.0
-margin_right = -102.0
-margin_bottom = -145.0
-rect_scale = Vector2( 2, 2 )
+margin_left = -32.0
+margin_right = -31.9991
 custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting.."
-align = 1
-valign = 1
+text = "Oh, Vertigo, ever so inviting..."
+align = 2
+valign = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-playback_speed = 2.0
 anims/Interlude = SubResource( 2 )
 anims/Skip = SubResource( 3 )
 

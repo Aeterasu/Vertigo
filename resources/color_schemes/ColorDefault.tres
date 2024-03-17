@@ -8,3 +8,5 @@ script = ExtResource( 1 )
 Gradient = ExtResource( 2 )
 NameKey = "COLOR_NAME_DEFAULT"
 UpgradeFluffTextKey = "UPGRADE_MENU_FLUFF_DEFAULT"
+InterludeTextBeginningKey = "INTERLUDE_VERTIGO_1"
+InterludeTextEndingKey = "INTERLUDE_VERTIGO_2"
