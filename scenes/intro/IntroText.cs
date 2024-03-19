@@ -8,6 +8,7 @@ namespace Vertigo
         [Export] public float TimeQueue { get; private set; } = 0.0f;
         [Export] private readonly string _introTextKey = "";
         [Export] private readonly string _breakdownTextKey = "";
+        [Export] private readonly float _screenShakeStrength = 2.0f;
 
         private bool _animated = false;
         private bool _animatedBreakdown = false;
@@ -33,6 +34,10 @@ namespace Vertigo
             GetNode<AnimationPlayer>("AnimationPlayer").Play("Appear");
 
             _animated = true;
+
+            var intro = GetParentOrNull<Intro>();
+
+            DeconflictedSoundPlayer.PlayUnconflictingSound(intro.SfxTextAppear, GetTree().Root);            
         }
 
         public void AnimateBreakdown()
@@ -49,6 +54,12 @@ namespace Vertigo
             GetNode<Label>("Label/Label3").Text = Tr(_breakdownTextKey);
 
             _animatedBreakdown = true;
+
+            var intro = GetParentOrNull<Intro>();
+
+            intro.GetScreenShakeCamera2D.AddShake(_screenShakeStrength);
+
+            DeconflictedSoundPlayer.PlayUnconflictingSound(intro.SfxTextBreakdown, GetTree().Root);
         }
     }
 }

@@ -30,7 +30,7 @@ radius = 54.0
 collision_layer = 4
 script = ExtResource( 2 )
 Affiliation = 0
-_speed = 96.0
+_speed = 72.0
 _rotationSpeed = 224.0
 _bounce = true
 

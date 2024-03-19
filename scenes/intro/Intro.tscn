@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/intro/IntroText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/intro/Intro.cs" type="Script" id=2]
@@ -7,6 +7,27 @@
 [ext_resource path="res://scenes/intro/IntroText.cs" type="Script" id=5]
 [ext_resource path="res://assets/textures/vaila/sprite_vaila.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/vaila/sprite_diamond_2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/fx/ScreenShakeCamera2D.cs" type="Script" id=8]
+[ext_resource path="res://shaders/color_fill.tres" type="Shader" id=9]
+[ext_resource path="res://assets/audio/sfx_intro_1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx_intro_text_appear.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx_intro_full_breakdown.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sfx_intro_text_breakdown_appear.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/music_inmerty_intro.mp3" type="AudioStream" id=14]
+
+[sub_resource type="Gradient" id=13]
+colors = PoolColorArray( 0, 0, 0, 1, 0.596078, 0.376471, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=14]
+gradient = SubResource( 13 )
+width = 480
+height = 270
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 9 )
+shader_param/color = Color( 0.596078, 0.376471, 1, 1 )
+shader_param/mixture = 1.0
 
 [sub_resource type="DynamicFont" id=6]
 outline_size = 1
@@ -20,6 +41,7 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "AnimateBreakdown"
+length = 2.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -64,10 +86,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
+"times": PoolRealArray( 0, 0.2, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.12549 ) ]
+"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Label/Label3:modulate")
@@ -76,10 +98,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 1 ),
+"times": PoolRealArray( 0, 0.2, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.12549 ) ]
+"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("SpriteFxGlare:scale")
@@ -196,7 +218,8 @@ height = 24
 
 [sub_resource type="Animation" id=10]
 resource_name = "Intro"
-length = 16.0
+length = 21.0
+step = 0.15
 tracks/0/type = "method"
 tracks/0/path = NodePath("IntroText")
 tracks/0/interp = 1
@@ -204,7 +227,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 9 ),
+"times": PoolRealArray( 1.3, 11.55 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -221,7 +244,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.7, 10.9 ),
+"times": PoolRealArray( 2.7, 13.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -238,7 +261,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2.9, 11.8 ),
+"times": PoolRealArray( 4.2, 14.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -255,7 +278,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 4.1, 12.3 ),
+"times": PoolRealArray( 5.7, 15 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -272,7 +295,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 5.3, 12.8 ),
+"times": PoolRealArray( 7.2, 15.45 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -289,7 +312,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 6.5 ),
+"times": PoolRealArray( 9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -303,7 +326,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 13.6 ),
+"times": PoolRealArray( 0, 16.95 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -315,7 +338,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 13.6 ),
+"times": PoolRealArray( 16.95 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -329,7 +352,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 15, 15.3, 15.5 ),
+"times": PoolRealArray( 0, 19.5, 19.8, 20.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
@@ -341,10 +364,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 15 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 19.5 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 342, 2 ), Vector2( 310, 2 ) ]
+"values": [ Vector2( 438, 2 ), Vector2( 339.1, 2 ), Vector2( 310, 2 ) ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Sprite:modulate")
@@ -353,58 +376,122 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath(".:modulate")
+tracks/11/path = NodePath("IntroTextBreakdown1/Sprite2:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0, 16.95 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"update": 1,
+"values": [ false, true ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("IntroTextBreakdown1/Sprite2:visible")
+tracks/12/path = NodePath("IntroTextBreakdown1/Sprite2:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 13.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 0, 16.95, 17.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("IntroTextBreakdown1/Sprite2:modulate")
+tracks/13/path = NodePath("Sprite2:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 13.6, 13.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 17.55 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( -163, 77 ), Vector2( -99, 77 ), Vector2( -67, 77 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Sprite2:position")
+tracks/14/path = NodePath("Sprite2:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 15 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -99, 77 ), Vector2( -67, 77 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Background:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 2, 16.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.282353 ), Color( 1, 1, 1, 0.188235 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sprite/SpriteGhost:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.7, 16.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -16, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprite/SpriteGhost:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.7, 16.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "method"
+tracks/18/path = NodePath("IntroBreakdown")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 16.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/19/type = "method"
+tracks/19/path = NodePath(".")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 16.95 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "StopMusic"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -422,33 +509,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
-[node name="Intro" type="Node2D"]
-modulate = Color( 0, 0, 0, 1 )
+[node name="Intro" type="CanvasLayer"]
+follow_viewport_enable = true
 script = ExtResource( 2 )
+SfxTextAppear = ExtResource( 11 )
+SfxTextBreakdown = ExtResource( 13 )
 _textRate = 1.2
 
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.188235 )
+texture = SubResource( 14 )
+centered = false
+
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 342, 2 )
+position = Vector2( 313.947, 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 centered = false
 
+[node name="SpriteGhost" type="Sprite" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+material = SubResource( 15 )
+position = Vector2( -16, 0 )
+texture = ExtResource( 6 )
+centered = false
+
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -99, 77 )
+position = Vector2( -68.1395, 77 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 centered = false
@@ -458,12 +547,14 @@ margin_top = 24.0
 margin_bottom = 48.0
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_1"
+_screenShakeStrength = 1.0
 
 [node name="IntroText2" parent="." instance=ExtResource( 1 )]
 margin_top = 60.0
 margin_bottom = 84.0
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_2"
+_screenShakeStrength = 1.5
 
 [node name="IntroText3" parent="." instance=ExtResource( 1 )]
 margin_top = 96.0
@@ -476,21 +567,23 @@ margin_top = 132.0
 margin_bottom = 156.0
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_4"
+_screenShakeStrength = 2.5
 
 [node name="IntroText5" parent="." instance=ExtResource( 1 )]
 margin_top = 168.0
 margin_bottom = 192.0
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_5"
+_screenShakeStrength = 3.0
 
 [node name="IntroText6" parent="." instance=ExtResource( 1 )]
 margin_top = 204.0
 margin_bottom = 228.0
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_6"
+_screenShakeStrength = 3.5
 
 [node name="IntroTextBreakdown1" type="Control" parent="."]
-visible = false
 margin_top = 103.0
 margin_right = 480.0
 margin_bottom = 127.0
@@ -498,6 +591,7 @@ script = ExtResource( 5 )
 TimeQueue = 0.5
 _introTextKey = "INTRODUCTION_1"
 _breakdownTextKey = "INTRODUCTION_6"
+_screenShakeStrength = 0.5
 
 [node name="Label" type="Label" parent="IntroTextBreakdown1"]
 margin_right = 480.0
@@ -508,10 +602,9 @@ align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="IntroTextBreakdown1/Label"]
-modulate = Color( 0.596078, 0.376471, 1, 0.527451 )
+modulate = Color( 0.596078, 0.376471, 1, 0.768627 )
 show_behind_parent = true
-margin_left = 32.0
-margin_right = 512.0
+margin_right = 480.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 7 )
 text = "INTRO_TEXT"
@@ -519,10 +612,9 @@ align = 1
 valign = 1
 
 [node name="Label3" type="Label" parent="IntroTextBreakdown1/Label"]
-modulate = Color( 0.596078, 0.376471, 1, 0.527451 )
+modulate = Color( 0.596078, 0.376471, 1, 0.768627 )
 show_behind_parent = true
-margin_left = -32.0
-margin_right = 448.0
+margin_right = 480.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 7 )
 text = "INTRO_TEXT"
@@ -534,7 +626,6 @@ anims/AnimateBreakdown = SubResource( 8 )
 anims/Appear = SubResource( 9 )
 
 [node name="Sprite2" type="Sprite" parent="IntroTextBreakdown1"]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 position = Vector2( 0, -103 )
@@ -549,6 +640,7 @@ scale = Vector2( 3, 2 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="IntroTextBreakdown1"]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 texture = SubResource( 5 )
 centered = false
@@ -565,3 +657,24 @@ anchor_bottom = 1.0
 margin_right = 480.0
 margin_bottom = 270.0
 color = Color( 0.596078, 0.376471, 1, 1 )
+
+[node name="ScreenShakeCamera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+rotating = true
+current = true
+script = ExtResource( 8 )
+
+[node name="IntroSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+bus = "SFX"
+
+[node name="IntroBreakdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+bus = "Music"

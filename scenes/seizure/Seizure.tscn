@@ -28,7 +28,8 @@ fill_to = Vector2( 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-_duration = 3.25
+_duration = 4.0
+_fadeIn = 1.0
 _fadeOut = 0.5
 
 [node name="Label" type="RichTextLabel" parent="."]
