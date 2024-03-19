@@ -21,6 +21,7 @@ namespace Vertigo
                 {
                     HighscoreResults = value;
                     _currentGameResults.NewHighscore = true;
+                    SaveHighscore();
                 }
             }
         }
@@ -31,7 +32,6 @@ namespace Vertigo
             set
             {
                 _highscoreResults = value;
-                SaveHighscore();
             }
         }
 
