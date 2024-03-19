@@ -23,7 +23,7 @@ namespace Vertigo
             _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
 
             _animationPlayer.Play("Countdown");
-            GetNode<Label>("AnimationPlayer/LabelFluff").Text = Tr($"COUNTDOWN_TEXT_{(GD.Randi() % 4) + 1}");
+            GetNode<Label>("AnimationPlayer/LabelFluff").Text = Tr("COUNTDOWN_TEXT_1");
         }
 
         public override void _PhysicsProcess(float delta)

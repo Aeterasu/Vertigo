@@ -72,7 +72,7 @@ UPGRADE_NAME_PASSION,PASSION,
 UPGRADE_DESCRIPTION_PASSION,"A precious +1 HP.
 Getting hit clears the screen from threats, offering a chance to breathe.",
 UPGRADE_STACK_DESCRIPTION_PASSION,"+1 HP.
-Boosts previous non-Passion ascension.",
+Boosts the last non-Passion ascension.",
 UPGRADE_NAME_CONVERGENCE,CONVERGENCE,
 UPGRADE_DESCRIPTION_CONVERGENCE,"Release a homing projectile on gravity flip, tracking and zeroing in on foes.",
 UPGRADE_STACK_DESCRIPTION_CONVERGENCE,Release an additional homing projectile.,
