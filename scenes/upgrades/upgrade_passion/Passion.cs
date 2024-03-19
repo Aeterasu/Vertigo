@@ -65,6 +65,18 @@ namespace Vertigo
         public override void AddStack()
         {
             AddHealth();
+
+            if (!UpgradeManager.Instance.IsValid())
+            {
+                return;
+            }
+
+            if (UpgradeManager.Instance.LastNonPassionUpgradeCard == null)
+            {
+                return;
+            }
+
+            UpgradeManager.Instance.AddUpgrade(UpgradeManager.Instance.LastNonPassionUpgradeCard);
         }
 
         private void AddHealth()

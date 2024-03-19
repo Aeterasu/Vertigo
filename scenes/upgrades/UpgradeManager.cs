@@ -10,6 +10,8 @@ namespace Vertigo
 
         public List<int> UpgradeStacks { get; private set; } = new List<int>();
 
+        public UpgradeCard LastNonPassionUpgradeCard { get; private set; } = null;
+
         public static UpgradeManager Instance { get; private set; }
 
         public override void _Ready()
@@ -24,7 +26,7 @@ namespace Vertigo
             }
         }
 
-        public void AddUpgrade(UpgradeCard card)
+        public void AddUpgrade(UpgradeCard card, bool checkForPassionOverflow = false)
         {
             Node node = card.UpgradeScene.Instance();
 
@@ -32,6 +34,11 @@ namespace Vertigo
             {
                 node.SafeQueueFree();
                 return;
+            }
+
+            if (!(node is Passion))
+            {
+                LastNonPassionUpgradeCard = card;
             }
 
             foreach (Node child in GetChildren())
