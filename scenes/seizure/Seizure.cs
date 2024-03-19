@@ -57,23 +57,5 @@ namespace Vertigo
                 Main.Instance.State = _targetState;
             }
         }
-
-        public override void _Input(InputEvent @event)
-        {
-            base._Input(@event);
-
-            if (_ticks <= _fadeOut)
-            {
-                return;
-            }
-
-            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
-            {
-                if (@event.IsPressed())
-                {
-                    _ticks = _fadeOut;
-                }
-            }
-        }
     }
 }

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/boot_splash.png" type="Texture" id=1]
+[ext_resource path="res://scenes/boot_splash/BootSplash.cs" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Boot"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 0.933033 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "NextState"
+} ]
+}
+
+[node name="BootSplash" type="Sprite"]
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+_targetState = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Boot = SubResource( 1 )

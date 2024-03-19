@@ -14,6 +14,7 @@ namespace Vertigo
         TUTORIAL_MENU,
         SEIZURE,
         INTRO,
+        BOOT_SPLASH,
     }
 
     public class Main : Node
@@ -28,6 +29,7 @@ namespace Vertigo
         [Export] private readonly PackedScene _tutorialMenuScene;
         [Export] private readonly PackedScene _seizureScene;
         [Export] private readonly PackedScene _introScene;
+        [Export] private readonly PackedScene _bootSplashScene;
 
         private MainMenu _mainMenu;
         private Interlude _interlude;
@@ -38,6 +40,7 @@ namespace Vertigo
         private TutorialMenu _tutorialMenu;
         private Seizure _seizure;
         private Intro _intro;
+        private BootSplash _bootSplash;
 
         private ColorManager _colorManager;
         private HueShiftLayer _hueShiftLayer;
@@ -86,6 +89,9 @@ namespace Vertigo
                     case MainState.INTRO:
                         InitIntro();
                         break;
+                    case MainState.BOOT_SPLASH:
+                        InitBootSplash();
+                        break;
                 }
 
                 if (value == MainState.GAME)
@@ -93,12 +99,12 @@ namespace Vertigo
                     _musicManager.StartMusicGame();
                     _musicManager.StopMusicMenu();
                 }
-                else if (value != MainState.GAME && value != MainState.INTERLUDE && value != MainState.SEIZURE && value != MainState.INTRO)
+                else if (value != MainState.GAME && value != MainState.INTERLUDE && value != MainState.SEIZURE && value != MainState.INTRO && value != MainState.BOOT_SPLASH)
                 {
                     _musicManager.StartMusicMenu();
                     _musicManager.StopMusicGame();
                 }
-                else if (value == MainState.INTERLUDE || value == MainState.SEIZURE || value == MainState.INTRO)
+                else if (value == MainState.INTERLUDE || value == MainState.SEIZURE || value == MainState.INTRO || value == MainState.BOOT_SPLASH)
                 {
                     _musicManager.StopMusicMenu();
                     _musicManager.StopMusicGame();
@@ -347,6 +353,25 @@ namespace Vertigo
             }
         }
 
+        private void InitBootSplash()
+        {
+            if (_bootSplashScene != null)
+            {
+                var bootSplashNode = _bootSplashScene.Instance();
+
+                if (bootSplashNode is BootSplash)
+                {
+                    _bootSplash = bootSplashNode as BootSplash;
+                }
+
+                AddChild(_bootSplash);
+            }
+            else
+            {
+                State = MainState.MAIN_MENU;
+            }
+        }
+
         private void OnInterludeAnimationFinished()
         {
             State = MainState.GAME;
@@ -403,6 +428,11 @@ namespace Vertigo
 
             _intro.SafeQueueFree();
             _intro = null;
+
+            // boot splash
+
+            _bootSplash.SafeQueueFree();
+            _bootSplash = null;
         }
 
         private void OnMenuButtonExecuted(MenuButton button)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/seizure/Seizure.cs" type="Script" id=2]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/fx/blackout/Blackout.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -28,9 +29,9 @@ fill_to = Vector2( 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-_duration = 4.0
-_fadeIn = 1.0
-_fadeOut = 0.5
+_duration = 2.5
+_fadeIn = 0.3
+_fadeOut = 0.3
 
 [node name="Label" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -50,3 +51,6 @@ modulate = Color( 1, 1, 1, 0.12549 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource( 4 )
+
+[node name="Blackout" parent="." instance=ExtResource( 4 )]
+speed = 3.0

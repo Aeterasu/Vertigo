@@ -518,26 +518,26 @@ SfxTextBreakdown = ExtResource( 13 )
 _textRate = 1.2
 
 [node name="Background" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.188235 )
+modulate = Color( 1, 1, 1, 0 )
 texture = SubResource( 14 )
 centered = false
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 313.947, 2 )
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 438, 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 centered = false
 
 [node name="SpriteGhost" type="Sprite" parent="Sprite"]
-modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 material = SubResource( 15 )
-position = Vector2( -16, 0 )
 texture = ExtResource( 6 )
 centered = false
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( -68.1395, 77 )
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -163, 77 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 centered = false
@@ -584,6 +584,7 @@ _introTextKey = "INTRODUCTION_6"
 _screenShakeStrength = 3.5
 
 [node name="IntroTextBreakdown1" type="Control" parent="."]
+visible = false
 margin_top = 103.0
 margin_right = 480.0
 margin_bottom = 127.0
@@ -626,6 +627,7 @@ anims/AnimateBreakdown = SubResource( 8 )
 anims/Appear = SubResource( 9 )
 
 [node name="Sprite2" type="Sprite" parent="IntroTextBreakdown1"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 position = Vector2( 0, -103 )

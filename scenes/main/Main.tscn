@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/main/Main.cs" type="Script" id=1]
 [ext_resource path="res://scenes/game/Game.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/audio/music_inmerty_game.mp3" type="AudioStream" id=25]
 [ext_resource path="res://scenes/music/MusicManager.cs" type="Script" id=26]
 [ext_resource path="res://scenes/seizure/Seizure.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/boot_splash/BootSplash.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/intro/Intro.tscn" type="PackedScene" id=29]
 [ext_resource path="res://resources/color_schemes/ColorTrauma.tres" type="Resource" id=30]
 [ext_resource path="res://resources/color_schemes/ColorApnea.tres" type="Resource" id=31]
@@ -34,7 +35,7 @@
 [node name="Main" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
-_state = 7
+_state = 9
 _mainMenuScene = ExtResource( 4 )
 _interludeScene = ExtResource( 13 )
 _gameScene = ExtResource( 2 )
@@ -44,6 +45,7 @@ _settingsMenuScene = ExtResource( 18 )
 _tutorialMenuScene = ExtResource( 23 )
 _seizureScene = ExtResource( 27 )
 _introScene = ExtResource( 29 )
+_bootSplashScene = ExtResource( 28 )
 
 [node name="SilentWolfConfig" type="Node" parent="."]
 script = ExtResource( 16 )

@@ -20,8 +20,8 @@ namespace Vertigo
         private const int CONFIG_SCREEN_SHAKE_DEFAULT = 1;
         private const int CONFIG_TRAIL_EFFECT_DEFAULT = 1;
         private const int CONFIG_COLOR_DEFAULT = 0;
-        private const float CONFIG_SFX_VOLUME_DEFAULT = 0.3f;
-        private const float CONFIG_MUSIC_VOLUME_DEFAULT = 0.3f;
+        private const float CONFIG_SFX_VOLUME_DEFAULT = 0.2f;
+        private const float CONFIG_MUSIC_VOLUME_DEFAULT = 0.2f;
         private const string CONFIG_LOCALE_DEFAULT = LocalizationManager.LOCALE_EN;
 
         private bool _isFullscreen = false;
