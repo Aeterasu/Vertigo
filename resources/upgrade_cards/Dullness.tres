@@ -10,3 +10,4 @@ TextureAtlasId = 5
 NameKey = "UPGRADE_NAME_DULLNESS"
 DescriptionKey = "UPGRADE_DESCRIPTION_DULLNESS"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_DULLNESS"
+ShowLastNonPassionUpgradeName = false

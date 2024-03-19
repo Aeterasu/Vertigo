@@ -67,6 +67,18 @@ namespace Vertigo
 
                             _upgradeDescriptionLabel.Visible = true;
                             _upgradeDescriptionLabel.Text = button.Stack > 1 ? Tr(button.UpgradeCard.StackDescriptionKey) : Tr(button.UpgradeCard.DescriptionKey);
+
+                            if (button.UpgradeCard.ShowLastNonPassionUpgradeName && button.Stack > 1)
+                            {
+                                if (UpgradeManager.Instance.LastNonPassionUpgradeCard != null)
+                                {
+                                    _upgradeDescriptionLabel.Text += $" ({Tr(UpgradeManager.Instance.LastNonPassionUpgradeCard.NameKey)})";
+                                }
+                                else
+                                {
+                                    _upgradeDescriptionLabel.Text += $" ({Tr("UPGRADE_NONE")})";
+                                }
+                            }
                         }
                         else
                         {

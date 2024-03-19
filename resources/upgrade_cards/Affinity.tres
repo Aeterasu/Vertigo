@@ -10,3 +10,4 @@ TextureAtlasId = 3
 NameKey = "UPGRADE_NAME_AFFINITY"
 DescriptionKey = "UPGRADE_DESCRIPTION_AFFINITY"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_AFFINITY"
+ShowLastNonPassionUpgradeName = false

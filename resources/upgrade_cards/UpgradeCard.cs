@@ -10,5 +10,6 @@ namespace Vertigo
         [Export] public string NameKey { get; private set; }
         [Export] public string DescriptionKey { get; private set; }
         [Export] public string StackDescriptionKey { get; private set; }
+        [Export] public bool ShowLastNonPassionUpgradeName { get; private set; } = false;
     }
 }

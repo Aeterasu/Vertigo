@@ -10,3 +10,4 @@ TextureAtlasId = 9
 NameKey = "UPGRADE_NAME_AEGIS"
 DescriptionKey = "UPGRADE_DESCRIPTION_AEGIS"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_AEGIS"
+ShowLastNonPassionUpgradeName = false

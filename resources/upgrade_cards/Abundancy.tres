@@ -10,3 +10,4 @@ TextureAtlasId = 1
 NameKey = "UPGRADE_NAME_ABUNDANCY"
 DescriptionKey = "UPGRADE_DESCRIPTION_ABUNDANCY"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_ABUNDANCY"
+ShowLastNonPassionUpgradeName = false

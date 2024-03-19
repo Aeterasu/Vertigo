@@ -10,3 +10,4 @@ TextureAtlasId = 7
 NameKey = "UPGRADE_NAME_CONVERGENCE"
 DescriptionKey = "UPGRADE_DESCRIPTION_CONVERGENCE"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_CONVERGENCE"
+ShowLastNonPassionUpgradeName = false

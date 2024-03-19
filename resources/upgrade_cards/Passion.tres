@@ -10,3 +10,4 @@ TextureAtlasId = 4
 NameKey = "UPGRADE_NAME_PASSION"
 DescriptionKey = "UPGRADE_DESCRIPTION_PASSION"
 StackDescriptionKey = "UPGRADE_STACK_DESCRIPTION_PASSION"
+ShowLastNonPassionUpgradeName = true
