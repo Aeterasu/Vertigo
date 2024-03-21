@@ -9,6 +9,7 @@ namespace Vertigo
         NONE,
         SQUARE,
         ARROW,
+        WALL,
     }
 
     public class Square : Hazard
@@ -127,6 +128,9 @@ namespace Vertigo
                         break;
                     case HazardSpriteRotationMode.ARROW:
                         _sprite.RotationDegrees = 90 * Direction;
+                        break;
+                    case HazardSpriteRotationMode.WALL:
+                        _sprite.RotationDegrees = 0.0f;
                         break;
                 }
             }

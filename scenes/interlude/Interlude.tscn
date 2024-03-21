@@ -3,6 +3,16 @@
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/interlude/Interlude.cs" type="Script" id=2]
 
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.522078 )
+colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 128
+height = 128
+fill_to = Vector2( 1, 1 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 12
 outline_size = 1
@@ -94,7 +104,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 4.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.596078, 0.376471, 1, 0.596078 ), Color( 0.596078, 0.376471, 1, 0 ) ]
+"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Label2/GhostLabel2:modulate")
@@ -106,7 +116,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 2.3, 4.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.596078, 0.376471, 1, 0.596078 ), Color( 0.596078, 0.376471, 1, 0.25098 ) ]
+"values": [ Color( 0.596078, 0.376471, 1, 0.768627 ), Color( 0.596078, 0.376471, 1, 0.25098 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Label2/GhostLabel2:rect_position")
@@ -142,7 +152,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 2.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.470588 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.768627 ) ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Control/TextureRect2:modulate")
@@ -154,7 +164,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 2.3, 4.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.470588 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.768627 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -173,83 +183,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.522078 )
-colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
-
-[sub_resource type="GradientTexture2D" id=5]
-gradient = SubResource( 4 )
-width = 128
-height = 128
-fill_to = Vector2( 1, 1 )
-
 [node name="Interlude" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-
-[node name="Label1" type="Label" parent="."]
-unique_name_in_owner = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 80.0
-margin_right = 0.00109863
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting..."
-
-[node name="GhostLabel1" type="Label" parent="Label1"]
-unique_name_in_owner = true
-modulate = Color( 0.596078, 0.376471, 1, 0.596078 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -0.0012207
-custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting..."
-
-[node name="Label2" type="Label" parent="."]
-unique_name_in_owner = true
-modulate = Color( 0, 0, 0, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -8.2489
-margin_top = -80.0
-margin_right = -8.2489
-margin_bottom = -80.0
-custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting.."
-align = 2
-valign = 2
-
-[node name="GhostLabel2" type="Label" parent="Label2"]
-modulate = Color( 0.596078, 0.376471, 1, 0.581074 )
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -5.46001
-margin_right = -5.45911
-custom_fonts/font = SubResource( 1 )
-text = "Oh, Vertigo, ever so inviting..."
-align = 2
-valign = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-anims/Interlude = SubResource( 2 )
-anims/Skip = SubResource( 3 )
-
-[node name="Flash" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.596078, 0.376471, 1, 1 )
-
-[node name="Blackout" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
 
 [node name="Control" type="Control" parent="."]
 modulate = Color( 0.431373, 0.431373, 0.431373, 1 )
@@ -273,3 +211,65 @@ rect_scale = Vector2( 2, 2 )
 texture = SubResource( 5 )
 flip_h = true
 flip_v = true
+
+[node name="Label1" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 80.0
+margin_right = 0.00112915
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "Oh, Vertigo, ever so inviting..."
+
+[node name="GhostLabel1" type="Label" parent="Label1"]
+unique_name_in_owner = true
+modulate = Color( 0.596078, 0.376471, 1, 0.768627 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.00210571
+custom_fonts/font = SubResource( 1 )
+text = "Oh, Vertigo, ever so inviting..."
+
+[node name="Label2" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -23.04
+margin_top = -80.0
+margin_right = -23.04
+margin_bottom = -80.0
+custom_fonts/font = SubResource( 1 )
+text = "Oh, Vertigo, ever so inviting.."
+align = 2
+valign = 2
+
+[node name="GhostLabel2" type="Label" parent="Label2"]
+modulate = Color( 0.596078, 0.376471, 1, 0.701108 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.54
+margin_right = -15.5391
+custom_fonts/font = SubResource( 1 )
+text = "Oh, Vertigo, ever so inviting..."
+align = 2
+valign = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/Interlude = SubResource( 2 )
+anims/Skip = SubResource( 3 )
+
+[node name="Flash" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.596078, 0.376471, 1, 1 )
+
+[node name="Blackout" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )

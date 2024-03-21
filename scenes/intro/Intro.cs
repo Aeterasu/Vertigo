@@ -34,9 +34,6 @@ namespace Vertigo
             
             AddChild(_tween);
 
-            //_tween.InterpolateProperty(_musicPlayer, "volume_db", GD.Linear2Db(0.0f), GD.Linear2Db(1.0f), 2.0f);
-            //_tween.Start();
-
             _musicPlayer.Play();
 
             _screenShakeCamera2d = GetNode<ScreenShakeCamera2D>("%ScreenShakeCamera2D");

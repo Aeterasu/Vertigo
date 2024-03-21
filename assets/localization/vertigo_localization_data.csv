@@ -75,7 +75,7 @@ UPGRADE_STACK_DESCRIPTION_PASSION,"+1 HP.
 Boosts the last non-Passion ascension.",
 UPGRADE_NAME_CONVERGENCE,CONVERGENCE,
 UPGRADE_DESCRIPTION_CONVERGENCE,"Release a homing projectile on gravity flip, tracking and zeroing in on foes.",
-UPGRADE_STACK_DESCRIPTION_CONVERGENCE,Release an additional homing projectile.,
+UPGRADE_STACK_DESCRIPTION_CONVERGENCE,An additional homing projectile is released on flip.,
 GUI_POWER,POWER,
 GUI_LVL,LVL.,
 GUI_GRAZE,GRAZE!,
@@ -157,7 +157,7 @@ SEIZURE_WARNING,"[b]Warning![/b]
 
 This game contains flashing lights and visual effects that could potentially trigger an epileptic or seizure-like reaction or cause motion sickness.",
 INTERLUDE_VERTIGO_1,"Oh, Vertigo, you ever so inviting...",
-INTERLUDE_VERTIGO_2,"...As I'm falling deeper and deeper, my mind twists and turns.",
+INTERLUDE_VERTIGO_2,"...As I spiral deeper, my mind twists and turns.",
 INTERLUDE_MINT_1,As the emeralds flash in my eyes...,
 INTERLUDE_MINT_2,"...The colors move, blinding me, and I lose myself to Vertigo.",
 INTERLUDE_RASPBERRY_1,"The crimson sunset fades, and I feel the cold on my skin...",

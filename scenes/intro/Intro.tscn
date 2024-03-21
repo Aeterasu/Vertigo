@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/intro/IntroText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/intro/Intro.cs" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/audio/sfx_intro_full_breakdown.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/sfx_intro_text_breakdown_appear.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/music_inmerty_intro.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=15]
 
 [sub_resource type="Gradient" id=13]
 colors = PoolColorArray( 0, 0, 0, 1, 0.596078, 0.376471, 1, 1 )
@@ -516,6 +517,13 @@ script = ExtResource( 2 )
 SfxTextAppear = ExtResource( 11 )
 SfxTextBreakdown = ExtResource( 13 )
 _textRate = 1.2
+
+[node name="Backdrop" type="Sprite" parent="."]
+modulate = Color( 0.145098, 0.145098, 0.145098, 0.376471 )
+texture = ExtResource( 15 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 480, 270 )
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )

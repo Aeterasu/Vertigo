@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://scenes/fx/shockwave_effect/ShockwaveEffect.cs" type="Script" id=44]
 [ext_resource path="res://assets/audio/sfx_heal.wav" type="AudioStream" id=45]
 [ext_resource path="res://assets/audio/sfx_heartbreak.wav" type="AudioStream" id=46]
+[ext_resource path="res://scenes/hazards/wall/WallTelegraph.tscn" type="PackedScene" id=48]
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 43 )
@@ -367,12 +368,38 @@ script = ExtResource( 8 )
 position = Vector2( 352, 0 )
 script = ExtResource( 8 )
 
+[node name="WallSpawner" type="Node" parent="GameLayer"]
+script = ExtResource( 23 )
+_canOnlySpawnAfter = 80.0
+_maxHazards = 2
+_scene = ExtResource( 48 )
+_spawnRate = 12.0
+_spawnRateDifficultyStep = 1.0
+_spawnMinimalRate = 4.0
+
+[node name="SpawnPoint1" type="Position2D" parent="GameLayer/WallSpawner"]
+position = Vector2( 164, 350 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint2" type="Position2D" parent="GameLayer/WallSpawner"]
+position = Vector2( 316, 350 )
+script = ExtResource( 8 )
+Direction = -1.0
+
+[node name="SpawnPoint3" type="Position2D" parent="GameLayer/WallSpawner"]
+position = Vector2( 164, -80 )
+script = ExtResource( 8 )
+
+[node name="SpawnPoint4" type="Position2D" parent="GameLayer/WallSpawner"]
+position = Vector2( 316, -80 )
+script = ExtResource( 8 )
+
 [node name="DiagonalSpawner" parent="GameLayer" instance=ExtResource( 7 )]
 _canOnlySpawnAfter = 50.0
 _maxHazards = 2
 _scene = ExtResource( 36 )
-_spawnRate = 7.0
-_spawnRateDifficultyStep = 0.4
+_spawnRate = 6.0
 _spawnMinimalRate = 1.5
 
 [node name="SpawnPoint1" type="Position2D" parent="GameLayer/DiagonalSpawner"]
@@ -457,6 +484,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 512.0
 
 [node name="ShockwaveLayer" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enable = true
 
 [node name="ShockwaveEffect" type="Sprite" parent="ShockwaveLayer"]
@@ -470,6 +498,7 @@ _forceSpeed = 0.8
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 follow_viewport_enable = true
 script = ExtResource( 35 )
 TimerColor = Color( 0, 0, 0, 1 )
@@ -526,6 +555,7 @@ anims/GameOver = SubResource( 10 )
 [node name="GUILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
+visible = false
 
 [node name="WaveScreenDistortion" type="ColorRect" parent="GUILayer"]
 pause_mode = 2
