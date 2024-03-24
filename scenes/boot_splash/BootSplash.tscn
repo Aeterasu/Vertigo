@@ -34,7 +34,6 @@ tracks/1/keys = {
 }
 
 [node name="BootSplash" type="Sprite"]
-modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 2 )

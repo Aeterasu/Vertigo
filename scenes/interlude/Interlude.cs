@@ -39,26 +39,12 @@ namespace Vertigo
             base._PhysicsProcess(delta);
 
             _delay = Mathf.Max(_delay - delta, 0f);
-        }
 
-        public override void _Input(InputEvent @event)
-        {
-            base._Input(@event);
-
-            if (_delay > 0.0f)
+            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) || Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM)) && _delay <= 0.0f)
             {
-                return;
-            }
-
-            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
-            {
-                if (!_isSkipped && @event.IsPressed())
-                {
-                    _animationPlayer.Play("Skip");
-                }
+                _animationPlayer.Play("Skip");
             }
         }
-
 
         private void OnAnimationFinished(string animName)
         {

@@ -37,6 +37,14 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
+            if (Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) || Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM))
+            {
+                if (_ticks > _fadeOut)
+                {
+                    _ticks = _fadeOut;
+                }
+            }
+
             _ticks -= delta;
 
             if (_ticks <= _fadeOut  && !_fadeOutLock)

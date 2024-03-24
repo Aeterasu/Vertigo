@@ -37,23 +37,10 @@ namespace Vertigo
                 OnAnimationFinished("Countdown");
                 _animLock = true;
             }
-        }
 
-        public override void _Input(InputEvent @event)
-        {
-            base._Input(@event);
-
-            if (!(_animationPlayer.CurrentAnimationPosition < 3.6f && _ticks >= 0.3f))
+            if ((Input.IsActionJustPressed(InputActions.INPUT_ACTION_CONFIRM) || Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM)) && (_animationPlayer.CurrentAnimationPosition < 3.6f && _ticks >= 0.3f))
             {
-                return;
-            }
-
-            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
-            {
-                if (@event.IsPressed())
-                {
-                    _animationPlayer.PlaybackSpeed = _speedUpRatio;
-                }
+                _animationPlayer.PlaybackSpeed = _speedUpRatio;
             }
         }
 

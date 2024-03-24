@@ -61,26 +61,6 @@ namespace Vertigo
             }
 
             _creditsCatergory.DisableInput = !IsMenuActive;
-
-            /*if (IsMenuActive 
-            && (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_RIGHT) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_LEFT)) 
-            && _menuCategory.GetCurrentButton.IfValid().ButtonType != MenuButtonType.MENU_BUTTON_COLOR)
-            {
-                _isSwappedToCredits = !_isSwappedToCredits;
-
-                if (_isSwappedToCredits)
-                {
-                    _creditsCatergory.CurrentButtonId = 0;
-                    _creditsCatergory.FirstInput = false;
-                }
-                else
-                {
-                    _menuCategory.CurrentButtonId = 0;
-                }
-            }*/
-
-            //_menuCategory.DisableInput = _isSwappedToCredits;
-            //_creditsCatergory.DisableInput = !_isSwappedToCredits;
         }
 
         public override void _Input(InputEvent @event)
