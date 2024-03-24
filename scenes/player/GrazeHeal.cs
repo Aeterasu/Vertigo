@@ -10,7 +10,7 @@ namespace Vertigo
         [Export] private readonly float _baseRequiredGraze = 1.75f;
         [Export] private readonly float _multiplierOnEachGrantedHp = 1.5f;
         [Export] private readonly float _decay = 0.2f;
-        [Export] private readonly bool _resetOnGettingHit;
+        [Export] private readonly bool _resetOnGettingHit = false;
 
         private int _level = 0;
 
@@ -36,7 +36,10 @@ namespace Vertigo
 
             _player = GetParentOrNull<Player>();
 
-            _player.OnPlayerHit += OnPlayerHit;
+            if (_player.IsValid())
+            {
+                _player.OnPlayerHit += OnPlayerHit;
+            }
 
             _requiredGraze = _baseRequiredGraze;
         }

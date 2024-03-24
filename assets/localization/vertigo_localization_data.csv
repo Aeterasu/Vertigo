@@ -1,38 +1,38 @@
 ,en,ru
-MENU_BUTTON_START,Start,
-MENU_BUTTON_COLOR,Palette,
-MENU_BUTTON_HOW_TO_PLAY,How to play,
-MENU_BUTTON_OPTIONS,Settings,
-MENU_BUTTON_LANGUAGE,Language,
-MENU_BUTTON_CREDITS,Credits,
-MENU_BUTTON_EXIT,Exit,
-MENU_BUTTON_RESTART,Begin again,
-MENU_BUTTON_BACK_TO_MENU,Back to menu,
-MENU_BUTTON_LEADERBOARD_MENU,Leaderboard,
-MENU_BUTTON_TUTORIAL_MENU,Tutorial,
-MENU_PRESS_ANY_KEY,Press any key to start,
-MENU_OPTIONS,Settings,
-MENU_VISUAL_OPTIONS,Visual settings,
-MENU_SOUND_OPTIONS,Sound settings,
-MENU_BUTTON_SOUND_OPTIONS,Sound,
-MENU_BUTTON_VISUALS_OPTIONS,Visuals,
-MENU_BUTTON_LANGUAGE_OPTIONS,Language,
-MENU_BUTTON_OPTIONS_FULLSCREEN,Fullscreen:,
-MENU_BUTTON_OPTIONS_SCREEN_SHAKE,Screen shake:,
-MENU_BUTTON_OPTIONS_TRAIL_EFFECT,Trail effect:,
-MENU_BUTTON_OPTIONS_SHOW_TUTORIAL,Show tutorial:,
-MENU_BUTTON_OPTIONS_SFX_VOLUME,SFX,
-MENU_BUTTON_OPTIONS_MUSIC_VOLUME,Music,
-MENU_BUTTON_OPTIONS_BACK_TO_OPTIONS_MENU,Back,
-MENU_BUTTON_PAUSE_RESUME,Resume,
-MENU_BUTTON_PAUSE_RESTART,Restart,
-MENU_BUTTON_TUTORIAL_NEXT_PAGE,Next page,
-MENU_BUTTON_TUTORIAL_PREVIOUS_PAGE,Previous page,
-LOCALE_EN,English,
-LOCALE_RU,Russian,
-MENU_CREDITS_GAME,Game by Matvey Kerov,
-MENU_CREDITS_MUSIC,Music by inmerty,
-MENU_CREDITS_ENGINE,Made with Godot Engine,
+MENU_BUTTON_START,Start,Старт
+MENU_BUTTON_COLOR,Palette,Палитра
+MENU_BUTTON_HOW_TO_PLAY,How to play,Как играть
+MENU_BUTTON_OPTIONS,Settings,Настройки
+MENU_BUTTON_LANGUAGE,Language,Язык
+MENU_BUTTON_CREDITS,Credits,Авторы
+MENU_BUTTON_EXIT,Exit,Выход
+MENU_BUTTON_RESTART,Begin again,Начать заново
+MENU_BUTTON_BACK_TO_MENU,Back to menu,Назад в меню
+MENU_BUTTON_LEADERBOARD_MENU,Leaderboard,Таблица рекордов
+MENU_BUTTON_TUTORIAL_MENU,Tutorial,Обучение
+MENU_PRESS_ANY_KEY,Press any key to start,"Нажмите любую кнопку, чтобы начать"
+MENU_OPTIONS,Settings,Настройки
+MENU_VISUAL_OPTIONS,Visual settings,Настройки графики
+MENU_SOUND_OPTIONS,Sound settings,Настройки звука
+MENU_BUTTON_SOUND_OPTIONS,Sound,Звук
+MENU_BUTTON_VISUALS_OPTIONS,Visuals,Графика
+MENU_BUTTON_LANGUAGE_OPTIONS,Language,Язык
+MENU_BUTTON_OPTIONS_FULLSCREEN,Fullscreen:,Полный экран:
+MENU_BUTTON_OPTIONS_SCREEN_SHAKE,Screen shake:,Тряска экрана:
+MENU_BUTTON_OPTIONS_TRAIL_EFFECT,Trail effect:,Эффект шлейфа:
+MENU_BUTTON_OPTIONS_SHOW_TUTORIAL,Show tutorial:,Показывать подсказки:
+MENU_BUTTON_OPTIONS_SFX_VOLUME,SFX,Звуковые эффекты
+MENU_BUTTON_OPTIONS_MUSIC_VOLUME,Music,Музыка
+MENU_BUTTON_OPTIONS_BACK_TO_OPTIONS_MENU,Back,Назад
+MENU_BUTTON_PAUSE_RESUME,Resume,Продолжить
+MENU_BUTTON_PAUSE_RESTART,Restart,Заново
+MENU_BUTTON_TUTORIAL_NEXT_PAGE,Next page,След. страница
+MENU_BUTTON_TUTORIAL_PREVIOUS_PAGE,Previous page,Пред. страница
+LOCALE_EN,English,Английский
+LOCALE_RU,Russian,Русский
+MENU_CREDITS_GAME,Game by Matvey Kerov,Игра Матвея Керова
+MENU_CREDITS_MUSIC,Music by inmerty,Музыка от inmerty
+MENU_CREDITS_ENGINE,Made with Godot Engine,Сделано на движке Godot
 UPGRADE_MENU_FLUFF_DEFAULT,"As the violet moon ascends, the spirit grows stronger...",
 UPGRADE_MENU_FLUFF_MINT,"As the emerald moon ascends, the spirit grows stronger...",
 UPGRADE_MENU_FLUFF_RASPBERRY,"As the crimson moon ascends, the spirit grows stronger...",
@@ -152,10 +152,12 @@ It reveals the limitations of our physical bodies and the fragility of our grasp
 NAUSEA_ANNOUNCEMENT,"The breath of Vertigo encircles your mind.
 Your senses spiral, whirling to chaos.",
 GAME_OVER_1,The gauntlet has come to an end...,
-GAME_OVER_RUN_COUNTER,Run #,
+GAME_OVER_RUN_COUNTER,Run #,Забег #
 SEIZURE_WARNING,"[b]Warning![/b]
 
-This game contains flashing lights and visual effects that could potentially trigger an epileptic or seizure-like reaction or cause motion sickness.",
+This game contains flashing lights and visual effects that could potentially trigger an epileptic or seizure-like reaction or cause motion sickness.","[b]Внимание![/b]
+
+Эта игра содержит мигающие цвета и визуальные эффекты, которые потенциально могут вызвать эпилептическую реакцию или укачивание."
 INTERLUDE_VERTIGO_1,"Oh, Vertigo, you ever so inviting...",
 INTERLUDE_VERTIGO_2,"...As I spiral deeper, my mind twists and turns.",
 INTERLUDE_MINT_1,As the emeralds flash in my eyes...,
@@ -186,3 +188,6 @@ INTRODUCTION_3,"Her vision is distorted with swirling lights, her sense of reali
 INTRODUCTION_4,Amidst the dizzying confusion;,
 INTRODUCTION_5,She struggles through the world rapidly changing around her.,
 INTRODUCTION_6,...And so she falls.,
+INTRO_HOLD_TO_SKIP_KEYBOARD,Hold Space to skip,
+INTRO_HOLD_TO_SKIP_GAMEPAD,Hold [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to skip,"Удерживайте Пробел, чтобы пропустить"
+,,"Удерживайте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img], чтобы пропустить"

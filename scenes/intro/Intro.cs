@@ -10,18 +10,27 @@ namespace Vertigo
         [Export] public AudioStream SfxTextBreakdown { get; private set; }
         [Export] private readonly MainState _targetState = MainState.MAIN_MENU;
         [Export] private readonly float _textRate = 0.8f;
+        [Export] private readonly float _timeToSkip = 1f;
         private float _ticks = 0.0f;
 
         private int _currentText = 0;
+
+        private float _skipCurrentTicks = 0.0f;
+        private bool _showSkipLabel = false;
 
         private AudioStreamPlayer _musicPlayer;
         private Tween _tween = new Tween();
 
         private List<IntroText> _introTexts = new List<IntroText>();
 
+        private RichTextLabel _skipRichTextLabel;
+        private TextureProgress _skipProgress;
+
         private ScreenShakeCamera2D _screenShakeCamera2d;
 
         public ScreenShakeCamera2D GetScreenShakeCamera2D { get => _screenShakeCamera2d; }
+
+        public bool IsSkipped { get; private set; } = false;
 
         public override void _Ready()
         {
@@ -45,13 +54,14 @@ namespace Vertigo
                     _introTexts.Add(node as IntroText);
                 }
             }
+
+            _skipRichTextLabel = GetNode<RichTextLabel>("HoldToSkipLabel");
+            _skipProgress = GetNode<TextureProgress>("SkipProgress");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
-
-            //_ticks += delta;
 
             if (_ticks >= _textRate)
             {
@@ -64,19 +74,29 @@ namespace Vertigo
                     _currentText += 1;
                 }
             }
-        }
 
-        public override void _Input(InputEvent @event)
-        {
-            base._Input(@event);
+            _skipRichTextLabel.BbcodeText = InputDeviceChecker.InputDevice == InputDevice.CONTROLLER ? "[right]" + Tr("INTRO_HOLD_TO_SKIP_GAMEPAD") : "[right]" + Tr("INTRO_HOLD_TO_SKIP_KEYBOARD");
 
-            if (@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventMouseButton)
+            if (Input.IsActionPressed(InputActions.INPUT_ACTION_CONFIRM) || Input.IsActionPressed(InputActions.INPUT_MENU_CONFIRM))
             {
-                if (@event.IsPressed())
-                {
-                    GetNode<AnimationPlayer>("AnimationPlayer").Play("Skip");
-                }
+                _skipCurrentTicks += delta;
+                _showSkipLabel = true;
             }
+            else
+            {
+                _skipCurrentTicks = 0.0f;
+            }
+
+            if (_skipCurrentTicks >= _timeToSkip && !IsSkipped)
+            {
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("Skip");
+                IsSkipped = true;
+            }
+
+            _skipProgress.MaxValue = _timeToSkip;
+            _skipProgress.Value = _skipCurrentTicks;
+
+            _skipRichTextLabel.Modulate = _showSkipLabel ? _skipRichTextLabel.Modulate.LinearInterpolate(new Color(1.0f, 1.0f, 1.0f, 1.0f), 5.0f * delta) : new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
 
         private void OnAnimationFinished(string animName)

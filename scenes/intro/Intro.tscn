@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/intro/IntroText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/intro/Intro.cs" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/audio/sfx_intro_text_breakdown_appear.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/music_inmerty_intro.mp3" type="AudioStream" id=14]
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=15]
+[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="Gradient" id=13]
 colors = PoolColorArray( 0, 0, 0, 1, 0.596078, 0.376471, 1, 1 )
@@ -511,6 +512,30 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="DynamicFont" id=16]
+size = 13
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=18]
+gradient = SubResource( 17 )
+width = 640
+height = 4
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 1 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=20]
+gradient = SubResource( 19 )
+width = 480
+height = 4
+
 [node name="Intro" type="CanvasLayer"]
 follow_viewport_enable = true
 script = ExtResource( 2 )
@@ -688,3 +713,25 @@ bus = "SFX"
 stream = ExtResource( 14 )
 autoplay = true
 bus = "Music"
+
+[node name="HoldToSkipLabel" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.0
+margin_top = -20.0
+margin_right = -6.0
+margin_bottom = -4.0
+custom_fonts/normal_font = SubResource( 16 )
+bbcode_enabled = true
+bbcode_text = "[right]HOLD_TO_SKIP"
+text = "HOLD_TO_SKIP"
+scroll_active = false
+
+[node name="SkipProgress" type="TextureProgress" parent="."]
+margin_top = 266.0
+margin_right = 480.0
+margin_bottom = 330.0
+step = 0.0
+texture_under = SubResource( 18 )
+texture_progress = SubResource( 20 )
