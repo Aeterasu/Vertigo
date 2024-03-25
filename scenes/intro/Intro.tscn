@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/intro/IntroText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/intro/Intro.cs" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/audio/music_inmerty_intro.mp3" type="AudioStream" id=14]
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=15]
 [ext_resource path="res://resources/fonts/calibri_font_12.tres" type="DynamicFont" id=16]
+[ext_resource path="res://scenes/fx/blackout/Blackout.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Gradient" id=13]
 colors = PoolColorArray( 0, 0, 0, 1, 0.596078, 0.376471, 1, 1 )
@@ -730,3 +731,6 @@ margin_bottom = 330.0
 step = 0.0
 texture_under = SubResource( 18 )
 texture_progress = SubResource( 20 )
+
+[node name="Blackout" parent="." instance=ExtResource( 17 )]
+speed = 3.0

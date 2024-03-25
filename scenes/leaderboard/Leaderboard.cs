@@ -61,6 +61,20 @@ namespace Vertigo
             {
                 label.Text = Tr("LEADERBOARD_TEXT");
             }
+
+            LineEdit lineEdit = GetNodeOrNull<LineEdit>("LineEdit");
+
+            if (lineEdit.IsValid())
+            {
+                lineEdit.PlaceholderText = Tr("LEADERBOARD_PLACEHOLDER");
+            }
+
+            Button button = GetNodeOrNull<Button>("ScoreSubmitButton");
+
+            if (button.IsValid())
+            {
+                button.Text = Tr("LEADERBOARD_SUBMIT");
+            }
         }
 
         public override void _PhysicsProcess(float delta)

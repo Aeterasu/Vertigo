@@ -4,5 +4,4 @@
 
 [node name="Aegis" type="Node"]
 script = ExtResource( 1 )
-_initialImmunityTime = 5.0
-_additionImmunityTimePerStack = 2.5
+_additionImmunityTimePerStack = 1.5

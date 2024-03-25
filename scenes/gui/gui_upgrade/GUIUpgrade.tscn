@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/fonts/calibri_font_12.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/textures/upgrades/sprite_mini_upgrade_atlas.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/gui_upgrade/GUIUpgrade.cs" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Purchase"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
+}
+
+[node name="GUIUpgrade" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -460.0
+margin_bottom = -254.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+hframes = 11
+frame = 1
+region_enabled = true
+region_rect = Rect2( 0, 0, 198, 16 )
+
+[node name="StackLabel" type="Label" parent="."]
+margin_left = 14.0
+margin_top = 8.0
+margin_right = 20.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Purchase = SubResource( 1 )

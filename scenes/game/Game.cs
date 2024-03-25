@@ -16,6 +16,7 @@ namespace Vertigo
         [Export] public PackedScene UpgradeMenuScene { get; private set; }
         [Export] public PackedScene DiamondScene { get; private set; }
         [Export] public PackedScene ConvergenceProjectileScene { get; private set; }
+        [Export] public PackedScene GUIUpgradeScene { get; private set; }
 
         [Export] public float OnHitSlowMotionRatio { get; private set; } = 0.2f;
         [Export] public float OnHitSlowMotionDuration { get; private set; } = 1f;
@@ -34,6 +35,8 @@ namespace Vertigo
 
         private Control _gui;
         private Countdown _countdown;
+
+        private Control _guiUpgradeBar;
 
         private TimeManager _timeManager;
 
@@ -109,6 +112,8 @@ namespace Vertigo
             _gemPickupPitch = _minGemPickupPitch;
 
             GetNode<CanvasLayer>("GUILayer").Visible = true;
+
+            _guiUpgradeBar = GetNode<Control>("GUILayer/GUI/GUIUpgradeBar");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -248,6 +253,35 @@ namespace Vertigo
         public void AddPlayerInputDelay(float amount)
         {
             _player.InputDelay += amount;
+        }
+
+        public void CreateGuiUpgrade(UpgradeCard card, Vector2 offset, Upgrade upgrade)
+        {
+            GUIUpgrade node = GUIUpgradeScene.Instance() as GUIUpgrade;
+
+            _guiUpgradeBar.AddChild(node);
+            node.RectPosition = offset;
+            node.PlayAnimation();
+            node.SetStack(0);
+            node.SetUpgrade(card);
+            node.Upgrade = upgrade;
+        }
+
+        public void UpgradeGuiUpgrade(Upgrade upgrade)
+        {
+            foreach (Node node in _guiUpgradeBar.GetChildren())
+            {
+                if (node is GUIUpgrade)
+                {
+                    GUIUpgrade guiUpgrade = node as GUIUpgrade;
+                    
+                    if (guiUpgrade.Upgrade == upgrade)
+                    {
+                        guiUpgrade.PlayAnimation();
+                        guiUpgrade.SetStack(upgrade.Stack);
+                    }
+                }
+            }
         }
     }
 }

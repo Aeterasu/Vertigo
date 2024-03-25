@@ -51,8 +51,8 @@ UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
 UPGRADE_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
 UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
 UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
-UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 5 seconds, an impenetrable barrier.",После вознесения вас на 5 секунд ожидает неуязвимость - непробиваемый барьер.
-UPGRADE_STACK_DESCRIPTION_AEGIS,An impervious shield now lasts extra 2 seconds.,Непроницаемый щит теперь действует дополнительные 2 секунды.
+UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 4 seconds, an impenetrable barrier.",После вознесения вас на 4 секунды ожидает неуязвимость - непробиваемый барьер.
+UPGRADE_STACK_DESCRIPTION_AEGIS,An impervious shield now lasts extra 1 second.,Непроницаемый щит теперь действует дополнительную 1 секунду.
 UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
 UPGRADE_DESCRIPTION_AFFINITY,"Grazing areas expand, providing a wider area of great power.","Зоны грации становятся шире, предоставляя больше места для великой силы."
 UPGRADE_STACK_DESCRIPTION_AFFINITY,"Further expanded graze areas, with more space to seek grace.","Зоны грации станвоятся еще шире, появляется больше места для поиска благодати."
@@ -194,7 +194,7 @@ INTRODUCTION_4,Amidst the dizzying confusion;,
 INTRODUCTION_5,She struggles through the world rapidly changing around her.,
 INTRODUCTION_6,...And so she falls.,
 INTRO_HOLD_TO_SKIP_KEYBOARD,Hold Space to skip,"Удерживайте Пробел, чтобы пропустить"
-INTRO_HOLD_TO_SKIP_GAMEPAD,Hold [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to skip,"Удерживайте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img], чтобы пропустить"
+INTRO_HOLD_TO_SKIP_GAMEPAD,Hold [img]res://assets/textures/menu/sprite_menu_xbox_a_12.png[/img] to skip,"Удерживайте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img], чтобы пропустить"
 LEADERBOARD_TEXT,LEADERBOARD,ТАБЛИЦА РЕКОРДОВ
 LEADERBOARD_SUBMIT,SUBMIT,ОТПРАВИТЬ
 LEADERBOARD_PLACEHOLDER,Enter name...,Введите имя...

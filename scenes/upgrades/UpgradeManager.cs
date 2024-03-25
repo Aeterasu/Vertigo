@@ -30,6 +30,8 @@ namespace Vertigo
         {
             Node node = card.UpgradeScene.Instance();
 
+            int upgrades = 0;
+
             if (!(node is Upgrade))
             {
                 node.SafeQueueFree();
@@ -43,9 +45,15 @@ namespace Vertigo
 
             foreach (Node child in GetChildren())
             {
+                if (child is Upgrade)
+                {
+                    upgrades += 1;
+                }
+
                 if (child.GetType() == node.GetType())
                 {
                     (child as Upgrade).AddStack();
+                    Game.Instance.UpgradeGuiUpgrade(child as Upgrade);
                     node.SafeQueueFree();
                 }
 
@@ -58,6 +66,7 @@ namespace Vertigo
             if (node.IsValid())
             {
                 AddChild(node);
+                Game.Instance.CreateGuiUpgrade(card, Vector2.Right * upgrades * 20, node as Upgrade);
             }
 
             for (int i = 0; i < UpgradePool.Count; i++)

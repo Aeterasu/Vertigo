@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/jump_rope/JumpRope.tscn" type="PackedScene" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://assets/audio/sfx_heartbreak.wav" type="AudioStream" id=46]
 [ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=47]
 [ext_resource path="res://scenes/hazards/wall/WallTelegraph.tscn" type="PackedScene" id=48]
+[ext_resource path="res://scenes/gui/gui_upgrade/GUIUpgrade.tscn" type="PackedScene" id=49]
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 43 )
@@ -164,6 +165,7 @@ script = ExtResource( 4 )
 UpgradeMenuScene = ExtResource( 22 )
 DiamondScene = ExtResource( 21 )
 ConvergenceProjectileScene = ExtResource( 17 )
+GUIUpgradeScene = ExtResource( 49 )
 OnHitSlowMotionRatio = 0.0
 OnHitSlowMotionDuration = 0.6
 GemPickupSound = ExtResource( 26 )
@@ -182,10 +184,11 @@ follow_viewport_enable = true
 
 [node name="Backdrop" type="Sprite" parent="GameLayer"]
 modulate = Color( 0.12549, 0.12549, 0.12549, 1 )
+position = Vector2( -480, -270 )
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 480, 270 )
+region_rect = Rect2( 0, 0, 1440, 810 )
 
 [node name="TimeManager" parent="GameLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
@@ -533,7 +536,6 @@ anims/GameOver = SubResource( 10 )
 [node name="GUILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
-visible = false
 
 [node name="WaveScreenDistortion" type="ColorRect" parent="GUILayer"]
 pause_mode = 2
@@ -634,6 +636,12 @@ margin_right = 480.0
 margin_bottom = 48.0
 texture = ExtResource( 34 )
 flip_h = true
+
+[node name="GUIUpgradeBar" type="Control" parent="GUILayer/GUI"]
+margin_left = 29.0
+margin_top = 231.0
+margin_right = 344.0
+margin_bottom = 249.0
 
 [node name="GUIRestart" parent="GUILayer" instance=ExtResource( 32 )]
 pause_mode = 2
