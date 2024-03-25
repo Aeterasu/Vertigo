@@ -33,111 +33,115 @@ LOCALE_RU,Russian,Русский
 MENU_CREDITS_GAME,Game by Matvey Kerov,Игра Матвея Керова
 MENU_CREDITS_MUSIC,Music by inmerty,Музыка от inmerty
 MENU_CREDITS_ENGINE,Made with Godot Engine,Сделано на движке Godot
-UPGRADE_MENU_FLUFF_DEFAULT,"As the violet moon ascends, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_MINT,"As the emerald moon ascends, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_RASPBERRY,"As the crimson moon ascends, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_SUNFLOWER,"As the bright sun ascends, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_GREYVIEW,"As the dark clouds cover the sky, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_SAFETY,"As the disconnect grows stronger, the walls are built...",
-UPGRADE_MENU_FLUFF_WAVES,"As the waves crash against the shore, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_TRANQUILITY,And so the spirit finds peace...,
-UPGRADE_MENU_FLUFF_MIKASA,"It is written in sand, that the spirit will never relinquish...",
-UPGRADE_MENU_FLUFF_ARCHITECT,The walls built; protecting the spirit...,
-UPGRADE_MENU_FLUFF_CONVERSION,"As the dreams turn to life, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_TRAUMA,"As the heartbeat quickens, the spirit grows stronger...",
-UPGRADE_MENU_FLUFF_APNEA,"As the breathing ceases, the spirit grows stronger...",
-UPGRADE_NONE,None,
-UPGRADE_NAME_ABUNDANCY,ABUNDANCY,
-UPGRADE_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,
-UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,
-UPGRADE_NAME_AEGIS,AEGIS,
-UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 5 seconds, an impenetrable barrier.",
-UPGRADE_STACK_DESCRIPTION_AEGIS,An impervious shield now lasts extra 2 seconds.,
-UPGRADE_NAME_AFFINITY,AFFINITY,
-UPGRADE_DESCRIPTION_AFFINITY,"Grazing areas expand, providing a wider area of great power.",
-UPGRADE_STACK_DESCRIPTION_AFFINITY,"Further expanded graze areas, with more space to seek grace.",
-UPGRADE_NAME_DULLNESS,DULLNESS,
-UPGRADE_DESCRIPTION_DULLNESS,"Every hit landed decreases the speed of foes, providing a respite.",
-UPGRADE_STACK_DESCRIPTION_DULLNESS,Further impedes the speed of foes with every strike.,
-UPGRADE_NAME_HASTE,HASTE,
-UPGRADE_DESCRIPTION_HASTE,"Greatly accelerated power regeneration, allowing for swift offensive maneuvers.",
-UPGRADE_STACK_DESCRIPTION_HASTE,"Power regeneration boosted further, providing rapid power refills.",
-UPGRADE_NAME_OMISSION,OMISSION,
-UPGRADE_DESCRIPTION_OMISSION,Missed foes grant gem reward.,
-UPGRADE_STACK_DESCRIPTION_OMISSION,"Missed foes grant even more extra gems, rewarding failures.",
-UPGRADE_NAME_OPULENCY,OPULENCY,
-UPGRADE_DESCRIPTION_OPULENCY,Additional gems from slain foes.,
-UPGRADE_STACK_DESCRIPTION_OPULENCY,"Extra additional gems from slain foes, providing a greater gain.",
-UPGRADE_NAME_PASSION,PASSION,
+UPGRADE_MENU_FLUFF_DEFAULT,"As the violet moon ascends, the spirit grows stronger...","С восходом фиолетовой луны, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_MINT,"As the emerald moon ascends, the spirit grows stronger...","С восходом изумрудной луны, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_RASPBERRY,"As the crimson moon ascends, the spirit grows stronger...","С восходом алой луны, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_SUNFLOWER,"As the bright sun ascends, the spirit grows stronger...","С восходом горящего солнца, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_GREYVIEW,"As the dark clouds cover the sky, the spirit grows stronger...","Когда темные тучи закрывают небо, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_SAFETY,"As the disconnect grows stronger, the walls are built...","Когда изоляция становится сильнее, возводятся стены..."
+UPGRADE_MENU_FLUFF_WAVES,"As the waves crash against the shore, the spirit grows stronger...","Когда волны бьются о берег, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_TRANQUILITY,And so the spirit finds peace...,И дух находит покой...
+UPGRADE_MENU_FLUFF_MIKASA,"It is written in sand, that the spirit will never relinquish...",Написано в песке - дух никогда не сдастся...
+UPGRADE_MENU_FLUFF_ARCHITECT,The walls built; protecting the spirit...,"Возводятся стены, защищающие дух..."
+UPGRADE_MENU_FLUFF_CONVERSION,"As the dreams turn to life, the spirit grows stronger...","Когда мечты сбываются, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_TRAUMA,"As the heartbeat quickens, the spirit grows stronger...","Когда сердцебиение учащается, дух становится сильнее..."
+UPGRADE_MENU_FLUFF_APNEA,"As the breathing ceases, the spirit grows stronger...","Когда дыхание останавливается, дух становится сильнее..."
+UPGRADE_NONE,None,Ничего
+UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
+UPGRADE_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
+UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
+UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
+UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 5 seconds, an impenetrable barrier.",После вознесения вас на 5 секунд ожидает неуязвимость - непробиваемый барьер.
+UPGRADE_STACK_DESCRIPTION_AEGIS,An impervious shield now lasts extra 2 seconds.,Непроницаемый щит теперь действует дополнительные 2 секунды.
+UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
+UPGRADE_DESCRIPTION_AFFINITY,"Grazing areas expand, providing a wider area of great power.","Зоны грации становятся шире, предоставляя больше места для великой силы."
+UPGRADE_STACK_DESCRIPTION_AFFINITY,"Further expanded graze areas, with more space to seek grace.","Зоны грации станвоятся еще шире, появляется больше места для поиска благодати."
+UPGRADE_NAME_DULLNESS,DISREGARD,РАВНОДУШИЕ
+UPGRADE_DESCRIPTION_DULLNESS,"Every hit landed decreases the speed of foes, providing a respite.","Каждый нанесенный удар снижает скорость противников, давая время перевести дух."
+UPGRADE_STACK_DESCRIPTION_DULLNESS,Further impedes the speed of foes with every strike.,С каждым ударом скорость врагов еще больше снижается.
+UPGRADE_NAME_HASTE,HASTE,СПЕШКА
+UPGRADE_DESCRIPTION_HASTE,"Greatly accelerated power regeneration, allowing for swift offensive maneuvers.","Значительно ускоренная регенерация энергии, позволяющая совершать быстрые наступательные маневры."
+UPGRADE_STACK_DESCRIPTION_HASTE,"Power regeneration boosted further, providing rapid power refills.",Регенерация энергии еще больше ускоряется.
+UPGRADE_NAME_OMISSION,OMISSION,УПУЩЕНИЕ
+UPGRADE_DESCRIPTION_OMISSION,Missed foes grant gem reward.,Пропущенные угрозы дают самоцветы.
+UPGRADE_STACK_DESCRIPTION_OMISSION,"Missed foes grant even more extra gems, rewarding failures.","Пропущенные враги дают еще самоцветов, вознаграждая за неудачи."
+UPGRADE_NAME_OPULENCY,OPULENCY,БОГАТСТВО
+UPGRADE_DESCRIPTION_OPULENCY,Additional gems from slain foes.,Дополнительные самоцветы с побежденных врагов.
+UPGRADE_STACK_DESCRIPTION_OPULENCY,"Extra additional gems from slain foes, providing a greater gain.",Дополнительные самоцветы с побежденных врагов.
+UPGRADE_NAME_PASSION,PASSION,СТРАСТЬ
 UPGRADE_DESCRIPTION_PASSION,"A precious +1 HP.
-Getting hit clears the screen from threats, offering a chance to breathe.",
+Getting hit clears the screen from threats, offering a chance to breathe.","Драгоценное +1 ОЗ.
+Получение удара очищает экран от угроз, давая возможность перевести дух."
 UPGRADE_STACK_DESCRIPTION_PASSION,"+1 HP.
-Boosts the last non-Passion ascension.",
-UPGRADE_NAME_CONVERGENCE,CONVERGENCE,
-UPGRADE_DESCRIPTION_CONVERGENCE,"Release a homing projectile on gravity flip, tracking and zeroing in on foes.",
-UPGRADE_STACK_DESCRIPTION_CONVERGENCE,An additional homing projectile is released on flip.,
-GUI_POWER,POWER,
-GUI_LVL,LVL.,
-GUI_GRAZE,GRAZE!,
-GUI_RESTART,So let the dream begin anew...,
-COLOR_NAME_DEFAULT,Vertigo,
-COLOR_NAME_MINT,Mint,
-COLOR_NAME_RASPBERRY,Raspberry,
-COLOR_NAME_SUNFLOWER,Sunflower,
-COLOR_NAME_GREYVIEW,Greyview,
-COLOR_NAME_SAFETY,Safety,
-COLOR_NAME_WAVES,Waves,
-COLOR_NAME_TRANQUILITY,Tranquility,
-COLOR_NAME_MIKASA,Mikasa,
-COLOR_NAME_ARCHITECT,Architect,
-COLOR_NAME_CONVERSION,Dream,
-COLOR_NAME_TRAUMA,Trauma,
-COLOR_NAME_APNEA,Apnea,
-TOOLTIP_DEFAULT,TOOLTIP,
-TOOLTIP_START,Fall into Vertigo!,
-TOOLTIP_COLOR,Palette:,
-TOOLTIP_EXIT,Abandon the world of dreams.,
-TOOLTIP_BEGIN_ANEW,Begin the dream anew.,
-TOOLTIP_BACK_TO_MENU,Wake up and go back to the main menu.,
-TOOLTIP_LEADERBOARD,Access the leaderboard.,
-TOOLTIP_TUTORIAL,Learn how to play Vertigo!,
-TOOLTIP_SETTINGS,Adjust the game's settings.,
-TOOLTIP_SOUND_SETTINGS,Adjust the volume of the game.,
-TOOLTIP_VISUALS,Adjust the visuals of the game.,
-TOOLTIP_SFX,Volume of the in-game sound effects,
-TOOLTIP_MUSIC,Volume of the in-game music,
-TOOLTIP_FULLSCREEN,Change screen mode: fullscreen or windowed.,
-TOOLTIP_SCREENSHAKE,Toggle camera shake when shooting or getting hit.,
-TOOLTIP_TRAIL_EFFECT,Toggle trail effect on moving objects,
-RESULTS_SCORE,Score:,
-RESULTS_HIGHSCORE,Highscore:,
-TUTORIAL_KEYBOARD_MOVEMENT,A/D to move,
-TUTORIAL_KEYBOARD_SHOOTING,Spacebar to shoot,
-TUTORIAL_GAMEPAD_MOVEMENT,Left stick to move,
-TUTORIAL_GAMEPAD_SHOOTING,A to shoot,
-TUTORIAL_GRAZING,Stay close to hazards to regenerate power faster!,
-TUTORIAL_DEFAULT_KEYBOARD,Put tutorial text here,
-TUTORIAL_DEFAULT_GAMEPAD,Put tutorial text here,
-TUTORIAL_MENU_1_1,Welcome to Vertigo!,
-TUTORIAL_MENU_1_2,Vertigo is an endless bullet-hell game where you will fight against the head-spinning creations of Vertigo itself.,
-TUTORIAL_MENU_1_3,Your goal is to survive as long as you can.,
-TUTORIAL_MENU_2_1_KEYBOARD,Use A/D to move left and right.,
-TUTORIAL_MENU_2_1_GAMEPAD,Use the left analogue stick to move left and right.,
-TUTORIAL_MENU_2_2,Your character perpetually falls. Touching the gravity line inverts your vertical momentum.,
-TUTORIAL_MENU_3_1_KEYBOARD,Use Space to shoot.,
-TUTORIAL_MENU_3_1_GAMEPAD,Use [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to shoot.,
-TUTORIAL_MENU_3_2,Shooting consumes power.,
-TUTORIAL_MENU_3_3,"Power gradually regenerates over time. The more power you've used, the longer it will take to regain a charge.",
-TUTORIAL_MENU_4_1,Attack and destroy hazards to gain gems. ,
-TUTORIAL_MENU_4_2,Collect enough gems and you will Ascend.,
-TUTORIAL_MENU_4_3,"Each time you Ascend, you get to choose one out of the three upgrades.",
-TUTORIAL_MENU_5_1,Stay close to hazards to enter the GRAZE state.,
-TUTORIAL_MENU_5_2,"In the GRAZE state, you gain a massive power regeneration boost and begin accumulating gems, filling up your gem bar over time.",
-TUTORIAL_MENU_5_3,Staying in the GRAZE state long enough will grant you an additional heart.,
-TUTORIAL_MENU_6_1,May the spirit of Vertigo guide you to your success.,
-TUTORIAL_MENU_6_2,Good luck!,
+Boosts the last non-Passion ascension.","+1 HP.
+Усиливает последнее вознесение, не являющееся Страстью."
+UPGRADE_NAME_CONVERGENCE,CONVERGENCE,СХОЖДЕНИЕ
+UPGRADE_DESCRIPTION_CONVERGENCE,"Release a homing projectile on gravity flip, tracking and zeroing in on foes.","При перевороте выпускается самонаводящийся снаряд, преследующий врагов."
+UPGRADE_STACK_DESCRIPTION_CONVERGENCE,An additional homing projectile is released on flip.,При перевороте выпускается дополнительный самонаводящийся снаряд.
+GUI_POWER,POWER,ЭНЕРГИЯ
+GUI_LVL,LVL.,УР.
+GUI_GRAZE,GRAZE!,ГРАЦИЯ!
+GUI_VITALITY,VITALITY,ЖИЗНЬ
+GUI_RESTART,So let the dream begin anew...,Так пусть же сон начнется заново...
+COLOR_NAME_DEFAULT,Vertigo,Vertigo
+COLOR_NAME_MINT,Mint,Мята
+COLOR_NAME_RASPBERRY,Raspberry,Малина
+COLOR_NAME_SUNFLOWER,Sunflower,Подсолнух
+COLOR_NAME_GREYVIEW,Greyview,Серость
+COLOR_NAME_SAFETY,Safety,Безопасность
+COLOR_NAME_WAVES,Waves,Волны
+COLOR_NAME_TRANQUILITY,Tranquility,Спокойствие
+COLOR_NAME_MIKASA,Mikasa,Микаса
+COLOR_NAME_ARCHITECT,Architect,Архитектура
+COLOR_NAME_CONVERSION,Dream,Мечта
+COLOR_NAME_TRAUMA,Trauma,Травма
+COLOR_NAME_APNEA,Apnea,Апноэ
+TOOLTIP_DEFAULT,TOOLTIP,TOOLTIP
+TOOLTIP_START,Fall into Vertigo!,Пади же в Vertigo!
+TOOLTIP_COLOR,Palette:,Палитра:
+TOOLTIP_EXIT,Abandon the world of dreams.,Покинуть мир грез.
+TOOLTIP_BEGIN_ANEW,Begin the dream anew.,Начать сон заново.
+TOOLTIP_BACK_TO_MENU,Wake up and go back to the main menu.,Проснуться и вернуться в главное меню.
+TOOLTIP_LEADERBOARD,Access the leaderboard.,Посмотреть таблицу рекордов.
+TOOLTIP_TUTORIAL,Learn how to play Vertigo!,"Узнать, как играть в Vertigo!"
+TOOLTIP_SETTINGS,Adjust the game's settings.,Изменить настройки игры.
+TOOLTIP_SOUND_SETTINGS,Adjust the volume of the game.,Изменить настройки звука.
+TOOLTIP_VISUALS,Adjust the visuals of the game.,Изменить настройки графики.
+TOOLTIP_SFX,Volume of the in-game sound effects,Громкость звук. эффектов
+TOOLTIP_MUSIC,Volume of the in-game music,Громкость музыка
+TOOLTIP_FULLSCREEN,Change screen mode: fullscreen or windowed.,Изменение режима экрана: полноэкранный или оконный.
+TOOLTIP_SCREENSHAKE,Toggle camera shake when shooting or getting hit.,Тряска экрана при стрельбе или ударах.
+TOOLTIP_TRAIL_EFFECT,Toggle trail effect on moving objects,Эффект шлейфа на движущихся объектах
+RESULTS_SCORE,Score:,Счёт:
+RESULTS_HIGHSCORE,Highscore:,Рекорд:
+TUTORIAL_KEYBOARD_MOVEMENT,A/D to move,A/D для перемещения
+TUTORIAL_KEYBOARD_SHOOTING,Spacebar to shoot,Пробел - стрелять
+TUTORIAL_GAMEPAD_MOVEMENT,Left stick to move,Левый стик для перемещения
+TUTORIAL_GAMEPAD_SHOOTING,A to shoot,А - стрелять
+TUTORIAL_GRAZING,Stay close to hazards to regenerate power faster!,"Держитесь ближе к врагам, чтобы быстрее восстанавливать энергию!"
+TUTORIAL_DEFAULT_KEYBOARD,Put tutorial text here,Put tutorial text here
+TUTORIAL_DEFAULT_GAMEPAD,Put tutorial text here,Put tutorial text here
+TUTORIAL_MENU_1_1,Welcome to Vertigo!,Добро пожаловать в Vertigo!
+TUTORIAL_MENU_1_2,Vertigo is an endless bullet-hell game where you will fight against the head-spinning creations of Vertigo itself.,"Vertigo - это бесконечная игра в жанре bullet-hell, в которой вам предстоит сражаться с кружащими голову творениями самого Vertigo."
+TUTORIAL_MENU_1_3,Your goal is to survive as long as you can.,Ваша цель - выжить как можно дольше.
+TUTORIAL_MENU_2_1_KEYBOARD,Use A/D to move left and right.,Используйте A/D для перемещения влево и вправо.
+TUTORIAL_MENU_2_1_GAMEPAD,Use the left analogue stick to move left and right.,Используйте левый аналоговый стик для перемещения влево и вправо.
+TUTORIAL_MENU_2_2,Your character perpetually falls. Touching the gravity line inverts your vertical momentum.,Ваш персонаж постоянно падает. Прикосновение к гравитационной линии изменяет вертикальный импульс.
+TUTORIAL_MENU_3_1_KEYBOARD,Use Space to shoot.,Для стрельбы используйте Пробел.
+TUTORIAL_MENU_3_1_GAMEPAD,Use [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to shoot.,Используйте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] для стрельбы.
+TUTORIAL_MENU_3_2,Shooting consumes power.,Стрельба расходует энергию.
+TUTORIAL_MENU_3_3,"Power gradually regenerates over time. The more power you've used, the longer it will take to regain a charge.","Энергия постепенно восстанавливается со временем. Чем больше энергии вы израсходовали, тем больше времени потребуется для восстановления заряда."
+TUTORIAL_MENU_4_1,Attack and destroy hazards to gain gems. ,"Атакуйте и уничтожайте опасности, чтобы получить самоцветы. "
+TUTORIAL_MENU_4_2,Collect enough gems and you will Ascend.,"Соберите достаточно самоцветов, и вас ждет Вознесение."
+TUTORIAL_MENU_4_3,"Each time you Ascend, you get to choose one out of the three upgrades.","При каждом Вознесении, вы можете выбрать одно из трех улучшений."
+TUTORIAL_MENU_5_1,Stay close to hazards to enter the GRAZE state.,"Держитесь близко к врагам, чтобы войти в состояние Грации."
+TUTORIAL_MENU_5_2,"In the GRAZE state, you gain a massive power regeneration boost and begin accumulating gems, filling up your gem bar over time.",В состоянии Грации вы получаете огромный прирост к регенерации энергии и начинаете накапливать самоцветы.
+TUTORIAL_MENU_5_3,Staying in the GRAZE state long enough will grant you an additional heart.,"Если оставаться в состоянии Грации достаточно долго, вы получите дополнительное сердце."
+TUTORIAL_MENU_6_1,May the spirit of Vertigo guide you to your success.,Пусть дух Vertigo ведет вас к успеху.
+TUTORIAL_MENU_6_2,Good luck!,Удачи!
 COUNTDOWN_TEXT_1,"Vertigo - a sensation that you, or the environment around you, 
-is moving or spinning.",
+is moving or spinning.","Vertigo - ощущение, что вы или окружающий мир 
+движется или вращается."
 ,,
 COUNTDOWN_TEXT_2,"Vertigo - a common physical symptom that results in a sensation of movement, 
 usually a spinning feeling. ",
@@ -148,7 +152,8 @@ when there is no external stimulus present.",
 COUNTDOWN_TEXT_5,"Vertigo is defined in medicine as a false sensation of movement, 
 and is often caused by a dysfunction in the inner ear or brain. ",
 FLAVOR_TEXT_1,"Vertigo is but an illusion of the mind brought forth from an imbalance of bodily perception. 
-It reveals the limitations of our physical bodies and the fragility of our grasp on reality.",
+It reveals the limitations of our physical bodies and the fragility of our grasp on reality.","Головокружение это всего лишь иллюзия разума, вызванная дисбалансом телесного восприятия. 
+Оно показывает ограниченность нашего физического тела и хрупкость нашего понимания реальности."
 NAUSEA_ANNOUNCEMENT,"The breath of Vertigo encircles your mind.
 Your senses spiral, whirling to chaos.",
 GAME_OVER_1,The gauntlet has come to an end...,
@@ -188,6 +193,8 @@ INTRODUCTION_3,"Her vision is distorted with swirling lights, her sense of reali
 INTRODUCTION_4,Amidst the dizzying confusion;,
 INTRODUCTION_5,She struggles through the world rapidly changing around her.,
 INTRODUCTION_6,...And so she falls.,
-INTRO_HOLD_TO_SKIP_KEYBOARD,Hold Space to skip,
-INTRO_HOLD_TO_SKIP_GAMEPAD,Hold [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to skip,"Удерживайте Пробел, чтобы пропустить"
-,,"Удерживайте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img], чтобы пропустить"
+INTRO_HOLD_TO_SKIP_KEYBOARD,Hold Space to skip,"Удерживайте Пробел, чтобы пропустить"
+INTRO_HOLD_TO_SKIP_GAMEPAD,Hold [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to skip,"Удерживайте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img], чтобы пропустить"
+LEADERBOARD_TEXT,LEADERBOARD,ТАБЛИЦА РЕКОРДОВ
+LEADERBOARD_SUBMIT,SUBMIT,ОТПРАВИТЬ
+LEADERBOARD_PLACEHOLDER,Enter name...,Введите имя...

@@ -35,6 +35,8 @@ namespace Vertigo
 
             _gradient = GetNode<Control>("Gradient");
             _gradient.Modulate = new Color(1, 1, 1, 0);
+
+            GetNode<Label>("PowerLabel").Text = Tr("GUI_POWER");
         }
 
         public override void _PhysicsProcess(float delta)

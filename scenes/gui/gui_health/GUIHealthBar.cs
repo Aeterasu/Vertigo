@@ -49,6 +49,8 @@ namespace Vertigo
             }
 
             _grazeBuildup.Visible = _playerGrazeHeal.IfValid().IsEnabled;
+
+            GetNode<Label>("HealthLabel").Text = Tr("GUI_VITALITY");
         }
 
         public override void _Process(float delta)

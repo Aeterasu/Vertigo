@@ -57,6 +57,10 @@ namespace Vertigo
             _cpuParticles2D = GetNode<CPUParticles2D>("CPUParticles2D");
 
             _gradient = GetNode<TextureRect>("Gradient");
+
+            GetNode<Label>("RotationPivot/Pivot/LabelPivot/Label").Text = Tr("GUI_GRAZE");
+            GetNode<Label>("RotationPivot/Pivot/LabelPivot/GhostPivot1/Ghost").Text = Tr("GUI_GRAZE");
+            GetNode<Label>("RotationPivot/Pivot/LabelPivot/GhostPivot2/Ghost").Text = Tr("GUI_GRAZE");
         }
 
         public override void _PhysicsProcess(float delta)

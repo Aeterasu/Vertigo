@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
 [ext_resource path="res://scenes/tutorial_menu/TutorialMenu.cs" type="Script" id=2]
@@ -8,31 +8,14 @@
 [ext_resource path="res://scenes/tutorial_menu/TutorialPage.cs" type="Script" id=6]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_1.png" type="Texture" id=7]
 [ext_resource path="res://scenes/tutorial_menu/TutorialLabel.cs" type="Script" id=8]
-[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://resources/fonts/calibri_font_12.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_2.png" type="Texture" id=10]
 [ext_resource path="res://scenes/fx/blackout/Blackout.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_3.png" type="Texture" id=12]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_4.png" type="Texture" id=13]
 [ext_resource path="res://assets/textures/tutorial_pages/sprite_tutorial_page_5.png" type="Texture" id=14]
-[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://scenes/tutorial_menu/TutorialRichTextLabel.cs" type="Script" id=16]
-
-[sub_resource type="DynamicFont" id=1]
-size = 12
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 12
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=3]
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 9 )
+[ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=17]
 
 [sub_resource type="Animation" id=2]
 resource_name = "PageChange"
@@ -118,7 +101,7 @@ anchor_bottom = 0.619
 margin_top = -13.13
 margin_right = 480.0
 margin_bottom = -1.13
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -131,7 +114,7 @@ anchor_bottom = 0.619
 margin_top = 8.87
 margin_right = 480.0
 margin_bottom = 20.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -144,7 +127,7 @@ anchor_bottom = 0.619
 margin_top = 47.87
 margin_right = 480.0
 margin_bottom = 59.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -174,7 +157,7 @@ anchor_bottom = 0.619
 margin_top = -5.13
 margin_right = 480.0
 margin_bottom = 6.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -187,7 +170,7 @@ anchor_bottom = 0.619
 margin_top = 24.87
 margin_right = 480.0
 margin_bottom = 36.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -217,7 +200,7 @@ anchor_bottom = 0.548
 margin_top = 6.03999
 margin_right = 480.0
 margin_bottom = 32.04
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = ExtResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center]Put tutorial text here
 [/center]"
@@ -235,7 +218,7 @@ anchor_bottom = 0.619
 margin_top = 8.87
 margin_right = 480.0
 margin_bottom = 20.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -248,7 +231,7 @@ anchor_bottom = 0.619
 margin_top = 32.87
 margin_right = 480.0
 margin_bottom = 44.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -278,7 +261,7 @@ anchor_bottom = 0.619
 margin_top = -13.13
 margin_right = 480.0
 margin_bottom = -1.13
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -291,7 +274,7 @@ anchor_bottom = 0.619
 margin_top = 8.87
 margin_right = 480.0
 margin_bottom = 20.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -304,7 +287,7 @@ anchor_bottom = 0.619
 margin_top = 32.87
 margin_right = 480.0
 margin_bottom = 44.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -334,7 +317,7 @@ anchor_bottom = 0.619
 margin_top = -13.13
 margin_right = 480.0
 margin_bottom = -1.13
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -347,7 +330,7 @@ anchor_bottom = 0.619
 margin_top = 8.87
 margin_right = 480.0
 margin_bottom = 20.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -360,7 +343,7 @@ anchor_bottom = 0.619
 margin_top = 48.87
 margin_right = 480.0
 margin_bottom = 60.87
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -381,7 +364,7 @@ margin_left = 64.0
 margin_top = -75.13
 margin_right = 416.0
 margin_bottom = -63.13
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )
@@ -394,7 +377,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 22.0
 margin_bottom = 38.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 17 )
 text = "Put tutorial text here"
 align = 1
 script = ExtResource( 8 )

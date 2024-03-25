@@ -1,14 +1,14 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/textures/backdrop/sprite_diamond.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/fonts/calibri_font_16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/textures/gui/sprite_gui_timer_clean.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/gui/sprite_gui_gameoverscreen_grid.png" type="Texture" id=4]
-[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/game_over_screen/GameOverScreen.cs" type="Script" id=6]
 [ext_resource path="res://scenes/main_menu/MenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/menu_category/MenuCategory.cs" type="Script" id=8]
 [ext_resource path="res://scenes/leaderboard/Leaderboard.tscn" type="PackedScene" id=9]
+[ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=10]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.5, 1 )
@@ -18,11 +18,6 @@ colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 1, 0.5
 gradient = SubResource( 2 )
 width = 270
 height = 24
-
-[sub_resource type="DynamicFont" id=4]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 0.501961 )
-font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Loop"
@@ -64,12 +59,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -9, 0 ), Vector2( 0, 0 ) ]
 }
-
-[sub_resource type="DynamicFont" id=7]
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Init"
@@ -184,7 +173,7 @@ texture = ExtResource( 3 )
 [node name="Label" type="Label" parent="Control/CurrentScore"]
 margin_right = 269.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 text = "Score: 00:00"
 align = 1
 valign = 1
@@ -212,7 +201,7 @@ texture = ExtResource( 3 )
 [node name="Label" type="Label" parent="Control/Highscore"]
 margin_right = 269.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 text = "Highscore: 00:00"
 align = 1
 valign = 1
@@ -222,7 +211,7 @@ margin_left = 220.0
 margin_top = -2.0
 margin_right = 259.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 10 )
 text = "NEW!"
 align = 1
 valign = 1
@@ -232,7 +221,7 @@ modulate = Color( 0.607843, 0.396078, 1, 1 )
 show_behind_parent = true
 margin_right = 39.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 10 )
 text = "NEW!"
 align = 1
 valign = 1
@@ -242,7 +231,7 @@ modulate = Color( 0.607843, 0.396078, 1, 1 )
 show_behind_parent = true
 margin_right = 39.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 10 )
 text = "NEW!"
 align = 1
 valign = 1
@@ -276,7 +265,7 @@ margin_right = 480.0
 margin_top = 41.0
 margin_right = 269.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 10 )
 text = "Run #999"
 align = 1
 autowrap = true
@@ -286,7 +275,7 @@ modulate = Color( 1, 1, 1, 0 )
 margin_top = 135.0
 margin_right = 480.0
 margin_bottom = 151.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "The gauntlet has come to an end..."
 align = 1
 autowrap = true

@@ -29,6 +29,13 @@ namespace Vertigo
             _leaderboard.Visible = true;
 
             _blackout = GetNode<ColorRect>("Blackout");
+
+            Label label = GetNodeOrNull<Label>("Leaderboard/Backdrop2/Label");
+
+            if (label.IsValid())
+            {
+                label.Text = Tr("LEADERBOARD_TEXT");
+            }
         }
 
         public override void _PhysicsProcess(float delta)

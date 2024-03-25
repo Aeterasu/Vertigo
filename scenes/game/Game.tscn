@@ -46,6 +46,7 @@
 [ext_resource path="res://scenes/fx/shockwave_effect/ShockwaveEffect.cs" type="Script" id=44]
 [ext_resource path="res://assets/audio/sfx_heal.wav" type="AudioStream" id=45]
 [ext_resource path="res://assets/audio/sfx_heartbreak.wav" type="AudioStream" id=46]
+[ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=47]
 [ext_resource path="res://scenes/hazards/wall/WallTelegraph.tscn" type="PackedScene" id=48]
 
 [sub_resource type="ShaderMaterial" id=12]
@@ -138,11 +139,6 @@ shader = ExtResource( 27 )
 shader_param/wave_speed = 2.0
 shader_param/wave_freq = 0.0
 shader_param/wave_width = 0.0
-
-[sub_resource type="DynamicFont" id=3]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 14 )
 
 [sub_resource type="Gradient" id=6]
 colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
@@ -564,7 +560,7 @@ margin_bottom = 48.0
 margin_left = -117.0
 margin_top = -16.0
 margin_right = 363.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 47 )
 text = "POWER"
 align = 1
 valign = 1
@@ -604,23 +600,23 @@ margin_bottom = 31.0
 margin_top = -29.0
 margin_right = 480.0
 margin_bottom = -13.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 47 )
 text = "VITALITY"
 valign = 1
 
 [node name="GUIGraze" parent="GUILayer/GUI" instance=ExtResource( 28 )]
 unique_name_in_owner = true
 margin_left = 447.0
-margin_top = 40.0
+margin_top = 38.0
 margin_right = -33.0
-margin_bottom = -230.0
+margin_bottom = -232.0
 
 [node name="Gradient" type="TextureRect" parent="GUILayer/GUI/GUIGraze"]
 show_behind_parent = true
 margin_left = -95.0
-margin_top = -56.0
+margin_top = -54.0
 margin_right = 33.0
-margin_bottom = 8.0
+margin_bottom = 10.0
 texture = SubResource( 5 )
 
 [node name="Timer" parent="GUILayer/GUI" instance=ExtResource( 18 )]

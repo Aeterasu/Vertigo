@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/upgrades/menu/UpgradeMenu.cs" type="Script" id=1]
-[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/fonts/calibri_font_12.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/upgrades/menu/UpgradeButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/textures/backdrop/sprite_nothing.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_menu_border.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/upgrades/sprite_upgrade_line.png" type="Texture" id=7]
@@ -11,6 +10,7 @@
 [ext_resource path="res://assets/audio/sfx_upgrade_reveal.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/audio/sfx_upgrade_purchase.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/audio/sfx_upgrade_selection.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=12]
 
 [sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 0.25098 )
@@ -21,23 +21,10 @@ width = 480
 height = 270
 fill_to = Vector2( 0, 1 )
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 12
-font_data = ExtResource( 4 )
-
 [sub_resource type="GradientTexture2D" id=7]
 gradient = SubResource( 5 )
 width = 150
 height = 200
-
-[sub_resource type="DynamicFont" id=4]
-size = 12
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Appear"
@@ -364,7 +351,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 40.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 12 )
 text = "UPGRADE_NAME"
 align = 1
 valign = 1
@@ -378,7 +365,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 66.0
 margin_bottom = 93.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 2 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
 align = 1
 valign = 1
@@ -488,7 +475,7 @@ anchor_bottom = 0.5
 margin_top = -96.0
 margin_bottom = -69.0
 custom_colors/font_color = Color( 0.550781, 0.550781, 0.550781, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 text = "As the violet moon ascends, the spirit grows stronger..."
 align = 1
 valign = 1

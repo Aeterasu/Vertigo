@@ -57,12 +57,15 @@ namespace Vertigo
 
             _skipRichTextLabel = GetNode<RichTextLabel>("HoldToSkipLabel");
             _skipProgress = GetNode<TextureProgress>("SkipProgress");
+
+            _skipRichTextLabel.Visible = true;
+            _skipRichTextLabel.BbcodeText = InputDeviceChecker.InputDevice == InputDevice.CONTROLLER ? "[right]" + Tr("INTRO_HOLD_TO_SKIP_GAMEPAD") : "[right]" + Tr("INTRO_HOLD_TO_SKIP_KEYBOARD");
         }
 
         public override void _PhysicsProcess(float delta)
         {
             base._PhysicsProcess(delta);
-
+            
             if (_ticks >= _textRate)
             {
                 _ticks = 0.0f;
@@ -74,8 +77,6 @@ namespace Vertigo
                     _currentText += 1;
                 }
             }
-
-            _skipRichTextLabel.BbcodeText = InputDeviceChecker.InputDevice == InputDevice.CONTROLLER ? "[right]" + Tr("INTRO_HOLD_TO_SKIP_GAMEPAD") : "[right]" + Tr("INTRO_HOLD_TO_SKIP_KEYBOARD");
 
             if (Input.IsActionPressed(InputActions.INPUT_ACTION_CONFIRM) || Input.IsActionPressed(InputActions.INPUT_MENU_CONFIRM))
             {

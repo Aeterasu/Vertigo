@@ -169,6 +169,9 @@ menu_right_click={
 [locale]
 
 translations=PoolStringArray( "res://assets/localization/vertigo_localization_data.en.translation", "res://assets/localization/vertigo_localization_data.ru.translation" )
+translation_remaps={
+}
+locale_filter=[ 0, [ "en", "ru" ] ]
 
 [logging]
 
@@ -191,4 +194,3 @@ vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
-quality/dynamic_fonts/use_oversampling=false

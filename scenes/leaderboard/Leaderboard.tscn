@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://assets/fonts/calibri_bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/fonts/calibri_bold_font_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/calibri.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/leaderboard/LeaderboardPosition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/leaderboard/Leaderboard.cs" type="Script" id=4]
@@ -12,11 +12,8 @@
 [ext_resource path="res://assets/textures/menu/sprite_line_edit.png" type="Texture" id=10]
 [ext_resource path="res://assets/textures/menu/sprite_line_edit_focus.png" type="Texture" id=11]
 [ext_resource path="res://assets/textures/menu/sprite_line_edit_disabled.png" type="Texture" id=12]
-
-[sub_resource type="DynamicFont" id=1]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+[ext_resource path="res://resources/fonts/calibri_font_16.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/fonts/FreePixel.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.5, 1 )
@@ -32,16 +29,13 @@ gradient = SubResource( 4 )
 width = 186
 height = 1
 
-[sub_resource type="DynamicFont" id=9]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 0.282353 )
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=13]
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 14 )
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 12 )
@@ -57,11 +51,6 @@ margin_left = 6.0
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 116, 26 )
 margin_left = 6.0
-
-[sub_resource type="DynamicFont" id=7]
-outline_size = 1
-outline_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-font_data = ExtResource( 1 )
 
 [node name="Leaderboard" type="Control"]
 margin_right = 210.0
@@ -149,14 +138,14 @@ _highlightColor = Color( 0.596078, 0.376471, 1, 1 )
 margin_top = -1.0
 margin_right = 186.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 13 )
 valign = 1
 
 [node name="ScoreLabel" type="Label" parent="LeaderboardCurrentPosition"]
 margin_top = -1.0
 margin_right = 178.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "00:00"
 align = 2
 valign = 1
@@ -188,7 +177,7 @@ texture = SubResource( 5 )
 margin_top = 4.0
 margin_right = 210.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 1 )
 text = "LEADERBOARD"
 align = 1
 autowrap = true
@@ -209,7 +198,7 @@ margin_left = 12.0
 margin_top = 234.0
 margin_right = 128.0
 margin_bottom = 258.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 13 )
 custom_styles/read_only = SubResource( 10 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
@@ -223,7 +212,7 @@ margin_top = 234.0
 margin_right = 202.0
 margin_bottom = 258.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 1 )
 text = "SUBMIT"
 
 [node name="LoadingArc" type="Node2D" parent="."]

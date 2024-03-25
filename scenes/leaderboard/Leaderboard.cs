@@ -54,6 +54,13 @@ namespace Vertigo
             _initialLeaderboardPosition = _leaderboardPositions[0];
 
             GetNode("/root/SilentWolf/Scores").Connect("sw_score_posted", this, "Refresh");
+
+            Label label = GetNodeOrNull<Label>("Label");
+
+            if (label.IsValid())
+            {
+                label.Text = Tr("LEADERBOARD_TEXT");
+            }
         }
 
         public override void _PhysicsProcess(float delta)
