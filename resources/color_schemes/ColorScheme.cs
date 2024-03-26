@@ -10,5 +10,6 @@ namespace Vertigo
         [Export] public string UpgradeFluffTextKey { get; private set; } = "";
         [Export] public string InterludeTextBeginningKey { get; private set; } = "";
         [Export] public string InterludeTextEndingKey { get; private set; } = "";
+        [Export] public string GameOverMessageKey { get; private set; } = "";
     }
 }

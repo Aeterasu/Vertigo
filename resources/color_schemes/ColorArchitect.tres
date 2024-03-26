@@ -15,3 +15,6 @@ script = ExtResource( 1 )
 Gradient = SubResource( 2 )
 NameKey = "COLOR_NAME_ARCHITECT"
 UpgradeFluffTextKey = "UPGRADE_MENU_FLUFF_ARCHITECT"
+InterludeTextBeginningKey = ""
+InterludeTextEndingKey = ""
+GameOverMessageKey = ""

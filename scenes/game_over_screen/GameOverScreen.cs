@@ -56,6 +56,8 @@ namespace Vertigo
             _leaderboard = GetNode<Leaderboard>("Control/Leaderboard");
 
             GetNode<Label>("Control/RunCountLabel").Text = Tr("GAME_OVER_RUN_COUNTER") + GameResultsManager.Instance.RunCount;
+
+            GetNode<Label>("Label").Text = Tr(ColorManager.GetCurrentColor.GameOverMessageKey);
         }
 
         public override void _PhysicsProcess(float delta)
