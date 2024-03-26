@@ -71,7 +71,7 @@ namespace Vertigo
 
             }
 
-            if (_difficultyStepTimer >= _difficultyStepThreshold)
+            if (_difficultyStepTimer >= _difficultyStepThreshold && !Game.Instance.IsBossSpawned)
             {
                 OnDifficultyStepReached?.Invoke();
                 _difficultyStepTimer = 0f;

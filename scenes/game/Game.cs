@@ -27,6 +27,9 @@ namespace Vertigo
         [Export] private readonly float _gemPickupPitchStep = 0.1f;
         [Export] private readonly float _gemPickupPitchDecay = 1f;
 
+        [Export] public PackedScene BossScene { get; private set; }
+        [Export] public float SpawnBossEvery { get; private set; } = 180.0f;
+
         [Export] public AudioStream HealSound { get; private set; }
         [Export] public AudioStream HeartbreakSound { get; private set; }
 
@@ -54,6 +57,9 @@ namespace Vertigo
 
         public float RopeTopPosition { get; private set; }
         public float RopeBottomPosition { get; private set; }
+
+        public float BossSpawnTicks { get; private set; } = 0.0f;
+        public bool IsBossSpawned { get; private set; } = false;
 
         public Player Player { get => _player; }
         
@@ -125,6 +131,15 @@ namespace Vertigo
             Engine.TimeScale = State == GameState.GAME ? CurrentOnHitSlowMotionRatio : 1f;
 
             _gemPickupPitch = Mathf.Max(_gemPickupPitch - _gemPickupPitchDecay * delta, _minGemPickupPitch);
+
+            BossSpawnTicks += delta;
+
+            if (BossSpawnTicks >= SpawnBossEvery && !IsBossSpawned)
+            {
+                BossSpawnTicks = 0.0f;
+                IsBossSpawned = true;
+                SpawnBoss();
+            }
         }
 
         public override void _Process(float delta)
@@ -223,6 +238,39 @@ namespace Vertigo
         private void OnRestart()
         {
             Main.Instance.GameRestart();
+        }
+
+        private void SpawnBoss()
+        {
+            foreach (Node node in GameLayer.GetChildren())
+            {
+                if (node is HazardSpawner)
+                {
+                    (node as HazardSpawner).Enabled = false;
+                }
+            }
+
+            Node boss = BossScene.Instance();
+            
+            if (boss is Boss)
+            {
+                (boss as Boss).OnDestroyed += OnBossDestroyed;
+            }
+
+            GameLayer.CallDeferred("add_child", boss);
+        }
+
+        private void OnBossDestroyed(Hazard hazard)
+        {
+            hazard.OnDestroyed -= OnBossDestroyed;
+
+            foreach (Node node in GameLayer.GetChildren())
+            {
+                if (node is HazardSpawner)
+                {
+                    (node as HazardSpawner).Enabled = true;
+                }
+            }            
         }
 
         public void PlayGemPickupSound()

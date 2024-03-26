@@ -68,6 +68,8 @@ namespace Vertigo
             }
         }
 
+        public Sprite GetSprite { get => _sprite; }
+
         public override void _Ready()
         {
             base._Ready();
@@ -149,7 +151,7 @@ namespace Vertigo
 
             Position += targetDirection * _speed * (1 / Slowdown) * delta;
 
-            if (Position.x <= -96f || Position.x >= 576f || Position.y <= -96f || Position.y >= 366f)
+            if ((Position.x <= -96f || Position.x >= 576f || Position.y <= -96f || Position.y >= 366f) && !(this is Boss))
             {             
                 OnLeftThePlayArea?.Invoke(this);
                 this.SafeQueueFree();
