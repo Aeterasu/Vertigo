@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/textures/menu/sprite_menu_volume_slider_grabber_disabled.png" type="Texture" id=7]
 [ext_resource path="res://assets/textures/menu/sprite_menu_volume_slider_grabber.png" type="Texture" id=8]
 [ext_resource path="res://assets/textures/menu/sprite_menu_volume_slider_1.png" type="Texture" id=9]
+[ext_resource path="res://resources/fonts/calibri_font_12.tres" type="DynamicFont" id=10]
 
 [sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 0.596078, 0.376471, 1, 1, 0.596078, 0.376471, 1, 0 )
@@ -190,10 +191,6 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0.25098 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=10]
-size = 12
-font_data = ExtResource( 4 )
-
 [sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
 
@@ -261,7 +258,7 @@ texture = ExtResource( 1 )
 margin_left = 21.0
 margin_right = 113.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 10 )
 text = "TOOLTIP"
 align = 1
 valign = 1
