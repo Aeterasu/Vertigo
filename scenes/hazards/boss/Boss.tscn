@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/fx/graze_visual/GrazeVisual.cs" type="Script" id=1]
 [ext_resource path="res://scenes/hazards/boss/Boss.cs" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/textures/hazards/sprite_boss.png" type="Texture" id=10]
 [ext_resource path="res://shaders/color_fill.tres" type="Shader" id=11]
 [ext_resource path="res://scenes/hazards/boss/boss_projectile/BossProjectile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/textures/hazards/sprite_boss_minion.png" type="Texture" id=13]
+[ext_resource path="res://scenes/hazards/boss/BossOrbital.cs" type="Script" id=14]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 11 )
@@ -110,3 +112,29 @@ position = Vector2( 0, -6 )
 emitting = false
 
 [node name="SquareDestroyedFX" parent="." instance=ExtResource( 9 )]
+
+[node name="Orbital1" type="Sprite" parent="."]
+position = Vector2( 0, -9 )
+z_index = 8
+texture = ExtResource( 13 )
+script = ExtResource( 14 )
+_xCoeff = 68.0
+_yCoeff = 32.0
+_speed = 1.25
+
+[node name="SpriteTrailCreator" parent="Orbital1" instance=ExtResource( 5 )]
+_creationRate = 0.1
+_color = Color( 1, 1, 1, 1 )
+
+[node name="Orbital2" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+z_index = 8
+texture = ExtResource( 13 )
+script = ExtResource( 14 )
+_xCoeff = -68.0
+_yCoeff = -32.0
+_speed = 1.25
+
+[node name="SpriteTrailCreator" parent="Orbital2" instance=ExtResource( 5 )]
+_creationRate = 0.1
+_color = Color( 1, 1, 1, 1 )

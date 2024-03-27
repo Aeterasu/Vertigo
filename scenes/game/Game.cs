@@ -132,7 +132,10 @@ namespace Vertigo
 
             _gemPickupPitch = Mathf.Max(_gemPickupPitch - _gemPickupPitchDecay * delta, _minGemPickupPitch);
 
-            BossSpawnTicks += delta;
+            if (!IsBossSpawned)
+            {
+                BossSpawnTicks += delta;
+            }
 
             if (BossSpawnTicks >= SpawnBossEvery && !IsBossSpawned)
             {
@@ -270,7 +273,9 @@ namespace Vertigo
                 {
                     (node as HazardSpawner).Enabled = true;
                 }
-            }            
+            }
+
+            IsBossSpawned = false;
         }
 
         public void PlayGemPickupSound()
