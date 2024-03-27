@@ -56,7 +56,7 @@ namespace Vertigo
         {
             base._PhysicsProcess(delta);
 
-            _sinWaveTicks += _sinWaveSpeed * delta;
+            _sinWaveTicks += _sinWaveSpeed * (1 / Slowdown) * delta;
 
             CurrentPosition = CurrentPosition.LinearInterpolate(TargetPosition, _lerpWeight * delta);
 
@@ -64,7 +64,7 @@ namespace Vertigo
 
             GlobalPosition = CurrentPosition + _offset;
 
-            _attackCooldown -= delta;
+            _attackCooldown -= delta * (1 / Slowdown);
 
             if (_attackCooldown <= 0.0f)
             {

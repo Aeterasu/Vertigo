@@ -59,10 +59,6 @@ namespace Vertigo
                     {
                         (area as Square).Destroy();
                     }
-                    else if (area is Boss)
-                    {
-                        (area as Boss).GetNode<HealthComponent>("%HealthComponent").DealDamage((int)_damageToBoss);
-                    }
                 }                
             }
         }
@@ -107,6 +103,14 @@ namespace Vertigo
 
         private void OnBlankEffect()
         {
+            foreach (Area2D area in _player.GetBlankArea.GetOverlappingAreas())
+            {
+                if (area is Boss)
+                {
+                    (area as Boss).GetNode<HealthComponent>("%HealthComponent").DealDamage((int)_damageToBoss);
+                }
+            }  
+
             _player = Game.Instance.GetNodeOrNull<Player>("%Player");
 
             if (!_player.IsValid())

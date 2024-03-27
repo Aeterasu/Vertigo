@@ -53,9 +53,10 @@ _spriteRotationMode = 0
 _lerpWeight = 1.0
 _sinWaveSpeed = 2.75
 _sinWaveStrength = 32.0
-_attackRate = 1.25
+_attackRate = 1.0
 _projectileScene = ExtResource( 12 )
-_projectileSpread = 9.0
+_projectileCount = 4
+_projectileSpread = 12.0
 
 [node name="Sprite" type="Sprite" parent="."]
 unique_name_in_owner = true
@@ -79,7 +80,7 @@ shape = SubResource( 5 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
-_health = 19
+_health = 36
 
 [node name="HurtboxComponent" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true
@@ -106,7 +107,7 @@ _alphaSpeed = 2.5
 
 [node name="CurrencyGenerator" parent="." instance=ExtResource( 7 )]
 unique_name_in_owner = true
-_amount = 48
+_amount = 96
 
 [node name="SlowdownFx" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -6 )

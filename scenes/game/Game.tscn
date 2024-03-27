@@ -171,7 +171,8 @@ OnHitSlowMotionRatio = 0.0
 OnHitSlowMotionDuration = 0.6
 GemPickupSound = ExtResource( 26 )
 BossScene = ExtResource( 50 )
-SpawnBossEvery = 140.0
+PreBossFightSpawnStopDuration = 6.0
+SpawnBossEvery = 120.0
 HealSound = ExtResource( 45 )
 HeartbreakSound = ExtResource( 46 )
 _gemPickupPitchStep = 0.15
@@ -468,7 +469,6 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 512.0
 
 [node name="ShockwaveLayer" type="CanvasLayer" parent="."]
-visible = false
 follow_viewport_enable = true
 
 [node name="ShockwaveEffect" type="Sprite" parent="ShockwaveLayer"]
@@ -482,7 +482,6 @@ _forceSpeed = 0.8
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 follow_viewport_enable = true
 script = ExtResource( 35 )
 TimerColor = Color( 0, 0, 0, 1 )
@@ -539,7 +538,6 @@ anims/GameOver = SubResource( 10 )
 [node name="GUILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 2
-visible = false
 
 [node name="WaveScreenDistortion" type="ColorRect" parent="GUILayer"]
 pause_mode = 2

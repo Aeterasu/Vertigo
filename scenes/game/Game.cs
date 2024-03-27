@@ -272,7 +272,7 @@ namespace Vertigo
                 (boss as Boss).OnDestroyed += OnBossDestroyed;
             }
 
-            GameLayer.CallDeferred("add_child", boss);
+            GameLayer.AddChild(boss);
         }
 
         private void OnBossDestroyed(Hazard hazard)
