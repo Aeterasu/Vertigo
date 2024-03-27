@@ -182,7 +182,7 @@ shape = SubResource( 3 )
 
 [node name="CurrencyGenerator" parent="." instance=ExtResource( 7 )]
 unique_name_in_owner = true
-_amount = 2
+_amount = 1
 
 [node name="SlowdownFx" parent="." instance=ExtResource( 8 )]
 position = Vector2( 0, -6 )

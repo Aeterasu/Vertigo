@@ -28,6 +28,7 @@ namespace Vertigo
         [Export] private readonly float _gemPickupPitchDecay = 1f;
 
         [Export] public PackedScene BossScene { get; private set; }
+        [Export] public float PreBossFightSpawnStopDuration { get; private set; } = 15.0f;
         [Export] public float SpawnBossEvery { get; private set; } = 180.0f;
 
         [Export] public AudioStream HealSound { get; private set; }
@@ -60,6 +61,7 @@ namespace Vertigo
 
         public float BossSpawnTicks { get; private set; } = 0.0f;
         public bool IsBossSpawned { get; private set; } = false;
+        public bool AreSpawnsDisabled { get; private set; } = false;
 
         public Player Player { get => _player; }
         
@@ -135,6 +137,11 @@ namespace Vertigo
             if (!IsBossSpawned)
             {
                 BossSpawnTicks += delta;
+            }
+
+            if (!AreSpawnsDisabled && BossSpawnTicks >= SpawnBossEvery - PreBossFightSpawnStopDuration && !AreSpawnsDisabled)
+            {
+                StopSpawnsPreBoss();
             }
 
             if (BossSpawnTicks >= SpawnBossEvery && !IsBossSpawned)
@@ -243,7 +250,7 @@ namespace Vertigo
             Main.Instance.GameRestart();
         }
 
-        private void SpawnBoss()
+        private void StopSpawnsPreBoss()
         {
             foreach (Node node in GameLayer.GetChildren())
             {
@@ -253,6 +260,11 @@ namespace Vertigo
                 }
             }
 
+            AreSpawnsDisabled = true;
+        }
+
+        private void SpawnBoss()
+        {
             Node boss = BossScene.Instance();
             
             if (boss is Boss)
@@ -274,6 +286,8 @@ namespace Vertigo
                     (node as HazardSpawner).Enabled = true;
                 }
             }
+
+            AreSpawnsDisabled = false;
 
             IsBossSpawned = false;
         }

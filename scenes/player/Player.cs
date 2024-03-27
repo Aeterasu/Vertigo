@@ -32,6 +32,8 @@ namespace Vertigo
         [Export(PropertyHint.Range, "0, 32")] private readonly float _onHitImmunity = 1f;
         [Export(PropertyHint.Range, "0, 1")] private readonly float _onHitImmunityFlashRate = 0.4f;
 
+        [Export] private readonly uint _contactDamageToBoss = 12;
+
         [Export] private readonly NodePath _shockwaveEffectNodePath;
 
         [Export] private readonly AudioStream _hitSound;
@@ -280,7 +282,14 @@ namespace Vertigo
 
                     if (area is Square && !Passion.Instance.IsValid())
                     {
-                        (area as Square).Destroy();
+                        if (!(area is Boss))
+                        {
+                            (area as Square).Destroy();
+                        }
+                        else if (area is Boss)
+                        {
+                            (area as Boss).GetNode<HealthComponent>("%HealthComponent").DealDamage((int)_contactDamageToBoss);
+                        }
                     }
                 }
             }

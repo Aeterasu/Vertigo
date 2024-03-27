@@ -7,6 +7,7 @@ namespace Vertigo
     {
         [Export] private readonly bool _enableBlankEffect = false;
         [Export] private readonly float _blankEffectDuration = 1.0f;
+        [Export] private readonly uint _damageToBoss = 12;
 
         private float _blankEffectTicks = 0.0f;
 
@@ -54,9 +55,13 @@ namespace Vertigo
             {
                 foreach (Area2D area in _player.GetBlankArea.GetOverlappingAreas())
                 {
-                    if (area is Square)
+                    if (area is Square && !(area is Boss))
                     {
                         (area as Square).Destroy();
+                    }
+                    else if (area is Boss)
+                    {
+                        (area as Boss).GetNode<HealthComponent>("%HealthComponent").DealDamage((int)_damageToBoss);
                     }
                 }                
             }
