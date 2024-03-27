@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/fx/graze_visual/GrazeVisual.cs" type="Script" id=1]
 [ext_resource path="res://scenes/hazards/boss/Boss.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/fx/square_destroyed/BossDestroyedFx.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/textures/hazards/sprite_boss.png" type="Texture" id=10]
 [ext_resource path="res://shaders/color_fill.tres" type="Shader" id=11]
+[ext_resource path="res://scenes/hazards/boss/boss_projectile/BossProjectile.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 11 )
@@ -48,6 +49,11 @@ _vectorDirection = Vector2( 0, 0 )
 _rotateSprite = false
 _spriteRotationMode = 0
 _lerpWeight = 1.0
+_sinWaveSpeed = 2.75
+_sinWaveStrength = 32.0
+_attackRate = 1.25
+_projectileScene = ExtResource( 12 )
+_projectileSpread = 9.0
 
 [node name="Sprite" type="Sprite" parent="."]
 unique_name_in_owner = true
@@ -71,7 +77,7 @@ shape = SubResource( 5 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
-_health = 36
+_health = 19
 
 [node name="HurtboxComponent" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true

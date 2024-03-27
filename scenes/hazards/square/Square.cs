@@ -68,6 +68,15 @@ namespace Vertigo
             }
         }
 
+        public Vector2 VectorDirection 
+        {
+            get => _vectorDirection;
+            set
+            {
+                _vectorDirection = value;
+            }
+        }
+
         public Sprite GetSprite { get => _sprite; }
 
         public override void _Ready()
@@ -119,23 +128,7 @@ namespace Vertigo
 
             _ticks += delta;
 
-            if (_rotateSprite)
-            {
-                switch (_spriteRotationMode)
-                {
-                    case HazardSpriteRotationMode.NONE:
-                        break;
-                    case HazardSpriteRotationMode.SQUARE:
-                        _sprite.RotationDegrees += _rotationSpeed * delta;
-                        break;
-                    case HazardSpriteRotationMode.ARROW:
-                        _sprite.RotationDegrees = 90 * Direction;
-                        break;
-                    case HazardSpriteRotationMode.WALL:
-                        _sprite.RotationDegrees = 0.0f;
-                        break;
-                }
-            }
+            HandleSpriteRotation(delta);
 
             Vector2 targetDirection = _vectorDirection.Normalized();
 
@@ -167,24 +160,9 @@ namespace Vertigo
                 }
             }
 
-            if (_grazeVisual.IsValid())
-            {
-                if (_grazeArea.AffinityIncrease > 1f)
-                {
-                    _grazeVisual.TargetScale = _grazeArea.AffinityIncrease;
-                    _grazeVisual.TargetAlpha = 0.75f;
-                }
-                else
-                {
-                    _grazeVisual.TargetScale = 1f;
-                    _grazeVisual.TargetAlpha = 0.85f;
-                }
-            }
+            HandleGrazeVisual();
 
-            if (_hitFlashSprite.IsValid())
-            {
-                _hitFlashSprite.Modulate = _hitFlashSprite.Modulate.LinearInterpolate(new Color(1, 1, 1, 0), 6 * delta);
-            }
+            HandleHitFlash(delta);
         }
 
         public override void _Process(float delta)
@@ -261,6 +239,52 @@ namespace Vertigo
             if (HitSound != null)
             {
                 DeconflictedSoundPlayer.PlayUnconflictingSound(HitSound, Game.Instance.GameLayer);
+            }
+        }
+
+        private void HandleSpriteRotation(float delta)
+        {
+            if (_rotateSprite)
+            {
+                switch (_spriteRotationMode)
+                {
+                    case HazardSpriteRotationMode.NONE:
+                        break;
+                    case HazardSpriteRotationMode.SQUARE:
+                        _sprite.RotationDegrees += _rotationSpeed * delta;
+                        break;
+                    case HazardSpriteRotationMode.ARROW:
+                        _sprite.RotationDegrees = 90 * Direction;
+                        break;
+                    case HazardSpriteRotationMode.WALL:
+                        _sprite.RotationDegrees = 0.0f;
+                        break;
+                }
+            }
+        }
+
+        private void HandleHitFlash(float delta)
+        {
+            if (_hitFlashSprite.IsValid())
+            {
+                _hitFlashSprite.Modulate = _hitFlashSprite.Modulate.LinearInterpolate(new Color(1, 1, 1, 0), 6 * delta);
+            }
+        }
+
+        private void HandleGrazeVisual()
+        {
+            if (_grazeVisual.IsValid())
+            {
+                if (_grazeArea.AffinityIncrease > 1f)
+                {
+                    _grazeVisual.TargetScale = _grazeArea.AffinityIncrease;
+                    _grazeVisual.TargetAlpha = 0.75f;
+                }
+                else
+                {
+                    _grazeVisual.TargetScale = 1f;
+                    _grazeVisual.TargetAlpha = 0.85f;
+                }
             }
         }
 
