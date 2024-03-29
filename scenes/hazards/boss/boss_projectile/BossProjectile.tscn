@@ -161,7 +161,7 @@ shape = SubResource( 7 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
-_health = 3
+_health = 2
 
 [node name="HurtboxComponent" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true

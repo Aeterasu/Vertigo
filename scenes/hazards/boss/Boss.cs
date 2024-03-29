@@ -64,7 +64,7 @@ namespace Vertigo
 
             GlobalPosition = CurrentPosition + _offset;
 
-            _attackCooldown -= delta * (1 / Slowdown);
+            _attackCooldown -= delta;
 
             if (_attackCooldown <= 0.0f)
             {

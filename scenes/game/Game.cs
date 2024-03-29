@@ -27,6 +27,7 @@ namespace Vertigo
         [Export] private readonly float _gemPickupPitchStep = 0.1f;
         [Export] private readonly float _gemPickupPitchDecay = 1f;
 
+        [Export] public bool IsBossEnabled { get; private set; } = false;
         [Export] public PackedScene BossScene { get; private set; }
         [Export] public float PreBossFightSpawnStopDuration { get; private set; } = 15.0f;
         [Export] public float SpawnBossEvery { get; private set; } = 180.0f;
@@ -134,21 +135,9 @@ namespace Vertigo
 
             _gemPickupPitch = Mathf.Max(_gemPickupPitch - _gemPickupPitchDecay * delta, _minGemPickupPitch);
 
-            if (!IsBossSpawned)
+            if (IsBossEnabled)
             {
-                BossSpawnTicks += delta;
-            }
-
-            if (!AreSpawnsDisabled && BossSpawnTicks >= SpawnBossEvery - PreBossFightSpawnStopDuration && !AreSpawnsDisabled)
-            {
-                StopSpawnsPreBoss();
-            }
-
-            if (BossSpawnTicks >= SpawnBossEvery && !IsBossSpawned)
-            {
-                BossSpawnTicks = 0.0f;
-                IsBossSpawned = true;
-                SpawnBoss();
+                HandleBoss(delta);
             }
         }
 
@@ -261,6 +250,31 @@ namespace Vertigo
             }
 
             AreSpawnsDisabled = true;
+        }
+
+        private void HandleBoss(float delta)
+        {
+            if (!IsBossEnabled)
+            {
+                return;
+            }
+
+            if (!IsBossSpawned)
+            {
+                BossSpawnTicks += delta;
+            }
+
+            if (!AreSpawnsDisabled && BossSpawnTicks >= SpawnBossEvery - PreBossFightSpawnStopDuration && !AreSpawnsDisabled)
+            {
+                StopSpawnsPreBoss();
+            }
+
+            if (BossSpawnTicks >= SpawnBossEvery && !IsBossSpawned)
+            {
+                BossSpawnTicks = 0.0f;
+                IsBossSpawned = true;
+                SpawnBoss();
+            }
         }
 
         private void SpawnBoss()
