@@ -31,6 +31,9 @@ namespace Vertigo
         [Export] public PackedScene BossScene { get; private set; }
         [Export] public float PreBossFightSpawnStopDuration { get; private set; } = 15.0f;
         [Export] public float SpawnBossEvery { get; private set; } = 180.0f;
+        [Export] public float BossEscapeTime { get; private set; } = 15.0f;
+        [Export] public uint BossSuccessDifficultyIncrease { get; private set; } = 2;
+        [Export] public uint BossFailDifficultyIncrease { get; private set; } = 5;
 
         [Export] public AudioStream HealSound { get; private set; }
         [Export] public AudioStream HeartbreakSound { get; private set; }
@@ -60,8 +63,10 @@ namespace Vertigo
         public float RopeTopPosition { get; private set; }
         public float RopeBottomPosition { get; private set; }
 
+        public Boss Boss { get; private set; } = null;
         public float BossSpawnTicks { get; private set; } = 0.0f;
         public bool IsBossSpawned { get; private set; } = false;
+        public float BossEscapeTimerTicks { get; private set; } = 0.0f; 
         public bool AreSpawnsDisabled { get; private set; } = false;
 
         public Player Player { get => _player; }
@@ -241,13 +246,7 @@ namespace Vertigo
 
         private void StopSpawnsPreBoss()
         {
-            foreach (Node node in GameLayer.GetChildren())
-            {
-                if (node is HazardSpawner)
-                {
-                    (node as HazardSpawner).Enabled = false;
-                }
-            }
+            ToggleSpawns(isEnabled: false);
 
             AreSpawnsDisabled = true;
         }
@@ -275,6 +274,16 @@ namespace Vertigo
                 IsBossSpawned = true;
                 SpawnBoss();
             }
+
+            if (IsBossSpawned)
+            {
+                BossEscapeTimerTicks += delta;
+
+                if (BossEscapeTimerTicks >= BossEscapeTime)
+                {
+                    TriggerBossEscape();
+                }
+            }
         }
 
         private void SpawnBoss()
@@ -287,23 +296,54 @@ namespace Vertigo
             }
 
             GameLayer.AddChild(boss);
+
+            Boss = boss as Boss;
         }
 
         private void OnBossDestroyed(Hazard hazard)
         {
             hazard.OnDestroyed -= OnBossDestroyed;
 
-            foreach (Node node in GameLayer.GetChildren())
-            {
-                if (node is HazardSpawner)
-                {
-                    (node as HazardSpawner).Enabled = true;
-                }
-            }
+            ToggleSpawns(isEnabled: true);
 
             AreSpawnsDisabled = false;
 
             IsBossSpawned = false;
+
+            Boss = null;
+
+            _timeManager.StepDifficulty((uint)BossSuccessDifficultyIncrease);
+
+            BossEscapeTimerTicks = 0.0f;
+        }
+
+        private void TriggerBossEscape()
+        {
+            BossEscapeTimerTicks = 0.0f;
+
+            if (!Boss.IsValid())
+            {
+                Boss = null;
+                return;
+            }
+
+            Boss.TriggerEscape();
+
+            IsBossSpawned = false;
+            ToggleSpawns(isEnabled: true);
+
+            _timeManager.StepDifficulty((uint)BossFailDifficultyIncrease);
+        }
+
+        public void ToggleSpawns(bool isEnabled)
+        {
+            foreach (Node node in GameLayer.GetChildren())
+            {
+                if (node is HazardSpawner)
+                {
+                    (node as HazardSpawner).Enabled = isEnabled;
+                }
+            }
         }
 
         public void PlayGemPickupSound()

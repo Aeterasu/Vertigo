@@ -5,7 +5,7 @@ namespace Vertigo
 {
     public class Boss : Square
     {
-        [Export] private readonly float _lerpWeight = 3f;
+        [Export] private float _lerpWeight = 3f;
         [Export] private readonly float _sinWaveSpeed = 2.0f;
         [Export] private readonly float _sinWaveStrength = 16.0f;
         [Export] private readonly float _attackRate = 2.0f;
@@ -13,15 +13,20 @@ namespace Vertigo
         [Export] private readonly uint _projectileCount = 3;
         [Export] private readonly float _projectileSpread = 7.0f;
         [Export] private readonly float _projectileVerticalOffset = 64f;
+        [Export] private readonly float _escapeTime = 2.0f;
 
         private float _attackCooldown = 2.0f;
 
         private float _sinWaveTicks = 0.0f;
 
+        private float _escapeElapsedTime = 0.0f;
+
         private Vector2 _offset = new Vector2();
 
         public Vector2 TargetPosition { get; private set; } = new Vector2();
         public Vector2 CurrentPosition { get; private set; } = new Vector2();
+
+        public bool IsEscapeTriggered { get; private set; } = false;
 
         public override void _Ready()
         {
@@ -71,6 +76,17 @@ namespace Vertigo
                 _attackCooldown = _attackRate;
                 Attack();
             }
+
+            if (IsEscapeTriggered)
+            {
+                _escapeElapsedTime += delta;
+
+                if (_escapeElapsedTime >= _escapeTime)
+                {
+                    this.SafeQueueFree();
+                    return;
+                }
+            }
         }
 
         public override void _Process(float delta)
@@ -117,6 +133,13 @@ namespace Vertigo
             {
                 Game.Instance.GameLayer.AddChild(attack);
             }
+        }
+
+        public void TriggerEscape()
+        {
+            TargetPosition += Vector2.Right * Direction * 216.0f;
+
+            IsEscapeTriggered = true;
         }
     }
 }

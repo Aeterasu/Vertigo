@@ -66,10 +66,6 @@ namespace Vertigo
                 _difficultyStepTimer += delta;
                 _timer += delta;
             }
-            else
-            {
-
-            }
 
             if (_difficultyStepTimer >= _difficultyStepThreshold && !Game.Instance.IsBossSpawned)
             {
@@ -110,6 +106,14 @@ namespace Vertigo
         public void StopTimer()
         {
             IsTimerStopped = true;
+        }
+
+        public void StepDifficulty(uint amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                OnDifficultyStepReached?.Invoke();
+            }
         }
     }
 }

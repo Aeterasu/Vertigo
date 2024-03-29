@@ -174,6 +174,9 @@ IsBossEnabled = true
 BossScene = ExtResource( 50 )
 PreBossFightSpawnStopDuration = 6.0
 SpawnBossEvery = 120.0
+BossEscapeTime = 30.0
+BossSuccessDifficultyIncrease = 0
+BossFailDifficultyIncrease = 3
 HealSound = ExtResource( 45 )
 HeartbreakSound = ExtResource( 46 )
 _gemPickupPitchStep = 0.15
@@ -356,7 +359,7 @@ script = ExtResource( 8 )
 
 [node name="WallSpawner" type="Node" parent="GameLayer"]
 script = ExtResource( 23 )
-_canOnlySpawnAfter = 80.0
+_canOnlySpawnAfter = 110.0
 _maxHazards = 2
 _scene = ExtResource( 48 )
 _spawnRate = 12.0
