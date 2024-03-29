@@ -33,6 +33,7 @@ Affiliation = 0
 _speed = 24.0
 _rotationSpeed = 0.0
 _vectorDirection = Vector2( 0, 1 )
+_bounceMode = 1
 _spriteRotationMode = 3
 
 [node name="Sprite" type="Sprite" parent="."]

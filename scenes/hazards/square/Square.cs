@@ -12,6 +12,12 @@ namespace Vertigo
         WALL,
     }
 
+    public enum HazardBounceMode
+    {
+        DEFAULT,
+        WALL,
+    }
+
     public class Square : Hazard
     {
         public const string GROUP_SQUARE = "Square";
@@ -26,6 +32,8 @@ namespace Vertigo
         [Export] private readonly bool directionAffectY = true;
 
         [Export] private readonly bool _bounce = false; // squares will bounce from each other
+        [Export] private readonly HazardBounceMode _bounceMode = HazardBounceMode.DEFAULT;
+
         [Export] private readonly bool _rotateSprite = true;
         [Export] private readonly HazardSpriteRotationMode _spriteRotationMode = HazardSpriteRotationMode.SQUARE;
 
@@ -75,6 +83,11 @@ namespace Vertigo
             {
                 _vectorDirection = value;
             }
+        }
+
+        public HazardBounceMode BounceMode
+        {
+            get => _bounceMode;
         }
 
         public Sprite GetSprite { get => _sprite; }
@@ -177,6 +190,12 @@ namespace Vertigo
             if (_ticks >= 0.2f)
             {
                 if (area is Hazard && _bounce && !_collisionList.Contains(area))
+                {
+                    Direction *= -1f;
+                    _collisionList.Add(area);
+                }
+
+                if (BounceMode == HazardBounceMode.WALL && (area is Square) && (area as Square).BounceMode == HazardBounceMode.WALL)
                 {
                     Direction *= -1f;
                     _collisionList.Add(area);

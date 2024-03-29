@@ -71,7 +71,7 @@ shader = ExtResource( 37 )
 shader_param/color = null
 shader_param/mixture = 1.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -522,7 +522,7 @@ margin_left = 370.0
 margin_top = 243.0
 margin_right = 451.0
 margin_bottom = 259.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 15 )
 text = "00.00"
 align = 2
 valign = 2
