@@ -6,5 +6,4 @@
 script = ExtResource( 1 )
 _enabled = true
 _baseRequiredGraze = 3.0
-_multiplierOnEachGrantedHp = 3.0
 _decay = 0.4

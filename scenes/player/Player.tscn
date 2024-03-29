@@ -216,8 +216,8 @@ _grazingCumulativeStep = 0.5
 
 [node name="GrazeHeal" parent="." instance=ExtResource( 15 )]
 _baseRequiredGraze = 10.0
-_multiplierOnEachGrantedHp = 3.5
-_decay = 0.3
+_endRequiredGraze = 110.0
+_decay = 0.25
 
 [node name="GrazeDetector" type="Area2D" parent="."]
 unique_name_in_owner = true

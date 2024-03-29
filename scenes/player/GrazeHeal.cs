@@ -7,9 +7,9 @@ namespace Vertigo
     {
         [Export] private bool _enabled = false;
         [Export] private readonly float _buildUp = 1f;
-        [Export] private readonly float _baseRequiredGraze = 1.75f;
-        [Export] private readonly float _multiplierOnEachGrantedHp = 1.5f;
-        [Export] private readonly float _decay = 0.2f;
+        [Export] private readonly float _baseRequiredGraze = 20.0f; // graze required to get the first heart
+        [Export] private readonly float _endRequiredGraze = 120.0f; // graze required to get all the hearts afterwards
+        [Export] private readonly float _decay = 0.5f;
         [Export] private readonly bool _resetOnGettingHit = false;
 
         private int _level = 0;
@@ -80,7 +80,7 @@ namespace Vertigo
 
             _currentBuildUp = 0f;
 
-            _requiredGraze = _baseRequiredGraze * (_level * _multiplierOnEachGrantedHp);
+            _requiredGraze = _endRequiredGraze;
         }
 
         private void OnPlayerHit()

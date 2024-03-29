@@ -170,6 +170,7 @@ GUIUpgradeScene = ExtResource( 49 )
 OnHitSlowMotionRatio = 0.0
 OnHitSlowMotionDuration = 0.6
 GemPickupSound = ExtResource( 26 )
+IsBossEnabled = true
 BossScene = ExtResource( 50 )
 PreBossFightSpawnStopDuration = 6.0
 SpawnBossEvery = 120.0
