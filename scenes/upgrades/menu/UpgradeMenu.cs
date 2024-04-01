@@ -164,6 +164,13 @@ namespace Vertigo
                 _selectionActivated = true;
                 DeconflictedSoundPlayer.PlayUnconflictingSound(_selectionAudio, GetNode("/root"), 0, 1);
             }
+
+            if (((_selectionActivated && CurrentSelection != 1) || (!_selectionActivated)) && (Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_UP) || Input.IsActionJustPressed(InputActions.INPUT_ACTION_MOVE_DOWN)) && _inputDelay <= 0)
+            {
+                CurrentSelection = 1;
+                _selectionActivated = true;
+                DeconflictedSoundPlayer.PlayUnconflictingSound(_selectionAudio, GetNode("/root"), 0, 1);
+            }
             
             if ((Input.IsActionJustPressed(InputActions.INPUT_MENU_CONFIRM) && _selectionActivated && _inputDelay <= 0 && _currentButton.IsValid()) ||
             (Input.IsActionJustPressed(InputActions.INPUT_MENU_LEFT_CLICK) && _selectionActivated && _inputDelay <= 0 && _currentButton.IsValid() && _currentButton.IsHoveredOver))
