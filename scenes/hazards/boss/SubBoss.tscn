@@ -1,0 +1,249 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/fx/graze_visual/GrazeVisual.cs" type="Script" id=1]
+[ext_resource path="res://scenes/hazards/boss/Boss.cs" type="Script" id=2]
+[ext_resource path="res://scenes/components/health_component/HealthComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/hurtbox_component/HurtboxComponent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/fx/sprite_trail/SpriteTrailCreator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/graze_area/GrazeArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/currency/CurrencyGenerator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/fx/slowdown/SlowdownFx.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/textures/fx/sprite_fx_heartbeat.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/fx/sprite_fx_square_destroy.png" type="Texture" id=10]
+[ext_resource path="res://shaders/color_fill.tres" type="Shader" id=11]
+[ext_resource path="res://scenes/hazards/boss/boss_projectile/BossProjectile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/fx/square_destroyed/SquareDestroyedFX.cs" type="Script" id=13]
+[ext_resource path="res://assets/textures/hazards/sprite_boss_2.png" type="Texture" id=14]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 11 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/mixture = 1.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 12, 12 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 54.0
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.7, 0.75, 0.95 )
+colors = PoolColorArray( 0.596078, 0.376471, 1, 0, 0.596078, 0.376471, 1, 0.313726, 0.596078, 0.376471, 1, 0 )
+
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 8 )
+width = 123
+height = 123
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 0.125, 0.208333 )
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 11 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/mixture = 1.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Destroy"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SquareSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SquareSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Left:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -13, 0 ), Vector2( -64, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Right:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 14, 0 ), Vector2( 64, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Left:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Right:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, 2 ), Vector2( 0, 16 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SubBoss" type="Area2D"]
+collision_layer = 4
+script = ExtResource( 2 )
+Affiliation = 0
+_speed = 0.0
+_rotationSpeed = 0.0
+_vectorDirection = Vector2( 0, 0 )
+_rotateSprite = false
+_spriteRotationMode = 0
+_lerpWeight = 1.0
+_sinWaveSpeed = 2.75
+_sinWaveStrength = 32.0
+_attackRate = 1.25
+_projectileScene = ExtResource( 12 )
+_projectileCount = 2
+_projectileSpread = 30.0
+
+[node name="Sprite" type="Sprite" parent="."]
+unique_name_in_owner = true
+z_index = 8
+texture = ExtResource( 14 )
+
+[node name="SpriteTrailCreator" parent="Sprite" instance=ExtResource( 5 )]
+_creationRate = 0.1
+
+[node name="HitFlashSprite" type="Sprite" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 4 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 0, -7 )
+rotation = 0.785398
+z_index = 9
+shape = SubResource( 5 )
+
+[node name="HealthComponent" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+_health = 24
+
+[node name="HurtboxComponent" parent="." instance=ExtResource( 4 )]
+unique_name_in_owner = true
+position = Vector2( 0, 2 )
+collision_layer = 0
+collision_mask = 0
+_affiliation = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2( 0, -9 )
+rotation = 0.785398
+z_index = 9
+shape = SubResource( 6 )
+
+[node name="GrazeArea" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrazeArea"]
+shape = SubResource( 7 )
+
+[node name="GrazeVisual" type="Sprite" parent="."]
+texture = SubResource( 9 )
+script = ExtResource( 1 )
+_alphaSpeed = 2.5
+
+[node name="CurrencyGenerator" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+_amount = 54
+
+[node name="SlowdownFx" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0, -6 )
+emitting = false
+
+[node name="SquareDestroyedFX" type="Node2D" parent="."]
+script = ExtResource( 13 )
+
+[node name="SquareSprite" type="Sprite" parent="SquareDestroyedFX"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 1 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 14 )
+
+[node name="Left" type="Sprite" parent="SquareDestroyedFX"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -64, 0 )
+texture = ExtResource( 10 )
+
+[node name="Right" type="Sprite" parent="SquareDestroyedFX"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 64, 0 )
+texture = ExtResource( 10 )
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SquareDestroyedFX"]
+playback_speed = 1.4
+anims/Destroy = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="SquareDestroyedFX"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1e-05, 16 )
+texture = ExtResource( 9 )
+offset = Vector2( 1.619, 0 )

@@ -30,7 +30,7 @@ namespace Vertigo
         {
             var player = Game.Instance.GetNodeOrNull<Player>("%Player");
 
-            player.ImmunityTimer += _immunityTime;
+            player.ImmunityTimer = _immunityTime;
         }
     }
 }

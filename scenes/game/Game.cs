@@ -29,6 +29,7 @@ namespace Vertigo
 
         [Export] public bool IsBossEnabled { get; private set; } = false;
         [Export] public PackedScene BossScene { get; private set; }
+        [Export] public PackedScene SubBossScene { get; private set; }
         [Export] public float PreBossFightSpawnStopDuration { get; private set; } = 15.0f;
         [Export] public float SpawnBossEvery { get; private set; } = 180.0f;
         [Export] public float BossEscapeTime { get; private set; } = 15.0f;
@@ -68,6 +69,8 @@ namespace Vertigo
         public bool IsBossSpawned { get; private set; } = false;
         public float BossEscapeTimerTicks { get; private set; } = 0.0f; 
         public bool AreSpawnsDisabled { get; private set; } = false;
+        public bool SecondBossFight { get; private set; } = false;
+        public int BossCount { get; private set; } = 0;
 
         public Player Player { get => _player; }
         
@@ -289,32 +292,81 @@ namespace Vertigo
         private void SpawnBoss()
         {
             Node boss = BossScene.Instance();
+
+            BossCount += 1;
+            
+            Node subBoss = null;
+
+            if (SecondBossFight)
+            {
+                subBoss = SubBossScene.Instance();
+
+                if (subBoss is Boss)
+                {
+                    (subBoss as Boss).OnDestroyed += OnBossDestroyed;
+                }
+
+                BossCount += 1;
+            }
             
             if (boss is Boss)
             {
                 (boss as Boss).OnDestroyed += OnBossDestroyed;
             }
 
+            uint random = GD.Randi() % 2;
+
+            if (random == 0)
+            {
+                (boss as Boss).SetDirection(1);
+
+                if (SecondBossFight)
+                {
+                    (subBoss as Boss).SetDirection(-1);
+                }
+            }
+            else
+            {
+                (boss as Boss).SetDirection(-1);
+
+                if (SecondBossFight)
+                {
+                    (subBoss as Boss).SetDirection(1);
+                }
+            }
+
             GameLayer.AddChild(boss);
 
+            if (SecondBossFight)
+            {
+                GameLayer.AddChild(subBoss);
+            }
+
             Boss = boss as Boss;
+
+            SecondBossFight = true;
         }
 
         private void OnBossDestroyed(Hazard hazard)
         {
+            BossCount -= 1;
+
             hazard.OnDestroyed -= OnBossDestroyed;
 
-            ToggleSpawns(isEnabled: true);
+            if (BossCount == 0)
+            {
+                ToggleSpawns(isEnabled: true);
 
-            AreSpawnsDisabled = false;
+                AreSpawnsDisabled = false;
 
-            IsBossSpawned = false;
+                IsBossSpawned = false;
 
-            Boss = null;
+                Boss = null;
 
-            _timeManager.StepDifficulty((uint)BossSuccessDifficultyIncrease);
+                _timeManager.StepDifficulty((uint)BossSuccessDifficultyIncrease);
 
-            BossEscapeTimerTicks = 0.0f;
+                BossEscapeTimerTicks = 0.0f;
+            }
         }
 
         private void TriggerBossEscape()

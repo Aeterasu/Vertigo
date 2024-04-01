@@ -32,28 +32,6 @@ namespace Vertigo
         {
             base._Ready();
 
-            uint random = GD.Randi() % 2;
-
-            if (random == 0)
-            {
-                Direction = 1;
-            }
-            else
-            {
-                Direction = -1;
-            }
-
-            if (Direction == -1)
-            {
-                CurrentPosition = new Vector2(-128f, 138f);
-                TargetPosition = new Vector2(72f, 138f);
-            }
-            else
-            {
-                CurrentPosition = new Vector2(480f + 128f, 138f);
-                TargetPosition = new Vector2(480f - 72f, 138f);
-            }
-
             _attackCooldown = _attackRate;
         }
 
@@ -140,6 +118,22 @@ namespace Vertigo
             TargetPosition += Vector2.Right * Direction * 216.0f;
 
             IsEscapeTriggered = true;
+        }
+
+        public void SetDirection(int direction)
+        {
+            Direction = direction;
+
+            if (direction == -1)
+            {
+                CurrentPosition = new Vector2(-128f, 138f);
+                TargetPosition = new Vector2(72f, 138f);
+            }
+            else
+            {
+                CurrentPosition = new Vector2(480f + 128f, 138f);
+                TargetPosition = new Vector2(480f - 72f, 138f);
+            }
         }
     }
 }

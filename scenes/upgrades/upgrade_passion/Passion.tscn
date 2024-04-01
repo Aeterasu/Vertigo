@@ -6,4 +6,3 @@
 script = ExtResource( 1 )
 _enableBlankEffect = true
 _blankEffectDuration = 0.5
-_damageToBoss = 18

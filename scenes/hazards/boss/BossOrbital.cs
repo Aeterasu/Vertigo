@@ -28,7 +28,7 @@ namespace Vertigo
 
             Position = _defaultPosition + new Vector2(Mathf.Cos(_ticks) * _xCoeff, Mathf.Sin(_ticks) * _yCoeff);
 
-            if (Mathf.Sin(_ticks) > 0.0f)
+            if (Mathf.Sin(_ticks * Mathf.Sign(_yCoeff)) > 0.0f)
             {
                 ZIndex = 8;
             }
