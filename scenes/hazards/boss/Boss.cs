@@ -3,8 +3,15 @@ using System;
 
 namespace Vertigo
 {
+    public enum BossAttackType
+    {
+        NORMAL_BOSS,
+        BOSS_SLOW_PROJECTILE,
+    }
+
     public class Boss : Square
     {
+        [Export] private readonly BossAttackType _attackType = BossAttackType.NORMAL_BOSS;
         [Export] private float _lerpWeight = 3f;
         [Export] private readonly float _sinWaveSpeed = 2.0f;
         [Export] private readonly float _sinWaveStrength = 16.0f;
@@ -12,8 +19,9 @@ namespace Vertigo
         [Export] private readonly PackedScene _projectileScene;
         [Export] private readonly uint _projectileCount = 3;
         [Export] private readonly float _projectileSpread = 7.0f;
-        [Export] private readonly float _projectileVerticalOffset = 64f;
         [Export] private readonly float _escapeTime = 2.0f;
+
+        private int _subBossAttackCount = 0;
 
         private float _attackCooldown = 2.0f;
 
@@ -74,22 +82,35 @@ namespace Vertigo
 
         private void Attack()
         {
-            if (_projectileCount % 2 != 0)
+            switch (_attackType)
             {
-                for (int i = 0; i < _projectileCount; i++)
-                {
-                    CreateAttack(Mathf.Rad2Deg(new Vector2(-Direction, 0.0f).Angle()) + (i - (_projectileCount / 2)) * _projectileSpread);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _projectileCount + 1; i++)
-                {
-                    if (i != _projectileCount / 2)
+                case BossAttackType.NORMAL_BOSS:
+                    if (_projectileCount % 2 != 0)
                     {
-                        CreateAttack(Mathf.Rad2Deg(new Vector2(-Direction, 0.0f).Angle()) + (i - (_projectileCount / 2)) * _projectileSpread / 2);
+                        for (int i = 0; i < _projectileCount; i++)
+                        {
+                            CreateAttack(Mathf.Rad2Deg(new Vector2(-Direction, 0.0f).Angle()) + (i - (_projectileCount / 2)) * _projectileSpread);
+                        }
                     }
-                }
+                    else
+                    {
+                        for (int i = 0; i < _projectileCount + 1; i++)
+                        {
+                            if (i != _projectileCount / 2)
+                            {
+                                CreateAttack(Mathf.Rad2Deg(new Vector2(-Direction, 0.0f).Angle()) + (i - (_projectileCount / 2)) * _projectileSpread / 2);
+                            }
+                        }
+                    }
+                    break;
+                case BossAttackType.BOSS_SLOW_PROJECTILE:
+                    _subBossAttackCount += 1;
+                    CreateAttack((_subBossAttackCount - 1) * _projectileSpread);
+                    if (_subBossAttackCount >= 2)
+                    {
+                        _subBossAttackCount = 0;
+                    }
+                    break;
             }
         }
 
@@ -134,6 +155,8 @@ namespace Vertigo
                 CurrentPosition = new Vector2(480f + 128f, 138f);
                 TargetPosition = new Vector2(480f - 72f, 138f);
             }
+
+            GlobalPosition = CurrentPosition + _offset;
         }
     }
 }

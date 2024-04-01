@@ -35,6 +35,7 @@ namespace Vertigo
         [Export] public float BossEscapeTime { get; private set; } = 15.0f;
         [Export] public uint BossSuccessDifficultyIncrease { get; private set; } = 2;
         [Export] public uint BossFailDifficultyIncrease { get; private set; } = 5;
+        [Export] public bool SecondBossFight { get; private set; } = false;
 
         [Export] public AudioStream HealSound { get; private set; }
         [Export] public AudioStream HeartbreakSound { get; private set; }
@@ -69,7 +70,6 @@ namespace Vertigo
         public bool IsBossSpawned { get; private set; } = false;
         public float BossEscapeTimerTicks { get; private set; } = 0.0f; 
         public bool AreSpawnsDisabled { get; private set; } = false;
-        public bool SecondBossFight { get; private set; } = false;
         public int BossCount { get; private set; } = 0;
 
         public Player Player { get => _player; }

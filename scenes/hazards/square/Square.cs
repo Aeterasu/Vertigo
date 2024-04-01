@@ -22,7 +22,7 @@ namespace Vertigo
     {
         public const string GROUP_SQUARE = "Square";
 
-        [Export] private readonly float _speed = 16f;
+        [Export] private float _speed = 16f;
         [Export] private readonly float _rotationSpeed = 32f;
 
         [Export] private Vector2 _vectorDirection = Vector2.Right;
@@ -56,6 +56,15 @@ namespace Vertigo
         private CPUParticles2D _slowdownFx;
 
         private readonly List<Area2D> _collisionList = new List<Area2D>();
+
+        public float Speed
+        {
+            get => _speed;
+            set
+            {
+                _speed = value;
+            }
+        }
 
         public float Direction
         {

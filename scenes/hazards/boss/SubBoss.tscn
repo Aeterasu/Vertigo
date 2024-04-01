@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/textures/fx/sprite_fx_heartbeat.png" type="Texture" id=9]
 [ext_resource path="res://assets/textures/fx/sprite_fx_square_destroy.png" type="Texture" id=10]
 [ext_resource path="res://shaders/color_fill.tres" type="Shader" id=11]
-[ext_resource path="res://scenes/hazards/boss/boss_projectile/BossProjectile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/hazards/boss/boss_slow_projectile/BossSlowProjectile.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/fx/square_destroyed/SquareDestroyedFX.cs" type="Script" id=13]
 [ext_resource path="res://assets/textures/hazards/sprite_boss_2.png" type="Texture" id=14]
 
@@ -154,12 +154,13 @@ _rotationSpeed = 0.0
 _vectorDirection = Vector2( 0, 0 )
 _rotateSprite = false
 _spriteRotationMode = 0
+_attackType = 1
 _lerpWeight = 1.0
 _sinWaveSpeed = 2.75
 _sinWaveStrength = 32.0
 _attackRate = 1.25
 _projectileScene = ExtResource( 12 )
-_projectileCount = 2
+_projectileCount = 1
 _projectileSpread = 30.0
 
 [node name="Sprite" type="Sprite" parent="."]
