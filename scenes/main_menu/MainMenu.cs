@@ -6,15 +6,12 @@ namespace Vertigo
     public class MainMenu : Control
     {
         private MenuCategory _menuCategory;
-        private MenuCategory _creditsCatergory;
 
         private Cliff _cliff;
 
         private Label _pressAnyLabel;
 
         private Tween _tween = new Tween();
-
-        private bool _isSwappedToCredits = false;
 
         public static bool IsMenuActive { get; private set; } = false;
         public static MainMenu Instance { get; set; }
@@ -26,9 +23,6 @@ namespace Vertigo
             _menuCategory = GetNode<MenuCategory>("MenuLayer/MenuCategory");
             _menuCategory.DisableInput = true;
             _menuCategory.Visible = false;
-
-            _creditsCatergory = GetNode<MenuCategory>("MenuLayer/CreditsCategory");
-            _creditsCatergory.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
             _cliff = GetNode<Cliff>("Cliff");
 
@@ -54,13 +48,6 @@ namespace Vertigo
                     _pressAnyLabel.QueueFree();
                 }
             }
-
-            if (IsMenuActive)
-            {
-                _creditsCatergory.Modulate = _creditsCatergory.Modulate.LinearInterpolate(new Color(1.0f, 1.0f, 1.0f, 1.0f), 6.0f * delta);
-            }
-
-            _creditsCatergory.DisableInput = !IsMenuActive;
         }
 
         public override void _Input(InputEvent @event)
