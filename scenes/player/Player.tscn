@@ -211,6 +211,7 @@ _chargeUpSound = ExtResource( 12 )
 
 [node name="ExperienceComponent" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true
+_baseTargetExp = 9.5
 _grazingCumulativeRate = 2.0
 _grazingCumulativeStep = 0.5
 

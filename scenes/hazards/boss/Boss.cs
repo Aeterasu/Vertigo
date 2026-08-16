@@ -128,6 +128,11 @@ namespace Vertigo
                 (attack as BossProjectile).VectorDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad(directionAngleDegrees)), Mathf.Sin(Mathf.Deg2Rad(directionAngleDegrees)));
             }
 
+            if (attack is BossSlowProjectile)
+            {
+                (attack as BossSlowProjectile).VectorDirection = new Vector2(-Mathf.Cos(Mathf.Deg2Rad(directionAngleDegrees)), 0.0f);
+            }
+
             if (Game.Instance.IsValid() && Game.Instance.GameLayer.IsValid())
             {
                 Game.Instance.GameLayer.AddChild(attack);

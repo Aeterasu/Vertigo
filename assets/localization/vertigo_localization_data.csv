@@ -51,7 +51,7 @@ UPGRADE_NAME_ABUNDANCY,ABUNDANCY,ИЗОБИЛИЕ
 UPGRADE_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
 UPGRADE_STACK_DESCRIPTION_ABUNDANCY,Every other shot delivers an additional projectile.,Каждый второй выстрел выпускает дополнительный снаряд.
 UPGRADE_NAME_AEGIS,AEGIS,ЭГИДА
-UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 4 seconds, an impenetrable barrier.",После вознесения вас на 4 секунды ожидает неуязвимость - непробиваемый барьер.
+UPGRADE_DESCRIPTION_AEGIS,"Upon ascension, invulnerability awaits for 5 seconds, an impenetrable barrier.",После вознесения вас на 4 секунды ожидает неуязвимость - непробиваемый барьер.
 UPGRADE_STACK_DESCRIPTION_AEGIS,An impervious shield now lasts extra 1 second.,Непроницаемый щит теперь действует дополнительную 1 секунду.
 UPGRADE_NAME_AFFINITY,AFFINITY,БЛИЗОСТЬ
 UPGRADE_DESCRIPTION_AFFINITY,"Grazing areas expand, providing a wider area of great power.","Зоны грации становятся шире, предоставляя больше места для великой силы."
@@ -108,7 +108,7 @@ TOOLTIP_SETTINGS,Adjust the game's settings.,Изменить настройки
 TOOLTIP_SOUND_SETTINGS,Adjust the volume of the game.,Изменить настройки звука.
 TOOLTIP_VISUALS,Adjust the visuals of the game.,Изменить настройки графики.
 TOOLTIP_SFX,Volume of the in-game sound effects,Громкость звук. эффектов
-TOOLTIP_MUSIC,Volume of the in-game music,Громкость музыка
+TOOLTIP_MUSIC,Volume of the in-game music,Громкость музыки
 TOOLTIP_FULLSCREEN,Change screen mode: fullscreen or windowed.,Изменение режима экрана: полноэкранный или оконный.
 TOOLTIP_SCREENSHAKE,Toggle camera shake when shooting or getting hit.,Тряска экрана при стрельбе или ударах.
 TOOLTIP_TRAIL_EFFECT,Toggle trail effect on moving objects,Эффект шлейфа на движущихся объектах
@@ -131,10 +131,10 @@ TUTORIAL_MENU_3_1_KEYBOARD,Use Space to shoot.,Для стрельбы испо�
 TUTORIAL_MENU_3_1_GAMEPAD,Use [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] to shoot.,Используйте [img]res://assets/textures/menu/sprite_menu_xbox_a.png[/img] для стрельбы.
 TUTORIAL_MENU_3_2,Shooting consumes power.,Стрельба расходует энергию.
 TUTORIAL_MENU_3_3,"Power gradually regenerates over time. The more power you've used, the longer it will take to regain a charge.","Энергия постепенно восстанавливается со временем. Чем больше энергии вы израсходовали, тем больше времени потребуется для восстановления заряда."
-TUTORIAL_MENU_4_1,Attack and destroy hazards to gain gems. ,"Атакуйте и уничтожайте опасности, чтобы получить самоцветы. "
+TUTORIAL_MENU_4_1,Attack and destroy hazards to gain gems. ,"Атакуйте и уничтожайте угрозы, чтобы получить самоцветы. "
 TUTORIAL_MENU_4_2,Collect enough gems and you will Ascend.,"Соберите достаточно самоцветов, и вас ждет Вознесение."
 TUTORIAL_MENU_4_3,"Each time you Ascend, you get to choose one out of the three upgrades.","При каждом Вознесении, вы можете выбрать одно из трех улучшений."
-TUTORIAL_MENU_5_1,Stay close to hazards to enter the GRAZE state.,"Держитесь близко к врагам, чтобы войти в состояние Грации."
+TUTORIAL_MENU_5_1,Stay close to hazards to enter the GRAZE state.,"Держитесь близко к угрозам, чтобы войти в состояние Грации."
 TUTORIAL_MENU_5_2,"In the GRAZE state, you gain a massive power regeneration boost and begin accumulating gems, filling up your gem bar over time.",В состоянии Грации вы получаете огромный прирост к регенерации энергии и начинаете накапливать самоцветы.
 TUTORIAL_MENU_5_3,Staying in the GRAZE state long enough will grant you an additional heart.,"Если оставаться в состоянии Грации достаточно долго, вы получите дополнительное сердце."
 TUTORIAL_MENU_6_1,May the spirit of Vertigo guide you to your success.,Пусть дух Vertigo ведет вас к успеху.
